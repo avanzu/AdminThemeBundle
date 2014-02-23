@@ -1,0 +1,37 @@
+avanzu_admin_home:
+  path: /demo-admin/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
+avanzu_admin_profile:
+  path: /profile/{userid}/
+avanzu_admin_logout:
+  path: /logout
+avanzu_admin_all_tasks:
+  path: /tasks/
+avanzu_admin_show_task:
+  path: /tasks/{taskid}/
+avanzu_admin_all_notifications:
+  path: /notifications/
+avanzu_admin_show_notification:
+  path: /notifications/{notifyid}/
+avanzu_admin_all_messages:
+  path: /messages/
+avanzu_admin_show_message:
+  path: /messages/{messageid}/
+
+
+
+avanzu_admin_demo:
+  path: /demo-admin/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
+
+avanzu_admin_dash_demo:
+  path: /demo-admin/dashboard/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:dashboard}
+
+avanzu_admin_ui_gen_demo:
+  path: /demo-admin/ui-elements/general/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:uiGeneral}
+
+avanzu_admin_ui_icon_demo:
+  path: /demo-admin/ui-elements/icons/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:uiIcons}

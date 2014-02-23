@@ -1,0 +1,112 @@
+{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}Avanzu Admin!{% endblock %}</title>
+
+    {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
+    {% block stylesheets %}
+    {% stylesheets '@admin_lte_all_css' filter="cssrewrite" %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% endblock %}
+
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
+    {%  block javascripts_head %}
+    {% javascripts '@AvanzuAdminThemeBundle/Resources/public/vendor/modernizr/modernizr.js'%}
+        <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
+    {% endjavascripts %}
+        <!--[if lt IE 9]>
+
+        <![endif]-->
+
+    {% endblock %}
+
+</head>
+<body class="skin-blue">
+
+{% block avanzu_admin_header %}
+
+    <header class="header">
+        <a href="#" class="logo">
+            <!-- Add the class icon to your logo image or logo icon to add the margining -->
+            {{ block('title') }}
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
+                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
+                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
+                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+{% endblock %}
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="left-side sidebar-offcanvas">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
+            {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+            {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+                <h1>
+                    {% block page_title %}Blank page{% endblock %}
+                    <small>{% block page_subtitle %}Control panel{% endblock %}</small>
+                </h1>
+
+            {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            {% block page_content %}{% endblock %}
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->
+
+{# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
+{% block javascripts %}
+
+    {% javascripts '@admin_lte_all' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{# ----------------------------------------------------------------------------------------------- JAVASCRIPTS_INLINE #}
+{% block javascripts_inline %}
+{% endblock %}
+</body>
+</html>

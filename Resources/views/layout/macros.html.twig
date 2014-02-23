@@ -1,0 +1,34 @@
+{% macro avatar(image, alt, class) %}
+    {% if image %}
+        <img src="{{ asset(image) }}" class="{{class|default('img-circle')}}" alt="{{ alt }}" />
+    {% else %}
+        {% image '@avatar_img' %}
+        <img src="{{ asset_url }}" class="{{ class|default('img-circle') }}" alt="{{alt}}" />
+        {% endimage %}
+    {% endif %}
+{% endmacro %}
+
+{% macro menu_item(item) %}
+    <li id="{{ item.identifier }}" class=" {{ item.isActive ? 'active' : '' }} {{ item.hasChildren? 'treeview' : '' }}">
+        <a href="{{ item.hasChildren ? '#': path(item.route, item.routeArgs) }}">
+            {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
+            <span>{{ item.label }}</span>
+            {% if item.badge %}
+                <small class="badge pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
+            {% endif %}
+        </a>
+
+        {% if item.hasChildren %}
+            <ul class="treeview-menu">
+                {% for child in item.children %}
+                    <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
+                        <a href="{{ path(child.route, child.routeArgs) }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            {{ child.label }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endmacro %}

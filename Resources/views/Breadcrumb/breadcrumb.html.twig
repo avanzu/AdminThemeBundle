@@ -1,0 +1,14 @@
+<ol class="breadcrumb">
+    <li>
+        <a href="{{ path('avanzu_admin_home') }}">
+            <i class="fa fa-dashboard"></i>
+            {{ 'Home'|trans({}, 'AvanzuAdminTheme') }}
+        </a>
+    </li>
+    {% if active %}
+        {% for item in active %}
+            <li><a href="#">{{ item.label }}</a></li>
+        {% endfor %}
+    {% endif %}
+    <li class="active">{{ title }}</li>
+</ol>

@@ -1,0 +1,5 @@
+login:
+    path:     /login
+    defaults: { _controller: AvanzuAdminThemeBundle:Security:login }
+login_check:
+    path: /login_check

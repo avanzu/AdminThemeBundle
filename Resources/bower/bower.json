@@ -1,0 +1,31 @@
+{
+    "name"        : "AvanzuAdminTheme",
+    "version"     : "0.0.1",
+    "authors"     : [
+        "Marc Bach <mail@avanzu.de>"
+    ],
+    "description" : "Vendor assets for the avanzu admin theme bundle",
+    "license"     : "MIT",
+    "private"     : true,
+    "ignore"      : [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "../public/vendor",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery"                    : "*",
+        "jquery-ui"                 : "*",
+        "momentjs"                  : "*",
+        "backbone"                  : "*",
+        "underscore"                : "*",
+        "modernizr"                 : "*",
+        "spinjs"                    : "*",
+        "marionette"                : "*",
+        "pickadate"                 : "*",
+        "holderjs"                  : "*",
+        "bootflat"                  : "*"
+    }
+}
