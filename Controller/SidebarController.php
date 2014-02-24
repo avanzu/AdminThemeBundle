@@ -13,6 +13,7 @@ use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SidebarController extends Controller
 {

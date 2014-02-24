@@ -16,3 +16,12 @@ Each component has its own event and specific ui data interfaces.
 * [Sidebar Navigation](sidebar_navigation.md)
 * [Breadcrumb Menu](breadcrumbs.md)
 
+### Demonstration
+
+In order to see some working examples, the bundle comes with a demo implementation for each component. 
+
+Simply remove the comments in the `services.xml` that comes with this bundle, and import the routing to your `routing.yml`
+
+	avanzu_admin:
+	    resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
+	   
