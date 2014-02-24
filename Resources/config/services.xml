@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-
+<!--
     <parameters>
         <parameter key="avanzu_admin_theme.navbar_user_listener.class">Avanzu\AdminThemeBundle\EventListener\NavbarShowUserDemoListener</parameter>
         <parameter key="avanzu_admin_theme.navbar_task_listener.class">Avanzu\AdminThemeBundle\EventListener\NavbarTaskListDemoListener</parameter>
@@ -32,5 +32,6 @@
             <tag name="kernel.event_listener" event="theme.breadcrumb" method="onSetupMenu" />
         </service>
     </services>
-
+-->
 </container>
+
