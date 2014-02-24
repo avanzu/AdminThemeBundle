@@ -57,6 +57,9 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             $container->prependExtensionConfig(
                       'assetic',
                           array(
+                              'bundles' => array(
+                                'AvanzuAdminThemeBundle'
+                                ),
                               'assets' => array(
                                   'common_js'              => array(
                                       'inputs' => array(
