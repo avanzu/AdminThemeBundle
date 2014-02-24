@@ -7,9 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Class MenuItemModel
  *

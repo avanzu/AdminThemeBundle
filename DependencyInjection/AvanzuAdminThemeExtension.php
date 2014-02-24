@@ -73,7 +73,6 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           '@common_js',
                                           $jsAssets . 'public/vendor/momentjs/moment.js',
                                           $jsAssets . 'public/vendor/holderjs/holder.js',
-                                          $jsAssets . 'public/vendor/holderjs/holder.js',
                                           $jsAssets . 'public/vendor/spinjs/spin.js',
                                       ),
                                   ),
@@ -171,7 +170,6 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                       'inputs' => array(
                                           '@admin_lte_calendar_css',
                                           '@admin_lte_morris_css',
-                                          '@admin_lte_calendar_css',
                                           '@admin_lte_wysiwyg_css',
                                           '@admin_lte_forms_css',
                                           '@admin_lte_css'

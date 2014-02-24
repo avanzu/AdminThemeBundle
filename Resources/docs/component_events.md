@@ -1,0 +1,18 @@
+## Accessing component
+The contents of the navbar and sidebar are separated into components, following an event driven approach. 
+
+The general process to use a particular component is to create an event listener and to use the given event object to add ui elements. 
+
+Each component has its own event and specific ui data interfaces. 
+
+### available components
+
+* [Navbar User](navbar_user.md)
+* [Navbar Tasks](navbar_tasks.md)
+* [Navbar Notifications](navbar_notifications.md)
+* [Navbar Messages](navbar_messages.md)
+* [Sidebar User](sidebar_user.md)
+* [Sidebar Search](sidebar_search.md)
+* [Sidebar Navigation](sidebar_navigation.md)
+* [Breadcrumb Menu](breadcrumbs.md)
+

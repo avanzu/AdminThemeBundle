@@ -19,7 +19,6 @@ class SidebarSetupMenuDemoListener
     {
         $request = $event->getRequest();
 
-
         foreach ($this->getMenu($request) as $item) {
             $event->addItem($item);
         }
