@@ -711,3 +711,10 @@ function change_layout() {
         })
     }
 })(window.jQuery || window.Zepto);
+
+(function($){
+    "use strict";
+    $('[data-timepicker]').timepicker();
+    $('[data-datepicker]').datepicker({showInputs: false});
+
+})(window.jQuery || window.Zepto);

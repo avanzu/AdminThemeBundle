@@ -2,6 +2,8 @@
 
 namespace Avanzu\AdminThemeBundle\Controller;
 
+use Avanzu\AdminThemeBundle\Form\FormDemoModelType;
+use Avanzu\AdminThemeBundle\Model\FormDemoModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -31,5 +33,12 @@ class DefaultController extends Controller
 
     public function uiIconsAction() {
         return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
+    }
+
+    public function formAction() {
+        $form =$this->createForm( new FormDemoModelType());
+        return $this->render('AvanzuAdminThemeBundle:Default:form.html.twig', array(
+                'form' => $form->createView()
+            ));
     }
 }

@@ -14,7 +14,8 @@
         "symfony/http-foundation" : ">=2.3",
         "Symfony/http-kernel"  : ">=2.3",
         "symfony/event-dispatcher" : ">=2.3",
-        "symfony/assetic-bundle": ">=2.3"
+        "symfony/assetic-bundle": ">=2.3",
+        "symfony/twig-bundle": ">=2.3"
     },
     "autoload": {
         "psr-0": { "Avanzu\\AdminThemeBundle": "" }

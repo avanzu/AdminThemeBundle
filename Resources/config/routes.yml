@@ -23,6 +23,9 @@ avanzu_admin_show_message:
 avanzu_admin_demo:
   path: /demo-admin/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
+avanzu_admin_form_demo:
+  path: /form-demo/
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:form}
 
 avanzu_admin_dash_demo:
   path: /demo-admin/dashboard/
