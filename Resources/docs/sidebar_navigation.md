@@ -5,7 +5,7 @@ Although the `MenuItemInteface` as well as the `MenuItemModel` are designed to s
 ### Data Model
 
 In order to use this component, your user class has to implement the `Avanzu\AdminThemeBundle\Model\MenuItemInterface`
-
+```php
 	<?php
 	namespace MyAdminBundle\Model;
 	// ...
@@ -16,13 +16,13 @@ In order to use this component, your user class has to implement the `Avanzu\Adm
 		// implement interface methods
 		// ...
 	}
-
+```
 The bundle provides the `MenuItemModel` as a ready to use implementation of the `MenuItemInterface`.
 
 
 ### Event Listener
 Next, you will need to create an EventListener to work with the `MenuItemListEvent`.
-
+```php
 	<?php
 	namespace MyAdminBundle\EventListener;
 
@@ -70,11 +70,11 @@ Next, you will need to create an EventListener to work with the `MenuItemListEve
         }
 
 	}
+```
+### Service.xml
 
-### Service.xml	
-	
 Finally, you need to attach your new listener to the event system:
-
+```xml
 	<!-- Resources/config/services.xml -->
 	<parameters>
 	<!-- ... -->
@@ -86,6 +86,7 @@ Finally, you need to attach your new listener to the event system:
 	<service id="my_admin_bundle.menu_listener" class="%my_admin_bundle.menu_listener.class%">
             <tag name="kernel.event_listener" event="theme.sidebar_setup_menu" method="onSetupMenu" />
         </service>
-	
+
 	<!-- ... -->
 	</services>
+```
