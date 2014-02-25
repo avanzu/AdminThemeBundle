@@ -1,9 +1,9 @@
 ## Using the layout
 
 In order to use the layout, your views should extend from the provided base-layout
-
+```twig
 	{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
-	
+``
 ### layout blocks
 
 <dl>
@@ -30,18 +30,18 @@ the bundle integrates several asset groups to be used with assetic:
 
 #### javascripts
 
-use the assetic provided {% javascripts %} tag to integrate one or several asset groups into your view. 
+use the assetic provided {% javascripts %} tag to integrate one or several asset groups into your view.
 
 *example*
-
-	{% javascripts 
-		'@common_js' 
-		'@admin_lte_js' 
+```twig
+	{% javascripts
+		'@common_js'
+		'@admin_lte_js'
 	%}
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
-
-`common_js`  
+``
+`common_js`
 
 1. jquery
 2. jquery-ui
@@ -50,13 +50,13 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 5. marionette
 6. bootstrapjs
 
-`tools_js`  
+`tools_js`
 
 1. momentjs
 2. holderjs
 3. spinjs
 
-`admin_lte_js` 
+`admin_lte_js`
 
 1. bootstrap-slider
 2. jquery.dataTables
@@ -64,14 +64,14 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 4. jquery.slimscroll
 5. adminLTE
 
-`admin_lte_forms_js` 
+`admin_lte_forms_js`
 
 1. bootstrap-colorpicker
 2. daterangepicker
 3. bootstrap-timepicker
 4. jquery.inputmask
 
-`admin_lte_wysiwyg` 
+`admin_lte_wysiwyg`
 
 1. bootstrap3-wysihtml
 
@@ -94,17 +94,17 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 
 
 #### Stylesheets
-Same as with the javascript asset groups, there are predefined css groups accordingly. Please make sure to use `filter="cssrewrite"` 
+Same as with the javascript asset groups, there are predefined css groups accordingly. Please make sure to use `filter="cssrewrite"`
 
 *example*
-
-	{% stylesheets 
-		'@admin_lte_all_css' 
-		filter="cssrewrite" 
+```twig
+	{% stylesheets
+		'@admin_lte_all_css'
+		filter="cssrewrite"
 	%}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
-
+```
 `admin_lte_css`
 
 1. jquery-ui-1.10.3.custom.css

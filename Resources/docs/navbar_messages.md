@@ -7,17 +7,17 @@ Just like the other theme components, this one requires some route names to work
 * `avanzu_admin_show_message` which should point to a particular message.
 
 You could use the following route stubs with your `routing.yml`
-
+```yaml
 	avanzu_admin_all_messages:
 	  path: /messages/
 	avanzu_admin_show_message:
 	  path: /messages/{messageid}/
-
+``
 
 ### Data Model
 
 In order to use this component, your user class has to implement the `Avanzu\AdminThemeBundle\Model\MessageInterface`
-
+```php
 	<?php
 	namespace MyAdminBundle\Model;
 	// ...
@@ -28,10 +28,10 @@ In order to use this component, your user class has to implement the `Avanzu\Adm
 		// implement interface methods
 		// ...
 	}
-
+```
 ### Event Listener
 Next, you will need to create an EventListener to work with the `MessageListEvent`.
-
+```php
 	<?php
 	namespace MyAdminBundle\EventListener;
 
@@ -57,11 +57,11 @@ Next, you will need to create an EventListener to work with the `MessageListEven
 		}
 
 	}
-
+```
 ### Service.xml
 
 Finally, you need to attach your new listener to the event system:
-
+```xml
 	<!-- Resources/config/services.xml -->
 	<parameters>
 	<!-- ... -->
@@ -76,3 +76,4 @@ Finally, you need to attach your new listener to the event system:
 
 	<!-- ... -->
 	</services>
+```

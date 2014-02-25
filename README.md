@@ -7,19 +7,19 @@ This bundle integrates several commonly used javascripts and the awesome [AdminL
 ## Installation
 
 Add AdminThemeBundle to composer.json
-
+```json
 	{
 		"require": {
 			"avanzu/admin-theme-bundle": "dev-master"
 		}
 	}
-
+```
 tell composer to download the bundle
 
 	php composer.phar update avanzu/admin-theme-bundle
 
 Enable the bundle in your kernel:
-
+```php
 	<?php
 	// app/AppKernel.php
 
@@ -30,7 +30,7 @@ Enable the bundle in your kernel:
 			new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
 		);
 	}
-
+```
 Fetch vendor scripts
 
 	app/console avanzu:admin:fetch-vendor

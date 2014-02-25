@@ -1,9 +1,9 @@
-## Accessing component
-The contents of the navbar and sidebar are separated into components, following an event driven approach. 
+## Accessing components
+The contents of the navbar and sidebar are separated into components, following an event driven approach.
 
-The general process to use a particular component is to create an event listener and to use the given event object to add ui elements. 
+The general process to use a particular component is to create an event listener and to use the given event object to add ui elements.
 
-Each component has its own event and specific ui data interfaces. 
+Each component has its own event and specific ui data interfaces.
 
 ### available components
 
@@ -18,10 +18,11 @@ Each component has its own event and specific ui data interfaces.
 
 ### Demonstration
 
-In order to see some working examples, the bundle comes with a demo implementation for each component. 
+In order to see some working examples, the bundle comes with a demo implementation for each component.
 
 Simply remove the comments in the `services.xml` that comes with this bundle, and import the routing to your `routing.yml`
-
+```yaml
 	avanzu_admin:
 	    resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
-	   
+
+```

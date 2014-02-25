@@ -23,10 +23,16 @@ class DefaultController extends Controller
         return array();
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function dashboardAction() {
         return    $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function uiGeneralAction() {
         return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
