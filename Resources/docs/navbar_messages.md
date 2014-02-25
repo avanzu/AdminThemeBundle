@@ -12,7 +12,7 @@ You could use the following route stubs with your `routing.yml`
 	  path: /messages/
 	avanzu_admin_show_message:
 	  path: /messages/{messageid}/
-``
+```
 
 ### Data Model
 
