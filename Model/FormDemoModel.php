@@ -8,27 +8,62 @@
 namespace Avanzu\AdminThemeBundle\Model;
 
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Class FormDemoModel
+ *
+ * @package Avanzu\AdminThemeBundle\Model
+ */
 class FormDemoModel {
 
+    /**
+     * @var string
+     */
     protected $gender;
-
+    /**
+     * @var string
+     */
     protected $someOption;
-
+    /**
+     * @var string
+     */
     protected $someChoices;
-
+    /**
+     * @var string
+     */
     protected $username;
 
+    /**
+     * @var string
+     */
     protected $email;
 
+    /**
+     * @var bool
+     */
     protected $termsAccepted;
-
+    /**
+     * @var string
+     */
     protected $message;
-
+    /**
+     * @var float
+     */
     protected $price;
-
+    /**
+     * @var \DateTime
+     */
     protected $date;
-
+    /**
+     * @var \DateTime
+     */
     protected $time;
+
+    /**
+     * @var UploadedFile
+     */
+    protected $file;
 
     /**
      * @param mixed $email
@@ -188,6 +223,25 @@ class FormDemoModel {
     public function getTime()
     {
         return $this->time;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
+     *
+     * @return $this
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+        return $this;
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\File\UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
 

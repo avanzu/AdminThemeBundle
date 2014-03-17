@@ -1,0 +1,32 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+{% block page_tile %} Error {% endblock %}
+{% block page_subtitle %} {{ status_code }} {% endblock %}
+
+{% block page_content %}
+    <div class="error-page">
+        <h2 class="headline">{{ status_code }}</h2>
+        <div class="error-content">
+            <h3>{{ 'Something seems to have gone wrong'|trans() }}</h3>
+            <p>{{ exception.message }}</p>
+        </div>
+    </div>
+
+
+    {% set previous_count = exception.allPrevious|length %}
+    {% if previous_count %}
+        <div class="linked"><span><strong>{{ previous_count }}</strong> linked Exception{{ previous_count > 1 ? 's' : '' }}:</span>
+            <ul>
+                {% for i, previous in exception.allPrevious %}
+                    <li>
+                        {{ previous.class|abbr_class }} <a href="#traces-link-{{ i + 1 }}" onclick="toggle('traces-{{ i + 1 }}', 'traces'); switchIcons('icon-traces-{{ i + 1 }}-open', 'icon-traces-{{ i + 1 }}-close');">&#187;</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% for position, e in exception.toarray %}
+        {% include 'TwigBundle:Exception:traces.html.twig' with { 'exception': e, 'position': position, 'count': previous_count } only %}
+    {% endfor %}
+
+{% endblock %}
