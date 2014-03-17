@@ -34,7 +34,7 @@
     {% endblock %}
 
 </head>
-<body class="skin-blue">
+<body class="{{ admin_skin|default('skin-blue')}}">
 
 {% block avanzu_admin_header %}
 

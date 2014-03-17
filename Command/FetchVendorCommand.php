@@ -26,6 +26,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
         $this
             ->setName('avanzu:admin:fetch-vendor')
             ->setDescription('fetch vendor assets')
+            ->addOption('update', 'u', InputOption::VALUE_NONE, 'perform update instead of install')
             //->addArgument('name', InputArgument::OPTIONAL, 'Who do you want to greet?')
             //->addOption('yell', null, InputOption::VALUE_NONE, 'If set, the task will yell in uppercase letters')
         ;
@@ -38,8 +39,9 @@ class FetchVendorCommand extends ContainerAwareCommand {
         $res  = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/bower');
         $helper = $this->getHelperSet()->get('formatter'); /** @var $helper FormatterHelper */
 
+        $action = $input->hasOption('update') ? 'update' : 'install';
 
-        $process = new Process('/usr/local/bin/bower install');
+        $process = new Process('/usr/local/bin/bower '.$action);
         $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
         $process->setWorkingDirectory($res);
         $process->run(function($type, $buffer) use ($output, $helper){
@@ -53,8 +55,14 @@ class FetchVendorCommand extends ContainerAwareCommand {
 
 
         $process = new Process('git clone https://github.com/almasaeed2010/AdminLTE.git');
-        $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
         $process->setWorkingDirectory(dirname($res).'/public/vendor');
+        if($input->hasOption('update')) {
+            $process = new Process('git pull');
+            $process->setWorkingDirectory(dirname($res).'/public/vendor/AdminLTE');
+        }
+        $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
+
+
         $process->run(function($type, $buffer) use ($output, $helper){
                 if(Process::ERR == $type) {
                     $output->write($helper->formatSection('Error', $buffer, 'error' ));
