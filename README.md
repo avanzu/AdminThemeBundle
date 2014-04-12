@@ -31,6 +31,17 @@ Enable the bundle in your kernel:
 		);
 	}
 ```
+
+Configure bower path if neccessary (default value is `/usr/local/bin/bower`)
+
+```yaml
+
+	#app/config/config.yml
+
+	avanzu_admin_theme:
+    	bower_bin: /usr/local/bin/bower # that's the default value
+```
+
 Fetch vendor scripts
 
 	app/console avanzu:admin:fetch-vendor
