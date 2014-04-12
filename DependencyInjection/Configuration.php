@@ -20,6 +20,11 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('avanzu_admin_theme');
 
+        $rootNode->children()
+                    ->scalarNode('bower_bin')
+                        ->defaultValue('/usr/local/bin/bower')
+                    ->end()
+                ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
