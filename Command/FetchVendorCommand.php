@@ -40,8 +40,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
         $helper = $this->getHelperSet()->get('formatter'); /** @var $helper FormatterHelper */
         $bower  = $this->getContainer()->getParameter('avanzu_admin_theme.bower_bin');
 
-        $action = $input->hasOption('update') ? 'update' : 'install';
-
+        $action = $input->getOption('update') ? 'update' : 'install';
         $process = new Process($bower.' '.$action);
         $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
         $process->setWorkingDirectory($res);
@@ -57,7 +56,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
 
         $process = new Process('git clone https://github.com/almasaeed2010/AdminLTE.git');
         $process->setWorkingDirectory(dirname($res).'/public/vendor');
-        if($input->hasOption('update')) {
+        if($input->getOption('update')) {
             $process = new Process('git pull');
             $process->setWorkingDirectory(dirname($res).'/public/vendor/AdminLTE');
         }
