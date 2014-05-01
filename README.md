@@ -10,7 +10,7 @@ Add AdminThemeBundle to composer.json
 ```json
 	{
 		"require": {
-			"avanzu/admin-theme-bundle": "dev-master"
+			"avanzu/admin-theme-bundle": "1.1.*@dev"
 		}
 	}
 ```
