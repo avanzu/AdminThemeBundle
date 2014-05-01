@@ -14,9 +14,13 @@
 
     {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
     {% block stylesheets %}
-    {% stylesheets '@admin_lte_all_css' filter="cssrewrite" %}
+        {% for style in admin_theme.styles %}
+            <link rel="stylesheet" href="{{ asset(style) }}" />
+        {% endfor %}
+
+    {# % stylesheets '@admin_lte_all_css' filter="cssrewrite" %}
         <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+    {% endstylesheets % #}
     {% endblock %}
 
 

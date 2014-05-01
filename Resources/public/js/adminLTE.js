@@ -715,6 +715,12 @@ function change_layout() {
 (function($){
     "use strict";
     $('[data-timepicker]').timepicker();
-    $('[data-datepicker]').datepicker({showInputs: false});
-
+    var format, picker = $('[data-datepicker]');
+    for(var n = 0;  n < picker.length; ++n) {
+        format = $(picker[n]).attr('data-format') || 'yy-mm-dd';
+        $(picker[n]).datepicker({
+            showInputs: false,
+            dateFormat: format
+        });
+    }
 })(window.jQuery || window.Zepto);

@@ -25,6 +25,10 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
     protected function findTemplate(Request $request, $format, $code, $debug)
     {
 
+        if(strpos($request->getPathInfo(), '/admin') !== 0) {
+            return parent::findTemplate($request, $format, $code, $debug);
+        }
+
         $name = $debug ? 'exception' : 'error';
         if ($debug && 'html' == $format) {
             $name = 'exception_full';

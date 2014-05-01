@@ -26,6 +26,7 @@
         "marionette"                : "*",
         "pickadate"                 : "*",
         "holderjs"                  : "*",
-        "bootflat"                  : "*"
+        "bootflat"                  : "*",
+        "bootbox"                   : "*"
     }
 }

@@ -51,6 +51,9 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                         'resources' => array(
                             'AvanzuAdminThemeBundle:layout:form-theme.html.twig'
                         )
+                    ),
+                    'globals' => array(
+                        'admin_theme' => '@avanzu_admin_theme.theme_manager'
                     )
                 ));
         }
@@ -70,7 +73,10 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $jsAssets . 'public/vendor/underscore/underscore.js',
                                           $jsAssets . 'public/vendor/backbone/backbone.js',
                                           $jsAssets . 'public/vendor/marionette/lib/backbone.marionette.js',
-                                          $jsAssets . 'public/vendor/AdminLTE/js/bootstrap.js'
+                                          $jsAssets . 'public/vendor/AdminLTE/js/bootstrap.js',
+                                          $jsAssets . 'public/vendor/bootbox/bootbox.js',
+                                          $jsAssets . 'public/js/dialogs.js',
+                                          $jsAssets . 'public/js/namespace.js',
                                       ),
                                   ),
                                   'tools_js'               => array(
