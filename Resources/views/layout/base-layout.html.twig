@@ -1,10 +1,15 @@
 {% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
 <!doctype html>
-<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7 ]>
+<html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>
+<html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>
+<html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>
+<html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta name="author" content="">
@@ -14,19 +19,31 @@
 
     {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
     {% block stylesheets %}
-    {% stylesheets '@admin_lte_all_css' filter="cssrewrite" %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/jQueryUI/jquery-ui-1.10.3.custom.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/bootstrap.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/bootstrap-slider/slider.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/datatables/dataTables.bootstrap.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/font-awesome.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/ionicons.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/colorpicker/bootstrap-colorpicker.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/timepicker/bootstrap-timepicker.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/fullcalendar/fullcalendar.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/AdminLTE.css') }}"/>
+
+        {# % stylesheets '@admin_lte_all_css' filter="cssrewrite" %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets % #}
     {% endblock %}
 
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
     {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
-    {%  block javascripts_head %}
-    {% javascripts '@AvanzuAdminThemeBundle/Resources/public/vendor/modernizr/modernizr.js'%}
+    {% block javascripts_head %}
+        {% javascripts '@AvanzuAdminThemeBundle/Resources/public/vendor/modernizr/modernizr.js' %}
         <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
-    {% endjavascripts %}
+        {% endjavascripts %}
         <!--[if lt IE 9]>
 
         <![endif]-->
@@ -34,7 +51,7 @@
     {% endblock %}
 
 </head>
-<body class="{{ admin_skin|default('skin-blue')}}">
+<body class="{{ admin_skin|default('skin-blue') }}">
 
 {% block avanzu_admin_header %}
 
@@ -52,6 +69,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
+
             <div class="navbar-right">
                 <ul class="nav navbar-nav">
                     {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
@@ -82,10 +100,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
 
-                <h1>
-                    {% block page_title %}Blank page{% endblock %}
-                    <small>{% block page_subtitle %}Control panel{% endblock %}</small>
-                </h1>
+            <h1>
+                {% block page_title %}Blank page{% endblock %}
+                <small>{% block page_subtitle %}Control panel{% endblock %}</small>
+            </h1>
 
             {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
         </section>
@@ -93,9 +111,12 @@
         <!-- Main content -->
         <section class="content">
             {% block page_content %}{% endblock %}
-        </section><!-- /.content -->
-    </aside><!-- /.right-side -->
-</div><!-- ./wrapper -->
+        </section>
+        <!-- /.content -->
+    </aside>
+    <!-- /.right-side -->
+</div>
+<!-- ./wrapper -->
 
 {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
 {% block javascripts %}
