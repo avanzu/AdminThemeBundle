@@ -37,7 +37,7 @@ class SetupThemeListener {
 
         $mng->registerStyle('jquery-ui', $css.'/jQueryUI/jquery-ui-1.10.3.custom.css');
         $mng->registerStyle('bootstrap', $css.'/bootstrap.css', array('jquery-ui'));
-        $mng->registerStyle('bootstrap-slider', $css.'/bootstrap-slider/bootstrap-slider.css', array('bootstrap'));
+        $mng->registerStyle('bootstrap-slider', $css.'/bootstrap-slider/slider.css', array('bootstrap'));
         $mng->registerStyle('datatables', $css.'/datatables/dataTables.bootstrap.css', array('bootstrap'));
         $mng->registerStyle('fontawesome', $css.'/font-awesome.css');
         $mng->registerStyle('ionicons', $css.'/ionicons.css');

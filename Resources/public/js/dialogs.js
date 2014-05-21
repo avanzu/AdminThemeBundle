@@ -1,4 +1,4 @@
-;(function($){
+;(function($, window){
     "use strict";
 
     var doConfirm = function(event) {
@@ -9,8 +9,12 @@
                 window.location = href;
             }
         });
+    },
+    onInit = function(){
+        $('[data-confirm]').off('click').on('click', doConfirm);
     };
 
-    $('[data-confirm]').on('click', doConfirm);
+    onInit();
+    $(window).on('ajax.reloaded', onInit);
 
-})(jQuery);
+})(jQuery, window);

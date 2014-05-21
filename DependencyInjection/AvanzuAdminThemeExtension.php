@@ -106,8 +106,8 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $lteCss . 'font-awesome.css',
                                           $lteCss . 'ionicons.css',
                                           $lteCss . 'AdminLTE.css',
-                                          $lteFont . 'fontawesome-webfont.eot',
-                                          $lteFont . 'ionicons.eot',
+                                          //$lteFont . 'fontawesome-webfont.eot',
+                                          // $lteFont . 'ionicons.eot',
                                       )
                                   ),
                                   'admin_lte_forms_js'     => array(
