@@ -92,7 +92,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $lteJs . 'plugins/bootstrap-slider/bootstrap-slider.js',
                                           $lteJs . 'plugins/datatables/jquery.dataTables.js',
                                           $lteJs . 'plugins/datatables/dataTables.bootstrap.js',
-                                          $lteJs . 'plugins/slimscroll/jquery.slimscroll.js',
+                                          $lteJs . 'plugins/slimScroll/jquery.slimscroll.js',
                                           $jsAssets . 'public/js/adminLTE.js',
                                       )
                                   ),
@@ -106,8 +106,8 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $lteCss . 'font-awesome.css',
                                           $lteCss . 'ionicons.css',
                                           $lteCss . 'AdminLTE.css',
-                                          $lteFont . 'fontawesome-webfont.eot',
-                                          $lteFont . 'ionicons.eot',
+                                          //$lteFont . 'fontawesome-webfont.eot',
+                                          // $lteFont . 'ionicons.eot',
                                       )
                                   ),
                                   'admin_lte_forms_js'     => array(

@@ -43,6 +43,10 @@
             <argument>%avanzu_admin_theme.lte_admin%</argument>
             <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
         </service>
+        <service id="avanzu_admin_theme.context_listener" class="Avanzu\AdminThemeBundle\EventListener\ContextListener">
+            <argument type="service" id="service_container" />
+            <tag name="kernel.event_listener" event="kernel.request" method="onRequest" />
+        </service>
 
 <!--
         <service id="avanzu_admin_theme.navbar_user_listener" class="%avanzu_admin_theme.navbar_user_listener.class%">
