@@ -86,7 +86,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $lteJs . 'plugins/bootstrap-slider/bootstrap-slider.js',
                                           $lteJs . 'plugins/datatables/jquery.dataTables.js',
                                           $lteJs . 'plugins/datatables/dataTables.bootstrap.js',
-                                          $lteJs . 'plugins/slimscroll/jquery.slimscroll.js',
+                                          $lteJs . 'plugins/slimScroll/jquery.slimscroll.js',
                                           $jsAssets . 'public/js/adminLTE.js',
                                       )
                                   ),
