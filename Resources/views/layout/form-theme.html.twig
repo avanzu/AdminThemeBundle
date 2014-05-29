@@ -138,9 +138,14 @@
 {% endblock %}
 
 {% block form_label %}
-    {{ parent() }}
+    
     {% if help is defined %}
         &nbsp; <a href="#" data-toggle="tooltip" data-original-title="{{ help }}"><i class="fa fa-question-circle"></i></a>
+    {% endif %}
+
+    {{ parent() }}
+    {% if required %}
+        <span class="required" title="Dies ist ein Pflichtfeld">*</span>
     {% endif %}
 
 {% endblock form_label %}
