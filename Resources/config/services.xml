@@ -44,7 +44,7 @@
             <tag name="kernel.event_listener" event="theme.sidebar_setup_menu" method="onSetupMenu"/>
             <tag name="kernel.event_listener" event="theme.breadcrumb" method="onSetupMenu"/>
         </service>
---->
+ -->
     </services>
 
 </container>
