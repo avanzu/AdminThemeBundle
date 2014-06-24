@@ -19,7 +19,6 @@
     {% endstylesheets %}
     {% endblock %}
 
-
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
@@ -52,6 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <div class="navbar-right">
                 <ul class="nav navbar-nav">
                     {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
@@ -60,6 +60,7 @@
                     {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
                 </ul>
             </div>
+            {% endif %}
         </nav>
     </header>
 
@@ -70,8 +71,10 @@
     <aside class="left-side sidebar-offcanvas">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-            {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
-            {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
+                {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+            {% endif %}
             {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
         </section>
         <!-- /.sidebar -->
