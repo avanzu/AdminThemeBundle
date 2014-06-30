@@ -66,7 +66,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   'common_js'              => array(
                                       'inputs' => array(
                                           $jsAssets . 'public/vendor/jquery/dist/jquery.js',
-                                          $jsAssets . 'public/vendor/jquery-ui/ui/jquery-ui.js',
+                                          $jsAssets . 'public/vendor/jquery-ui/jquery-ui.js',
                                           $jsAssets . 'public/vendor/underscore/underscore.js',
                                           $jsAssets . 'public/vendor/backbone/backbone.js',
                                           $jsAssets . 'public/vendor/marionette/lib/backbone.marionette.js',

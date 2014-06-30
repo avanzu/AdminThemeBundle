@@ -196,7 +196,7 @@ class CompactVendorCommand extends ContainerAwareCommand {
 
         $files = array(
             'jquery/dist/jquery.js'
-            , 'jquery-ui/ui/jquery-ui.js'
+            , 'jquery-ui/jquery-ui.js'
             , 'fastclick/lib/fastclick.js'
             , 'jquery.cookie/jquery.cookie.js'
             , 'jquery-placeholder/jquery.placeholder.js'
@@ -226,4 +226,5 @@ class CompactVendorCommand extends ContainerAwareCommand {
         });
 
     }
-} 
+}
+
