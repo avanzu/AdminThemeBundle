@@ -1,4 +1,4 @@
 common_js:
     inputs:
-        - '@AvanzuAdminThemeBundle/Resources/public/vendor/jquery/dist/jquery.js'
-        - '@AvanzuAdminThemeBundle/Resources/public/vendor/jquery-ui/ui/jquery-ui.js'
+        - %kernel.root_dir%/../web/bundles/avanzuadmintheme/vendor/jquery/dist/jquery.js
+        - %kernel.root_dir%/../web/bundles/avanzuadmintheme/vendor/jquery-ui/ui/jquery-ui.js

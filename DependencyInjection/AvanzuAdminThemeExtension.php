@@ -39,8 +39,8 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
     {
         $bundles = $container->getParameter('kernel.bundles');
 
-        $jsAssets  = '@AvanzuAdminThemeBundle/Resources/';
-        $lteJs     = $jsAssets . 'public/vendor/AdminLTE/js/';
+        $jsAssets  = 'bundles/avanzuadmintheme/';
+        $lteJs     = $jsAssets . 'vendor/AdminLTE/js/';
         $cssAssets = 'bundles/avanzuadmintheme/';
         $lteCss    = $cssAssets . 'vendor/AdminLTE/css/';
         $lteFont   = $cssAssets . 'vendor/AdminLTE/fonts/';
