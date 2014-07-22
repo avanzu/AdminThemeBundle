@@ -39,11 +39,14 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
     {
         $bundles = $container->getParameter('kernel.bundles');
 
-        $jsAssets  = 'bundles/avanzuadmintheme/';
-        $lteJs     = $jsAssets . 'vendor/AdminLTE/js/';
-        $cssAssets = 'bundles/avanzuadmintheme/';
-        $lteCss    = $cssAssets . 'vendor/AdminLTE/css/';
-        $lteFont   = $cssAssets . 'vendor/AdminLTE/fonts/';
+        $assetsPath = 'bundles/avanzuadmintheme/';
+
+        $vendorPath = $assetsPath . 'vendor/';
+
+        $ltePath    = $assetsPath . 'vendor/AdminLTE/';
+        $lteJs      = $ltePath . 'js/';
+        $lteCss     = $ltePath . 'css/';
+        $lteFont    = $ltePath . 'fonts/';
 
         if (isset($bundles['TwigBundle'])) {
             $container->prependExtensionConfig('twig', array(
@@ -65,20 +68,20 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                     'assets' => array(
                         'common_js' => array(
                             'inputs' => array(
-                                $jsAssets . 'vendor/jquery/dist/jquery.js',
-                                $jsAssets . 'vendor/jquery-ui/jquery-ui.js',
-                                $jsAssets . 'vendor/underscore/underscore.js',
-                                $jsAssets . 'vendor/backbone/backbone.js',
-                                $jsAssets . 'vendor/marionette/lib/backbone.marionette.js',
-                                $jsAssets . 'vendor/AdminLTE/js/bootstrap.js'
+                                $vendorPath . 'jquery/dist/jquery.js',
+                                $vendorPath . 'jquery-ui/jquery-ui.js',
+                                $vendorPath . 'underscore/underscore.js',
+                                $vendorPath . 'backbone/backbone.js',
+                                $vendorPath . 'marionette/lib/backbone.marionette.js',
+                                $vendorPath . 'AdminLTE/js/bootstrap.js'
                             ),
                         ),
                         'tools_js' => array(
                             'inputs' => array(
                                 '@common_js',
-                                $jsAssets . 'vendor/momentjs/moment.js',
-                                $jsAssets . 'vendor/holderjs/holder.js',
-                                $jsAssets . 'vendor/spinjs/spin.js',
+                                $vendorPath . 'momentjs/moment.js',
+                                $vendorPath . 'holderjs/holder.js',
+                                $vendorPath . 'spinjs/spin.js',
                             ),
                         ),
                         'admin_lte_js' => array(
@@ -87,7 +90,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                 $lteJs . 'plugins/datatables/jquery.dataTables.js',
                                 $lteJs . 'plugins/datatables/dataTables.bootstrap.js',
                                 $lteJs . 'plugins/slimScroll/jquery.slimscroll.js',
-                                $jsAssets . 'js/adminLTE.js',
+                                $assetsPath . 'js/adminLTE.js',
                             )
                         ),
                         'admin_lte_css' => array(
@@ -156,7 +159,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                         ),
                         'avatar_img' => array(
                             'inputs' => array(
-                                '@AvanzuAdminThemeBundle/Resources/public/img/avatar.png'
+                                $assetsPath.'img/avatar.png'
                             )
                         ),
                         'admin_lte_all' => array(
