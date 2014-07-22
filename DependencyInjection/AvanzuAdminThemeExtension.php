@@ -47,12 +47,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
 
         if (isset($bundles['TwigBundle'])) {
             $container->prependExtensionConfig('twig', array(
-                'form' => array(
-                    'resources' => array(
-                        'AvanzuAdminThemeBundle:layout:form-theme.html.twig'
+                    'form' => array(
+                        'resources' => array(
+                            'AvanzuAdminThemeBundle:layout:form-theme.html.twig'
+                        )
                     )
-                )
-            ));
+                ));
         }
 
         if (isset($bundles['AsseticBundle'])) {
@@ -65,20 +65,20 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                     'assets' => array(
                         'common_js' => array(
                             'inputs' => array(
-                                $jsAssets . 'public/vendor/jquery/dist/jquery.js',
-                                $jsAssets . 'public/vendor/jquery-ui/ui/jquery-ui.js',
-                                $jsAssets . 'public/vendor/underscore/underscore.js',
-                                $jsAssets . 'public/vendor/backbone/backbone.js',
-                                $jsAssets . 'public/vendor/marionette/lib/backbone.marionette.js',
-                                $jsAssets . 'public/vendor/AdminLTE/js/bootstrap.js'
+                                $jsAssets . 'vendor/jquery/dist/jquery.js',
+                                $jsAssets . 'vendor/jquery-ui/jquery-ui.js',
+                                $jsAssets . 'vendor/underscore/underscore.js',
+                                $jsAssets . 'vendor/backbone/backbone.js',
+                                $jsAssets . 'vendor/marionette/lib/backbone.marionette.js',
+                                $jsAssets . 'vendor/AdminLTE/js/bootstrap.js'
                             ),
                         ),
                         'tools_js' => array(
                             'inputs' => array(
                                 '@common_js',
-                                $jsAssets . 'public/vendor/momentjs/moment.js',
-                                $jsAssets . 'public/vendor/holderjs/holder.js',
-                                $jsAssets . 'public/vendor/spinjs/spin.js',
+                                $jsAssets . 'vendor/momentjs/moment.js',
+                                $jsAssets . 'vendor/holderjs/holder.js',
+                                $jsAssets . 'vendor/spinjs/spin.js',
                             ),
                         ),
                         'admin_lte_js' => array(
@@ -86,8 +86,8 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                 $lteJs . 'plugins/bootstrap-slider/bootstrap-slider.js',
                                 $lteJs . 'plugins/datatables/jquery.dataTables.js',
                                 $lteJs . 'plugins/datatables/dataTables.bootstrap.js',
-                                $lteJs . 'plugins/slimscroll/jquery.slimscroll.js',
-                                $jsAssets . 'public/js/adminLTE.js',
+                                $lteJs . 'plugins/slimScroll/jquery.slimscroll.js',
+                                $jsAssets . 'js/adminLTE.js',
                             )
                         ),
                         'admin_lte_css' => array(
