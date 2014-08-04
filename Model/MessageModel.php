@@ -7,29 +7,50 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
+/**
+ * Simple implementation of the MessageInterface
+ *
+ */
 class MessageModel implements MessageInterface
 {
 
     /**
+     * Holds the sender
+     *
      * @var UserInterface
      */
     protected $from;
 
     /**
+     * holds the Recipient
+     *
      * @var UserInterface
      */
     protected $to;
 
     /**
+     * holds the date sent
      * @var \DateTime
      */
     protected $sentAt;
 
     /**
+     * holds the subject
+     *
      * @var string
      */
     protected $subject;
 
+    /**
+     * Creates a new MessageModel object with the given values.
+     *
+     * SentAt will be set to the current DateTime when null is given.
+     *
+     * @param UserInterface $from
+     * @param string        $subject
+     * @param null          $sentAt
+     * @param UserInterface $to
+     */
     function __construct(UserInterface $from = null, $subject= '', $sentAt = null, UserInterface $to = null)
     {
         $this->to      = $to;
@@ -40,6 +61,8 @@ class MessageModel implements MessageInterface
 
 
     /**
+     * Set the sender
+     *
      * @param \Avanzu\AdminThemeBundle\Model\UserInterface $from
      *
      * @return $this
@@ -51,6 +74,8 @@ class MessageModel implements MessageInterface
     }
 
     /**
+     * Get the Sender
+     *
      * @return \Avanzu\AdminThemeBundle\Model\UserInterface
      */
     public function getFrom()
@@ -59,6 +84,8 @@ class MessageModel implements MessageInterface
     }
 
     /**
+     * Set the date sent
+     *
      * @param \DateTime $sentAt
      *
      * @return $this
@@ -70,6 +97,8 @@ class MessageModel implements MessageInterface
     }
 
     /**
+     * Get the date sent
+     *
      * @return \DateTime
      */
     public function getSentAt()
@@ -78,6 +107,8 @@ class MessageModel implements MessageInterface
     }
 
     /**
+     * Set the subject
+     *
      * @param string $subject
      *
      * @return $this
@@ -89,6 +120,8 @@ class MessageModel implements MessageInterface
     }
 
     /**
+     * Get the subject
+     *
      * @return string
      */
     public function getSubject()
@@ -97,6 +130,8 @@ class MessageModel implements MessageInterface
     }
 
     /**
+     * Set the recipient
+     *
      * @param \Avanzu\AdminThemeBundle\Model\UserInterface $to
      *
      * @return $this
@@ -108,6 +143,8 @@ class MessageModel implements MessageInterface
     }
 
     /**
+     * Get the recipient
+     *
      * @return \Avanzu\AdminThemeBundle\Model\UserInterface
      */
     public function getTo()
@@ -115,6 +152,11 @@ class MessageModel implements MessageInterface
         return $this->to;
     }
 
+    /**
+     * Get the identifier
+     *
+     * @return string
+     */
     public function getIdentifier() {
         return $this->getSubject();
     }

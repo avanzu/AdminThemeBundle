@@ -1,53 +1,40 @@
 {% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
 <!doctype html>
-<!--[if lt IE 7 ]>
-<html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>
-<html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>
-<html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>
-<html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}Avanzu Admin!{% endblock %}</title>
+
     {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
     {% block stylesheets %}
-
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/jQueryUI/jquery-ui-1.10.3.custom.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/bootstrap.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/bootstrap-slider/slider.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/datatables/dataTables.bootstrap.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/font-awesome.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/ionicons.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/colorpicker/bootstrap-colorpicker.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/timepicker/bootstrap-timepicker.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/fullcalendar/fullcalendar.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/vendor/AdminLTE/css/AdminLTE.css') }}"/>
-
-        {# % stylesheets '@admin_lte_all_css' filter="cssrewrite" %}
-        <link rel="stylesheet" href="{{ asset_url }}"/>
-        {% endstylesheets % #}
+    {% stylesheets '@admin_lte_all_css' filter="cssrewrite" %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
     {% endblock %}
+
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
-    {% block javascripts_head %}
-        {% javascripts '@AvanzuAdminThemeBundle/Resources/public/vendor/modernizr/modernizr.js' %}
+    {%  block javascripts_head %}
+    {% javascripts '@AvanzuAdminThemeBundle/Resources/public/vendor/modernizr/modernizr.js'%}
         <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
-        {% endjavascripts %}
+    {% endjavascripts %}
         <!--[if lt IE 9]>
+
         <![endif]-->
+
     {% endblock %}
 
 </head>
-<body class="{{ admin_skin|default('skin-blue') }}">
+<body class="{{ admin_skin|default('skin-blue')}}">
 
 {% block avanzu_admin_header %}
 
@@ -79,6 +66,7 @@
             {% endif %}
         </nav>
     </header>
+
 {% endblock %}
 
 <div class="wrapper row-offcanvas row-offcanvas-left">
@@ -122,9 +110,11 @@
 
 {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
 {% block javascripts %}
+
     {% javascripts '@admin_lte_all' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
 {% endblock %}
 
 {# ----------------------------------------------------------------------------------------------- JAVASCRIPTS_INLINE #}

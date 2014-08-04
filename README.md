@@ -10,7 +10,7 @@ Add AdminThemeBundle to composer.json
 ```json
 	{
 		"require": {
-			"avanzu/admin-theme-bundle": "dev-master"
+			"avanzu/admin-theme-bundle": "1.1.*@dev"
 		}
 	}
 ```
@@ -52,6 +52,7 @@ install assets (preferably using symlink method but hardcopy works as well)
 
 ### Next Steps
 * [Using the layout](Resources/docs/layout.md)
+* [Using the ThemeManager](Resources/docs/theme_manager.md)
 * [Components](Resources/docs/component_events.md)
 * [Navbar User](Resources/docs/navbar_user.md)
 * [Navbar Tasks](Resources/docs/navbar_tasks.md)

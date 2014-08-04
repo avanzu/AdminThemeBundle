@@ -15,9 +15,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Controller to handle breadcrumb display inside the layout
+ *
+ */
 class BreadcrumbController extends Controller {
 
 
+    /**
+     * Controller Reference action to be called inside the layout.
+     *
+     * Triggers the {@link ThemeEvents::THEME_BREADCRUMB} to receive the currently active menu chain.
+     *
+     * If there are no listeners attached for this event, the return value is an empty response.
+     *
+     * @param Request $request
+     * @param string  $title
+     *
+     * @return Response
+     *
+     */
     public function breadcrumbAction(Request $request, $title = '') {
 
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_BREADCRUMB)) {
