@@ -42,6 +42,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
 
         $action = $input->getOption('update') ? 'update' : 'install';
         $process = new Process($bower.' '.$action);
+        $process->setTimeout(600);
         $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
         $process->setWorkingDirectory($res);
         $process->run(function($type, $buffer) use ($output, $helper){
