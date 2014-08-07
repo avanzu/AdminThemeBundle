@@ -22,8 +22,7 @@
         "hamcrest/hamcrest-php"    : "dev-master"
     },
     "autoload": {
-        "psr-0": { "Avanzu\\AdminThemeBundle": "" }
-    },
-    "target-dir": "Avanzu/AdminThemeBundle"
+        "psr-4": { "Avanzu\\AdminThemeBundle\\": "" }
+    }
 
 }
