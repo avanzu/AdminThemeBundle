@@ -105,7 +105,7 @@ Same as with the javascript asset groups, there are predefined css groups accord
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 ```
-`admin_lte_css
+`admin_lte_css`
 
 1. jquery-ui-1.10.3.custom.css
 2. bootstrap.css
