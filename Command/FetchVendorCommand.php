@@ -27,6 +27,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
             ->setName('avanzu:admin:fetch-vendor')
             ->setDescription('fetch vendor assets')
             ->addOption('update', 'u', InputOption::VALUE_NONE, 'perform update instead of install')
+            ->addOption('root', 'r', InputOption::VALUE_NONE, 'allow bower to run as root')
             //->addArgument('name', InputArgument::OPTIONAL, 'Who do you want to greet?')
             //->addOption('yell', null, InputOption::VALUE_NONE, 'If set, the task will yell in uppercase letters')
         ;
@@ -41,7 +42,8 @@ class FetchVendorCommand extends ContainerAwareCommand {
         $bower  = $this->getContainer()->getParameter('avanzu_admin_theme.bower_bin');
 
         $action = $input->getOption('update') ? 'update' : 'install';
-        $process = new Process($bower.' '.$action);
+        $asRoot = $input->getOption('root') ? '--allow-root' : '';
+        $process = new Process($bower.' '.$action. ' '.$asRoot);
         $process->setTimeout(600);
         $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
         $process->setWorkingDirectory($res);
