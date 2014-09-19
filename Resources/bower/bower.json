@@ -27,6 +27,9 @@
         "pickadate"                 : "*",
         "holderjs"                  : "*",
         "bootflat"                  : "*",
-        "bootbox"                   : "*"
+        "bootbox"                   : "*",
+        "fontawesome"               : "*",
+        "ionicons"                  : "*",
+        "fullcalendar"              : "*"
     }
 }

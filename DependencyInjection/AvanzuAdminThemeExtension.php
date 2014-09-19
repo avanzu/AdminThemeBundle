@@ -73,7 +73,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $jsAssets . 'public/vendor/underscore/underscore.js',
                                           $jsAssets . 'public/vendor/backbone/backbone.js',
                                           $jsAssets . 'public/vendor/marionette/lib/backbone.marionette.js',
-                                          $jsAssets . 'public/vendor/AdminLTE/js/bootstrap.js',
+                                          $jsAssets . 'public/vendor/bootstrap/dist/js/bootstrap.min.js',
                                           $jsAssets . 'public/vendor/bootbox/bootbox.js',
                                           $jsAssets . 'public/js/dialogs.js',
                                           $jsAssets . 'public/js/namespace.js',
@@ -99,12 +99,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   'admin_lte_css'          => array(
                                       'inputs' => array(
 
-                                          $lteCss . 'jQueryUI/jquery-ui-1.10.3.custom.css',
-                                          $lteCss . 'bootstrap.css',
+                                        //  $lteCss . 'jQueryUI/jquery-ui-1.10.3.custom.css',
+                                         $cssAssets . 'vendor/bootstrap/dist/css/bootstrap.min.css',
                                           $lteCss . 'bootstrap-slider/slider.css',
                                           $lteCss . 'datatables/dataTables.bootstrap.css',
-                                          $lteCss . 'font-awesome.css',
-                                          $lteCss . 'ionicons.css',
+                                          $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
+                                          $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
                                           $lteCss . 'AdminLTE.css',
                                           //$lteFont . 'fontawesome-webfont.eot',
                                           // $lteFont . 'ionicons.eot',
@@ -153,12 +153,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   ),
                                   'admin_lte_calendar'     => array(
                                       'inputs' => array(
-                                          $lteJs . 'plugins/fullcalendar/fullcalendar.js',
+                                          $jsAssets . 'public/vendor/fullcalendar/dist/fullcalendar.min.js',
                                       )
                                   ),
                                   'admin_lte_calendar_css' => array(
                                       'inputs' => array(
-                                          $lteCss . 'fullcalendar/fullcalendar.css',
+                                          $cssAssets . 'vendor/fullcalendar/dist/fullcalendar.min.css',
                                       )
                                   ),
                                   'avatar_img'             => array(
