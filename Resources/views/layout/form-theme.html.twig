@@ -124,15 +124,48 @@
 {% block form_row %}
     {% set types = form.vars.block_prefixes %}
     {% if 'checkbox' in types or 'radio' in types %}
-        <div class="form-group">
+        <div class="form-group {{ errors|length > 0 ? 'has-error has-feedback'  : '' }}">
             {{ form_widget(form) }}
             {{ form_errors(form) }}
         </div>
     {% else %}
-        <div class="form-group">
+        <div class="form-group {{ errors|length > 0 ? 'has-error has-feedback'  : '' }}">
             {{ form_label(form) }}
             {{ form_widget(form) }}
             {{ form_errors(form) }}
         </div>
     {% endif %}
 {% endblock %}
+
+{% block form_label %}
+    
+    {% if help is defined %}
+        &nbsp; <a href="#" data-toggle="tooltip" data-original-title="{{ help }}"><i class="fa fa-question-circle"></i></a>
+    {% endif %}
+
+    {{ parent() }}
+    {% if required %}
+        <span class="required" title="Dies ist ein Pflichtfeld">*</span>
+    {% endif %}
+
+{% endblock form_label %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <ul class="list-unstyled">
+                {% for error in errors %}
+                    <li class="text-danger">{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+{# % block form_widget_simple %}
+    {{ parent() }}
+
+    {% if help is defined %}
+        <p class="help-block">{{ help }}</p>
+    {% endif %}
+{% endblock % #}

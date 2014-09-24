@@ -17,9 +17,12 @@
         "symfony/assetic-bundle": ">=2.3",
         "symfony/twig-bundle": ">=2.3"
     },
-    "autoload": {
-        "psr-0": { "Avanzu\\AdminThemeBundle": "" }
+    "require-dev" : {
+        "mockery/mockery"          : "0.9.*@dev",
+        "hamcrest/hamcrest-php"    : "dev-master"
     },
-    "target-dir": "Avanzu/AdminThemeBundle"
+    "autoload": {
+        "psr-4": { "Avanzu\\AdminThemeBundle\\": "" }
+    }
 
 }

@@ -11,24 +11,28 @@ namespace Avanzu\AdminThemeBundle\Event;
 use Avanzu\AdminThemeBundle\Model\MessageInterface;
 
 /**
- * Class MessageListEvent
+ * The MessageListEvent should be used with the {@link ThemeEvents::THEME_MESSAGES}
+ * in order to collect all {@link MessageInterface} objects that should be rendered in the messages section.
  *
- * @package Avanzu\AdminThemeBundle\Event
  */
 class MessageListEvent extends ThemeEvent
 {
 
     /**
+     * Stores the list of messages
      * @var array
      */
     protected $messages = array();
 
     /**
+     * Stores the total amount
      * @var int
      */
     protected $totalMessages = 0;
 
     /**
+     * Returns the message list
+     *
      * @return array
      */
     public function getMessages()
@@ -37,6 +41,8 @@ class MessageListEvent extends ThemeEvent
     }
 
     /**
+     * Pushes the given message to the list of messages.
+     *
      * @param MessageInterface $messageInterface
      *
      * @return $this
@@ -51,6 +57,8 @@ class MessageListEvent extends ThemeEvent
     }
 
     /**
+     * Returns the message count
+     *
      * @return int
      */
     public function getTotal()

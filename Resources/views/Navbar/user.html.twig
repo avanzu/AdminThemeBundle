@@ -11,8 +11,8 @@
             {{ macro.avatar(user.avatar, user.username) }}
             <p>
                 {{user.username}}
-                <small>
-                    {{ 'Member since %date%'|trans({'%date%':user.memberSince|date('m.Y')}, 'AvanzuAdminTheme') }}
+                 <small>
+                    {{ 'Member since %date%'|trans({'%date%': user.memberSince|date('m.Y') }, 'AvanzuAdminTheme') }}
                 </small>
             </p>
         </li>

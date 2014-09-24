@@ -26,6 +26,10 @@
         "marionette"                : "*",
         "pickadate"                 : "*",
         "holderjs"                  : "*",
-        "bootflat"                  : "*"
+        "bootflat"                  : "*",
+        "bootbox"                   : "*",
+        "fontawesome"               : "*",
+        "ionicons"                  : "*",
+        "fullcalendar"              : "*"
     }
 }
