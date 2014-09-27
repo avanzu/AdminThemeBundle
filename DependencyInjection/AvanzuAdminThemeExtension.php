@@ -40,10 +40,10 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $bundles = $container->getParameter('kernel.bundles');
 
         $jsAssets  = '@AvanzuAdminThemeBundle/Resources/';
-        $lteJs     = $jsAssets . 'public/vendor/AdminLTE/js/';
+        $lteJs     = $jsAssets . 'public/vendor/adminlte/js/';
         $cssAssets = 'bundles/avanzuadmintheme/';
-        $lteCss    = $cssAssets . 'vendor/AdminLTE/css/';
-        $lteFont   = $cssAssets . 'vendor/AdminLTE/fonts/';
+        $lteCss    = $cssAssets . 'vendor/adminlte/css/';
+        $lteFont   = $cssAssets . 'vendor/adminlte/fonts/';
 
         if(isset($bundles['TwigBundle'])) {
             $container->prependExtensionConfig('twig', array(
@@ -93,7 +93,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $lteJs . 'plugins/datatables/jquery.dataTables.js',
                                           $lteJs . 'plugins/datatables/dataTables.bootstrap.js',
                                           $lteJs . 'plugins/slimScroll/jquery.slimscroll.js',
-                                          $jsAssets . 'public/js/adminLTE.js',
+                                          $jsAssets . 'public/js/adminlte.js',
                                       )
                                   ),
                                   'admin_lte_css'          => array(
@@ -105,7 +105,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $lteCss . 'datatables/dataTables.bootstrap.css',
                                           $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
                                           $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
-                                          $lteCss . 'AdminLTE.css',
+                                          $lteCss . 'adminlte.css',
                                           //$lteFont . 'fontawesome-webfont.eot',
                                           // $lteFont . 'ionicons.eot',
                                       )
@@ -158,7 +158,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   ),
                                   'admin_lte_calendar_css' => array(
                                       'inputs' => array(
-                                          $cssAssets . 'vendor/fullcalendar/dist/fullcalendar.min.css',
+                                          $lteCss . 'fullcalendar/fullcalendar.css',
                                       )
                                   ),
                                   'avatar_img'             => array(
