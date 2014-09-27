@@ -55,6 +55,14 @@ class FetchVendorCommand extends ContainerAwareCommand {
             }
         });
 
+
+
+        // no more pulling/cloning directly from master in favor of a bower installation with specific version constraint
+
+         /*
+
+        $process = new Process('git clone https://github.com/almasaeed2010/AdminLTE.git');
+        $process->setWorkingDirectory(dirname($res).'/public/vendor');
         // run checkout if no dir present
         // run update only if update requested
         $process = null;
@@ -63,6 +71,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
             $process = new Process('git pull');
             $process->setWorkingDirectory($adminlte_dir);
         }
+        $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
 
         if(!is_dir($adminlte_dir)) {
             $process = new Process('git clone https://github.com/almasaeed2010/AdminLTE.git');
@@ -80,5 +89,8 @@ class FetchVendorCommand extends ContainerAwareCommand {
                 }
             });
         }
+
+        */
     }
+
 }
