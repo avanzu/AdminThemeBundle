@@ -30,6 +30,7 @@
         "bootbox"                   : "*",
         "fontawesome"               : "*",
         "ionicons"                  : "*",
-        "fullcalendar"              : "*"
+        "fullcalendar"              : "*",
+        "adminlte"                  : "1.2.1"
     }
 }

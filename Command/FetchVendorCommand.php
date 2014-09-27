@@ -57,6 +57,10 @@ class FetchVendorCommand extends ContainerAwareCommand {
 
 
 
+        // no more pulling/cloning directly from master in favor of a bower installation with specific version constraint
+
+         /*
+
         $process = new Process('git clone https://github.com/almasaeed2010/AdminLTE.git');
         $process->setWorkingDirectory(dirname($res).'/public/vendor');
         if($input->getOption('update')) {
@@ -73,7 +77,8 @@ class FetchVendorCommand extends ContainerAwareCommand {
                     $output->write($helper->formatSection('Progress', $buffer, 'info' ));
                 }
             });
-
+         
+        */
     }
 
 }
