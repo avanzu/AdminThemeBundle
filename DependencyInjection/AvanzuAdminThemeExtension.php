@@ -153,12 +153,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   ),
                                   'admin_lte_calendar'     => array(
                                       'inputs' => array(
-                                          $jsAssets . 'public/vendor/fullcalendar/dist/fullcalendar.js',
+                                          $jsAssets . 'public/vendor/fullcalendar/dist/fullcalendar.min.js',
                                       )
                                   ),
                                   'admin_lte_calendar_css' => array(
                                       'inputs' => array(
-                                          $lteCss . 'fullcalendar/fullcalendar.min.css',
+                                          $lteCss . 'fullcalendar/fullcalendar.css',
                                       )
                                   ),
                                   'avatar_img'             => array(
