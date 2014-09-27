@@ -77,7 +77,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
                     $output->write($helper->formatSection('Progress', $buffer, 'info' ));
                 }
             });
-         
+
         */
     }
 
