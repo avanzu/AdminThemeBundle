@@ -6,18 +6,6 @@ This bundle integrates several commonly used javascripts and the awesome [AdminL
 
 ## Installation
 
-Add AdminThemeBundle to composer.json
-```json
-	{
-		"require": {
-			"avanzu/admin-theme-bundle": "1.1.4"
-		}
-	}
-```
-tell composer to download the bundle
-
-	php composer.phar update avanzu/admin-theme-bundle
-
 Enable the bundle in your kernel:
 ```php
 	<?php
@@ -32,6 +20,23 @@ Enable the bundle in your kernel:
 	}
 ```
 
+Add AdminThemeBundle to composer.json
+```json
+	{
+		"require": {
+			"avanzu/admin-theme-bundle": "1.1.4"
+		},
+	    "scripts": {
+	        "post-install-cmd": [
+	            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::install"
+	        ],
+	        "post-update-cmd": [
+	            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::install"
+	        ]
+	    },
+	}
+```
+
 Configure bower path if neccessary (default value is `/usr/local/bin/bower`)
 
 ```yaml
@@ -42,13 +47,17 @@ Configure bower path if neccessary (default value is `/usr/local/bin/bower`)
     	bower_bin: /usr/local/bin/bower # that's the default value
 ```
 
-Fetch vendor scripts
+Finally tell composer to download the bundle
 
-	app/console avanzu:admin:fetch-vendor
+	php composer.phar update avanzu/admin-theme-bundle
 
 install assets (preferably using symlink method but hardcopy works as well)
 
 	app/console assets:install --symlink
+
+If you need to invoke bower to refetch vendor scripts (ran automatically by composer):
+
+	app/console avanzu:admin:fetch-vendor -u
 
 ### Next Steps
 * [Using the layout](Resources/docs/layout.md)
