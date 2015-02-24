@@ -43,7 +43,7 @@
             {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
             <span>{{ item.label }}</span>
             {% if item.badge %}
-                <small class="badge pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
+                <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
             {% endif %}
             {% if item.hasChildren %}<i class="fa fa-angle-left pull-right"></i>{% endif %}
         </a>
