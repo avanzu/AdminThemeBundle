@@ -108,6 +108,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                           $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
                                           $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
                                           $lteCssBase . 'dist/css/AdminLTE.css',
+                                          $lteCssBase . 'dist/css/skins/_all-skins.css',
                                           //$lteFont . 'fontawesome-webfont.eot',
                                           // $lteFont . 'ionicons.eot',
                                       )
