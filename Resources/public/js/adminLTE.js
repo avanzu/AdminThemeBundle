@@ -15,13 +15,13 @@ $(function() {
         //If window is small enough, enable sidebar push menu
         if ($(window).width() <= 992) {
             $('.row-offcanvas').toggleClass('active');
-            $('.left-side').removeClass("collapse-left");
-            $(".right-side").removeClass("strech");
+            $('.main-sidebar').removeClass("collapse-left");
+            $(".content-wrapper").removeClass("strech");
             $('.row-offcanvas').toggleClass("relative");
         } else {
             //Else, enable content streching
-            $('.left-side').toggleClass("collapse-left");
-            $(".right-side").toggleClass("strech");
+            $('.main-sidebar').toggleClass("collapse-left");
+            $(".content-wrapper").toggleClass("strech");
         }
     });
 
@@ -95,16 +95,16 @@ $(function() {
     //alert($(window).height());
     function _fix() {
         //Get window height and the wrapper height
-        var height = $(window).height() - $("body > .header").height();
+        var height = $(window).height() - $("body > .main-header").height();
         $(".wrapper").css("min-height", height + "px");
         var content = $(".wrapper").height();
         //If the wrapper height is greater than the window
         if (content > height)
         //then set sidebar height to the wrapper
-            $(".left-side, html, body").css("min-height", content + "px");
+            $(".main-sidebar, html, body").css("min-height", content + "px");
         else {
             //Otherwise, set the sidebar to the height of the window
-            $(".left-side, html, body").css("min-height", height + "px");
+            $(".main-sidebar, html, body").css("min-height", height + "px");
         }
     }
     //Fire upon load
