@@ -31,6 +31,6 @@
         "fontawesome"               : "*",
         "ionicons"                  : "*",
         "fullcalendar"              : "*",
-        "adminlte"                  : ">=2.0.0 <3.0"
+        "adminlte"                  : "1.2.1"
     }
 }
