@@ -21,6 +21,16 @@ class UserModel implements  UserInterface {
     protected $username;
 
     /**
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @var string
+     */
+    protected $title;
+
+    /**
      * @var \DateTime
      */
     protected $memberSince;
@@ -30,12 +40,14 @@ class UserModel implements  UserInterface {
      */
     protected $isOnline = false;
 
-    function __construct($username='', $avatar = '', $memberSince = null, $isOnline = true)
+    function __construct($username='', $avatar = '', $memberSince = null, $isOnline = true, $name='', $title='')
     {
         $this->avatar      = $avatar;
         $this->isOnline    = $isOnline;
         $this->memberSince = $memberSince ?:new \DateTime();
         $this->username    = $username;
+        $this->name        = $name;
+        $this->title       = $title;
     }
 
 
@@ -113,6 +125,46 @@ class UserModel implements  UserInterface {
     public function getUsername()
     {
         return $this->username;
+    }
+
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+
+    /**
+     * @param string $title
+     *
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
 
