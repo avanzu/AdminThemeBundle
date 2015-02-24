@@ -44,6 +44,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $lteJSBase = $jsAssets . 'public/vendor/adminlte/';
         $cssAssets = 'bundles/avanzuadmintheme/';
         $lteCss    = $cssAssets . 'vendor/adminlte/css/';
+        $lteCssBase= $cssAssets . 'vendor/adminlte/';
         $lteFont   = $cssAssets . 'vendor/adminlte/fonts/';
 
         if(isset($bundles['TwigBundle'])) {
@@ -90,10 +91,10 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   ),
                                   'admin_lte_js'           => array(
                                       'inputs' => array(
-                                          $lteJs . 'plugins/bootstrap-slider/bootstrap-slider.js',
-                                          $lteJs . 'plugins/datatables/jquery.dataTables.js',
-                                          $lteJs . 'plugins/datatables/dataTables.bootstrap.js',
-                                          $lteJs . 'plugins/slimScroll/jquery.slimscroll.js',
+                                          $lteJSBase . 'plugins/bootstrap-slider/bootstrap-slider.js',
+                                          $lteJSBase . 'plugins/datatables/jquery.dataTables.js',
+                                          $lteJSBase . 'plugins/datatables/dataTables.bootstrap.js',
+                                          $lteJSBase . 'plugins/slimScroll/jquery.slimscroll.js',
                                           $jsAssets . 'public/js/adminLTE.js',
                                       )
                                   ),
@@ -101,12 +102,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                       'inputs' => array(
 
                                         //  $lteCss . 'jQueryUI/jquery-ui-1.10.3.custom.css',
-                                         $cssAssets . 'vendor/bootstrap/dist/css/bootstrap.min.css',
-                                          $lteCss . 'bootstrap-slider/slider.css',
-                                          $lteCss . 'datatables/dataTables.bootstrap.css',
+                                          $cssAssets . 'vendor/bootstrap/dist/css/bootstrap.min.css',
+                                          $lteCssBase . 'plugins/bootstrap-slider/slider.css',
+                                          $lteCssBase . 'plugins/datatables/dataTables.bootstrap.css',
                                           $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
                                           $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
-                                          $lteCss . 'AdminLTE.css',
+                                          $lteCssBase . 'dist/css/AdminLTE.css',
                                           //$lteFont . 'fontawesome-webfont.eot',
                                           // $lteFont . 'ionicons.eot',
                                       )
@@ -114,42 +115,42 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   'admin_lte_forms_js'     => array(
                                       'inputs' => array(
                                           $lteJSBase . 'plugins/colorpicker/bootstrap-colorpicker.js',
-                                          $lteJs . 'plugins/daterangepicker/daterangepicker.js',
-                                          $lteJs . 'plugins/timepicker/bootstrap-timepicker.js',
-                                          $lteJs . 'plugins/input-mask/jquery.inputmask.js',
+                                          $lteJSBase . 'plugins/daterangepicker/daterangepicker.js',
+                                          $lteJSBase . 'plugins/timepicker/bootstrap-timepicker.js',
+                                          $lteJSBase . 'plugins/input-mask/jquery.inputmask.js',
                                           //   $lteJs.'plugins/input-mask/*',
                                       )
                                   ),
                                   'admin_lte_forms_css'    => array(
                                       'inputs' => array(
-                                          $lteCss . 'colorpicker/bootstrap-colorpicker.css',
-                                          $lteCss . 'daterangepicker/daterangepicker-bs3.css',
-                                          $lteCss . 'timepicker/bootstrap-timepicker.css',
+                                          $lteCssBase . 'plugins/colorpicker/bootstrap-colorpicker.css',
+                                          $lteCssBase . 'plugins/daterangepicker/daterangepicker-bs3.css',
+                                          $lteCssBase . 'plugins/timepicker/bootstrap-timepicker.css',
                                       )
                                   ),
                                   'admin_lte_wysiwyg'      => array(
                                       'inputs' => array(
-                                          $lteJs . 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.js',
+                                          $lteJSBase . 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.js',
                                       )
                                   ),
                                   'admin_lte_wysiwyg_css'  => array(
                                       'inputs' => array(
-                                          $lteCss . 'bootstrap-wysihtml5/bootstrap3-wysihtml5.css',
+                                          $lteCssBase . 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css',
                                       )
                                   ),
                                   'admin_lte_morris'       => array(
                                       'inputs' => array(
-                                          $lteJs . 'plugins/morris/morris.js',
+                                          $lteJSBase . 'plugins/morris/morris.js',
                                       )
                                   ),
                                   'admin_lte_morris_css'   => array(
                                       'inputs' => array(
-                                          $lteCss . 'morris/morris.css',
+                                          $lteCssBase . 'plugins/morris/morris.css',
                                       )
                                   ),
                                   'admin_lte_flot'         => array(
                                       'inputs' => array(
-                                          $lteJs . 'plugins/flot/*',
+                                          $lteJSBase . 'plugins/flot/*',
                                       )
                                   ),
                                   'admin_lte_calendar'     => array(
@@ -159,7 +160,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   ),
                                   'admin_lte_calendar_css' => array(
                                       'inputs' => array(
-                                          $lteCss . 'fullcalendar/fullcalendar.css',
+                                          $cssAssets . 'vendor/fullcalendar/dist/fullcalendar.css',
                                       )
                                   ),
                                   'avatar_img'             => array(
