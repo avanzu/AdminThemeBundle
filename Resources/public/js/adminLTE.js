@@ -96,15 +96,21 @@ $(function() {
     function _fix() {
         //Get window height and the wrapper height
         var height = $(window).height() - $("body > .main-header").height();
-        $(".wrapper").css("min-height", height + "px");
-        var content = $(".wrapper").height();
+        var $wrapper = $(".wrapper");
+        var $contentWrapper = $(".content-wrapper");
+        $wrapper.css("min-height", height + "px");
+        var content = $wrapper.height();
+        var footerHeight = $("footer").height();
+        var contentWrapperHeight = (content > height) ? (content - footerHeight) : (height - footerHeight);
         //If the wrapper height is greater than the window
         if (content > height)
         //then set sidebar height to the wrapper
             $(".main-sidebar, html, body").css("min-height", content + "px");
+            $contentWrapper.css("min-height", contentWrapperHeight + "px");
         else {
             //Otherwise, set the sidebar to the height of the window
             $(".main-sidebar, html, body").css("min-height", height + "px");
+            $contentWrapper.css("min-height", contentWrapperHeight + "px");
         }
     }
     //Fire upon load
