@@ -35,79 +35,85 @@
 
 </head>
 <body class="{{ admin_skin|default('skin-blue')}}">
-<div class="wrapper row-offcanvas row-offcanvas-left">
-    <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar sidebar-offcanvas">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-            {% block avanzu_sidebar %}
+    <div class="wrapper">
+
+    {% block avanzu_admin_header %}
+        <header class="main-header">
+            {% block avanzu_logo %}
+                <a href="#" class="logo">
+                    <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                    {{ block('title') }}
+                </a>
+            {% endblock %}
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
                 {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
-                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            {% block avanzu_navbar %}
+                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
+                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
+                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
+                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
+                            {% endblock %}
+                        </ul>
+                    </div>
                 {% endif %}
-                {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
-            {% endblock %}
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+            </nav>
+        </header>
+    {% endblock %}
 
-    <!-- Right side column. Contains the navbar and content of the page -->
-    <aside class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                {% block page_title %}Blank page{% endblock %}
-                <small>{% block page_subtitle %}Control panel{% endblock %}</small>
-            </h1>
-            {% block avanzu_breadcrumb %}
-                {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
-            {% endblock %}
-        </section>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar sidebar-offcanvas">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                {% block avanzu_sidebar %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
+                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+                    {% endif %}
+                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
+                {% endblock %}
+            </section>
+            <!-- /.sidebar -->
+        </aside>
 
-        <!-- Main content -->
-        <section class="content">
-            {% block page_content %}{% endblock %}
-        </section>
-        <!-- /.content -->
-    </aside>
-    <!-- /.content-wrapper -->
-</div>
-<!-- ./wrapper -->
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    {% block page_title %}Blank page{% endblock %}
+                    <small>{% block page_subtitle %}Control panel{% endblock %}</small>
+                </h1>
+                {% block avanzu_breadcrumb %}
+                    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+                {% endblock %}
+            </section>
 
-{% block avanzu_admin_header %}
+            <!-- Main content -->
+            <section class="content">
+                {% block page_content %}{% endblock %}
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
 
-    <header class="main-header">
-        {% block avanzu_logo %}
-        <a href="#" class="logo">
-            <!-- Add the class icon to your logo image or logo icon to add the margining -->
-            {{ block('title') }}
-        </a>
-        {% endblock %}
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    {% block avanzu_navbar %}
-                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
-                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
-                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
-                    {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
-                    {% endblock %}
-                </ul>
+    {% block avanzu_admin_footer %}
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.0
             </div>
-            {% endif %}
-        </nav>
-    </header>
+            <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        </footer>
+    {% endblock %}
 
-{% endblock %}
+    </div>
+<!-- ./wrapper -->
 
 {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
 {% block javascripts %}
