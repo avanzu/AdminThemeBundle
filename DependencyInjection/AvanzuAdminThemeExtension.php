@@ -41,6 +41,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
 
         $jsAssets  = '@AvanzuAdminThemeBundle/Resources/';
         $lteJs     = $jsAssets . 'public/vendor/adminlte/js/';
+        $lteJSBase = $jsAssets . 'public/vendor/adminlte/';
         $cssAssets = 'bundles/avanzuadmintheme/';
         $lteCss    = $cssAssets . 'vendor/adminlte/css/';
         $lteFont   = $cssAssets . 'vendor/adminlte/fonts/';
@@ -112,7 +113,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                                   ),
                                   'admin_lte_forms_js'     => array(
                                       'inputs' => array(
-                                          $lteJs . 'plugins/colorpicker/bootstrap-colorpicker.js',
+                                          $lteJSBase . 'plugins/colorpicker/bootstrap-colorpicker.js',
                                           $lteJs . 'plugins/daterangepicker/daterangepicker.js',
                                           $lteJs . 'plugins/timepicker/bootstrap-timepicker.js',
                                           $lteJs . 'plugins/input-mask/jquery.inputmask.js',
