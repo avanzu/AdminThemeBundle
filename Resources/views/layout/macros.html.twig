@@ -29,10 +29,10 @@
 
 {% macro avatar(image, alt, class) %}
     {% if image %}
-        <img src="{{ asset(image) }}" class="{{class|default('img-circle')}}" alt="{{ alt }}" />
+        <img src="{{ asset(image) }}" class="{{ class|default('img-circle') }}" alt="{{ alt }}" />
     {% else %}
         {% image '@avatar_img' %}
-        <img src="{{ asset_url }}" class="{{ class|default('img-circle') }}" alt="{{alt}}" />
+        <img src="{{ asset_url }}" class="{{ class|default('img-circle') }}" alt="{{ alt }}" />
         {% endimage %}
     {% endif %}
 {% endmacro %}
@@ -43,8 +43,9 @@
             {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
             <span>{{ item.label }}</span>
             {% if item.badge %}
-                <small class="badge pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
+                <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
             {% endif %}
+            {% if item.hasChildren %}<i class="fa fa-angle-left pull-right"></i>{% endif %}
         </a>
 
         {% if item.hasChildren %}
@@ -52,7 +53,7 @@
                 {% for child in item.children %}
                     <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
                         <a href="{{ '/' in child.route ? child.route : path(child.route, child.routeArgs) }}">
-                            <i class="fa fa-angle-double-right"></i>
+                            <i class="fa fa-circle-o"></i>
                             {{ child.label }}
                         </a>
                     </li>

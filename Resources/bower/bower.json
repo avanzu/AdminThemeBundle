@@ -1,6 +1,6 @@
 {
     "name"        : "AvanzuAdminTheme",
-    "version"     : "0.0.1",
+    "version"     : "0.0.2",
     "authors"     : [
         "Marc Bach <mail@avanzu.de>"
     ],
@@ -31,6 +31,6 @@
         "fontawesome"               : "*",
         "ionicons"                  : "*",
         "fullcalendar"              : "*",
-        "adminlte"                  : "1.2.1"
+        "adminlte"                  : ">=2.0.0 <3.0"
     }
 }

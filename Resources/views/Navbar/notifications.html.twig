@@ -1,7 +1,7 @@
 <!-- Notifications: style can be found in dropdown.less -->
 <li class="dropdown notifications-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-warning"></i>
+        <i class="fa fa-bell-o"></i>
         <span class="label label-warning">{{ total }}</span>
     </a>
     <ul class="dropdown-menu">
@@ -9,7 +9,6 @@
         <li>
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
-
                 {% for notice in notifications %}
                     <li>
                         <a href="{{ path('avanzu_admin_show_notification', {'notifyid':notice.identifier}) }}">

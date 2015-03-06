@@ -1,7 +1,7 @@
 <!-- Tasks: style can be found in dropdown.less -->
 <li class="dropdown tasks-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-tasks"></i>
+        <i class="fa fa-flag-o"></i>
         <span class="label label-danger">{{ total }}</span>
     </a>
     <ul class="dropdown-menu">
@@ -10,24 +10,24 @@
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
                 {% for task in tasks %}
-                <li>
-                    <a href="{{ path('avanzu_admin_show_task', {'taskid': task.identifier}) }}">
-                        <h3>
-                            {{ task.title }}
-                            <small>{{ task.progress }}%</small>
-                        </h3>
-                        <div class="progress xs">
-                            <div class="progress-bar progress-bar-{{ task.color }}"
-                                 style="width: {{ task.progress }}%"
-                                 role="progressbar"
-                                 aria-valuenow="{{ task.progress }}"
-                                 aria-valuemin="0"
-                                 aria-valuemax="100">
-                                <span class="sr-only">{{ '%progress%% Complete'|trans({'%progress%':task.progress}, 'AvanzuAdminTheme') }}</span>
+                    <li>
+                        <a href="{{ path('avanzu_admin_show_task', {'taskid': task.identifier}) }}">
+                            <h3>
+                                {{ task.title }}
+                                <small class="pull-right">{{ task.progress }}%</small>
+                            </h3>
+                            <div class="progress xs">
+                                <div class="progress-bar progress-bar-{{ task.color }}"
+                                     style="width: {{ task.progress }}%"
+                                     role="progressbar"
+                                     aria-valuenow="{{ task.progress }}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100">
+                                    <span class="sr-only">{{ '%progress%% Complete'|trans({'%progress%':task.progress}, 'AvanzuAdminTheme') }}</span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
+                        </a>
+                    </li>
                 {%  endfor  %}
             </ul>
         <li class="footer">
