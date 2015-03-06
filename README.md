@@ -10,10 +10,12 @@ Add AdminThemeBundle to composer.json
 ```json
 	{
 		"require": {
-			"avanzu/admin-theme-bundle": "~1.1"
+			"avanzu/admin-theme-bundle": "~1.2"
 		}
 	}
 ```
+_notice: if you prefer to stay with the adminLTE theme v1.x use `"avanzu/admin-theme-bundle": "~1.1"` instead of `"avanzu/admin-theme-bundle": "~1.2"`_
+
 tell composer to download the bundle
 
 	php composer.phar update avanzu/admin-theme-bundle
