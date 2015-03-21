@@ -10,11 +10,11 @@ Add AdminThemeBundle to composer.json
 ```json
 	{
 		"require": {
-			"avanzu/admin-theme-bundle": "~1.2"
+			"avanzu/admin-theme-bundle": "~1.3"
 		}
 	}
 ```
-_notice: if you prefer to stay with the adminLTE theme v1.x use `"avanzu/admin-theme-bundle": "~1.1"` instead of `"avanzu/admin-theme-bundle": "~1.2"`_
+_notice: if you prefer to stay with the adminLTE theme v1.x use `"avanzu/admin-theme-bundle": "~1.1"` instead of `"avanzu/admin-theme-bundle": "~1.3"`_
 
 tell composer to download the bundle
 
@@ -34,26 +34,17 @@ Enable the bundle in your kernel:
 	}
 ```
 
-Configure bower path if neccessary (default value is `/usr/local/bin/bower`)
-
-```yaml
-
-	#app/config/config.yml
-
-	avanzu_admin_theme:
-    	bower_bin: /usr/local/bin/bower # that's the default value
-```
-
-Fetch vendor scripts
-
-	app/console avanzu:admin:fetch-vendor
-
 install assets (preferably using symlink method but hardcopy works as well)
 
 	app/console assets:install --symlink
 
+### Upgrade notice
+Version >= 1.3 comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no longer a strict requirement for bower and/or assetic. The assetic groups hovever, are still there and should work as usual.
+
+
 ### Next Steps
 * [Using the layout](Resources/docs/layout.md)
+* [Rebuilding the assets](Resources/docs/rebuild.md)
 * [Using the ThemeManager](Resources/docs/theme_manager.md)
 * [Components](Resources/docs/component_events.md)
 * [Navbar User](Resources/docs/navbar_user.md)
@@ -62,12 +53,3 @@ install assets (preferably using symlink method but hardcopy works as well)
 * [Navbar Notifications](Resources/docs/navbar_notifications.md)
 * [Sidebar User](Resources/docs/sidebar_user.md)
 * [Sidebar Navigation](Resources/docs/sidebar_navigation.md)
-
-
-
-
-
-
-
-
-
