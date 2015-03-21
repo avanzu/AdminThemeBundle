@@ -47,4 +47,8 @@ class DefaultController extends Controller
                 'form' => $form->createView()
             ));
     }
+
+    public function loginAction() {
+        return $this->render('AvanzuAdminThemeBundle:Default:login.html.twig');
+    }
 }

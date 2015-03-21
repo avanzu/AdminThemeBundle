@@ -14,9 +14,7 @@
 
     {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
     {% block stylesheets %}
-        {% stylesheets '@admin_lte_all_css' filter="cssrewrite" %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
     {% endblock %}
 
 
@@ -24,9 +22,7 @@
 
     {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
     {%  block javascripts_head %}
-        {% javascripts '@AvanzuAdminThemeBundle/Resources/public/vendor/modernizr/modernizr.js'%}
-        <script type="text/javascript" src="{{ asset(asset_url) }}"></script>
-        {% endjavascripts %}
+        <script type="text/javascript" src="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/scripts/modernizr.js') }}"></script>
         <!--[if lt IE 9]>
 
         <![endif]-->
@@ -34,20 +30,13 @@
     {% endblock %}
 
 </head>
-<body class="bg-black">
-
-<div class="form-box" id="login-box">
-    {% block page_content %}{% endblock %}
-</div>
-
+<body class="login-page">
+{% block page_content %}{% endblock %}
 
 
 {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
 {% block javascripts %}
-
-    {% javascripts '@admin_lte_all' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <script src="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/scripts/admin-lte-all.js') }}"></script>
 {% endblock %}
 
 {# ----------------------------------------------------------------------------------------------- JAVASCRIPTS_INLINE #}
