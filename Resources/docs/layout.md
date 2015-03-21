@@ -25,6 +25,30 @@ In order to use the layout, your views should extend from the provided base-layo
 <dd>Instead of spreading inline scripts all over the page, you could use this block to group them.</dd>
 </dl>
 
+
+### packaged assets
+the bundle comes with a set of pre packaged assets located under `Resources/public/static/[dev|prod]`. These are basically the assetic groups (see below) uglified and ready to use with the regular `{{ asset() }}` helper in combination with the application's environment.
+
+*example*
+```twig
+<link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+```
+___ File names ___
+
+The packaged file names reflect the asset group name as follows:
+* underscores are replaced with dashes
+* `_js` and `_css` suffixes are removed
+* javascripts will be placed under `scripts`
+* stylesheets will be placed under `styles`
+
+*example*
+
+`@admin_lte_js` will be uglified into `scripts/admin-lte.js`
+
+`@admin_lte_all_css` will be uglified into `styles/admin-lte-all.css`
+
+In order to find the file you need, please refer to the following group setup.
+
 ### predefined asset groups
 the bundle integrates several asset groups to be used with assetic:
 
@@ -41,7 +65,7 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 ```
-`common_js`
+`common_js (scripts/common.js)`
 
 1. jquery
 2. jquery-ui
@@ -50,13 +74,13 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 5. marionette
 6. bootstrapjs
 
-`tools_js`
+`tools_js (scripts/tools.js)`
 
 1. momentjs
 2. holderjs
 3. spinjs
 
-`admin_lte_js`
+`admin_lte_js (scripts/admin-lte.js)`
 
 1. bootstrap-slider
 2. jquery.dataTables
@@ -64,26 +88,26 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 4. jquery.slimscroll
 5. adminLTE
 
-`admin_lte_forms_js`
+`admin_lte_forms_js (scripts/admin-lte-forms.js)`
 
 1. bootstrap-colorpicker
 2. daterangepicker
 3. bootstrap-timepicker
 4. jquery.inputmask
 
-`admin_lte_wysiwyg`
+`admin_lte_wysiwyg (scripts/admin-lte-wysiwyg.js)`
 
 1. bootstrap3-wysihtml
 
-`admin_lte_morris`
+`admin_lte_morris (scripts/admin-lte-morris.js)`
 
 1. morrisjs
 
-`admin_lte_calendar`
+`admin_lte_calendar (scripts/admin-lte-calendar.js)`
 
 1. fullcalendar
 
-`admin_lte_all`
+`admin_lte_all (scripts/admin-lte-all.js)`
 
 1. tools_js
 2. admin_lte_forms_js
@@ -105,7 +129,7 @@ Same as with the javascript asset groups, there are predefined css groups accord
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 ```
-`admin_lte_css`
+`admin_lte_css (styles/admin-lte.css)`
 
 1. jquery-ui-1.10.3.custom.css
 2. bootstrap.css
@@ -115,29 +139,28 @@ Same as with the javascript asset groups, there are predefined css groups accord
 6. ionicons.css
 7. AdminLTE.css
 
-`admin_lte_forms_css`
+`admin_lte_forms_css (styles/admin-lte-forms.css)`
 
 1. bootstrap-colorpicker.css
 2. daterangepicker-bs3.css
 3. bootstrap-timepicker.css
 
-`admin_lte_wysiswyg_css`
+`admin_lte_wysiswyg_css (styles/admin-lte-wysiwyg.css)`
 
 1. bootstrap3-wysihtml5.css
 
-`admin_lte_morris_css`
+`admin_lte_morris_css (styles/admin-lte-morris.css)`
 
 1. morris.css
 
-`admin_lte_calendar_css`
+`admin_lte_calendar_css (styles/admin-lte-calendar.css)`
 
 1. fullcalendar.css
 
-`admin_lte_all_css`
+`admin_lte_all_css (styles/admin-lte-all.css)`
 
 1. admin_lte_calendar_css
 2. admin_lte_morris_css
 3. admin_lte_wysiwyg_css
 4. admin_lte_forms_css
 5. admin_lte_css
-

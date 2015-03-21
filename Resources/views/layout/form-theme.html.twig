@@ -1,10 +1,20 @@
 {% extends 'form_div_layout.html.twig' %}
 
 {% block widget_attributes %}
-    {% if attr.class is defined %}
-        {% set class = attr.class ~ ' form-control' %}
+    {% set types = form.vars.block_prefixes %}
+
+    {% if 'checkbox' in types %}
+        {% set _class = ' checkbox' %}
+    {% elseif 'radio' in types%}
+        {% set _class = ' radio' %}
     {% else %}
-        {% set class = 'form-control' %}
+        {% set _class = ' form-control' %}
+    {% endif %}
+
+    {% if attr.class is defined %}
+        {% set class = attr.class ~ _class %}
+    {% else %}
+        {% set class = _class %}
     {% endif %}
     {% set attr = attr|merge({'class' : class}) %}
     {{ parent () }}
@@ -37,6 +47,7 @@
             {% if label is empty %}
                 {% set label = name|humanize %}
             {% endif %}
+
             <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
             <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
             {% if label is not sameas(false) %}
@@ -138,7 +149,7 @@
 {% endblock %}
 
 {% block form_label %}
-    
+
     {% if help is defined %}
         &nbsp; <a href="#" data-toggle="tooltip" data-original-title="{{ help }}"><i class="fa fa-question-circle"></i></a>
     {% endif %}
