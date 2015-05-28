@@ -33,7 +33,7 @@ the bundle comes with a set of pre packaged assets located under `Resources/publ
 ```twig
 <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
 ```
-___File names___
+___ File names ___
 
 The packaged file names reflect the asset group name as follows:
 * underscores are replaced with dashes

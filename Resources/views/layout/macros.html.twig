@@ -31,7 +31,7 @@
     {% if image %}
         <img src="{{ asset(image) }}" class="{{ class|default('img-circle') }}" alt="{{ alt }}" />
     {% else %}
-        {% image '@avatar_img' %}
+        {% image '@AvanzuAdminThemeBundle/Resources/public/img/avatar.png' %}
         <img src="{{ asset_url }}" class="{{ class|default('img-circle') }}" alt="{{ alt }}" />
         {% endimage %}
     {% endif %}
