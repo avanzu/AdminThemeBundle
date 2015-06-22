@@ -81,12 +81,12 @@ return call_user_func(
             ),
             'admin_lte_wysiwyg'      => array(
                 'inputs' => array(
-                    $lteJSBase.'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.js',
+                    $lteJSBase.'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
                 )
             ),
             'admin_lte_wysiwyg_css'  => array(
                 'inputs' => array(
-                    $lteCssBase.'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css',
+                    $lteCssBase.'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
                 )
             ),
             'admin_lte_morris'       => array(
