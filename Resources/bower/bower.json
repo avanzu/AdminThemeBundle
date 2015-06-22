@@ -20,7 +20,7 @@
         "jquery-ui"                 : "*",
         "momentjs"                  : "*",
         "backbone"                  : "*",
-        "underscore"                : "*",
+        "underscore"                : ">=1.0.0 <2.0",
         "modernizr"                 : "*",
         "spinjs"                    : "*",
         "marionette"                : "*",
