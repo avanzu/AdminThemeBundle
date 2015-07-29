@@ -81,7 +81,7 @@ return call_user_func(
             ),
             'admin_lte_wysiwyg'      => array(
                 'inputs' => array(
-                    $lteJSBase.'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.js',
+                    $lteJSBase.'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js',
                 )
             ),
             'admin_lte_wysiwyg_css'  => array(
