@@ -18,7 +18,7 @@ _notice: if you prefer to stay with the adminLTE theme v1.x use `"avanzu/admin-t
 
 tell composer to download the bundle
 
-	php composer.phar update avanzu/admin-theme-bundle
+	php composer.phar require avanzu/admin-theme-bundle
 
 Enable the bundle in your kernel:
 ```php
