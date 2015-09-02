@@ -4,14 +4,14 @@ Although the `MenuItemInteface` as well as the `MenuItemModel` are designed to s
 
 ### Data Model
 
-In order to use this component, your user class has to implement the `Avanzu\AdminThemeBundle\Model\MenuItemInterface`
+In order to use this component, your have to create a `MenuItemModel` class that implements the `Avanzu\AdminThemeBundle\Model\MenuItemInterface`
 ```php
 	<?php
 	namespace MyAdminBundle\Model;
 	// ...
-	use Avanzu\AdminThemeBundle\Model\MenuItemInterface as ThemeMenuItem
+	use Avanzu\AdminThemeBundle\Model\MenuItemInterface as ThemeMenuItem;
 
-	class MenuItemModel implements  ThemeMenuItem {
+	class MenuItemModel implements ThemeMenuItem {
 		// ...
 		// implement interface methods
 		// ...
@@ -47,7 +47,7 @@ Next, you will need to create an EventListener to work with the `MenuItemListEve
 		}
 
 		protected function getMenu(Request $request) {
-			// retrieve your menuItem models/entities here
+			// Build your menu here by constructing a MenuItemModel array
 			$menuItems = array();
 
 			return $this->activateByRoute($request->get('_route'), $menuItems);
@@ -74,19 +74,37 @@ Next, you will need to create an EventListener to work with the `MenuItemListEve
 ### Service.xml
 
 Finally, you need to attach your new listener to the event system:
+
+XML: 
+
 ```xml
 	<!-- Resources/config/services.xml -->
 	<parameters>
-	<!-- ... -->
-	<parameter key="my_admin_bundle.menu_listener.class">MyAdminBundle\EventListener\MyMenuItemListListener</parameter>
-	<!-- ... -->
+		<!-- ... -->
+		<parameter key="my_admin_bundle.menu_listener.class">MyAdminBundle\EventListener\MyMenuItemListListener</parameter>
+		<!-- ... -->
 	</parameters>
 	<services>
-	<!-- ... -->
-	<service id="my_admin_bundle.menu_listener" class="%my_admin_bundle.menu_listener.class%">
-            <tag name="kernel.event_listener" event="theme.sidebar_setup_menu" method="onSetupMenu" />
-        </service>
+		<!-- ... -->
+		<service id="my_admin_bundle.menu_listener" class="%my_admin_bundle.menu_listener.class%">
+	        <tag name="kernel.event_listener" event="theme.sidebar_setup_menu" method="onSetupMenu" />
+	    </service>
 
-	<!-- ... -->
+		<!-- ... -->
 	</services>
+```
+
+YAML: 
+
+```yaml
+	parameters:
+		# ...
+        my_admin_bundle.menu_listener.class: MyAdminBundle\EventListener\MyMenuItemListListener
+    
+    services:
+        # ...
+        my_admin_bundle.menu_listener:
+            class: %my_admin_bundle.menu_listener.class%
+            tags:
+                - { name: kernel.event_listener, event:theme.sidebar_setup_menu, method:onSetupMenu }
 ```
