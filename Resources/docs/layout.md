@@ -2,7 +2,7 @@
 
 In order to use the layout, your views should extend from the provided base-layout
 ```twig
-	{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
 ```
 ### layout blocks
 
@@ -58,12 +58,12 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 
 *example*
 ```twig
-	{% javascripts
-		'@common_js'
-		'@admin_lte_js'
-	%}
-	<script src="{{ asset_url }}"></script>
-	{% endjavascripts %}
+{% javascripts
+	'@common_js'
+	'@admin_lte_js'
+%}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
 ```
 `common_js (scripts/common.js)`
 
@@ -122,13 +122,14 @@ Same as with the javascript asset groups, there are predefined css groups accord
 
 *example*
 ```twig
-	{% stylesheets
-		'@admin_lte_all_css'
-		filter="cssrewrite"
-	%}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+{% stylesheets
+	'@admin_lte_all_css'
+	filter="cssrewrite"
+%}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
 ```
+
 `admin_lte_css (styles/admin-lte.css)`
 
 1. jquery-ui-1.10.3.custom.css

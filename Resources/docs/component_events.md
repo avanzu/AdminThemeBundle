@@ -5,7 +5,7 @@ The general process to use a particular component is to create an event listener
 
 Each component has its own event and specific ui data interfaces.
 
-### available components
+### Available components
 
 * [Navbar User](navbar_user.md)
 * [Navbar Tasks](navbar_tasks.md)
@@ -22,7 +22,7 @@ In order to see some working examples, the bundle comes with a demo implementati
 
 Simply remove the comments in the `services.xml` that comes with this bundle, and import the routing to your `routing.yml`
 ```yaml
-	avanzu_admin:
-	    resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
+avanzu_admin:
+    resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
 
 ```

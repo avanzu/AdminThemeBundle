@@ -6,16 +6,16 @@ Although the `MenuItemInteface` as well as the `MenuItemModel` are designed to s
 
 In order to use this component, your have to create a `MenuItemModel` class that implements the `Avanzu\AdminThemeBundle\Model\MenuItemInterface`
 ```php
-	<?php
-	namespace MyAdminBundle\Model;
-	// ...
-	use Avanzu\AdminThemeBundle\Model\MenuItemInterface as ThemeMenuItem;
+<?php
+namespace MyAdminBundle\Model;
+// ...
+use Avanzu\AdminThemeBundle\Model\MenuItemInterface as ThemeMenuItem;
 
-	class MenuItemModel implements ThemeMenuItem {
-		// ...
-		// implement interface methods
-		// ...
-	}
+class MenuItemModel implements ThemeMenuItem {
+	// ...
+	// implement interface methods
+	// ...
+}
 ```
 The bundle provides the `MenuItemModel` as a ready to use implementation of the `MenuItemInterface`.
 
@@ -23,53 +23,53 @@ The bundle provides the `MenuItemModel` as a ready to use implementation of the 
 ### Event Listener
 Next, you will need to create an EventListener to work with the `MenuItemListEvent`.
 ```php
-	<?php
-	namespace MyAdminBundle\EventListener;
+<?php
+namespace MyAdminBundle\EventListener;
+
+// ...
+
+use MyAdminBundle\Model\MenuItemModel;
+use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
+use Symfony\Component\HttpFoundation\Request;
+
+class MyMenuItemListListener {
 
 	// ...
 
-	use MyAdminBundle\Model\MenuItemModel;
-	use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
-    use Symfony\Component\HttpFoundation\Request;
+	public function onSetupMenu(SidebarMenuEvent $event) {
 
-	class MyMenuItemListListener {
+		$request = $event->getRequest();
 
-		// ...
-
-		public function onSetupMenu(SidebarMenuEvent $event) {
-
-			$request = $event->getRequest();
-
-            foreach ($this->getMenu($request) as $item) {
-                $event->addItem($item);
-            }
-
-		}
-
-		protected function getMenu(Request $request) {
-			// Build your menu here by constructing a MenuItemModel array
-			$menuItems = array();
-
-			return $this->activateByRoute($request->get('_route'), $menuItems);
-		}
-
-		protected function activateByRoute($route, $items) {
-
-            foreach($items as $item) {
-                if($item->hasChildren()) {
-                    $this->activateByRoute($route, $item->getChildren());
-                }
-                else {
-                    if($item->getRoute() == $route) {
-                        $item->setIsActive(true);
-                    }
-                }
-            }
-
-            return $items;
+        foreach ($this->getMenu($request) as $item) {
+            $event->addItem($item);
         }
 
 	}
+
+	protected function getMenu(Request $request) {
+		// Build your menu here by constructing a MenuItemModel array
+		$menuItems = array();
+
+		return $this->activateByRoute($request->get('_route'), $menuItems);
+	}
+
+	protected function activateByRoute($route, $items) {
+
+        foreach($items as $item) {
+            if($item->hasChildren()) {
+                $this->activateByRoute($route, $item->getChildren());
+            }
+            else {
+                if($item->getRoute() == $route) {
+                    $item->setIsActive(true);
+                }
+            }
+        }
+
+        return $items;
+    }
+
+}
 ```
 ### Service.xml
 
