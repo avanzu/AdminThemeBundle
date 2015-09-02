@@ -6,19 +6,12 @@ This bundle integrates several commonly used javascripts and the awesome [AdminL
 
 ## Installation
 
-Add AdminThemeBundle to composer.json
-```json
-	{
-		"require": {
-			"avanzu/admin-theme-bundle": "~1.3"
-		}
-	}
-```
-_notice: if you prefer to stay with the adminLTE theme v1.x use `"avanzu/admin-theme-bundle": "~1.1"` instead of `"avanzu/admin-theme-bundle": "~1.3"`_
-
-tell composer to download the bundle
+Installation using composer is really easy: this command will add `"avanzu/admin-theme-bundle": "~1.3"` to your composer.json
+and will download the bundle:
 
 	php composer.phar require avanzu/admin-theme-bundle
+
+_Notice: if you prefer to stay with the AdminLTE theme v1.x, manually reference `"avanzu/admin-theme-bundle": "~1.1"` in composer.json `"require"` part and run `php composer.phar update`_
 
 Enable the bundle in your kernel:
 ```php
@@ -34,16 +27,17 @@ Enable the bundle in your kernel:
 	}
 ```
 
-install assets (preferably using symlink method but hardcopy works as well)
+Install assets (preferably using symlink method but hardcopy works as well)...
 
-	app/console assets:install --symlink
+	php app/console assets:install --symlink
 	
-fetch vendors:
+... and fetch vendors:
 
-	 app/console avanzu:admin:fetch-vendor
+	php app/console avanzu:admin:fetch-vendor
 
 ### Upgrade notice
-Version >= 1.3 comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no longer a strict requirement for bower and/or assetic. The assetic groups hovever, are still there and should work as usual.
+Version >= 1.3 comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no
+longer a strict requirement for bower and/or assetic. The assetic groups hovever, are still there and should work as usual.
 
 
 ### Next Steps
