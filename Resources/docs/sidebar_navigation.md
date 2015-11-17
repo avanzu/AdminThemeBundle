@@ -17,8 +17,17 @@ class MenuItemModel implements ThemeMenuItem {
 	// ...
 }
 ```
-The bundle provides the `MenuItemModel` as a ready to use implementation of the `MenuItemInterface`.
+The bundle provides the `MenuItemModel` as a ready to use implementation of the `MenuItemInterface`. You can use it to create a menu item
 
+```php
+$manuItem = new \Avanzu\AdminThemeBundle\Model\MenuItemModel('item', 'Item', 'item_route_name');
+```
+
+or a menu label
+
+```php
+$menuLabel = new \Avanzu\AdminThemeBundle\Model\MenuItemModel('label', 'Label', false);
+```
 
 ### Event Listener
 Next, you will need to create an EventListener to work with the `MenuItemListEvent`.
