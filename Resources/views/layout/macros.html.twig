@@ -54,7 +54,7 @@
                     {% for child in item.children %}
                         <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
                             <a href="{{ '/' in child.route ? child.route : path(child.route, child.routeArgs) }}">
-                                <i class="fa fa-circle-o"></i>
+                                <i class="{{ child.icon|default('fa fa-circle-o') }}"></i>
                                 {{ child.label }}
                             </a>
                         </li>
