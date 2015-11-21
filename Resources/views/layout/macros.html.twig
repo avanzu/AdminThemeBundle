@@ -38,7 +38,7 @@
 {% endmacro %}
 
 {% macro menu_item(item) %}
-    {% if item.route %}
+    {% if item.route or item.hasChildren %}
         <li id="{{ item.identifier }}" class=" {{ item.isActive ? 'active' : '' }} {{ item.hasChildren? 'treeview' : '' }}">
             <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : path(item.route, item.routeArgs) }}">
                 {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
