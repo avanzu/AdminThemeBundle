@@ -20,7 +20,7 @@ class MenuItemModel implements ThemeMenuItem {
 The bundle provides the `MenuItemModel` as a ready to use implementation of the `MenuItemInterface`. You can use it to create a menu item
 
 ```php
-$manuItem = new \Avanzu\AdminThemeBundle\Model\MenuItemModel('item', 'Item', 'item_route_name');
+$menuItem = new \Avanzu\AdminThemeBundle\Model\MenuItemModel('item', 'Item', 'item_route_name');
 ```
 
 or a menu label
