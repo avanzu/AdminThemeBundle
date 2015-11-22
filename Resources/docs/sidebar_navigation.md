@@ -20,7 +20,7 @@ class MenuItemModel implements ThemeMenuItem {
 The bundle provides the `MenuItemModel` as a ready to use implementation of the `MenuItemInterface`. You can use it to create a menu item
 
 ```php
-$manuItem = new \Avanzu\AdminThemeBundle\Model\MenuItemModel('item', 'Item', 'item_route_name');
+$menuItem = new \Avanzu\AdminThemeBundle\Model\MenuItemModel('item', 'Item', 'item_route_name');
 ```
 
 or a menu label
@@ -57,8 +57,17 @@ class MyMenuItemListListener {
 
 	protected function getMenu(Request $request) {
 		// Build your menu here by constructing a MenuItemModel array
-		$menuItems = array();
+		$menuItems = array(
+            $blog = new MenuItemModel('ItemId', 'ItemDisplayName', 'item_symfony_route', array(/* options */), 'iconclasses fa fa-plane');
+        );
 
+        // Add some children
+
+        // A child with an icon
+        $blog->addChild(new MenuItemModel('ChildOneItemId', 'ChildOneDisplayName', 'child_1_route', array(), 'fa fa-rss-square'));
+
+        // A child with default circle icon
+        $blog->addChild(new MenuItemModel('ChildTwoItemId', 'ChildTwoDisplayName', 'child_2_route'));
 		return $this->activateByRoute($request->get('_route'), $menuItems);
 	}
 
