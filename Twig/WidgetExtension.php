@@ -12,33 +12,21 @@ use Twig_Environment;
 
 class WidgetExtension extends \Twig_Extension {
 
-    /**
-     * @var Twig_Environment
-     */
-    protected $env;
-
-
-
     public function renderWidget() {
 
     }
 
     public function getFunctions()
     {
-
-
         return array(
             'widget_box' => new \Twig_SimpleFunction('widget_box',
                                                      array($this, 'renderWidget'),
-                                                     array('is_safe' => array('html'))),
+                                                     array(
+                                                         'is_safe' => array('html'),
+                                                         'needs_environment' => true
+                                                     )),
         );
     }
-
-    public function initRuntime(Twig_Environment $environment)
-    {
-        $this->env = $environment;
-    }
-
 
     public function getName()
     {
