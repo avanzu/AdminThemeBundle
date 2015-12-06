@@ -35,6 +35,26 @@ Install assets (preferably using symlink method but hardcopy works as well)...
 
 	php app/console avanzu:admin:fetch-vendor
 
+### Symfony 2.8 notice
+This bundle requires assetic, but it isn't shipped with symfony anymore since version 2.8. To install assetic, follow these steps:
+
+	php composer.phar require symfony/assetic-bundle
+
+Enable the bundle in your kernel:
+```php
+	<?php
+	// app/AppKernel.php
+
+	public function registerBundles()
+	{
+		$bundles = array(
+			// ...
+			new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+		);
+	}
+```
+
+
 ### Upgrade notice
 Version >= 1.3 comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no
 longer a strict requirement for bower and/or assetic. The assetic groups hovever, are still there and should work as usual.
