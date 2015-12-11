@@ -76,3 +76,15 @@ Finally, you need to attach your new listener to the event system:
 	<!-- ... -->
 </services>
 ```
+
+```yaml
+# Resources/config/services.yml
+parameters:
+	my_admin_bundle.show_user_listener.class: MyAdminBundle\EventListener\MyShowUserListener
+
+services:
+	my_admin_bundle.show_user_listener:
+		class: %my_admin_bundle.show_user_listener.class%
+		tags:
+			- { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
+```
