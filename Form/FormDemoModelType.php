@@ -8,6 +8,11 @@
 namespace Avanzu\AdminThemeBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -27,17 +32,17 @@ class FormDemoModelType extends AbstractType{
             'choice3' => 'This is choice 3',
         );
 
-        $builder->add('name', 'text')
-                ->add('gender', 'choice', array('choices' => array('m' => 'male', 'f' => 'female')))
-                ->add('someOption', 'choice', array('choices' => $options, 'expanded' => true))
-                ->add('someChoices', 'choice', array('choices' => $choices, 'expanded' => true, 'multiple' => true))
+        $builder->add('name')
+                ->add('gender', ChoiceType::class, array('choices' => array('m' => 'male', 'f' => 'female')))
+                ->add('someOption', ChoiceType::class, array('choices' => $options, 'expanded' => true))
+                ->add('someChoices',  ChoiceType::class, array('choices' => $choices, 'expanded' => true, 'multiple' => true))
                 ->add('username')
                 ->add('email')
-                ->add('termsAccepted','checkbox')
-                ->add('message', 'textarea')
+                ->add('termsAccepted',CheckboxType::class)
+                ->add('message', TextareaType::class)
                 ->add('price')
-                ->add('date', 'date', array('widget' => 'single_text'))
-                ->add('time', 'time', array('widget' => 'single_text'))
+                ->add('date', DateType::class, array('widget' => 'single_text'))
+                ->add('time', TimeType::class, array('widget' => 'single_text'))
         ;
     }
 
