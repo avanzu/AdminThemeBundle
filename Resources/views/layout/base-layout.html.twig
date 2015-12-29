@@ -14,7 +14,7 @@
 
     {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+        <link rel="stylesheet" href="{{ asset(admin_style_path()) }}" />
     {% endblock %}
 
 
@@ -22,7 +22,8 @@
 
     {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
     {%  block javascripts_head %}
-        <script type="text/javascript" src="{{ asset('bundles/avanzuadmintheme/static/'~app.environment~'/scripts/modernizr.js') }}"></script>
+        <script type="text/javascript" src="{{ asset(admin_script_path('modernizr.js')) }}"></script>
+
         <!--[if lt IE 9]>
 
         <![endif]-->
@@ -30,7 +31,7 @@
     {% endblock %}
 
 </head>
-<body class="{{ admin_skin|default('skin-blue')}}">
+<body class="{{ admin_skin|default("")|body_class }}">
     <div class="wrapper">
 
     {% block avanzu_admin_header %}
@@ -45,7 +46,7 @@
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">{{ 'theme.sr_only.toggle_navigation'|trans({}, 'AvanzuAdminTheme') }}</span>
                 </a>
                 {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
                     <div class="navbar-custom-menu">
@@ -113,9 +114,7 @@
 
 {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
 {% block javascripts %}
-
-    <script src="{{ asset('bundles/avanzuadmintheme/static/'~app.environment~'/scripts/admin-lte-all.js') }}"></script>
-
+    <script src="{{ asset(admin_script_path()) }}"></script>
 {% endblock %}
 
 {# ----------------------------------------------------------------------------------------------- JAVASCRIPTS_INLINE #}

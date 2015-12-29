@@ -13,9 +13,7 @@
         "php" : ">=5.3.0",
         "symfony/http-foundation" : ">=2.3",
         "symfony/http-kernel"  : ">=2.3",
-        "symfony/event-dispatcher" : ">=2.3",
-        "symfony/assetic-bundle": ">=2.3",
-        "symfony/twig-bundle": ">=2.3"
+        "symfony/event-dispatcher" : ">=2.3"
     },
     "require-dev" : {
         "mockery/mockery"          : "0.9.*@dev",

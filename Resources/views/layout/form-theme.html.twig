@@ -1,4 +1,4 @@
-{% extends 'form_div_layout.html.twig' %}
+{% extends 'bootstrap_3_layout.html.twig' %}
 
 {% block widget_attributes %}
     {% set types = form.vars.block_prefixes %}
@@ -151,12 +151,12 @@
 {% block form_label %}
 
     {% if help is defined %}
-        &nbsp; <a href="#" data-toggle="tooltip" data-original-title="{{ help }}"><i class="fa fa-question-circle"></i></a>
+        <a href="#" data-toggle="tooltip" data-original-title="{{ help|trans }}"><i class="fa fa-question-circle"></i></a>&nbsp;
     {% endif %}
 
     {{ parent() }}
     {% if required %}
-        <span class="required" title="Dies ist ein Pflichtfeld">*</span>
+        <span class="required" title="{{ 'form.required.title'|trans({},'AvanzuAdmin') }}"><small><sup><i class="fa fa-asterisk"></i></sup></small></span>
     {% endif %}
 
 {% endblock form_label %}

@@ -119,6 +119,19 @@ return call_user_func(
                     '@AvanzuAdminThemeBundle/Resources/public/img/avatar.png'
                 )
             ),
+            'admin_lte_base' => array(
+                'inputs' => array(
+                    '@tools_js',
+                    '@admin_lte_forms_js',
+                    '@admin_lte_js',
+                )
+            ),
+            'admin_lte_base_css'      => array(
+                'inputs' => array(
+                    '@admin_lte_css',
+                    '@admin_lte_forms_css',
+                )
+            ),
             'admin_lte_all'          => array(
                 'inputs' => array(
                     '@tools_js',
