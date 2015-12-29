@@ -1,0 +1,8 @@
+basename:
+    avanzuadmin: web/bundles/avanzuadmintheme
+packages:
+    admin  : js
+    vendor : vendor
+    shims  : shims
+modules:
+    admin  : avanzuadmin/admin/application

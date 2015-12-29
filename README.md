@@ -6,12 +6,11 @@ This bundle integrates several commonly used javascripts and the awesome [AdminL
 
 ## Installation
 
-Installation using composer is really easy: this command will add `"avanzu/admin-theme-bundle": "~1.3"` to your composer.json
+Installation using composer is really easy: this command will add `"avanzu/admin-theme-bundle": "~2.0"` to your composer.json
 and will download the bundle:
 
 	php composer.phar require avanzu/admin-theme-bundle
 
-_Notice: if you prefer to stay with the AdminLTE theme v1.x, manually reference `"avanzu/admin-theme-bundle": "~1.1"` in composer.json `"require"` part and run `php composer.phar update`_
 
 Enable the bundle in your kernel:
 ```php
@@ -30,35 +29,16 @@ Enable the bundle in your kernel:
 Install assets (preferably using symlink method but hardcopy works as well)...
 
 	php app/console assets:install --symlink
-	
-... and fetch vendors:
 
-	php app/console avanzu:admin:fetch-vendor
-
-### Symfony 2.8 notice
-This bundle requires assetic, but it isn't shipped with symfony anymore since version 2.8. To install assetic, follow these steps:
-
-	php composer.phar require symfony/assetic-bundle
-
-Enable the bundle in your kernel:
-```php
-	<?php
-	// app/AppKernel.php
-
-	public function registerBundles()
-	{
-		$bundles = array(
-			// ...
-			new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-		);
-	}
-```
-Add the following lines at `app/config/config_dev.yml`:
-
-    assetic:
-        use_controller: false
-
-### Changing default values from templates
+### Demo-Mode
+In order to se a working implementation of the several components, you can enable the demo mode:
+ 
+    # config.yml
+    avanzu_admin_theme:
+        enable_demo: true
+ 
+ 
+### Changing default values from templates (deprecated, see next section)
 If you want to change any default value as for example `admin_skin` all you need to do is define the same at `app/config/config.yml` under `[twig]` section. See example below:
 
     # Twig Configuration
@@ -81,11 +61,51 @@ and then use as follow in `app/config/config.yml`:
         globals:
             admin_skin: "%admin_skin%"
 
-AdminLTE skins are: skin-blue (default for this bundle), skin-blue-light, skin-yellow, skin-yellow-light, skin-green, skin-green-light, skin-purple, skin-purple-light, skin-red, skin-red-light, skin-black and skin-black-light. If you want to know more then go ahead and check docs for AdminLTE [here][1].
+#### AdminLTE skins are:
+ - skin-blue (default for this bundle)
+ - skin-blue-light 
+ - skin-yellow
+ - skin-yellow-light
+ - skin-green
+ - skin-green-light
+ - skin-purple
+ - skin-purple-light
+ - skin-red
+ - skin-red-light
+ - skin-black
+ - skin-black-light 
+ 
+If you want to know more then go ahead and check docs for AdminLTE [here][1].
 
 There are a few values you could change for sure without need to touch anything at bundle, just take a look under `Resources/views`. That's all.
+
+### Configure template settings
+Although it is still viable to define the skin using twig globals, there is now a more convenient configuration option.
+You can override and/or change several theme settings using specific configuration options rather than spreading 
+them all over the place. 
+
+These are the default values:  
+ 
+     # config.yml
+      
+     avanzu_admin_theme:
+        theme:
+            default_avatar: bundles/avanzuadmintheme/img/avatar.png 
+            skin: skin-blue 
+            fixed_layout: false 
+            boxed_layout: false
+            collapsed_sidebar: false
+            default_stylesheet: admin-lte-base.css  
+            default_script: admin-lte-base.js
+
+
+The `default_stylesheet` and `default_script` can be any of the [predefined asset groups](Resources/docs/layout.md)
         
 ### Upgrade notice
+
+Version >= 2.0 does no longer require (for real, this time) or use assetic. Therefore, the assetic groups will no longer be available.
+Please refer to the [predefined asset groups](Resources/docs/layout.md) in order to upate your asset references.
+   
 Version >= 1.3 comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no
 longer a strict requirement for bower and/or assetic. The assetic groups hovever, are still there and should work as usual.
 

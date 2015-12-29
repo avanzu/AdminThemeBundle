@@ -41,23 +41,31 @@ return call_user_func(
             ),
             'admin_lte_js'           => array(
                 'inputs' => array(
+                    $jsAssets.'public/js/adminLTE.js',
+                )
+            ),
+            'admin_lte_extra_js'           => array(
+                'inputs' => array(
                     $lteJSBase.'plugins/bootstrap-slider/bootstrap-slider.js',
                     $lteJSBase.'plugins/datatables/jquery.dataTables.js',
                     $lteJSBase.'plugins/datatables/dataTables.bootstrap.js',
                     $lteJSBase.'plugins/slimScroll/jquery.slimscroll.js',
-                    $jsAssets.'public/js/adminLTE.js',
                 )
             ),
+
             'admin_lte_css'          => array(
                 'inputs' => array(
-
                     $lteCssBase.'bootstrap/css/bootstrap.min.css',
-                    $lteCssBase.'plugins/bootstrap-slider/slider.css',
-                    $lteCssBase.'plugins/datatables/dataTables.bootstrap.css',
                     $cssAssets.'vendor/fontawesome/css/font-awesome.min.css',
                     $cssAssets.'vendor/ionicons/css/ionicons.min.css',
                     $lteCssBase.'dist/css/AdminLTE.css',
                     $lteCssBase.'dist/css/skins/_all-skins.css',
+                )
+            ),
+            'admin_lte_extra_css'          => array(
+                'inputs' => array(
+                    $lteCssBase.'plugins/bootstrap-slider/slider.css',
+                    $lteCssBase.'plugins/datatables/dataTables.bootstrap.css',
                 )
             ),
             'admin_lte_forms_js'     => array(
@@ -122,7 +130,6 @@ return call_user_func(
             'admin_lte_base' => array(
                 'inputs' => array(
                     '@tools_js',
-                    '@admin_lte_forms_js',
                     '@admin_lte_js',
                 )
             ),

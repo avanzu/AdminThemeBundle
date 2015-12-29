@@ -33,6 +33,20 @@ the bundle comes with a set of pre packaged assets located under `Resources/publ
 ```twig
 <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
 ```
+
+#### twig helper functions
+There are also two new helper functions to make asset references more convenient:
+
+##### admin_style_path(<filename>)
+```twig
+<link rel="stylesheet" href="{{ asset(admin_style_path('admin-lte-all.css')) }}" />
+```
+
+##### admin_script_path(<filename>)
+```twig
+<script src="{{asset(admin_script_path('admin-lte-all.js'))}}"></script>
+```
+
 ___File names___
 
 The packaged file names reflect the asset group name as follows:
@@ -50,21 +64,12 @@ The packaged file names reflect the asset group name as follows:
 In order to find the file you need, please refer to the following group setup.
 
 ### predefined asset groups
-the bundle integrates several asset groups to be used with assetic:
+the bundle integrates several asset groups merged into single files in order to reduce server roundtrips without loading 
+everything the theme has to offer on any request. Therefore many of these groups are defined to be used complementary. 
+(e.g. using multiple stylesheet/script tags to get everything you need for a particular view) 
 
 #### javascripts
 
-use the assetic provided {% javascripts %} tag to integrate one or several asset groups into your view.
-
-*example*
-```twig
-{% javascripts
-	'@common_js'
-	'@admin_lte_js'
-%}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-```
 `common_js (scripts/common.js)`
 
 1. jquery
@@ -75,18 +80,19 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 6. bootstrapjs
 
 `tools_js (scripts/tools.js)`
-
-1. momentjs
-2. holderjs
-3. spinjs
+1. common_js
+2. momentjs
+3. holderjs
+4. spinjs
 
 `admin_lte_js (scripts/admin-lte.js)`
+1. adminLTE
 
+`admin_lte_extra_js (scripts/admin-lte-extra.js)`
 1. bootstrap-slider
 2. jquery.dataTables
 3. dataTables.bootstrap
 4. jquery.slimscroll
-5. adminLTE
 
 `admin_lte_forms_js (scripts/admin-lte-forms.js)`
 
@@ -107,6 +113,10 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 
 1. fullcalendar
 
+`admin_lte_base (scripts/admin-lte-base.js)`
+1. tools_js
+2. admin_lte_js
+
 `admin_lte_all (scripts/admin-lte-all.js)`
 
 1. tools_js
@@ -118,17 +128,7 @@ use the assetic provided {% javascripts %} tag to integrate one or several asset
 
 
 #### Stylesheets
-Same as with the javascript asset groups, there are predefined css groups accordingly. Please make sure to use `filter="cssrewrite"`
 
-*example*
-```twig
-{% stylesheets
-	'@admin_lte_all_css'
-	filter="cssrewrite"
-%}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}
-```
 
 `admin_lte_css (styles/admin-lte.css)`
 
@@ -157,6 +157,16 @@ Same as with the javascript asset groups, there are predefined css groups accord
 `admin_lte_calendar_css (styles/admin-lte-calendar.css)`
 
 1. fullcalendar.css
+
+`admin_lte_base_css (styles/admin-lte-base.css)`
+
+1. admin_lte_css
+2. admin_lte_forms_css
+
+`admin_lte_extra_css (styles/admin-lte-extra.css)`
+
+1. slider.css
+2. dataTables.bootstrap.css
 
 `admin_lte_all_css (styles/admin-lte-all.css)`
 
