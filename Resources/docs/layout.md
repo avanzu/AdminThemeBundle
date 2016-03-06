@@ -17,6 +17,8 @@ In order to use the layout, your views should extend from the provided base-layo
 <dd>H1 Tag to give the current page a headline.</dd>
 <dt>page_subtitle</dt>
 <dd>small tag inside the Headline to give extra information.</dd>
+<dt>flash_messages</dt>
+<dd>this is the area where the flasbag messages will appear.</dd>
 <dt>page_content</dt>
 <dd>This is the main content area</dd>
 <dt>javascripts</dt>
@@ -25,6 +27,14 @@ In order to use the layout, your views should extend from the provided base-layo
 <dd>Instead of spreading inline scripts all over the page, you could use this block to group them.</dd>
 </dl>
 
+#### flash_messages
+
+You can disable or enable the alert dialog close button in the global configuration:
+```
+twig:
+    globals:
+        avanzu_adminlte_close_alert: true # default is false
+```
 
 ### packaged assets
 the bundle comes with a set of pre packaged assets located under `Resources/public/static/[dev|prod]`. These are basically the assetic groups (see below) uglified and ready to use with the regular `{{ asset() }}` helper in combination with the application's environment.

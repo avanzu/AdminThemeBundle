@@ -70,6 +70,10 @@
     {% endif %}
 {% endmacro %}
 
+{# 
+  the following code is based on phiamo/MopaBootstrapBundle
+  https://github.com/phiamo/MopaBootstrapBundle/blob/88b104b3efd4c3c3bfff1df4525a53bc3596010b/Resources/views/flash.html.twig
+#}
 {% macro flash(type, message, close, use_raw, class, domain) %}
     <div class="alert{{ type ? ' alert-'~type : '' }} fade in {{ class|default('') }} {% if close|default(false) %}alert-dismissible{% endif %}">
         {% if close|default(false) %}
