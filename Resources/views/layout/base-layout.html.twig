@@ -93,15 +93,15 @@
 
             <!-- Main content -->
             <section class="content">
-                {% block flashes %}
+                {% block flash_messages %}
                     {% if app.session.flashbag.peekAll|length > 0 %}
                         <div class="row">
                             <div class="col-sm-12">
-                                {{ session_flash() }}
+                                {{ macro.session_flash(avanzu_adminlte_close_alert|default(false)) }}
                             </div>
                         </div>
                     {% endif %}
-                {% endblock flashes %}
+                {% endblock flash_messages %}
                 {% block page_content %}{% endblock %}
             </section>
             <!-- /.content -->
