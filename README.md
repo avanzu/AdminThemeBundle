@@ -101,6 +101,6 @@ longer a strict requirement for bower and/or assetic. The assetic groups hovever
 * [Navbar Notifications](Resources/docs/navbar_notifications.md)
 * [Sidebar User](Resources/docs/sidebar_user.md)
 * [Sidebar Navigation](Resources/docs/sidebar_navigation.md)
-* 
+* [Breadcrumb Menu](Resources/docs/breadcrumbs.md)
 
  [1]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
