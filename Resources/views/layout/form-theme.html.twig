@@ -31,7 +31,13 @@
 {% endblock choice_widget_expanded %}
 
 {% block choice_widget_collapsed %}
-    {% set attr = attr|merge({'class' : 'form-control'}) %}
+
+    {% for att, val in attr %}
+        {% if att == 'class' %}
+            {% set att = val ~ ' form-control' %}
+        {% endif %}
+    {% endfor %}
+
     {{ parent() }}
 {% endblock %}
 
