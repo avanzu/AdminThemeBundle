@@ -15,16 +15,16 @@ _Notice: if you prefer to stay with the AdminLTE theme v1.x, manually reference 
 
 Enable the bundle in your kernel:
 ```php
-	<?php
-	// app/AppKernel.php
+<?php
+// app/AppKernel.php
 
-	public function registerBundles()
-	{
-		$bundles = array(
-			// ...
-			new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
-		);
-	}
+public function registerBundles()
+{
+	$bundles = array(
+		// ...
+		new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
+	);
+}
 ```
 
 Install assets (preferably using symlink method but hardcopy works as well)...
@@ -42,44 +42,51 @@ This bundle requires assetic, but it isn't shipped with symfony anymore since ve
 
 Enable the bundle in your kernel:
 ```php
-	<?php
-	// app/AppKernel.php
+<?php
+// app/AppKernel.php
 
-	public function registerBundles()
-	{
-		$bundles = array(
-			// ...
-			new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-		);
-	}
+public function registerBundles()
+{
+	$bundles = array(
+		// ...
+		new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+	);
+}
 ```
 Add the following lines at `app/config/config_dev.yml`:
-
-    assetic:
-        use_controller: false
+```yaml
+assetic:
+    use_controller: false
+```
 
 ### Changing default values from templates
 If you want to change any default value as for example `admin_skin` all you need to do is define the same at `app/config/config.yml` under `[twig]` section. See example below:
 
-    # Twig Configuration
-    twig:
-        debug:            "%kernel.debug%"
-        strict_variables: "%kernel.debug%"
-        globals:
-            admin_skin: skin-blue
-            
+```yaml
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        admin_skin: skin-blue
+```
+
 You could also define those values at `app/config/parameters.yml`:
 
-    admin_skin: skin-blue
+```yaml
+admin_skin: skin-blue
+```
 
 and then use as follow in `app/config/config.yml`:
 
-    # Twig Configuration
-    twig:
-        debug:            "%kernel.debug%"
-        strict_variables: "%kernel.debug%"
-        globals:
-            admin_skin: "%admin_skin%"
+```yaml
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        admin_skin: "%admin_skin%"
+```
 
 AdminLTE skins are: skin-blue (default for this bundle), skin-blue-light, skin-yellow, skin-yellow-light, skin-green, skin-green-light, skin-purple, skin-purple-light, skin-red, skin-red-light, skin-black and skin-black-light. If you want to know more then go ahead and check docs for AdminLTE [here][1].
 
