@@ -161,8 +161,8 @@
     {% endif %}
 
     {{ parent() }}
-    {% if required %}
-        <span class="required" title="Dies ist ein Pflichtfeld">*</span>
+    {% if required and label %}
+        <span class="required" title="{{ "This is a mandatory field"|trans({}, translation_domain) }}">*</span>
     {% endif %}
 
 {% endblock form_label %}
