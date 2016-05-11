@@ -36,14 +36,11 @@
 {% endmacro %}
 
 {% macro menu_item(item) %}
-    {% if item.route or item.hasChildren %}
-        <li id="{{ item.identifier }}" class=" {{ item.isActive ? 'active' : '' }} {{ item.hasChildren? 'treeview' : '' }}">
+    {% import _self as menu %}
+    {% if item.hasChildren or item.route %}
+        <li id="{{ item.identifier }}" class=" {{ item.isActive ? 'active' : '' }} {{ item.hasChildren ? 'treeview' : '' }}">
             <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : path(item.route, item.routeArgs) }}">
-                {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
-                <span>{{ item.label }}</span>
-                {% if item.badge %}
-                    <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
-                {% endif %}
+                {{ menu.menu_item_content(item, '') }}
                 {% if item.hasChildren %}<i class="fa fa-angle-left pull-right"></i>{% endif %}
             </a>
 
@@ -52,8 +49,7 @@
                     {% for child in item.children %}
                         <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
                             <a href="{{ '/' in child.route ? child.route : path(child.route, child.routeArgs) }}">
-                                <i class="{{ child.icon|default('fa fa-circle-o') }}"></i>
-                                {{ child.label }}
+                                {{ menu.menu_item_content(child, 'fa fa-circle-o') }}
                             </a>
                         </li>
                     {% endfor %}
@@ -61,11 +57,16 @@
             {% endif %}
         </li>
     {% else %}
-        <li class="header">
-            {{ item.label }}
-            {% if item.badge %}
-                <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
-            {% endif %}
+        <li id="{{ item.identifier }}" class="header">
+            {{ menu.menu_item_content(item, '') }}
         </li>
+    {% endif %}
+{% endmacro %}
+
+{% macro menu_item_content(item, defaultIcon) %}
+    {% if item.icon %} <i class="{{ item.icon }}"></i> {% else %} {{ defaultIcon }} {% endif %}
+    <span>{{ item.label }}</span>
+    {% if item.badge %}
+        <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
     {% endif %}
 {% endmacro %}
