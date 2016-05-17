@@ -9,6 +9,10 @@ In order to use the layout, your views should extend from the provided base-layo
 <dl>
 <dt>title</dt>
 <dd>located in the title tag</dd>
+<dt>logo_mini (by default : value of title block)</dt>
+<dd>Define the logo for "sidebar-mini" mode</dd>
+<dt>logo_lg (by default : value of title block)</dt>
+<dd>Define the logo for desktop</dd>
 <dt>stylesheets</dt>
 <dd>located in the head. Please don't forget to use {{parent()}} when adding stylesheets in your view(s).</dd>
 <dt>javascripts_head</dt>
@@ -24,7 +28,6 @@ In order to use the layout, your views should extend from the provided base-layo
 <dt>javascripts_inline</dt>
 <dd>Instead of spreading inline scripts all over the page, you could use this block to group them.</dd>
 </dl>
-
 
 ### packaged assets
 the bundle comes with a set of pre packaged assets located under `Resources/public/static/[dev|prod]`. These are basically the assetic groups (see below) uglified and ready to use with the regular `{{ asset() }}` helper in combination with the application's environment.
