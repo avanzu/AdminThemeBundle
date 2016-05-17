@@ -95,6 +95,7 @@ These are the default values:
             fixed_layout: false 
             boxed_layout: false
             collapsed_sidebar: false
+            mini_sidebar: false
             default_stylesheet: admin-lte-base.css  
             default_script: admin-lte-base.js
 
