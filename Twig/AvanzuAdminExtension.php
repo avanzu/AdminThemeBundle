@@ -14,7 +14,6 @@ class AvanzuAdminExtension extends \Twig_Extension {
 
 
     protected $options;
-
     protected $env;
 
     /**
@@ -24,7 +23,6 @@ class AvanzuAdminExtension extends \Twig_Extension {
     {
         $this->options = $options;
         $this->env      = $env;
-
     }
 
     public function getFunctions()
@@ -63,7 +61,8 @@ class AvanzuAdminExtension extends \Twig_Extension {
         if( $options['fixed_layout'] ) $classList[] = 'fixed';
         if( $options['boxed_layout']) $classList[] = 'boxed';
         if( $options['collapsed_sidebar']) $classList[] = 'sidebar-collapse';
-
+        if( $options['mini_sidebar']) $classList[] = 'sidebar-mini';
+        
         return implode(' ', array_filter($classList));
 
     }

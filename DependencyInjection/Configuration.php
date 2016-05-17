@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('fixed_layout')->defaultValue(false)->end()
                             ->scalarNode('boxed_layout')->defaultValue(false)->end()
                             ->scalarNode('collapsed_sidebar')->defaultValue(false)->end()
+                            ->scalarNode('mini_sidebar')->defaultValue(false)->end()
                             ->scalarNode('default_stylesheet')->defaultValue('admin-lte-base.css')->end()
                             ->scalarNode('default_script')->defaultValue('admin-lte-base.js')->end()
                         ->end()
