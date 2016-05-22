@@ -69,3 +69,36 @@
         </li>
     {% endif %}
 {% endmacro %}
+
+{# 
+  the following code is based on phiamo/MopaBootstrapBundle
+  https://github.com/phiamo/MopaBootstrapBundle/blob/88b104b3efd4c3c3bfff1df4525a53bc3596010b/Resources/views/flash.html.twig
+#}
+{% macro flash(type, message, close, use_raw, class, domain) %}
+    <div class="alert{{ type ? ' alert-'~type : '' }} fade in {{ class|default('') }} {% if close|default(false) %}alert-dismissible{% endif %}">
+        {% if close|default(false) %}
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {% endif %}
+        {% if use_raw|default(false) %}
+            {{ message|trans({}, domain|default('messages'))|raw }}
+        {% else %}
+            {{ message|trans({}, domain|default('messages')) }}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro session_flash(close, use_raw, class, domain) %}
+    {% import _self as flash_messages %}
+
+    {% if app.session.flashbag.peekAll|length > 0 %}
+        {% for type, messages in app.session.flashbag.all %}
+            {% for message in messages %}
+                {% if type == 'fos_user_success' %}
+                    {% set type = 'success' %}
+                    {% set domain = 'FOSUserBundle' %}
+                {% endif %}
+                {{ flash_messages.flash(type, message, close, use_raw, class, domain) }}
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
