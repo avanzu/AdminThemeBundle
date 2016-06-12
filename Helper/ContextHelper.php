@@ -114,7 +114,9 @@ class ContextHelper extends \ArrayObject
             'mini_sidebar'      => false,
             'control_sidebar'   => true,
             'default_avatar'    => 'bundles/avanzuadmintheme/img/avatar.png',
-
+            'knp_menu'          => [
+                'enable'        => false
+            ]
         ]);
     }
 

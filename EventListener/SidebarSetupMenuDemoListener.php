@@ -25,7 +25,6 @@ class SidebarSetupMenuDemoListener
 
     }
 
-
     protected function getMenu(Request $request)
     {
         $earg      = array();

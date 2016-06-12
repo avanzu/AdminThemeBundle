@@ -9,6 +9,7 @@ namespace Avanzu\AdminThemeBundle\Event;
 
 
 use Avanzu\AdminThemeBundle\Model\MenuItemInterface;
+use Knp\Menu\MenuItem;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -52,9 +53,9 @@ class SidebarMenuEvent extends ThemeEvent
     }
 
     /**
-     * @param MenuItemInterface $item
+     * @param MenuItemInterface|MenuItem $item
      */
-    public function addItem(MenuItemInterface $item)
+    public function addItem($item)
     {
         $this->menuRootItems[$item->getIdentifier()] = $item;
     }

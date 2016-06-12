@@ -228,7 +228,11 @@ desired effect
                     {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
                     {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
                 {% endif %}
-                {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
+                    {% if avanzu_admin_context.knp_menu.enable %}
+                        {% include 'AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig' %}
+                    {% else %}
+                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
+                    {% endif %}
             {% endblock %}
             {#
             <!-- Sidebar user panel (optional) -->
@@ -285,7 +289,11 @@ desired effect
             </h1>
 
             {% block avanzu_breadcrumb %}
-                {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+                {% if avanzu_admin_context.knp_menu.enable %}
+                    {% include 'AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig' %}
+                {% else %}
+                    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+                {% endif %}
             {% endblock %}
             {#
             <ol class="breadcrumb">

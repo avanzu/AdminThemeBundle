@@ -8,10 +8,13 @@
 namespace Avanzu\AdminThemeBundle\Controller;
 
 
+use Avanzu\AdminThemeBundle\Event\SidebarKnpMenuEvent;
 use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
 use Avanzu\AdminThemeBundle\Model\MenuItemInterface;
+use Knp\Menu\MenuItem;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -36,10 +39,25 @@ class BreadcrumbController extends Controller {
      *
      */
     public function breadcrumbAction(Request $request, $title = '') {
-
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_BREADCRUMB)) {
             return new Response();
         }
+
+        if ( $this->container->getParameter('avanzu_admin_theme.use_knp_menu')) {
+            return $this->buildKnpBreadcrumbs($request);
+        }
+
+        return $this->buildGenericBreadcrumbs($request, $title);
+
+    }
+
+    protected function buildKnpBreadcrumbs(Request $request)
+    {
+       return $this->render('AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig', array('menu' => 'main'));
+    }
+
+    protected function buildGenericBreadcrumbs(Request $request, $title = '')
+    {
 
         $active = $this->getDispatcher()->dispatch(ThemeEvents::THEME_BREADCRUMB,new SidebarMenuEvent($request))->getActive();
         /** @var $active MenuItemInterface */
@@ -55,9 +73,9 @@ class BreadcrumbController extends Controller {
 
 
         return $this->render('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb.html.twig', array(
-                'active' => $list,
-                'title'  => $title
-            ));
+            'active' => $list,
+            'title'  => $title
+        ));
     }
 
 

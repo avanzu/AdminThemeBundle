@@ -1,0 +1,13 @@
+{% if avanzu_admin_context.knp_menu.breadcrumb_menu %}
+    <ol class="breadcrumb">
+        {% set items = knp_menu_get_breadcrumbs_array(
+            avanzu_admin_context.knp_menu.breadcrumb_menu
+        ) %}
+
+    {% for item in items  %}
+        <li class="{{ loop.last ? 'active' : '' }}">
+            <a href="{{ item.uri }}">{{ item.label }}</a>
+        </li>
+    {% endfor %}
+    </ol>
+{% endif %}

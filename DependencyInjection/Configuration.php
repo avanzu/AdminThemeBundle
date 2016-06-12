@@ -39,6 +39,15 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('enable_demo')
                         ->defaultValue(false)
                     ->end()
+                    ->arrayNode('knp_menu')
+                        ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('enable')->defaultValue(true)->end()
+                            ->scalarNode('main_menu')->defaultValue('avanzu_main')->end()
+                            ->scalarNode('breadcrumb_menu')->defaultValue(false)->end()
+                            ->end()
+                        ->end()
+                    ->end()
                 ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
