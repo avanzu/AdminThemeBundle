@@ -13,10 +13,11 @@
         "php" : ">=5.3.0",
         "symfony/http-foundation" : ">=2.3",
         "symfony/http-kernel"  : ">=2.3",
-        "symfony/event-dispatcher" : ">=2.3",
+        "symfony/event-dispatcher" : ">=2.3"
+    },
+    "require-dev": {
         "almasaeed2010/adminlte": "^2.3"
     },
-
     "autoload": {
         "psr-4": { "Avanzu\\AdminThemeBundle\\": "" }
     }
