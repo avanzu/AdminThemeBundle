@@ -8,6 +8,7 @@
 namespace Avanzu\AdminThemeBundle\Twig;
 
 
+use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 use Twig_Environment;
 
 class AvanzuAdminExtension extends \Twig_Extension {
@@ -15,41 +16,32 @@ class AvanzuAdminExtension extends \Twig_Extension {
 
     protected $options;
     protected $env;
+    /**
+     * @var RouteAliasCollection
+     */
+    private $aliasRouter;
 
     /**
      * AvanzuAdminExtension constructor.
+     *
+     * @param             $options
+     * @param             $env
+     * @param RouteAliasCollection $aliasRouter
      */
-    public function __construct($options, $env)
+    public function __construct($options, $env, RouteAliasCollection $aliasRouter)
     {
         $this->options = $options;
         $this->env      = $env;
+        $this->aliasRouter = $aliasRouter;
     }
 
-    public function getFunctions()
-    {
-        return array(
-            new \Twig_SimpleFunction('admin_style_path' , [$this, 'getStylePath']),
-            new \Twig_SimpleFunction('admin_script_path', [$this, 'getScriptPath']),
-        );
-    }
 
     public function getFilters()
     {
         return array(
             new \Twig_SimpleFilter('body_class', [$this, 'bodyClass']),
+            new \Twig_SimpleFilter('route_alias', [$this->aliasRouter, 'getRouteByAlias'])
         );
-    }
-
-    public function getStylePath($stylesheet = null)
-    {
-        $stylesheet = $stylesheet?: $this->options['default_stylesheet'];
-        return sprintf('bundles/avanzuadmintheme/static/%s/styles/%s', $this->env, $stylesheet);
-    }
-
-    public function getScriptPath($script = null)
-    {
-        $script = $script?: $this->options['default_script'];
-        return sprintf('bundles/avanzuadmintheme/static/%s/scripts/%s', $this->env, $script);
     }
 
     public function bodyClass($classes = "")
@@ -62,7 +54,7 @@ class AvanzuAdminExtension extends \Twig_Extension {
         if( $options['boxed_layout']) $classList[] = 'boxed';
         if( $options['collapsed_sidebar']) $classList[] = 'sidebar-collapse';
         if( $options['mini_sidebar']) $classList[] = 'sidebar-mini';
-        
+
         return implode(' ', array_filter($classList));
 
     }

@@ -10,6 +10,7 @@ namespace Avanzu\AdminThemeBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
 class TwigPass implements CompilerPassInterface
 {
@@ -30,19 +31,14 @@ class TwigPass implements CompilerPassInterface
         array_push($param, 'AvanzuAdminThemeBundle:layout:form-theme.html.twig');
         $container->setParameter('twig.form.resources', $param);
 
-        /*
-        $container->getParameter(
-            'twig',
+        $twigDefinition = $container->getDefinition('twig');
+        $twigDefinition->addMethodCall(
+            'addGlobal',
             array(
-                'form_themes'    => array(
-
-                ),
-                'globals' => array(
-                    'admin_theme' => '@avanzu_admin_theme.theme_manager',
-                    'theme_options' => $container->getParameter('avanzu_admin_theme.options')
-                )
+                'avanzu_admin_context',
+                new Reference('avanzu_admin_theme.context_helper')
             )
         );
-        */
+
     }
 }

@@ -153,7 +153,7 @@ class InitializeCommand extends ContainerAwareCommand
 
         $fs->mkdir($folders->public . '/theme');
 
-        foreach ( ['bootstrap','dist','plugins','documentation'] as $directory) {
+        foreach ( ['bootstrap','dist','plugins','documentation', 'starter.html'] as $directory) {
 
             $io->text("installing <info>$directory</info>");
 
@@ -222,7 +222,7 @@ class InitializeCommand extends ContainerAwareCommand
     private function symlink($originDir, $targetDir, $relative = false)
     {
         if ($relative) {
-            $originDir = $this->filesystem->makePathRelative($originDir, dirname($targetDir));
+            $originDir = rtrim($this->filesystem->makePathRelative($originDir, dirname($targetDir)), DIRECTORY_SEPARATOR);
         }
         $this->filesystem->symlink($originDir, $targetDir);
         if (!file_exists($targetDir)) {

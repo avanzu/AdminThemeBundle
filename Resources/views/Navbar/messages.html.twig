@@ -12,7 +12,7 @@
             <ul class="menu">
                 {% for msg in messages %}
                     <li><!-- start message -->
-                        <a href="{{ path('avanzu_admin_show_message', {'messageid': msg.identifier}) }}">
+                        <a href="{{ path('message'|route_alias, {'ident': msg.identifier}) }}">
                             <div class="pull-left">
                                 {{ macro.avatar(msg.from.avatar, msg.from.username) }}
                             </div>
@@ -26,6 +26,6 @@
                 {% endfor %}
             </ul>
         </li>
-        <li class="footer"><a href="{{ path('avanzu_admin_all_messages') }}">{{'See All Messages'|trans({}, 'AvanzuAdminTheme')}}</a></li>
+        <li class="footer"><a href="{{ path('all_messages'|route_alias) }}">{{'See All Messages'|trans({}, 'AvanzuAdminTheme')}}</a></li>
     </ul>
 </li>
