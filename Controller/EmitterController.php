@@ -34,7 +34,7 @@ class EmitterController extends Controller
 
     /**
      * Will look for a method of the format "on<CamelizedEventName>" and call it with the event as argument.
-     * 
+     *
      *
      * Then it will dispatch the event as normal via the event dispatcher.
      *
@@ -45,7 +45,7 @@ class EmitterController extends Controller
      */
     protected function triggerMethod($eventName, Event $event)
     {
-        $method = sprintf('on%s', Container::camelize($eventName));
+        $method = sprintf('on%s', Container::camelize(str_replace('.', '_',$eventName)));
 
         if( is_callable([$this, $method])) {
             call_user_func_array([$this, $method], [$event]);
