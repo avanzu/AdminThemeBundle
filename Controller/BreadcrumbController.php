@@ -8,12 +8,9 @@
 namespace Avanzu\AdminThemeBundle\Controller;
 
 
-use Avanzu\AdminThemeBundle\Event\SidebarKnpMenuEvent;
 use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
 use Avanzu\AdminThemeBundle\Model\MenuItemInterface;
-use Knp\Menu\MenuItem;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +19,8 @@ use Symfony\Component\HttpFoundation\Response;
  * Controller to handle breadcrumb display inside the layout
  *
  */
-class BreadcrumbController extends Controller {
+class BreadcrumbController extends EmitterController
+{
 
 
     /**
@@ -38,12 +36,13 @@ class BreadcrumbController extends Controller {
      * @return Response
      *
      */
-    public function breadcrumbAction(Request $request, $title = '') {
-        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_BREADCRUMB)) {
+    public function breadcrumbAction(Request $request, $title = '')
+    {
+        if (!$this->hasListener(ThemeEvents::THEME_BREADCRUMB)) {
             return new Response();
         }
 
-        if ( $this->container->getParameter('avanzu_admin_theme.use_knp_menu')) {
+        if ($this->container->getParameter('avanzu_admin_theme.use_knp_menu')) {
             return $this->buildKnpBreadcrumbs($request);
         }
 
@@ -51,40 +50,44 @@ class BreadcrumbController extends Controller {
 
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     protected function buildKnpBreadcrumbs(Request $request)
     {
-       return $this->render('AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig', array('menu' => 'main'));
+        return $this->render('AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig');
     }
 
+    /**
+     * @param Request $request
+     * @param string  $title
+     *
+     * @return Response
+     */
     protected function buildGenericBreadcrumbs(Request $request, $title = '')
     {
 
-        $active = $this->getDispatcher()->dispatch(ThemeEvents::THEME_BREADCRUMB,new SidebarMenuEvent($request))->getActive();
+        $active = $this->triggerMethod(ThemeEvents::THEME_BREADCRUMB, new SidebarMenuEvent($request))->getActive();
         /** @var $active MenuItemInterface */
         $list = array();
-        if($active) {
+        if ($active) {
 
             $list[] = $active;
-            while(null !== ($item = $active->getActiveChild())) {
+            while (null !== ($item = $active->getActiveChild())) {
                 $list[] = $item;
                 $active = $item;
             }
         }
 
 
-        return $this->render('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb.html.twig', array(
-            'active' => $list,
-            'title'  => $title
-        ));
+        return $this->render(
+            'AvanzuAdminThemeBundle:Breadcrumb:breadcrumb.html.twig',
+            array(
+                'active' => $list,
+                'title'  => $title,
+            )
+        );
     }
-
-
-    /**
-     * @return EventDispatcher
-     */
-    protected function getDispatcher()
-    {
-        return $this->get('event_dispatcher');
-    }
-
 }

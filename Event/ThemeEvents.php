@@ -50,6 +50,10 @@ class ThemeEvents
      */
     const THEME_SIDEBAR_SETUP_MENU    = 'theme.sidebar_setup_menu';
     /**
+     * used for the knp menu mechanics
+     */
+    const THEME_SIDEBAR_SETUP_KNP_MENU = 'theme.sidebar_setup_knp_menu';
+    /**
      *
      */
     const THEME_SIDEBAR_ACTIVATE_MENU = 'theme.sidebar_activate_menu';

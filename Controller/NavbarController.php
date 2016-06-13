@@ -17,85 +17,96 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Response;
 
-class NavbarController extends Controller
+class NavbarController extends EmitterController
 {
 
     /**
-     * @return EventDispatcher
+     * @param int $max
+     *
+     * @return Response
      */
-    protected function getDispatcher()
-    {
-        return $this->get('event_dispatcher');
-    }
-
-
     public function notificationsAction($max = 5)
     {
 
-        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NOTIFICATIONS)) {
+        if (!$this->hasListener(ThemeEvents::THEME_NOTIFICATIONS)) {
             return new Response();
         }
 
-        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_NOTIFICATIONS, new NotificationListEvent());
+        $listEvent = $this->triggerMethod(ThemeEvents::THEME_NOTIFICATIONS, new NotificationListEvent());
 
         return $this->render(
-                    'AvanzuAdminThemeBundle:Navbar:notifications.html.twig',
-                        array(
-                            'notifications' => $listEvent->getNotifications(),
-                            'total'         => $listEvent->getTotal()
-                        )
+            'AvanzuAdminThemeBundle:Navbar:notifications.html.twig',
+            array(
+
+                'notifications' => $listEvent->getNotifications(),
+                'total'         => $listEvent->getTotal(),
+            )
         );
 
     }
 
+    /**
+     * @param int $max
+     *
+     * @return Response
+     */
     public function messagesAction($max = 5)
     {
 
-        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_MESSAGES)) {
+        if (!$this->hasListener(ThemeEvents::THEME_MESSAGES)) {
             return new Response();
         }
 
-        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_MESSAGES, new MessageListEvent());
+        $listEvent = $this->triggerMethod(ThemeEvents::THEME_MESSAGES, new MessageListEvent());
 
         return $this->render(
-                    'AvanzuAdminThemeBundle:Navbar:messages.html.twig',
-                        array(
-                            'messages' => $listEvent->getMessages(),
-                            'total'    => $listEvent->getTotal()
-                        )
+            'AvanzuAdminThemeBundle:Navbar:messages.html.twig',
+            array(
+                'messages' => $listEvent->getMessages(),
+                'total'    => $listEvent->getTotal(),
+            )
         );
     }
 
+    /**
+     * @param int $max
+     *
+     * @return Response
+     */
     public function tasksAction($max = 5)
     {
 
-        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_TASKS)) {
+        if (!$this->hasListener(ThemeEvents::THEME_TASKS)) {
             return new Response();
         }
-        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_TASKS, new TaskListEvent());
+        
+        $listEvent = $this->triggerMethod(ThemeEvents::THEME_TASKS, new TaskListEvent());
 
         return $this->render(
-                    'AvanzuAdminThemeBundle:Navbar:tasks.html.twig',
-                        array(
-                            'tasks' => $listEvent->getTasks(),
-                            'total' => $listEvent->getTotal()
-                        )
+            'AvanzuAdminThemeBundle:Navbar:tasks.html.twig',
+            array(
+                'tasks' => $listEvent->getTasks(),
+                'total' => $listEvent->getTotal(),
+            )
         );
     }
 
+    /**
+     * @return Response
+     */
     public function userAction()
     {
 
-        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NAVBAR_USER)) {
+        if (!$this->hasListener(ThemeEvents::THEME_NAVBAR_USER)) {
             return new Response();
         }
-        $userEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_NAVBAR_USER, new ShowUserEvent());
+        $userEvent = $this->triggerMethod(ThemeEvents::THEME_NAVBAR_USER, new ShowUserEvent());
 
         return $this->render(
-                    'AvanzuAdminThemeBundle:Navbar:user.html.twig',
-                        array(
-                            'user' => $userEvent->getUser()
-                        )
+            'AvanzuAdminThemeBundle:Navbar:user.html.twig',
+            array(
+                'user' => $userEvent->getUser(),
+            )
         );
     }
 

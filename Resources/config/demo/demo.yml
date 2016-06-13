@@ -4,7 +4,8 @@ parameters:
     avanzu_admin_theme.navbar_notify_listener.class: Avanzu\AdminThemeBundle\EventListener\NavbarNotificationListDemoListener
     avanzu_admin_theme.navbar_msg_listener.class: Avanzu\AdminThemeBundle\EventListener\NavbarMessageListDemoListener
     avanzu_admin_theme.setup_menu_listener.class: Avanzu\AdminThemeBundle\EventListener\SidebarSetupMenuDemoListener
-    avanzu_admin_theme.knp_menu_builder.class: Avanzu\AdminThemeBundle\Menu\DemoMenuBuilder
+    avanzu_admin_theme.setup_knp_menu_listener.class: Avanzu\AdminThemeBundle\EventListener\DemoKnpMenuListener
+
 services:
     avanzu_admin_theme.navbar_user_listener:
         class: "%avanzu_admin_theme.navbar_user_listener.class%"
@@ -30,11 +31,8 @@ services:
             - { name: kernel.event_listener, event: theme.sidebar_setup_menu, method: onSetupMenu }
             - { name: kernel.event_listener, event: theme.breadcrumb, method: onSetupMenu }
 
-    avanzu_admin_theme.knp_menu_builder:
-        class: "%avanzu_admin_theme.knp_menu_builder.class%"
-        arguments:
-            - "@knp_menu.factory"
-            - "@request_stack"
-            - "@event_dispatcher"
-        tags:
-            - {name: knp_menu.menu_builder, method: createMainMenu, alias: avanzu_main }
+    avanzu_admin_theme.knp_menu_listener:
+            class: "%avanzu_admin_theme.setup_knp_menu_listener.class%"
+            tags:
+                - { name: kernel.event_listener, event: theme.sidebar_setup_knp_menu, method: onSetupKnpMenu }
+

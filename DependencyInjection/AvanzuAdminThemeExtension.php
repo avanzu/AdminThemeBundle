@@ -30,6 +30,10 @@ class AvanzuAdminThemeExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
 
+        if( $config['knp_menu']['enable'] ) {
+            $loader->load('container/knp-menu.yml');
+        }
+
         if( $config['enable_demo']) {
             $loader->load('demo/demo.yml');
         }
