@@ -32,7 +32,7 @@ class NavbarController extends EmitterController
             return new Response();
         }
 
-        $listEvent = $this->triggerMethod(ThemeEvents::THEME_NOTIFICATIONS, new NotificationListEvent());
+        $listEvent = $this->triggerMethod(ThemeEvents::THEME_NOTIFICATIONS, new NotificationListEvent($max));
 
         return $this->render(
             'AvanzuAdminThemeBundle:Navbar:notifications.html.twig',
@@ -57,7 +57,7 @@ class NavbarController extends EmitterController
             return new Response();
         }
 
-        $listEvent = $this->triggerMethod(ThemeEvents::THEME_MESSAGES, new MessageListEvent());
+        $listEvent = $this->triggerMethod(ThemeEvents::THEME_MESSAGES, new MessageListEvent($max));
 
         return $this->render(
             'AvanzuAdminThemeBundle:Navbar:messages.html.twig',
@@ -80,7 +80,7 @@ class NavbarController extends EmitterController
             return new Response();
         }
         
-        $listEvent = $this->triggerMethod(ThemeEvents::THEME_TASKS, new TaskListEvent());
+        $listEvent = $this->triggerMethod(ThemeEvents::THEME_TASKS, new TaskListEvent($max));
 
         return $this->render(
             'AvanzuAdminThemeBundle:Navbar:tasks.html.twig',

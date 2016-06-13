@@ -14,7 +14,27 @@ class TaskListEvent extends ThemeEvent {
 
     protected $tasks = array();
 
+    protected $max;
+
     protected $total = 0;
+
+    /**
+     * TaskListEvent constructor.
+     *
+     * @param $max
+     */
+    public function __construct($max)
+    {
+        $this->max = $max;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMax()
+    {
+        return $this->max;
+    }
 
     /**
      * @return array

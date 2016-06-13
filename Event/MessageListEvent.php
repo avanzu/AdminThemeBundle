@@ -29,6 +29,27 @@ class MessageListEvent extends ThemeEvent
      * @var int
      */
     protected $totalMessages = 0;
+    
+    protected $max = null;
+
+    /**
+     * MessageListEvent constructor.
+     *
+     * @param null $max
+     */
+    public function __construct($max)
+    {
+        $this->max = $max;
+    }
+
+    /**
+     * @return null
+     */
+    public function getMax()
+    {
+        return $this->max;
+    }
+
 
     /**
      * Returns the message list

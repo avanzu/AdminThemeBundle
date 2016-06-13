@@ -25,6 +25,27 @@ class NotificationListEvent extends ThemeEvent
 
     protected $total = 0;
 
+    protected $max = null;
+
+    /**
+     * NotificationListEvent constructor.
+     *
+     * @param null $max
+     */
+    public function __construct($max)
+    {
+        $this->max = $max;
+    }
+
+    /**
+     * @return null
+     */
+    public function getMax()
+    {
+        return $this->max;
+    }
+
+
     /**
      * @return array
      */
