@@ -47,8 +47,8 @@ class DependencyResolverTest extends \PHPUnit_Framework_TestCase
         $resolved = $resolver->register($items)->resolveAll();
 
         foreach ($expected as $index => $id) {
-            assertThat($resolved, hasKeyInArray($index));
-            assertThat($resolved[$index]['id'], is(equalTo($id)));
+            $this->assertArrayHasKey($index, $resolved);
+            $this->assertEquals($id, $resolved[$index]['id']);
         }
     }
 
@@ -71,7 +71,7 @@ class DependencyResolverTest extends \PHPUnit_Framework_TestCase
         try {
             $resolver->resolveAll();
         } catch(\Exception $e) {
-            assertThat($e, is(anInstanceOf('\RuntimeException')));
+            $this->assertInstanceOf(\RuntimeException::class, $e);
         }
     }
 

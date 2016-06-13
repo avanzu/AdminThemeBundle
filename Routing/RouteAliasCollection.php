@@ -10,7 +10,6 @@ namespace Avanzu\AdminThemeBundle\Routing;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Routing\Route;
-use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\RouterInterface;
 
 class RouteAliasCollection

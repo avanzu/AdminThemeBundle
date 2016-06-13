@@ -15,7 +15,6 @@ class AvanzuAdminThemeBundle extends Bundle
     {
         parent::build($container);
         $container->addCompilerPass(new TwigPass());
-        // $container->addCompilerPass(new KnpMenuPass());
     }
 
 
