@@ -9,7 +9,7 @@ Instead of fully relying on blocks and includes, you are provided with a twig gl
 This is basically a parameter bag with some pre-defined values based on the bundle configuration. 
 
 ### Partials
-In order to make overriding some of the template regions, there are several partials included within the layout which can be overridden individually as described [here][1]. 
+In order to make overriding some of the template regions easier, there are several partials included within the layout which can be overridden individually as described [here][1]. 
 
 Listed in the order of appearance, these are:
 

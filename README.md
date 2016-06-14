@@ -112,13 +112,13 @@ avanzu_admin:
 #### Version `>= 2.0`
 ___This version is not fully backwards compatible regarding the templates and assets.___
 
-does no longer rely on any external build tools or package managers (except composer of course). 
+- does no longer rely on any external build tools or package managers (except composer of course). 
 In consequence, there are no pre packaged scripts/styles or asset groups available. 
 If you want to use script and/or stylesheet packing, you will most likely already have the tools of your choice in place and are now able to use them as fits best for your needs. 
-
+- Introduces route name [aliases][2] for url generation inside the components. 
    
 #### Version `>= 1.3` 
-comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no
+- comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no
 longer a strict requirement for bower and/or assetic. The assetic groups hovever, are still there and should work as usual.
 
 
