@@ -2,7 +2,7 @@ AdminThemeBundle
 ================
 
 Admin Theme based on the AdminLTE Template for easy integration into symfony.
-This bundle integrates several commonly used javascripts and the awesome [AdminLTE Template](https://github.com/almasaeed2010/AdminLTE).
+This bundle integrates several commonly used javascripts and the awesome [AdminLTE Template][10].
 
 ## Installation
 
@@ -30,42 +30,48 @@ Install assets (preferably using symlink method but hardcopy works as well)...
 
 	php bin/console assets:install --symlink
 
-Initialize the theme (this will symlink or hardcopy the theme's public files to `web/theme`)
+Initialize the theme
 
     php bin/console avanzu:admin:initialize [--symlink|--relative]
 
-### Demo-Mode
-In order to se a working implementation of the several components, you can enable the demo mode:
- 
-    # config.yml
-    avanzu_admin_theme:
-        enable_demo: true
+initializing will create several symlinks (falling back to hard copy) into the `web/theme` folder from the required `almasaeed2010/adminlte` package:
 
-### Configure template settings
-Although it is still viable to define the skin using twig globals, there is now a more convenient configuration option.
-You can override and/or change several theme settings using specific configuration options rather than spreading 
-them all over the place. 
+ - bootstrap
+ - dist
+ - plugins
+ - documentation
+ - starter.html
+  
 
-These are the default values:  
- 
-     # config.yml
+### Configure
+
+Although the bundle should run with zero configruration, there are several settings you might want to adjust to your taste or requirements. 
+*Please keep in mind that you don't have to put the whole config block into your configuration but rather the ones you want to change from the defaults.* 
+
+These are the configuration default values:  
+
+```yaml 
+# config.yml
       
-     avanzu_admin_theme:
-        use_twig: true
-        enable_demo: false
-        theme:
-            default_avatar: bundles/avanzuadmintheme/img/avatar.png 
-            skin: skin-blue 
-            fixed_layout: false 
-            boxed_layout: false
-            collapsed_sidebar: false
-            mini_sidebar: false
-            control_sidebar: false
-        knp_menu:
-            enable: true
-            main_menu: avanzu_main
-            breadcrumb_menu: false
-            
+avanzu_admin_theme:
+	use_twig   : true
+    enable_demo: false
+    theme:
+    	default_avatar   : bundles/avanzuadmintheme/img/avatar.png  
+        
+        skin             : skin-blue  # see skin listing for viable options
+        fixed_layout     : false      # -------------------------------------------------------
+        boxed_layout     : false      # these settings relate directly to the "Layout Options"
+        collapsed_sidebar: false      # described in the adminlte documentation
+        mini_sidebar     : false      # -------------------------------------------------------
+        control_sidebar  : false      # controls wether the right hand panel will be rendered  
+    
+	knp_menu:                         # knp menu integration     
+    	enable         : true          
+        main_menu      : avanzu_main  # the menu builder alias to use for the main menu
+        breadcrumb_menu: false        # the menu builder alias to use for the breacrumbs
+        
+```            
 
 #### AdminLTE skins are:
  - skin-blue (default for this bundle)
@@ -81,34 +87,60 @@ These are the default values:
  - skin-black
  - skin-black-light 
  
-If you want to know more then go ahead and check docs for AdminLTE [here][1].
+If you want to know more then go ahead and check docs for AdminLTE [here][9].
 
-There are a few values you could change for sure without need to touch anything at bundle, just take a look under `Resources/views`. That's all.
 
+### Demo-Mode
+In order to se a working implementation of the several components, you can enable the demo mode:
+
+ ```yaml
+ # config.yml
+ avanzu_admin_theme:
+ 	enable_demo: true
+```
+and add the routes to your routing configuration: 
+
+```yaml
+# routing.yml
+avanzu_admin:
+	prefix: /admin
+    resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
+```
 
 ### Upgrade notice
 
-Version >= 2.0 does no longer rely on any external build tools or package managers (except composer of course). 
+#### Version `>= 2.0`
+___This version is not fully backwards compatible regarding the templates and assets.___
+
+does no longer rely on any external build tools or package managers (except composer of course). 
 In consequence, there are no pre packaged scripts/styles or asset groups available. 
-If you want to use script and/or stylesheet packing, you will most likely already have the tools of your choice in place 
-and are now able to use them as fits best for your needs. 
+If you want to use script and/or stylesheet packing, you will most likely already have the tools of your choice in place and are now able to use them as fits best for your needs. 
 
    
-Version >= 1.3 comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no
+#### Version `>= 1.3` 
+comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no
 longer a strict requirement for bower and/or assetic. The assetic groups hovever, are still there and should work as usual.
 
 
 ### Next Steps
-* [Using the layout](Resources/docs/layout.md)
-* [Rebuilding the assets](Resources/docs/rebuild.md)
-* [Using the ThemeManager](Resources/docs/theme_manager.md)
-* [Components](Resources/docs/component_events.md)
-* [Navbar User](Resources/docs/navbar_user.md)
-* [Navbar Tasks](Resources/docs/navbar_tasks.md)
-* [Navbar Messages](Resources/docs/navbar_messages.md)
-* [Navbar Notifications](Resources/docs/navbar_notifications.md)
-* [Sidebar User](Resources/docs/sidebar_user.md)
-* [Sidebar Navigation](Resources/docs/sidebar_navigation.md)
-* 
+* [Using the layout][1]
+* [Components][2]
+* [Navbar User][3]
+* [Navbar Tasks][4]
+* [Navbar Messages][5]
+* [Navbar Notifications][6]
+* [Sidebar User][7]
+* [Sidebar Navigation][8]
 
- [1]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
+
+ [1]: Resources/docs/layout.md
+ [2]: Resources/docs/component_events.md
+ [3]: Resources/docs/navbar_user.md
+ [4]: Resources/docs/navbar_tasks.md
+ [5]: Resources/docs/navbar_messages.md
+ [6]: Resources/docs/navbar_notifications.md
+ [7]: Resources/docs/sidebar_user.md
+ [8]: Resources/docs/sidebar_navigation.md
+ [9]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
+ [10]: https://github.com/almasaeed2010/AdminLTE
+ 

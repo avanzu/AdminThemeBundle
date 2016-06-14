@@ -1,177 +1,92 @@
 ## Using the layout
 
-In order to use the layout, your views should extend from the provided base-layout
+In order to use the layout, your views should extend from the provided `default-layout`
 ```twig
-{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
 ```
-### layout blocks
+### twig global 
+Instead of fully relying on blocks and includes, you are provided with a twig global named `avanzu_admin_context` to store and retrieve particular values throughout the page rendering. 
+This is basically a parameter bag with some pre-defined values based on the bundle configuration. 
+
+### Partials
+In order to make overriding some of the template regions, there are several partials included within the layout which can be overridden individually as described [here][1]. 
+
+Listed in the order of appearance, these are:
 
 <dl>
-<dt>title</dt>
-<dd>located in the title tag</dd>
-<dt>stylesheets</dt>
-<dd>located in the head. Please don't forget to use {{parent()}} when adding stylesheets in your view(s).</dd>
-<dt>javascripts_head</dt>
-<dd>Also located in the head. Used to integrate modernizr.js</dd>
-<dt>page_title</dt>
-<dd>H1 Tag to give the current page a headline.</dd>
-<dt>page_subtitle</dt>
-<dd>small tag inside the Headline to give extra information.</dd>
-<dt>page_content</dt>
-<dd>This is the main content area</dd>
-<dt>javascripts</dt>
-<dd>load your js files in this block.</dd>
-<dt>javascripts_inline</dt>
-<dd>Instead of spreading inline scripts all over the page, you could use this block to group them.</dd>
+<dt>AvanzuAdminThemeBundle:Partials:_head.html.twig
+<dd>Defines the `<head/>` contents.
+<dt>AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig
+<dd>Renders the knp menu using the builder defined as `main_menu`. 
+<br/>___Notice___ *this partial will only be included when the knp_menu is enabled.*
+<dt>AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig
+<dd>Rendes the knp menu using the builder defined as `breadcrumb_menu` 
+<br/>___Notice___ *this partial will only be included when the knp_menu is enabled.*
+<dt>AvanzuAdminThemeBundle:Partials:_footer.html.twig
+<dd>Renders the main footer
+<dt>AvanzuAdminThemeBundle:Partials:_control-sidebar.html.twig
+<dd>Renders the control sidebar (righthand panel) unless it is disabled in the config (default)
+<dt>AvanzuAdminThemeBundle:Partials:_scripts.html.twig
+<dd>Renders script tags. Located right before the closing `body`. 
 </dl>
 
+### layout blocks
+The blocks defined in the layout in order of appearance. Some of them do contain some of the major components like the sidebar or navbar. In order to redefine the block and to keep the default content, don't forget to use `{{parent()}}` 
 
-### packaged assets
-the bundle comes with a set of pre packaged assets located under `Resources/public/static/[dev|prod]`. These are basically the assetic groups (see below) uglified and ready to use with the regular `{{ asset() }}` helper in combination with the application's environment.
+<dl>
+<dt>avanzu_logo_mini
+<dd>Contents of `.logo-mini`
 
-*example*
-```twig
-<link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
-```
+<dt>avanzu_logo_lg
+<dd>Contents of `.logo-lg`
 
-#### twig helper functions
-There are also two new helper functions to make asset references more convenient:
+<dt>avanzu_navbar_messages
+<dd>Renders the `messages` component
 
-##### admin_style_path(<filename>)
-```twig
-<link rel="stylesheet" href="{{ asset(admin_style_path('admin-lte-all.css')) }}" />
-```
+<dt>avanzu_navbar_notifications
+<dd>Renders the `notifications` component
 
-##### admin_script_path(<filename>)
-```twig
-<script src="{{asset(admin_script_path('admin-lte-all.js'))}}"></script>
-```
+<dt>avanzu_navbar_tasks
+<dd>Renders the `tasks` component
 
-___File names___
+<dt>avanzu_navbar_user
+<dd>Renders the `user` component
 
-The packaged file names reflect the asset group name as follows:
-* underscores are replaced with dashes
-* `_js` and `_css` suffixes are removed
-* javascripts will be placed under `scripts`
-* stylesheets will be placed under `styles`
+<dt>avanzu_navbar_control_sidebar_toggle
+<dd>Renders the toggle for the `control_sidebar` (if enabled)
 
-*example*
+<dt>avanzu_sidebar_user
+<dd>Renders the `userPanel` component 
 
-`@admin_lte_js` will be uglified into `scripts/admin-lte.js`
+<dt>avanzu_sidebar_search
+<dd>Renders the `searchPanel` component
 
-`@admin_lte_all_css` will be uglified into `styles/admin-lte-all.css`
+<dt>avanzu_sidebar_nav
+<dd>Renders the `menu` component _or_ includes `AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig` depending on wether the `knp_menu` is enabled or not. 
 
-In order to find the file you need, please refer to the following group setup.
+<dt>avanzu_page_title
+<dd>Defines the page header inside `.content-header` *(not the `<title/>`)*
 
-### predefined asset groups
-the bundle integrates several asset groups merged into single files in order to reduce server roundtrips without loading 
-everything the theme has to offer on any request. Therefore many of these groups are defined to be used complementary. 
-(e.g. using multiple stylesheet/script tags to get everything you need for a particular view) 
+<dt>avanzu_page_subtitle
+<dd>Defines the `<small/>` portion of `.content-header`
 
-#### javascripts
+<dt>avanzu_breadcrumb
+<dd>Renders either the `breadcrumb` component or includes `AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig` based on your configuration.
 
-`common_js (scripts/common.js)`
+<dt>avanzu_page_content
+<dd>The main content area. 
 
-1. jquery
-2. jquery-ui
-3. undersocre
-4. backbone
-5. marionette
-6. bootstrapjs
+<dt>avanzu_footer
+<dd>The main footer. Includes `AvanzuAdminThemeBundle:Partials:_footer.html.twig` by default.
 
-`tools_js (scripts/tools.js)`
-1. common_js
-2. momentjs
-3. holderjs
-4. spinjs
+<dt>avanzu_control_sidebar
+<dd>Includes `AvanzuAdminThemeBundle:Partials:_control-sidebar.html.twig` if it is enabled.
 
-`admin_lte_js (scripts/admin-lte.js)`
-1. adminLTE
+<dt>avanzu_javascripts
+<dd>Includes `AvanzuAdminThemeBundle:Partials:_scripts.html.twig` by default.
 
-`admin_lte_extra_js (scripts/admin-lte-extra.js)`
-1. bootstrap-slider
-2. jquery.dataTables
-3. dataTables.bootstrap
-4. jquery.slimscroll
+<dt>avanzu_javascripts_inline
+<dd>Intended for inline scripts in order to keep those in one single document block.
+</dl>
 
-`admin_lte_forms_js (scripts/admin-lte-forms.js)`
-
-1. bootstrap-colorpicker
-2. daterangepicker
-3. bootstrap-timepicker
-4. jquery.inputmask
-
-`admin_lte_wysiwyg (scripts/admin-lte-wysiwyg.js)`
-
-1. bootstrap3-wysihtml
-
-`admin_lte_morris (scripts/admin-lte-morris.js)`
-
-1. morrisjs
-
-`admin_lte_calendar (scripts/admin-lte-calendar.js)`
-
-1. fullcalendar
-
-`admin_lte_base (scripts/admin-lte-base.js)`
-1. tools_js
-2. admin_lte_js
-
-`admin_lte_all (scripts/admin-lte-all.js)`
-
-1. tools_js
-2. admin_lte_forms_js
-3. admin_lte_wysiwyg
-4. admin_lte_morris
-5. admin_lte_calendar
-6. admin_lte_js
-
-
-#### Stylesheets
-
-
-`admin_lte_css (styles/admin-lte.css)`
-
-1. jquery-ui-1.10.3.custom.css
-2. bootstrap.css
-3. slider.css
-4. dataTables.bootstrap.css
-5. font-awesome.css
-6. ionicons.css
-7. AdminLTE.css
-
-`admin_lte_forms_css (styles/admin-lte-forms.css)`
-
-1. bootstrap-colorpicker.css
-2. daterangepicker-bs3.css
-3. bootstrap-timepicker.css
-
-`admin_lte_wysiswyg_css (styles/admin-lte-wysiwyg.css)`
-
-1. bootstrap3-wysihtml5.css
-
-`admin_lte_morris_css (styles/admin-lte-morris.css)`
-
-1. morris.css
-
-`admin_lte_calendar_css (styles/admin-lte-calendar.css)`
-
-1. fullcalendar.css
-
-`admin_lte_base_css (styles/admin-lte-base.css)`
-
-1. admin_lte_css
-2. admin_lte_forms_css
-
-`admin_lte_extra_css (styles/admin-lte-extra.css)`
-
-1. slider.css
-2. dataTables.bootstrap.css
-
-`admin_lte_all_css (styles/admin-lte-all.css)`
-
-1. admin_lte_calendar_css
-2. admin_lte_morris_css
-3. admin_lte_wysiwyg_css
-4. admin_lte_forms_css
-5. admin_lte_css
+[1]: http://symfony.com/doc/current/book/templating.html#overriding-bundle-templates

@@ -53,7 +53,7 @@ desired effect
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
 
-                    {% block avanzu_navbar %}
+                    {% block avanzu_navbar_messages %}
                         {#
                     <!-- Messages: style can be found in dropdown.less-->
                     <li class="dropdown messages-menu">
@@ -92,6 +92,8 @@ desired effect
                     <!-- /.messages-menu -->
                     #}
                         {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
+                    {% endblock %}
+                    {% block avanzu_navbar_notifications %}
                         {#
                     <!-- Notifications Menu -->
                     <li class="dropdown notifications-menu">
@@ -118,6 +120,8 @@ desired effect
                     </li>
                     #}
                         {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
+                    {% endblock %}
+                    {% block avanzu_navbar_tasks %}
                         {#
                     <!-- Tasks Menu -->
                     <li class="dropdown tasks-menu">
@@ -157,6 +161,8 @@ desired effect
                     </li>
                     #}
                         {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
+                    {% endblock %}
+                    {% block avanzu_navbar_user %}
                         {#
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
@@ -206,13 +212,14 @@ desired effect
                     #}
                         {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
                     {% endblock %}
-
+                    {% block avanzu_navbar_control_sidebar_toggle %}
                     {% if avanzu_admin_context.control_sidebar %}
                     <!-- Control Sidebar Toggle Button -->
                     <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
                     {% endif %}
+                    {% endblock %}
                 </ul>
             </div>
         </nav>
@@ -223,16 +230,22 @@ desired effect
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
 
-            {% block avanzu_sidebar %}
+            {% block avanzu_sidebar_user %}
                 {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
                     {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
-                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
                 {% endif %}
-                    {% if avanzu_admin_context.knp_menu.enable %}
-                        {% include 'AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig' %}
-                    {% else %}
-                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
-                    {% endif %}
+            {% endblock %}
+
+            {% block avanzu_sidebar_search %}
+                {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+            {% endblock %}
+
+            {% block avanzu_sidebar_nav %}
+                {% if avanzu_admin_context.knp_menu.enable %}
+                    {% include 'AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig' %}
+                {% else %}
+                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
+                {% endif %}
             {% endblock %}
             {#
             <!-- Sidebar user panel (optional) -->
@@ -284,8 +297,8 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                {% block page_title %}{{ avanzu_admin_context.page_title|default('BlankPage') }}{% endblock %}
-                <small>{% block page_subtitle %}{{ avanzu_admin_context.page_subtitle|default }}{% endblock %}</small>
+                {% block avanzu_page_title %}{{ avanzu_admin_context.page_title|default('BlankPage') }}{% endblock %}
+                <small>{% block avanzu_page_subtitle %}{{ avanzu_admin_context.page_subtitle|default }}{% endblock %}</small>
             </h1>
 
             {% block avanzu_breadcrumb %}
@@ -323,8 +336,8 @@ desired effect
 <!-- ./wrapper -->
 <!-- REQUIRED JS SCRIPTS -->
 
-{% block javascripts %}{% include 'AvanzuAdminThemeBundle:Partials:_scripts.html.twig' %}{% endblock %}
-{% block javascripts_inline %}{% endblock %}
+{% block avanzu_javascripts %}{% include 'AvanzuAdminThemeBundle:Partials:_scripts.html.twig' %}{% endblock %}
+{% block avanzu_javascripts_inline %}{% endblock %}
 
 </body>
 </html>
