@@ -1,5 +1,7 @@
 ## The Sidebar Navigation Component
 
+__*Notice* If you would rather use the KnpMenuBundle instead, please refer to the [integration guide][1].__
+
 Although the `MenuItemInteface` as well as the `MenuItemModel` are designed to support an unlimited depth, the sidebar menu is currently limited to two levels.
 
 ### Data Model
@@ -126,3 +128,5 @@ YAML:
             tags:
                 - { name: kernel.event_listener, event:theme.sidebar_setup_menu, method:onSetupMenu }
 ```
+
+[1]: knp_menu.md

@@ -1,18 +1,11 @@
 ## The Navbar Messages Component
 
 ### Routes
-Just like the other theme components, this one requires some route names to work.
+Just like the other theme components, this one requires some route aliases to work. Please refer to the [component overview][1] to learn about the route alias details. 
 
-* `avanzu_admin_all_messages` which should point to a list view of messages.
-* `avanzu_admin_show_message` which should point to a particular message.
-
-You could use the following route stubs with your `routing.yml`
-```yaml
-avanzu_admin_all_messages:
-    path: /messages/
-avanzu_admin_show_message:
-    path: /messages/{messageid}/
-```
+#### required aliases
+* all_messages
+* message
 
 ### Data Model
 
@@ -78,3 +71,4 @@ Finally, you need to attach your new listener to the event system:
 	<!-- ... -->
 </services>
 ```
+[1]: component_events.md

@@ -1,18 +1,11 @@
 ## The Navbar Notifications Component
 
 ### Routes
-Just like the other theme components, this one requires some route names to work.
+Just like the other theme components, this one requires some route aliases to work. Please refer to the [component overview][1] to learn about the route alias details. 
 
-* `avanzu_admin_all_notifications` which should point to a list view of notifications.
-* `avanzu_admin_show_notification` which should point to a particular notifications.
-
-You could use the following route stubs with your `routing.yml`
-```yaml
-avanzu_admin_all_notifications:
-    path: /notifications/
-avanzu_admin_show_notification:
-    path: /notifications/{notifyid}/
-```
+### Required aliases
+* all_notifications
+* notification
 
 ### Data Model
 
@@ -77,3 +70,5 @@ Finally, you need to attach your new listener to the event system:
 	<!-- ... -->
 </services>
 ```
+
+[1]: component_events.md

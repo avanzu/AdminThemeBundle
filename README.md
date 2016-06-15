@@ -125,6 +125,7 @@ longer a strict requirement for bower and/or assetic. The assetic groups hovever
 ### Next Steps
 * [Using the layout][1]
 * [Components][2]
+* [KnpMenuIntegration][11]
 * [Navbar User][3]
 * [Navbar Tasks][4]
 * [Navbar Messages][5]
@@ -143,4 +144,5 @@ longer a strict requirement for bower and/or assetic. The assetic groups hovever
  [8]: Resources/docs/sidebar_navigation.md
  [9]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
  [10]: https://github.com/almasaeed2010/AdminLTE
+ [11]: Resources/docs/knp_menu.md
  

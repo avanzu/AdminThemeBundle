@@ -1,18 +1,11 @@
 ## The Navbar User Component
 
 ### Routes
-Just like the other theme components, this one requires some route names to work.
+Just like the other theme components, this one requires some route aliases to work. Please refer to the [component overview][1] to learn about the route alias details. 
 
-* `avanzu_admin_profile` which should point to the current user's profile page.
-* `avanzu_admin_logout` which should point to the logout mechanism.
-
-You could use the following route stubs with your `routing.yml`
-```yaml
-avanzu_admin_profile:
-    path: /profile/{userid}/
-avanzu_admin_logout:
-    path: /logout
-```
+#### Required aliases
+* profile
+* logout
 
 ### Data Model
 
@@ -88,3 +81,5 @@ services:
 		tags:
 			- { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
 ```
+
+[1]: component_events.md

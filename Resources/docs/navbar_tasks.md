@@ -1,18 +1,11 @@
 ## The Navbar Tasks Component
 
 ### Routes
-Just like the other theme components, this one requires some route names to work.
-
-* `avanzu_admin_all_tasks` which should point to a list view of tasks.
-* `avanzu_admin_show_task` which should point to a particular task.
-
-You could use the following route stubs with your `routing.yml`
-```yaml
-avanzu_admin_all_tasks:
-    path: /tasks/
-avanzu_admin_show_task:
-    path: /tasks/{taskid}/
-```
+Just like the other theme components, this one requires some route aliases to work. Please refer to the [component overview][1] to learn about the route alias details.
+ 
+#### Required aliases
+* all_task
+* task
 
 ### Data Model
 
@@ -77,3 +70,5 @@ Finally, you need to attach your new listener to the event system:
 	<!-- ... -->
 </services>
 ```
+
+[1]: component_events.md
