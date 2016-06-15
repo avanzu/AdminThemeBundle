@@ -1,0 +1,35 @@
+{% macro action_toolbutton(icon, action, label) %}
+<button class="btn btn-box-tool" data-widget="{{ action }}" data-toggle="tooltip" title="{{ label|default('') }}">
+    <i class="fa fa-{{ icon|default('times') }}"></i>
+</button>
+{% endmacro %}
+
+{% macro link_toolbutton(icon, href, label) %}
+    <a href="{{ href }}" class="btn btn-box-tool" data-toggle="tooltip" title="{{ label|default('') }}">
+        <i class="fa fa-{{ icon|default('times') }}"></i>
+    </a>
+{% endmacro %}
+
+{% macro link_button(label, href, icon, type, size ) %}
+    {% set _size = size|default(avanzu_admin_context.button.size) %}
+    <a href="{{ href|default('#') }}" class="btn btn-{{ type|default(avanzu_admin_context.button.type) }}{% if _size %} btn-{{ _size }}{% endif %}">
+        {% if icon %}
+            <i class="fa fa-{{ icon }}"></i>
+        {% endif %}
+        {% if label %}
+            <span>{{ label }}</span>
+        {% endif %}
+    </a>
+{% endmacro %}
+
+{% macro action_button(label, action, icon, type, size) %}
+    {% set _size = size|default(avanzu_admin_context.button.size) %}
+    <button data-action="{{ action }}" class="btn btn-{{ type|default(avanzu_admin_context.button.type) }}{% if _size %} btn-{{ _size }}{% endif %}">
+        {% if icon %}
+            <i class="fa fa-{{ icon }}"></i>
+        {% endif %}
+        {% if label %}
+            <span>{{ label }}</span>
+        {% endif %}
+    </button>
+{% endmacro %}

@@ -22,6 +22,7 @@ class AvanzuAdminThemeExtension extends Extension
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
         $config['theme']['knp_menu'] = $config['knp_menu'];
+        
 
         $container->setParameter('avanzu_admin_theme.use_twig', $config['use_twig']);
         $container->setParameter('avanzu_admin_theme.use_knp_menu', $config['knp_menu']['enable']);

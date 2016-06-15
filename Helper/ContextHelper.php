@@ -114,6 +114,18 @@ class ContextHelper extends \ArrayObject
             'mini_sidebar'      => false,
             'control_sidebar'   => true,
             'default_avatar'    => 'bundles/avanzuadmintheme/img/avatar.png',
+            'widget'            => [
+                'type'        => 'primary',
+                'bordered'    => true,
+                'collapsible' => true,
+                'solid'       => false,
+                'removable'   => false,
+                'use_footer'  => true,
+            ],
+            'button'            => [
+                'type' => 'primary',
+                'size' => false
+            ],
             'knp_menu'          => [
                 'enable'        => false
             ]

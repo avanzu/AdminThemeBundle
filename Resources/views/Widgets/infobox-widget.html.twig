@@ -1,0 +1,24 @@
+{{ block('box_before') }}
+<div class="info-box{% if solid is defined %} bg-{{ solid }}{% endif %}">
+    <span class="info-box-icon{% if color is defined %} bg-{{ color }}{% endif %}"><i class="fa fa-{{ icon|default('info-circle') }}"></i></span>
+    <div class="info-box-content">
+        <span class="info-box-text">
+            {{ block('box_text') }}
+        </span>
+        <span class="info-box-number">
+            {{ block('box_number') }}
+        </span>
+        <!-- The progress section is optional -->
+        {% if progress is defined %}
+        <div class="progress">
+            <div class="progress-bar" style="width: {{ progress }}%"></div>
+        </div>
+        {% endif %}
+        {% if progress|default(block('progress_description'))|length > 0 %}
+    <span class="progress-description">
+      {{ block('progress_description') }}
+    </span>
+        {% endif %}
+    </div><!-- /.info-box-content -->
+</div><!-- /.info-box -->
+{{ block('box_after') }}
