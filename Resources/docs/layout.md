@@ -34,6 +34,12 @@ Listed in the order of appearance, these are:
 The blocks defined in the layout in order of appearance. Some of them do contain some of the major components like the sidebar or navbar. In order to redefine the block and to keep the default content, don't forget to use `{{parent()}}` 
 
 <dl>
+<dt>avanzu_document_title
+<dd>Defines the `<title/>` defaults to the contents of `avanzu_page_title`
+
+<dt>avanzu_head
+<dd>comes right after the `_head.html.twig` partial
+
 <dt>avanzu_logo_mini
 <dd>Contents of `.logo-mini`
 
@@ -65,7 +71,7 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dd>Renders the `menu` component _or_ includes `AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig` depending on wether the `knp_menu` is enabled or not. 
 
 <dt>avanzu_page_title
-<dd>Defines the page header inside `.content-header` *(not the `<title/>`)*
+<dd>Defines the page header inside `.content-header` *(and implicitly the `<title/>` if you haven't changed the content of `avanzu_document_title`)*
 
 <dt>avanzu_page_subtitle
 <dd>Defines the `<small/>` portion of `.content-header`
@@ -83,7 +89,7 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dd>Includes `AvanzuAdminThemeBundle:Partials:_control-sidebar.html.twig` if it is enabled.
 
 <dt>avanzu_javascripts
-<dd>Includes `AvanzuAdminThemeBundle:Partials:_scripts.html.twig` by default.
+<dd>comes right after the `_scripts.html.twig` partial.
 
 <dt>avanzu_javascripts_inline
 <dd>Intended for inline scripts in order to keep those in one single document block.

@@ -4,7 +4,13 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
-<head>{% include('AvanzuAdminThemeBundle:Partials:_head.html.twig') %}</head>
+<head>
+    <title>
+        {% block avanzu_document_title %}{{ block('avanzu_page_title') }}{% endblock %}
+    </title>
+    {% include('AvanzuAdminThemeBundle:Partials:_head.html.twig') %}
+    {% block avanzu_head %}{% endblock %}
+</head>
 <!--
 BODY TAG OPTIONS:
 =================
@@ -297,8 +303,8 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                {% block avanzu_page_title %}{{ avanzu_admin_context.page_title|default('BlankPage') }}{% endblock %}
-                <small>{% block avanzu_page_subtitle %}{{ avanzu_admin_context.page_subtitle|default }}{% endblock %}</small>
+                {% block avanzu_page_title %}{{ 'Avanzu Admin'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
+                <small>{% block avanzu_page_subtitle %}{% endblock %}</small>
             </h1>
 
             {% block avanzu_breadcrumb %}
@@ -326,7 +332,9 @@ desired effect
 
     <!-- Main Footer -->
 
-    {% block avanzu_footer %}{% include 'AvanzuAdminThemeBundle:Partials:_footer.html.twig' %}{% endblock %}
+    {% block avanzu_footer %}
+        {% include 'AvanzuAdminThemeBundle:Partials:_footer.html.twig' %}
+    {% endblock %}
     {% block avanzu_control_sidebar %}
         {% if avanzu_admin_context.control_sidebar %}
             {% include 'AvanzuAdminThemeBundle:Partials:_control-sidebar.html.twig' %}
@@ -336,7 +344,8 @@ desired effect
 <!-- ./wrapper -->
 <!-- REQUIRED JS SCRIPTS -->
 
-{% block avanzu_javascripts %}{% include 'AvanzuAdminThemeBundle:Partials:_scripts.html.twig' %}{% endblock %}
+{% include 'AvanzuAdminThemeBundle:Partials:_scripts.html.twig' %}
+{% block avanzu_javascripts %}{% endblock %}
 {% block avanzu_javascripts_inline %}{% endblock %}
 
 </body>
