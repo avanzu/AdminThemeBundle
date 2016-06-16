@@ -1,7 +1,7 @@
 {% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig' as button %}
 {{ block('box_before') }}
 
-{% set _collapsed = collapsed|default('off') == 'on' %}
+{% set _collapsed = collapsed|default(false) %}
 {% set _solid     = solid|default(avanzu_admin_context.widget.solid)  %}
 {% set _border    = border|default(avanzu_admin_context.widget.bordered)  %}
 {% set _footer    = use_footer|default(avanzu_admin_context.widget.use_footer) or block('box_footer')|length > 0 %}
