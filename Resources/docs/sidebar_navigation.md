@@ -60,7 +60,7 @@ class MyMenuItemListListener {
 	protected function getMenu(Request $request) {
 		// Build your menu here by constructing a MenuItemModel array
 		$menuItems = array(
-            $blog = new MenuItemModel('ItemId', 'ItemDisplayName', 'item_symfony_route', array(/* options */), 'iconclasses fa fa-plane');
+            $blog = new MenuItemModel('ItemId', 'ItemDisplayName', 'item_symfony_route', array(/* options */), 'iconclasses fa fa-plane')
         );
 
         // Add some children

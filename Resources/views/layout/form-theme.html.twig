@@ -31,7 +31,13 @@
 {% endblock choice_widget_expanded %}
 
 {% block choice_widget_collapsed %}
-    {% set attr = attr|merge({'class' : 'form-control'}) %}
+
+    {% for att, val in attr %}
+        {% if att == 'class' %}
+            {% set att = val ~ ' form-control' %}
+        {% endif %}
+    {% endfor %}
+
     {{ parent() }}
 {% endblock %}
 
@@ -151,12 +157,12 @@
 {% block form_label %}
 
     {% if help is defined %}
-        <a href="#" data-toggle="tooltip" data-original-title="{{ help|trans }}"><i class="fa fa-question-circle"></i></a>&nbsp;
+        &nbsp; <a href="#" data-toggle="tooltip" data-original-title="{{ help }}"><i class="fa fa-question-circle"></i></a>
     {% endif %}
 
     {{ parent() }}
-    {% if required %}
-        <span class="required" title="{{ 'form.required.title'|trans({},'AvanzuAdmin') }}"><small><sup><i class="fa fa-asterisk"></i></sup></small></span>
+    {% if required and label %}
+        <span class="required" title="{{ "This is a mandatory field"|trans({}, translation_domain) }}">*</span>
     {% endif %}
 
 {% endblock form_label %}
