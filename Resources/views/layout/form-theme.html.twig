@@ -2,19 +2,23 @@
 
 {% block widget_attributes %}
     {% set types = form.vars.block_prefixes %}
-
+     {% set _class = '' %}
     {% if 'checkbox' in types %}
         {% set _class = ' checkbox' %}
     {% elseif 'radio' in types%}
         {% set _class = ' radio' %}
-    {% else %}
+    {% endif%}
+    {# % else %}
         {% set _class = ' form-control' %}
-    {% endif %}
+    {% endif %#}
 
     {% if attr.class is defined %}
         {% set class = attr.class ~ _class %}
     {% else %}
         {% set class = _class %}
+    {% endif %}
+    {% if 'form-control' not in class  %}
+        {%  set class = class ~ ' form-control' %}
     {% endif %}
     {% set attr = attr|merge({'class' : class}) %}
     {{ parent () }}
@@ -161,8 +165,10 @@
     {% endif %}
 
     {{ parent() }}
-    {% if required and label %}
-        <span class="required" title="{{ "This is a mandatory field"|trans({}, translation_domain) }}">*</span>
+    {% if required and label is not same as (false) %}
+        <sup class="required" title="{{ "This is a mandatory field"|trans({}, translation_domain) }}">
+            <i class="fa fa-asterisk"></i>
+        </sup>
     {% endif %}
 
 {% endblock form_label %}
