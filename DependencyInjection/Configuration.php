@@ -2,6 +2,9 @@
 
 namespace Avanzu\AdminThemeBundle\DependencyInjection;
 
+use Avanzu\AdminThemeBundle\Controller\BreadcrumbController;
+use Avanzu\AdminThemeBundle\Controller\NavbarController;
+use Avanzu\AdminThemeBundle\Controller\SidebarController;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -65,11 +68,11 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('enable')->defaultValue(false)->end()
                             ->scalarNode('main_menu')->defaultValue('avanzu_main')->end()
                             ->scalarNode('breadcrumb_menu')->defaultValue(false)->end()
-                            ->end()
                         ->end()
-
                     ->end()
-                ->end();
+
+                ->end()
+            ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
