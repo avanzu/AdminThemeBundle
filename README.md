@@ -146,4 +146,4 @@ longer a strict requirement for bower and/or assetic. The assetic groups hovever
  [9]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
  [10]: https://github.com/almasaeed2010/AdminLTE
  [11]: Resources/docs/knp_menu.md
- [12]: Resorces/docs/twig_widgets.md
+ [12]: Resources/docs/twig_widgets.md
