@@ -35,7 +35,7 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 
 <dl>
 <dt>avanzu_document_title
-<dd>Defines the `<title/>` defaults to the contents of `avanzu_page_title`
+<dd>Defines the `title` defaults to the contents of `avanzu_page_title`
 
 <dt>avanzu_head
 <dd>comes right after the `_head.html.twig` partial
@@ -71,10 +71,10 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dd>Renders the `menu` component _or_ includes `AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig` depending on wether the `knp_menu` is enabled or not. 
 
 <dt>avanzu_page_title
-<dd>Defines the page header inside `.content-header` *(and implicitly the `<title/>` if you haven't changed the content of `avanzu_document_title`)*
+<dd>Defines the page header inside `.content-header` *(and implicitly the `title` if you haven't changed the content of `avanzu_document_title`)*
 
 <dt>avanzu_page_subtitle
-<dd>Defines the `<small/>` portion of `.content-header`
+<dd>Defines the `small` portion of `.content-header`
 
 <dt>avanzu_breadcrumb
 <dd>Renders either the `breadcrumb` component or includes `AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig` based on your configuration.
