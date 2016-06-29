@@ -160,7 +160,7 @@
 
 {% block form_label %}
 
-    {% if help is defined %}
+    {% if help is defined and help is not null %}
         &nbsp; <a href="#" data-toggle="tooltip" data-original-title="{{ help }}"><i class="fa fa-question-circle"></i></a>
     {% endif %}
 
