@@ -1,4 +1,7 @@
 <!-- User Account: style can be found in dropdown.less -->
+{# @var links \Avanzu\AdminThemeBundle\Model\NavBarUserLink[] #}
+{# @var showProfileLink bool #}
+{# @var showLogoutLink bool #}
 {% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -10,30 +13,36 @@
         <li class="user-header">
             {{ macro.avatar(user.avatar, user.username) }}
             <p>
-                {{user.name}} - {{user.title}}
+                {{ user.name }} - {{ user.title }}
                 <small>{{ 'Member since %date%'|trans({'%date%': user.memberSince|date('m.Y') }, 'AvanzuAdminTheme') }}</small>
             </p>
         </li>
-        <!-- Menu Body -->
-        <li class="user-body">
-            <div class="col-xs-4 text-center">
-                <a href="#">Followers</a>
-            </div>
-            <div class="col-xs-4 text-center">
-                <a href="#">Sales</a>
-            </div>
-            <div class="col-xs-4 text-center">
-                <a href="#">Friends</a>
-            </div>
-        </li>
-        <!-- Menu Footer-->
-        <li class="user-footer">
-            <div class="pull-left">
-                <a href="{{ path('profile'|route_alias, {'ident' : user.identifier}) }}" class="btn btn-default btn-flat">{{'Profile'|trans({}, 'AvanzuAdminTheme')}}</a>
-            </div>
-            <div class="pull-right">
-                <a href="{{ logout_path() }}" class="btn btn-default btn-flat">{{ 'Sign out'|trans({}, 'AvanzuAdminTheme') }}</a>
-            </div>
-        </li>
+        {% if links %}
+            <!-- Menu Body -->
+            <li class="user-body">
+                {% for link in links %}
+                    <div class="col-xs-4 text-center">
+                        <a href="{{ path(link.path, link.parameters) }}">{{ link.title }}</a>
+                    </div>
+                {% endfor %}
+            </li>
+        {% endif %}
+        {% if showLogoutLink or showProfileLink %}
+            <!-- Menu Footer-->
+            <li class="user-footer">
+                {% if showProfileLink %}
+                    <div class="pull-left">
+                        <a href="{{ path('profile'|route_alias, {'ident' : user.identifier}) }}"
+                           class="btn btn-default btn-flat">{{ 'Profile'|trans({}, 'AvanzuAdminTheme') }}</a>
+                    </div>
+                {% endif %}
+                {% if showLogoutLink %}
+                    <div class="pull-right">
+                        <a href="{{ logout_path() }}"
+                           class="btn btn-default btn-flat">{{ 'Sign out'|trans({}, 'AvanzuAdminTheme') }}</a>
+                    </div>
+                {% endif %}
+            </li>
+        {% endif %}
     </ul>
 </li>
