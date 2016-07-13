@@ -43,11 +43,11 @@ class MyShowUserListener {
 		$user = $this->getUser();
 		$event->setUser($user);
 		
-        $event->setShowProfileLink(false);
+		$event->setShowProfileLink(false);
 
-        $event->addLink(new NavBarUserLink('Followers', 'logout'));
-        $event->addLink(new NavBarUserLink('Sales', 'logout'));
-        $event->addLink(new NavBarUserLink('Friends', 'logout', ['id' => 2]));
+		$event->addLink(new NavBarUserLink('Followers', 'logout'));
+		$event->addLink(new NavBarUserLink('Sales', 'logout'));
+		$event->addLink(new NavBarUserLink('Friends', 'logout', ['id' => 2]));
 
 	}
 
