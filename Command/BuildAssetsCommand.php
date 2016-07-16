@@ -151,7 +151,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
         $proc = new Process(implode(' ', $command));
 
-        // $proc = new Process("/usr/bin/env uglifycss " . implode(' ', $files) . " > $file");
+        $out->writeln($proc->getCommandLine());
         $proc->run(function ($type, $buffer) use ($in, $out) {
             if (Process::ERR === $type) {
                 $out->writeln("<error>$buffer</error>");
