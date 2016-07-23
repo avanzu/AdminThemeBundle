@@ -10,7 +10,6 @@ namespace Avanzu\AdminThemeBundle\Command;
 
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\Input;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -56,7 +55,7 @@ class InitializeCommand extends ContainerAwareCommand
      *
      * @return string
      */
-    protected function getVendorDir($appDir, InputInterface $input)
+    protected function getVendorDir(InputInterface $input)
     {
          return $input->getOption('vendor-dir');
     }
@@ -67,9 +66,9 @@ class InitializeCommand extends ContainerAwareCommand
      *
      * @return string
      */
-    protected function getThemeDir($appDir, InputInterface $input)
+    protected function getThemeDir(InputInterface $input)
     {
-        return sprintf('%s/%s', $this->getVendorDir($appDir, $input), $input->getOption('theme-dir'));
+        return sprintf('%s/%s', $this->getVendorDir( $input), $input->getOption('theme-dir'));
     }
 
     /**
@@ -82,8 +81,8 @@ class InitializeCommand extends ContainerAwareCommand
     {
         $appDir     = $dic->getParameter('kernel.root_dir');
         $projectDir = dirname($appDir);
-        $vendors    = $this->getVendorDir($appDir, $input);
-        $theme      = $this->getThemeDir($appDir, $input);
+        $vendors    = $this->getVendorDir($input);
+        $theme      = $this->getThemeDir($input);
         $self       = dirname(__DIR__);
 
         return (object)[
@@ -114,10 +113,6 @@ class InitializeCommand extends ContainerAwareCommand
             $method = $this->absoluteSymlinkWithFallback($originDir, $targetDir);
         } else {
             $method = $this->hardCopy($originDir, $targetDir);
-        }
-
-        if (self::METHOD_COPY === $method) {
-            $copyUsed = true;
         }
 
         return $method;
@@ -240,6 +235,12 @@ class InitializeCommand extends ContainerAwareCommand
      */
     private function hardCopy($originDir, $targetDir)
     {
+        if( is_file($originDir) ) {
+            $this->filesystem->mkdir(dirname($targetDir), 0777);
+            $this->filesystem->copy($originDir, $targetDir, false);
+            return self::METHOD_COPY;
+        }
+
         $this->filesystem->mkdir($targetDir, 0777);
         // We use a custom iterator to ignore VCS files
         $this->filesystem->mirror($originDir, $targetDir, Finder::create()->ignoreDotFiles(false)->in($originDir));
