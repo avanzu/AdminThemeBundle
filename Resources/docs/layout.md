@@ -95,4 +95,4 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dd>Intended for inline scripts in order to keep those in one single document block.
 </dl>
 
-[1]: http://symfony.com/doc/current/book/templating.html#overriding-bundle-templates
+[1]: http://symfony.com/doc/current/templating/overriding.html
