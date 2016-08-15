@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!--
+{#
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html>
+#}
+<html lang="{{ app.request.locale }}">
 <head>
     <title>
         {% block avanzu_document_title %}{{ block('avanzu_page_title') }}{% endblock %}
@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {% include('AvanzuAdminThemeBundle:Partials:_head.html.twig') %}
     {% block avanzu_head %}{% endblock %}
 </head>
-<!--
+{#
 BODY TAG OPTIONS:
 =================
 Apply one or more of the following classes to get the
@@ -30,7 +30,7 @@ desired effect
 |               | sidebar-collapse                        |
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
--->
+#}
 <body class="{{ avanzu_admin_context.skin|default("")|body_class }}">
 <div class="wrapper">
 
@@ -38,7 +38,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="{{ path('welcome'|route_alias) }}" class="logo">
+        <a href="{% block avanzu_logo_path %}{{ path('welcome'|route_alias) }}{% endblock %}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini">
                 {% block avanzu_logo_mini %}<b>A</b>LT{% endblock %}
@@ -51,10 +51,12 @@ desired effect
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
+            {% block avanzu_navbar_toggle %}
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">{{ 'Toggle navigation'|trans({}, 'AvanzuAdminTheme')  }}</span>
             </a>
+            {% endblock %}
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
