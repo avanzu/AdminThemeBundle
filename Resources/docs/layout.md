@@ -40,11 +40,17 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dt>avanzu_head
 <dd>comes right after the `_head.html.twig` partial
 
+<dt>avanzu_logo_path
+<dd>The href value of `a.logo`
+
 <dt>avanzu_logo_mini
 <dd>Contents of `.logo-mini`
 
 <dt>avanzu_logo_lg
 <dd>Contents of `.logo-lg`
+
+<dt>avanzu_navbar_toggle
+<dd>Renders the `.sidebar-toggle` button
 
 <dt>avanzu_navbar_messages
 <dd>Renders the `messages` component
