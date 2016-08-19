@@ -19,7 +19,9 @@
 
         {% if matcher.isAncestor(item) %}
             {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' in')|trim}) -%}
-        {% endif %}
+        {% else %}
+            {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' treeview-menu')|trim}) -%}
+        {% endif %} 
         <ul{{ knp_menu.attributes(listAttributes) }}>
             {{ block('children') }}
         </ul>
@@ -35,11 +37,11 @@
 {% endmacro %}
 
 {% block spanElement %}
-    <a{{ _self.attributes(item.labelAttributes) }}>
+    {% if item.attribute('class') matches '/(^|\s+)header(\s+|$)/' %}
         {{ block('label') }}
-        {% if item.hasChildren %}
-            {#<b class="caret pull-right"></b>#}
-            {#<i class="fa fa-angle-double-right pull-right"></i>#}
-        {% endif %}
-    </a>
+    {% else %}
+        <a{{ _self.attributes(item.labelAttributes) }}>
+            {{ block('label') }}
+        </a>
+    {% endif %}
 {% endblock %}
