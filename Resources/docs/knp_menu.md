@@ -83,9 +83,6 @@ class SetupKnpMenuListener
     }
 }
 ```
-
-
-
 For a more in depth guide on how to use the KnpMenuBundle, please refer to the [official documentation][1]. 
 
 ### Replacing the MenuBuilder
