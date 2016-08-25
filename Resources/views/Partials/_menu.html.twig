@@ -19,7 +19,8 @@
 
         {% if matcher.isAncestor(item) %}
             {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' in')|trim}) -%}
-        {% else %}
+        {% endif %}
+        {% if not item.isRoot %}
             {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' treeview-menu')|trim}) -%}
         {% endif %} 
         <ul{{ knp_menu.attributes(listAttributes) }}>
