@@ -44,12 +44,42 @@ class SetupKnpMenuListener
     public function onSetupMenu(KnpMenuEvent $event)
     {
         $menu = $event->getMenu();
+        
+        // Adds a menu item which acts as a label
+        $menu->addChild('MainNavigationMenuItem', [
+       	    'label' => 'MAIN NAVIGATION',
+            'childOptions' => $event->getChildOptions()
+        ]
+        )->setAttribute('class', 'header');
+        
+        // A "regular" menu item with a link
         $menu->addChild('TestMenuItem', [
             'route' => 'homepage',
             'label' => 'Homepage',
             'childOptions' => $event->getChildOptions()
         ]
         )->setLabelAttribute('icon', 'fa fa-flag');
+        
+        // Adds a menu item which has children
+        $menu->addChild('DataMenuItem', [
+            'label' => 'Database mangement',
+            'childOptions' => $event->getChildOptions()
+        ]
+        )->setLabelAttribute('icon', 'fa fa-database');
+        // First child, a regular menu item
+        $menu->getChild('DataMenuItem')->addChild('DataUsersMenuItem', [
+            'route' => 'app.database.users',
+            'label' => 'Users table',
+            'childOptions' => $event->getChildOptions()
+        ]
+        )->setLabelAttribute('icon', 'fa fa-user');
+        // Second child, a regular menu item
+        $menu->getChild('DataMenuItem')->addChild('DataGroupsMenuItem', [
+            'route' => 'app.database.groups',
+            'label' => 'Groups table',
+            'childOptions' => $event->getChildOptions()
+        ]
+        )->setLabelAttribute('icon', 'fa fa-users');
     }
 }
 ```
