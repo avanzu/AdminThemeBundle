@@ -6,6 +6,11 @@
         <span>{% if options.allow_safe_labels and item.getExtra('safe_label', false) %}{{ item.label|trans|raw }}{% else %}{{ item.label|trans }}{% endif %}</span>
     {% endif %}
     {% if item.labelAttribute('data-image') %}<img src="{{ item.labelAttribute('data-image') }}" alt="{{ item.name }}" class="menu-thumbnail"/>{% endif %}
+    {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    {% endif %}
 {% endblock %}
 
 {% block list %}
@@ -15,6 +20,9 @@
         {% if matcher.isAncestor(item) %}
             {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' in')|trim}) -%}
         {% endif %}
+        {% if not item.isRoot %}
+            {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' treeview-menu')|trim}) -%}
+        {% endif %} 
         <ul{{ knp_menu.attributes(listAttributes) }}>
             {{ block('children') }}
         </ul>
@@ -30,11 +38,11 @@
 {% endmacro %}
 
 {% block spanElement %}
-    <a{{ _self.attributes(item.labelAttributes) }}>
+    {% if item.attribute('class') matches '/(^|\s+)header(\s+|$)/' %}
         {{ block('label') }}
-        {% if item.hasChildren %}
-            {#<b class="caret pull-right"></b>#}
-            {#<i class="fa fa-angle-double-right pull-right"></i>#}
-        {% endif %}
-    </a>
+    {% else %}
+        <a{{ _self.attributes(item.labelAttributes) }}>
+            {{ block('label') }}
+        </a>
+    {% endif %}
 {% endblock %}
