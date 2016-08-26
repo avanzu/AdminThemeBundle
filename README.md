@@ -96,6 +96,13 @@ There are a few values you could change for sure without need to touch anything 
 Version >= 1.3 comes with pre packaged asset files located under `Resources/public/static/[prod|dev]`. So, there is no
 longer a strict requirement for bower and/or assetic. The assetic groups hovever, are still there and should work as usual.
 
+If the assetic bundle is installed but you don't want the AdminThemeBundle to use it you can add following lines to `config.yml`:
+ 
+```
+    avanzu_admin_theme:
+        use_assetic: false
+```
+
 
 ### Next Steps
 * [Using the layout](Resources/docs/layout.md)
