@@ -17,7 +17,7 @@
     {% else %}
         {% set class = _class %}
     {% endif %}
-    {% if 'form-control' not in class  %}
+    {% if 'checkbox' not in types and 'form-control' not in class  %}
         {%  set class = class ~ ' form-control' %}
     {% endif %}
     {% set attr = attr|merge({'class' : class}) %}
