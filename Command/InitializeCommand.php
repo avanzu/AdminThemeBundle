@@ -148,7 +148,7 @@ class InitializeCommand extends ContainerAwareCommand
 
         $fs->mkdir($folders->public . '/theme');
 
-        foreach ( ['bootstrap','dist','plugins','documentation', 'starter.html'] as $directory) {
+        foreach ( ['bootstrap','dist','plugins','documentation'] as $directory) {
 
             $io->text("installing <info>$directory</info>");
 
