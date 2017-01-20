@@ -47,7 +47,7 @@
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
-                {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             {% block avanzu_navbar %}
@@ -68,7 +68,7 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 {% block avanzu_sidebar %}
-                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
                         {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
                     {% endif %}
