@@ -37,7 +37,13 @@
 
 {% macro menu_item(item) %}
     {% if item.route or item.hasChildren %}
-        <li id="{{ item.identifier }}" class=" {{ item.isActive ? 'active' : '' }} {{ item.hasChildren? 'treeview' : '' }}">
+        {% set childIsActive = false %}
+        {% for child in item.children %}
+            {% if child.isActive %}
+                {% set childIsActive = true %}
+            {% endif %}
+        {% endfor %}
+        <li id="{{ item.identifier }}" class=" {{ (item.isActive or childIsActive) ? 'active' : '' }} {{ item.hasChildren? 'treeview' : '' }}">
             <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : path(item.route, item.routeArgs) }}">
                 {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
                 <span>{{ item.label }}</span>
