@@ -15,7 +15,7 @@
 
 {% block list %}
     {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
-        {% import _self as knp_menu %}
+        {% import "knp_menu.html.twig" as macros %}
 
         {% if matcher.isAncestor(item) %}
             {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' in')|trim}) -%}
@@ -23,7 +23,7 @@
         {% if not item.isRoot %}
             {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' treeview-menu')|trim}) -%}
         {% endif %} 
-        <ul{{ knp_menu.attributes(listAttributes) }}>
+        <ul{{ macros.attributes(listAttributes) }}>
             {{ block('children') }}
         </ul>
     {% endif %}
@@ -38,10 +38,11 @@
 {% endmacro %}
 
 {% block spanElement %}
+    {% import "knp_menu.html.twig" as macros %}
     {% if item.attribute('class') matches '/(^|\s+)header(\s+|$)/' %}
         {{ block('label') }}
     {% else %}
-        <a{{ _self.attributes(item.labelAttributes) }}>
+        <a{{ macros.attributes(item.labelAttributes) }}>
             {{ block('label') }}
         </a>
     {% endif %}
