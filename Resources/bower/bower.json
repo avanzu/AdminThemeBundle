@@ -32,5 +32,9 @@
         "ionicons"                  : "*",
         "fullcalendar"              : "*",
         "adminlte"                  : ">=2.0.0 <3.0"
-    }
+    },
+    "resolutions": {
+    	"underscore"                : ">=1.0.0 <2.0"
+	}
+    
 }
