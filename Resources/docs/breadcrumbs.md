@@ -36,8 +36,8 @@ YAML:
 
 ```yaml
     parameters:
-    # ...
-    my_admin_bundle.breadcrumb_listener.class: MyAdminBundle\EventListener\MyMenuItemListListener
+        # ...
+        my_admin_bundle.breadcrumb_listener.class: MyAdminBundle\EventListener\MyMenuItemListListener
 
     services:
         # ...
