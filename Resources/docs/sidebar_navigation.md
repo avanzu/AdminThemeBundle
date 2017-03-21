@@ -116,8 +116,8 @@ YAML:
 
 ```yaml
     parameters:
-    # ...
-    my_admin_bundle.menu_listener.class: MyAdminBundle\EventListener\MyMenuItemListListener
+        # ...
+        my_admin_bundle.menu_listener.class: MyAdminBundle\EventListener\MyMenuItemListListener
 
     services:
         # ...
