@@ -35,10 +35,10 @@ XML:
 YAML: 
 
 ```yaml
-	parameters:
-		# ...
-        my_admin_bundle.breadcrumb_listener.class: MyAdminBundle\EventListener\MyMenuItemListListener
-    
+    parameters:
+    # ...
+    my_admin_bundle.breadcrumb_listener.class: MyAdminBundle\EventListener\MyMenuItemListListener
+
     services:
         # ...
         my_admin_bundle.breadcrumb_listener:
