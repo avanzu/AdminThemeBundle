@@ -40,6 +40,9 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dt>avanzu_head
 <dd>comes right after the `_head.html.twig` partial
 
+<dt>avanzu_after_body_start
+<dd>comes right after the opening `<body>` tag
+
 <dt>avanzu_logo_path
 <dd>The href value of `a.logo`
 
