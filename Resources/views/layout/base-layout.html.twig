@@ -14,7 +14,6 @@
 
     {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset(admin_style_path()) }}" />
     {% endblock %}
 
 
@@ -22,12 +21,6 @@
 
     {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
     {%  block javascripts_head %}
-        <script type="text/javascript" src="{{ asset(admin_script_path('modernizr.js')) }}"></script>
-
-        <!--[if lt IE 9]>
-
-        <![endif]-->
-
     {% endblock %}
 
 </head>
@@ -123,7 +116,6 @@
 
 {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
 {% block javascripts %}
-    <script src="{{ asset(admin_script_path()) }}"></script>
 {% endblock %}
 
 {# ----------------------------------------------------------------------------------------------- JAVASCRIPTS_INLINE #}
