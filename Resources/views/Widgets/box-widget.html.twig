@@ -1,10 +1,10 @@
 {% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig' as button %}
-{{ block('box_before') }}
+{% if block('box_before') is defined %}{{ block('box_before') }}{% endif %}
 
 {% set _collapsed = collapsed|default(false) %}
 {% set _solid     = solid|default(avanzu_admin_context.widget.solid)  %}
 {% set _border    = border|default(avanzu_admin_context.widget.bordered)  %}
-{% set _footer    = use_footer|default(avanzu_admin_context.widget.use_footer) or block('box_footer')|length > 0 %}
+{% set _footer    = use_footer|default(avanzu_admin_context.widget.use_footer) or block('box_footer') is defined %}
 
 
 {% if removable is not defined %}
@@ -17,7 +17,7 @@
     <div class="box-header{{ _border ? ' with-border' : '' }}">
         <h3 class="box-title">{{ block('box_title') }}</h3>
         <div class="box-tools pull-right">
-            {{ block('box_tools') }}
+	        {% if block('box_tools') is defined %}{{ block('box_tools') }}{% endif %}
             <!-- Buttons, labels, and many other things can be placed here! -->
             {% if collapsible %}
                 {{ button.action_toolbutton(
@@ -39,7 +39,7 @@
     </div><!-- /.box-header -->
     <div class="box-body">{{ block('box_body') }}</div><!-- /.box-body -->
     {% if _footer %}
-        <div class="box-footer">{{ block('box_footer') }}</div><!-- box-footer -->
+        <div class="box-footer">{% if block('box_footer') is defined %}{{ block('box_footer') }}{% endif %}</div><!-- box-footer -->
     {% endif %}
 </div><!-- /.box -->
-{{ block('box_after') }}
+{% if block('box_after') is defined %}{{ block('box_after') }}{% endif %}
