@@ -1,4 +1,4 @@
-{{ block('box_before') }}
+{% if block('box_before') is defined %}{{ block('box_before') }}{% endif %}
 <div class="info-box{% if solid is defined %} bg-{{ solid }}{% endif %}">
     <span class="info-box-icon{% if color is defined %} bg-{{ color }}{% endif %}"><i class="fa fa-{{ icon|default('info-circle') }}"></i></span>
     <div class="info-box-content">
@@ -21,4 +21,4 @@
         {% endif %}
     </div><!-- /.info-box-content -->
 </div><!-- /.info-box -->
-{{ block('box_after') }}
+{% if block('box_after') is defined %}{{ block('box_after') }}{% endif %}
