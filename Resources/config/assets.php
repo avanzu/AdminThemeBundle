@@ -73,7 +73,7 @@ return call_user_func(
             'admin_lte_forms_css'    => array(
                 'inputs' => array(
                     $lteCssBase.'plugins/colorpicker/bootstrap-colorpicker.css',
-                    $lteCssBase.'plugins/daterangepicker/daterangepicker-bs3.css',
+                    $lteCssBase.'plugins/daterangepicker/daterangepicker.css',
                     $lteCssBase.'plugins/timepicker/bootstrap-timepicker.css',
                     $lteCssBase.'plugins/iCheck/all.css',
                     $lteCssBase.'plugins/iCheck/square/_all.css',
