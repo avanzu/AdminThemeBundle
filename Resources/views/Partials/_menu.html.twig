@@ -41,7 +41,8 @@
     {% if item.attribute('class') matches '/(^|\s+)header(\s+|$)/' %}
         {{ block('label') }}
     {% else %}
-        <a{{ _self.attributes(item.labelAttributes) }}>
+        {% import _self as self %}
+        <a{{ self.attributes(item.labelAttributes) }}>
             {{ block('label') }}
         </a>
     {% endif %}
