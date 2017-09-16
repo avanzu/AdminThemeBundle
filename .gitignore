@@ -2,3 +2,4 @@ nbproject/*
 Resources/public/vendor/*
 Resources/docs/apidoc
 .idea
+vendor/*
