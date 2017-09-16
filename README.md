@@ -29,14 +29,30 @@ public function registerBundles()
 
 Install assets (preferably using symlink method but hardcopy works as well)...
 
+```bash
 	php app/console assets:install --symlink
-	
+```
+
+Or symfony 3.x/4.x version:
+
+```bash
+	php bin/console assets:install --symlink
+```
+
 ... and fetch vendors:
 
+```
 	php app/console avanzu:admin:fetch-vendor
+```
+
+Or symfony 3.x/4.x version:
+
+```bash
+	php bin/console avanzu:admin:fetch-vendor
+```
 
 ### Symfony 2.8 notice
-This bundle requires assetic, but it isn't shipped with symfony anymore since version 2.8. To install assetic, follow these steps:
+This bundle requires assetic, but it isn't shipped with symfony anymore [since version 2.8](http://symfony.com/doc/current/assetic/asset_management.html). To install assetic, follow these steps:
 
 	php composer.phar require symfony/assetic-bundle
 
