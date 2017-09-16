@@ -23,8 +23,6 @@ return call_user_func(
                     $jsAssets.'public/vendor/jquery/dist/jquery.js',
                     $jsAssets.'public/vendor/jquery-ui/jquery-ui.js',
                     $jsAssets.'public/vendor/underscore/underscore.js',
-                    $jsAssets.'public/vendor/backbone/backbone.js',
-                    $jsAssets.'public/vendor/marionette/lib/backbone.marionette.js',
                     $jsAssets.'public/vendor/bootstrap/dist/js/bootstrap.min.js',
                     $jsAssets.'public/vendor/bootbox/bootbox.js',
                     $jsAssets.'public/js/dialogs.js',
