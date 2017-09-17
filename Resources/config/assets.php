@@ -69,7 +69,7 @@ return call_user_func(
                 'inputs' => [
                     $jsAssets . 'bower/bower_components/adminlte/plugins/colorpicker/bootstrap-colorpicker.css',
                     $jsAssets . 'bower/bower_components/adminlte/plugins/daterangepicker/daterangepicker.css',
-                    $jsAssets . 'bower/bower_components/adminlte/plugins/plugins/timepicker/bootstrap-timepicker.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/timepicker/bootstrap-timepicker.css',
                     $jsAssets . 'bower/bower_components/adminlte/plugins/iCheck/all.css',
                     $jsAssets . 'bower/bower_components/adminlte/plugins/iCheck/square/_all.css',
                 ],
