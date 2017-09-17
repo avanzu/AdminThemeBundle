@@ -56,8 +56,8 @@ class BuildAssetsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var $kernel Kernel */
-        $this->kernel = $kernel = $this->getContainer()->get('kernel');
-        $this->webdir = $webdir = realpath($this->getContainer()->getParameter('kernel.root_dir') . '/../web');
+        $this->kernel = $this->getContainer()->get('kernel');
+        $this->webdir = realpath($this->getContainer()->getParameter('kernel.root_dir') . '/../web');
         $this->builddir = $this->pubdir . '/static/' . $input->getOption('env');
         $assets = $this->partition($this->resolveAll(include($this->resdir . '/config/assets.php')));
         $fs = new Filesystem();
