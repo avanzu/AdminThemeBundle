@@ -33,7 +33,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         }
         catch(FileLocatorFileNotFoundException $e) // Symfony 3.3 and 4.x are based in YAML
         {
-            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/config'));
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.yaml');
         }
     }
