@@ -1,0 +1,12 @@
+parameters:
+    avanzu_admin_theme.knp_menu_builder.class: Avanzu\AdminThemeBundle\Menu\MenuBuilder
+
+services:
+    avanzu_admin_theme.knp_menu_builder:
+        class: "%avanzu_admin_theme.knp_menu_builder.class%"
+        arguments:
+            - "@knp_menu.factory"
+            - "@avanzu_admin_theme.admin_router"
+            - "@event_dispatcher"
+        tags:
+            - {name: knp_menu.menu_builder, method: createMainMenu, alias: avanzu_main }

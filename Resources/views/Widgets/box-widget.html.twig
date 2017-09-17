@@ -1,0 +1,45 @@
+{% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig' as button %}
+{% if block('box_before') is defined %}{{ block('box_before') }}{% endif %}
+
+{% set _collapsed = collapsed|default(false) %}
+{% set _solid     = solid|default(avanzu_admin_context.widget.solid)  %}
+{% set _border    = border|default(avanzu_admin_context.widget.bordered)  %}
+{% set _footer    = use_footer|default(avanzu_admin_context.widget.use_footer) or block('box_footer') is defined %}
+
+
+{% if removable is not defined %}
+    {% set removable = avanzu_admin_context.widget.removable %}
+{% endif %}
+{% if collapsible is not defined %}
+    {% set collapsible =  (_collapsed or avanzu_admin_context.widget.collapsible) %}
+{% endif %}
+<div class="box box-{{ boxtype|default(avanzu_admin_context.widget.type) }}{{ _solid ? ' box-solid' : '' }}{{ _collapsed ? ' collapsed-box' : '' }}">
+    <div class="box-header{{ _border ? ' with-border' : '' }}">
+        <h3 class="box-title">{{ block('box_title') }}</h3>
+        <div class="box-tools pull-right">
+	        {% if block('box_tools') is defined %}{{ block('box_tools') }}{% endif %}
+            <!-- Buttons, labels, and many other things can be placed here! -->
+            {% if collapsible %}
+                {{ button.action_toolbutton(
+                    _collapsed ? 'plus'  : 'minus' ,
+                    'collapse',
+                    collapsible_title|default(avanzu_admin_context.widget.collapsible_title|trans({}, 'AvanzuAdminTheme'))
+                ) }}
+            {% endif %}
+
+            {% if removable %}
+                {{ button.action_toolbutton(
+                'times',
+                'remove',
+                removable_title|default(avanzu_admin_context.widget.removable_title|trans({}, 'AvanzuAdminTheme'))
+                ) }}
+            {% endif %}
+
+        </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">{{ block('box_body') }}</div><!-- /.box-body -->
+    {% if _footer %}
+        <div class="box-footer">{% if block('box_footer') is defined %}{{ block('box_footer') }}{% endif %}</div><!-- box-footer -->
+    {% endif %}
+</div><!-- /.box -->
+{% if block('box_after') is defined %}{{ block('box_after') }}{% endif %}

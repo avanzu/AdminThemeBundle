@@ -1,28 +1,58 @@
 avanzu_admin_home:
   path: /demo-admin/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
+  options:
+    avanzu_admin_route: welcome
+
 avanzu_admin_profile:
-  path: /profile/{userid}/
+  path: /profile/{ident}/
+  options:
+    avanzu_admin_route: profile
+
 avanzu_admin_logout:
   path: /logout
+  options:
+    avanzu_admin_route: logout
+
 avanzu_admin_all_tasks:
   path: /tasks/
+  options:
+      avanzu_admin_route: all_tasks
+
 avanzu_admin_show_task:
-  path: /tasks/{taskid}/
+  path: /tasks/{ident}/
+  options:
+      avanzu_admin_route: task
+
 avanzu_admin_all_notifications:
   path: /notifications/
+  options:
+      avanzu_admin_route: all_notifications
+
 avanzu_admin_show_notification:
-  path: /notifications/{notifyid}/
+  path: /notifications/{ident}/
+  options:
+      avanzu_admin_route: notification
+
 avanzu_admin_all_messages:
   path: /messages/
-avanzu_admin_show_message:
-  path: /messages/{messageid}/
+  options:
+      avanzu_admin_route: all_messages
 
+avanzu_admin_show_message:
+  path: /messages/{ident}/
+  options:
+      avanzu_admin_route: message
 
 
 avanzu_admin_demo:
   path: /demo-admin/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
+
+avanzu_admin_demo_2:
+  path: /demo-admin/alternate-route
+  defaults: {_controller: AvanzuAdminThemeBundle:Default:index}
+
 avanzu_admin_form_demo:
   path: /demo-admin/form-demo/
   defaults: {_controller: AvanzuAdminThemeBundle:Default:form}

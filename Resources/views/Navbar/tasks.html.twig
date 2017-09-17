@@ -11,7 +11,7 @@
             <ul class="menu">
                 {% for task in tasks %}
                     <li>
-                        <a href="{{ path('avanzu_admin_show_task', {'taskid': task.identifier}) }}">
+                        <a href="{{ path('task'|route_alias, {'ident': task.identifier}) }}">
                             <h3>
                                 {{ task.title }}
                                 <small class="pull-right">{{ task.progress }}%</small>
@@ -31,7 +31,7 @@
                 {%  endfor  %}
             </ul>
         <li class="footer">
-            <a href="{{ path('avanzu_admin_all_tasks') }}">{{'View all tasks'|trans({}, 'AvanzuAdminTheme')}}</a>
+            <a href="{{ path('all_tasks'|route_alias) }}">{{'View all tasks'|trans({}, 'AvanzuAdminTheme')}}</a>
         </li>
     </ul>
 </li>

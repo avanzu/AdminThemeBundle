@@ -1,4 +1,93 @@
-{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
+
+{% block avanzu_page_content %}
+    <div class="row">
+        <div class="col-md-6">
+            {# ... infobox widget, solid background ... #}
+            {% embed 'AvanzuAdminThemeBundle:Widgets:infobox-widget.html.twig'  with {
+            'solid' : 'red',
+            'icon'  : 'star-o',
+            'progress' : 40
+            } %}
+
+                {% block box_text %}Vestibulum ante ipsum primis {% endblock %}
+                {% block progress_description %}The progress description{% endblock %}
+            {% endembed %}
+
+        </div>
+        <div class="col-md-6">
+
+            {# ... infobox widget, colored icon ... #}
+            {% embed 'AvanzuAdminThemeBundle:Widgets:infobox-widget.html.twig'  with {
+            'color' : 'aqua',
+            'icon'  : 'comments-o',
+            } %}
+                {% block box_text %}Vestibulum ante ipsum primis {% endblock %}
+                {% block box_number %}999.9{% endblock %}
+                {% block progress_description %}Works as well without progress bar{% endblock %}
+            {% endembed %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {# ... box widget with defaults ... #}
+            {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
+
+                {% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig'  as btn %}
+                {% block box_title %}{{ 'Widget box title' }}{% endblock %}
+                {% block box_body %}
+                    <div class="callout callout-info">
+                        Sed libero ipsum, auctor ac volutpat ac, adipiscing a enim. Nulla convallis quam eget tortor
+                        dictum lobortis. Aenean tincidunt arcu id lectus facilisis imperdiet. Curabitur in orci nisl.
+                        Nullam vitae arcu in tellus malesuada sollicitudin ut in sem. Ut eu nunc lacus, sit amet
+                        venenatis mauris. Donec dui neque, cursus sed molestie sit amet, tempor quis nibh. Proin nec
+                        ligula non lacus fermentum tincidunt. Nam tempus lectus ut dolor imperdiet quis commodo odio
+                        porttitor. Fusce blandit placerat posuere. Pellentesque risus leo, tempor sit amet consequat
+                        tempus, dictum vel magna. Nulla dolor turpis, dignissim a sodales quis, molestie molestie magna.
+                        Vivamus imperdiet vestibulum tellus, quis rutrum magna eleifend quis. Pellentesque convallis
+                        metus nisl. Sed eu dolor massa, sit amet luctus nulla. Mauris sit amet diam urna, eget volutpat
+                        nunc.
+                    </div>
+                {% endblock %}
+            {% endembed %}
+        </div>
+        <div class="col-md-6">
+            {# ... box widget with some options ... #}
+            {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' with {
+            'boxtype' : 'success',
+            'solid' : 0,
+            'collapsible' : 'Collapse this... ',
+            'removable' : 'Remove this...',
+            } %}
+
+                {% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig'  as btn %}
+                {% block box_title %}{{ 'Widget box title' }}{% endblock %}
+                {% block box_body %}
+                    <div class="callout callout-info">
+                        Sed libero ipsum, auctor ac volutpat ac, adipiscing a enim. Nulla convallis quam eget tortor
+                        dictum lobortis. Aenean tincidunt arcu id lectus facilisis imperdiet. Curabitur in orci nisl.
+                        Nullam vitae arcu in tellus malesuada sollicitudin ut in sem. Ut eu nunc lacus, sit amet
+                        venenatis mauris. Donec dui neque, cursus sed molestie sit amet, tempor quis nibh. Proin nec
+                        ligula non lacus fermentum tincidunt. Nam tempus lectus ut dolor imperdiet quis commodo odio
+                        porttitor. Fusce blandit placerat posuere. Pellentesque risus leo, tempor sit amet consequat
+                        tempus, dictum vel magna. Nulla dolor turpis, dignissim a sodales quis, molestie molestie magna.
+                        Vivamus imperdiet vestibulum tellus, quis rutrum magna eleifend quis. Pellentesque convallis
+                        metus nisl. Sed eu dolor massa, sit amet luctus nulla. Mauris sit amet diam urna, eget volutpat
+                        nunc.
+                    </div>
+                {% endblock %}
+
+                {% block box_footer %}
+                    <div class="pull-right">
+                        {{ btn.link_button('save', '#', 'floppy', 'success') }}
+                    </div>
+                {% endblock %}
+            {% endembed %}
+        </div>
+    </div>
+{% endblock %}
+
 
 
 

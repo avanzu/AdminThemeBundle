@@ -45,6 +45,11 @@ class NavbarController extends Controller
 
     }
 
+    /**
+     * @param int $max
+     *
+     * @return Response
+     */
     public function messagesAction($max = 5)
     {
 
@@ -63,6 +68,11 @@ class NavbarController extends Controller
         );
     }
 
+    /**
+     * @param int $max
+     *
+     * @return Response
+     */
     public function tasksAction($max = 5)
     {
 
@@ -80,6 +90,9 @@ class NavbarController extends Controller
         );
     }
 
+    /**
+     * @return Response
+     */
     public function userAction()
     {
 

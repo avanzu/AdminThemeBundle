@@ -29,10 +29,10 @@
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
-                <a href="{{ path('avanzu_admin_profile', {'userid' : user.identifier}) }}" class="btn btn-default btn-flat">{{'Profile'|trans({}, 'AvanzuAdminTheme')}}</a>
+                <a href="{{ path('profile'|route_alias, {'ident' : user.identifier}) }}" class="btn btn-default btn-flat">{{'Profile'|trans({}, 'AvanzuAdminTheme')}}</a>
             </div>
             <div class="pull-right">
-                <a href="{{ path('avanzu_admin_logout') }}" class="btn btn-default btn-flat">{{ 'Sign out'|trans({}, 'AvanzuAdminTheme') }}</a>
+                <a href="{{ logout_path() }}" class="btn btn-default btn-flat">{{ 'Sign out'|trans({}, 'AvanzuAdminTheme') }}</a>
             </div>
         </li>
     </ul>

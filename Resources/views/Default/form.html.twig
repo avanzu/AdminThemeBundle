@@ -1,6 +1,10 @@
-{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
+{% block avanzu_head %} {% include 'AvanzuAdminThemeBundle:Partials:_header-form-extra.html.twig' %}{% endblock %}
 
-{% block page_content %}
+{% block avanzu_page_title %} Forms {% endblock %}
+{% block avanzu_page_subtitle %} demonstration {% endblock %}
+
+{% block avanzu_page_content %}
 
     <div class="row">
         <div class="col-md-4">
@@ -18,35 +22,45 @@
     <div class="row">
         <div class="col-md-6">
 
-            <div class="box box-primary">
-                <div class="box-header">
-                    <h3 class="box-title">Form Theme</h3>
-                </div>
-                <div class="box-body">
-                    {{ form(form) }}
-                </div>
-                <div class="box-footer clearfix">
 
-                        <button type="reset" class="btn btn-warning pull-left"><i class="fa fa-times"></i> Cancel</button>
-                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-check-square"></i> Submit</button>
+            {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
+                {% block box_before %}{{ form_start(form) }}{% endblock %}
+                {% block box_title %}Form theme{% endblock %}
+                {% block box_body %}{{ form_widget(form) }}{% endblock %}
+                {% block box_footer %}
+                    <div class="pull-right">
+                        <button type="reset" class="btn btn-warning "><i class="fa fa-times"></i> Cancel</button>
+                        <button type="submit" class="btn btn-primary "><i class="fa fa-check-square"></i> Submit</button>
+                    </div>
+                {% endblock %}
+
+                {% block box_after %}{{ form_end(form)}}{% endblock %}
+            {% endembed %}
 
 
-                </div>
-            </div>
 
         </div>
         <div class="col-md-6">
-            <div class="box box-solid box-primary">
-                {{ macro.box_header('built from macro', true, false, 'primary') }}
-                <div class="box-body">
-                    some content...
-                </div>
-            </div>
+
         </div>
     </div>
 
 
 {% endblock %}
 
-{% block page_title %} Forms {% endblock %}
-{% block page_subtitle %} demonstration {% endblock %}
+{% block avanzu_javascripts %}{% include 'AvanzuAdminThemeBundle:Partials:_scripts-form-extra.html.twig' %}{% endblock %}
+{% block avanzu_javascripts_inline %}
+    <script>
+        $(function () {
+            console.log('augmenting form...');
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+            $('select').select2();
+            $('[data-datepicker="on"]').datepicker({autoclose: true});
+            $('[data-timepicker="on"]').timepicker();
+        });
+    </script>
+{% endblock %}

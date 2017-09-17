@@ -1,0 +1,42 @@
+parameters:
+    avanzu_admin_theme.exception_controller.class: Avanzu\AdminThemeBundle\Controller\ExceptionController
+    twig.controller.exception.class: Avanzu\AdminThemeBundle\Controller\ExceptionController
+    avanzu_admin_theme.extension.class: Avanzu\AdminThemeBundle\Twig\AvanzuAdminExtension
+    avanzu_admin_theme.form.help_extension.class: Avanzu\AdminThemeBundle\Form\FormHelpExtension
+    avanzu_admin_theme.context_helper.class: Avanzu\AdminThemeBundle\Helper\ContextHelper
+    avanzu_admin_theme.admin_router.class: Avanzu\AdminThemeBundle\Routing\RouteAliasCollection
+
+services:
+
+    avanzu_admin_theme.form.help_extension:
+        class: "%avanzu_admin_theme.form.help_extension.class%"
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType, extended-type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
+    avanzu_admin_theme.admin_router:
+        class: "%avanzu_admin_theme.admin_router.class%"
+        arguments:
+            - "%kernel.cache_dir%"
+            - "@router"
+            - "avanzu_admin_route"
+            - "%kernel.environment%"
+            - "%kernel.debug%"
+
+    avanzu_admin_theme.exception_controller:
+        class: "%avanzu_admin_theme.exception_controller.class%"
+        arguments: ['@twig', '%kernel.debug%']
+
+    avanzu_admin_theme.extension.class:
+        class: "%avanzu_admin_theme.extension.class%"
+        tags:
+            - { name: twig.extension }
+        arguments: ['%avanzu_admin_theme.options%', '%kernel.environment%', "@avanzu_admin_theme.admin_router"]
+
+    avanzu_admin_theme.context_helper:
+        class: "%avanzu_admin_theme.context_helper.class%"
+        arguments:
+            - "%avanzu_admin_theme.options%"
+            - "@avanzu_admin_theme.admin_router"
+
+
+

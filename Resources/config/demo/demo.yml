@@ -1,0 +1,38 @@
+parameters:
+    avanzu_admin_theme.navbar_user_listener.class: Avanzu\AdminThemeBundle\EventListener\NavbarShowUserDemoListener
+    avanzu_admin_theme.navbar_task_listener.class: Avanzu\AdminThemeBundle\EventListener\NavbarTaskListDemoListener
+    avanzu_admin_theme.navbar_notify_listener.class: Avanzu\AdminThemeBundle\EventListener\NavbarNotificationListDemoListener
+    avanzu_admin_theme.navbar_msg_listener.class: Avanzu\AdminThemeBundle\EventListener\NavbarMessageListDemoListener
+    avanzu_admin_theme.setup_menu_listener.class: Avanzu\AdminThemeBundle\EventListener\SidebarSetupMenuDemoListener
+    avanzu_admin_theme.setup_knp_menu_listener.class: Avanzu\AdminThemeBundle\EventListener\DemoKnpMenuListener
+
+services:
+    avanzu_admin_theme.navbar_user_listener:
+        class: "%avanzu_admin_theme.navbar_user_listener.class%"
+        tags:
+            - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
+            - { name: kernel.event_listener, event: theme.sidebar_user, method: onShowUser }
+    avanzu_admin_theme.navbar_task_listener:
+        class: "%avanzu_admin_theme.navbar_task_listener.class%"
+        tags:
+            - { name: kernel.event_listener, event: theme.tasks, method: onListTasks }
+    avanzu_admin_theme.navbar_notify_listener:
+        class: "%avanzu_admin_theme.navbar_notify_listener.class%"
+        tags:
+            - { name: kernel.event_listener, event: theme.notifications, method: onListNotifications }
+    avanzu_admin_theme.navbar_msg_listener:
+        class: "%avanzu_admin_theme.navbar_msg_listener.class%"
+        tags:
+            - { name: kernel.event_listener, event: theme.messages, method: onListMessages }
+
+    avanzu_admin_theme.setup_menu_listener:
+        class: "%avanzu_admin_theme.setup_menu_listener.class%"
+        tags:
+            - { name: kernel.event_listener, event: theme.sidebar_setup_menu, method: onSetupMenu }
+            - { name: kernel.event_listener, event: theme.breadcrumb, method: onSetupMenu }
+
+    avanzu_admin_theme.knp_menu_listener:
+            class: "%avanzu_admin_theme.setup_knp_menu_listener.class%"
+            tags:
+                - { name: kernel.event_listener, event: theme.sidebar_setup_knp_menu, method: onSetupKnpMenu }
+

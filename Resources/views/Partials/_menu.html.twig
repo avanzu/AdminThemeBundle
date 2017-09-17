@@ -1,0 +1,49 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block label %}
+    {% if item.labelAttribute('icon') %}<i class="{{ item.labelAttribute('icon') }}"></i>{% endif %}
+    {% if not item.labelAttribute('iconOnly') %}
+        <span>{% if options.allow_safe_labels and item.getExtra('safe_label', false) %}{{ item.label|trans|raw }}{% else %}{{ item.label|trans }}{% endif %}</span>
+    {% endif %}
+    {% if item.labelAttribute('data-image') %}<img src="{{ item.labelAttribute('data-image') }}" alt="{{ item.name }}" class="menu-thumbnail"/>{% endif %}
+    {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    {% endif %}
+{% endblock %}
+
+{% block list %}
+    {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
+        {% import "knp_menu.html.twig" as macros %}
+
+        {% if matcher.isAncestor(item) %}
+            {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' in')|trim}) -%}
+        {% endif %}
+        {% if not item.isRoot %}
+            {%- set listAttributes = listAttributes|merge({class: (listAttributes.class|default('') ~ ' treeview-menu')|trim}) -%}
+        {% endif %} 
+        <ul{{ macros.attributes(listAttributes) }}>
+            {{ block('children') }}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% macro attributes(attributes) %}
+    {% for name, value in attributes %}
+        {%- if value is not none and value is not same as(false) -%}
+            {{- ' %s="%s"'|format(name, value is same as(true) ? name|e : value|e)|raw -}}
+        {%- endif -%}
+    {%- endfor -%}
+{% endmacro %}
+
+{% block spanElement %}
+    {% import "knp_menu.html.twig" as macros %}
+    {% if item.attribute('class') matches '/(^|\s+)header(\s+|$)/' %}
+        {{ block('label') }}
+    {% else %}
+        <a{{ macros.attributes(item.labelAttributes) }}>
+            {{ block('label') }}
+        </a>
+    {% endif %}
+{% endblock %}

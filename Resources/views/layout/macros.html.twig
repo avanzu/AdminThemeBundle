@@ -1,37 +1,8 @@
-{% block box_collapse %}
-    <button class="btn btn-{{ type|default('info') }} btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-{% endblock %}
-{% block box_remove %}
-    <button class="btn btn-{{ type|default('info') }} btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-{% endblock %}
-
-{% block box_header_buttons %}
-    {% if collapse or remove %}
-        <div class="box-tools pull-right">
-            {% if collapse %}
-                {{ block('box_collapse') }}
-            {% endif %}
-            {% if remove %}
-                {{ block('box_remove') }}
-            {% endif %}
-        </div>
-    {% endif %}
-{% endblock %}
-
-{% macro box_header(title, collapse, remove, type) %}
-
-    <div class="box-header">
-        <h3 class="box-title">{{ title }}</h3>
-        {{ block('box_header_buttons') }}
-    </div>
-{% endmacro %}
-
-
 {% macro avatar(image, alt, class) %}
     {% if image %}
         <img src="{{ asset(image) }}" class="{{ class|default('img-circle') }}" alt="{{ alt }}" />
     {% else %}
-        <img src="{{ asset('bundles/avanzuadmintheme/img/avatar.png') }}" class="{{ class|default('img-circle') }}" alt="{{ alt }}" />
+        <img src="{{ asset(avanzu_admin_context.default_avatar) }}" class="{{ class|default('img-circle') }}" alt="{{ alt }}" />
     {% endif %}
 {% endmacro %}
 
@@ -40,7 +11,7 @@
         <li id="{{ item.identifier }}" class=" {{ item.isActive ? 'active' : '' }} {{ item.hasChildren? 'treeview' : '' }}">
             <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : path(item.route, item.routeArgs) }}">
                 {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
-                <span>{{ item.label }}</span>
+                <span>{{ item.label|trans }}</span>
                 {% if item.badge %}
                     <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
                 {% endif %}
@@ -53,7 +24,7 @@
                         <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
                             <a href="{{ '/' in child.route ? child.route : path(child.route, child.routeArgs) }}">
                                 <i class="{{ child.icon|default('fa fa-circle-o') }}"></i>
-                                {{ child.label }}
+                                {{ child.label|trans }}
                             </a>
                         </li>
                     {% endfor %}
@@ -62,7 +33,7 @@
         </li>
     {% else %}
         <li class="header">
-            {{ item.label }}
+            {{ item.label|trans }}
             {% if item.badge %}
                 <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
             {% endif %}
@@ -70,7 +41,7 @@
     {% endif %}
 {% endmacro %}
 
-{# 
+{#
   the following code is based on phiamo/MopaBootstrapBundle
   https://github.com/phiamo/MopaBootstrapBundle/blob/88b104b3efd4c3c3bfff1df4525a53bc3596010b/Resources/views/flash.html.twig
 #}
