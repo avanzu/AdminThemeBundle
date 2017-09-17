@@ -95,7 +95,7 @@ class ThemeManager
     protected function getResolver() {
         $class = $this->resolverClass;
 
-        return new $class;
+        return new $class();
     }
 
     /**
