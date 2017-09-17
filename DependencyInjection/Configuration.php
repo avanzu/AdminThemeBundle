@@ -31,7 +31,7 @@ class Configuration implements ConfigurationInterface
                         ->defaultValue(true)
                     ->end()
                     ->arrayNode('options')
-                        ->defaultValue([])
+                        ->beforeNormalization()->castToArray()->end()
                     ->end()
                 ->end();
         // Here you should define the parameters that are allowed to
