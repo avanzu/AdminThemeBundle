@@ -30,7 +30,6 @@ class InitializeCommand extends ContainerAwareCommand
      * @var Filesystem
      */
     private $filesystem;
-
     
     protected function configure()
     {
