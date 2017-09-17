@@ -8,7 +8,7 @@
 return call_user_func(
     function () {
         $jsAssets = '@AvanzuAdminThemeBundle/Resources/';
-        $lteJSBase = $jsAssets . 'public/vendor/adminlte/';
+        $lteJSBase = $jsAssets . 'bower/bower_components/adminlte/';
         $cssAssets = 'bundles/avanzuadmintheme/';
         $lteCssBase = $cssAssets . 'vendor/adminlte/';
 
