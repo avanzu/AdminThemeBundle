@@ -7,6 +7,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -25,8 +26,16 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
 
         $container->setParameter('avanzu_admin_theme.bower_bin', $config['bower_bin']);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.xml');
+        try 
+        {
+            $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader->load('services.xml');
+        }
+        catch(FileLocatorFileNotFoundException $e) // Symfony 3.3 and 4.x are based in YAML
+        {
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/config'));
+            $loader->load('services.yaml');
+        }
     }
 
     /**
