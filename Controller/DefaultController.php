@@ -18,7 +18,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return [];
+        return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
 
     /**
