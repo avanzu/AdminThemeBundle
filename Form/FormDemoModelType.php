@@ -33,7 +33,7 @@ class FormDemoModelType extends AbstractType
         ];
 
         $builder->add('name', TextType::class, ['help' => 'some help text'])
-                ->add('gender', ChoiceType::class, ['choices' => ['male' => 'm' , 'female' => 'f' ]])
+                ->add('gender', ChoiceType::class, ['choices' => ['male' => 'm', 'female' => 'f']])
                 ->add('someOption', ChoiceType::class, ['choices' => $options, 'expanded' => true])
                 ->add('someChoices', ChoiceType::class, ['choices' => $choices, 'expanded' => true, 'multiple' => true])
                 ->add('username')
