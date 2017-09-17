@@ -2,6 +2,8 @@ nbproject/*
 Resources/public/vendor/*
 Resources/docs/apidoc
 .idea
+vendor
+composer.lock
 
 # Ignore Eclipse IDE config files
 .buildpath
