@@ -25,7 +25,7 @@ class DefaultController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dashboardAction() {
-        return    $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
+        return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
 
     /**
