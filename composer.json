@@ -5,7 +5,7 @@
     "authors": [
         {
             "name": "Marc Bach",
-            "email": "mail@avanzu.de"
+            "email": "mail@avanzu.de",
             "homepage": "http://www.avanzu.de",
             "role": "Original Author"
         },
@@ -36,4 +36,12 @@
     "autoload": {
         "psr-4": { "Avanzu\\AdminThemeBundle\\": "" }
     },
+    "scripts": {
+        "post-install-cmd": [
+            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
+        ],
+        "post-update-cmd": [
+            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
+        ]
+    } 
 }
