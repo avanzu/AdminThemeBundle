@@ -45,8 +45,21 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
      */
     public function prepend(ContainerBuilder $container)
     {
+        // Load the services, since twig require theme_manager service
+        try
+        {
+            $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader->load('services.xml');
+        }
+        catch(FileLocatorFileNotFoundException $e) // Symfony 3.3 and 4.x are based in YAML
+        {
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader->load('services.yml');
+        }
+        
         $bundles = $container->getParameter('kernel.bundles');
 
+        // Inject in twig global config the theme_manager service
         if (isset($bundles['TwigBundle'])) {
             $container->prependExtensionConfig(
                 'twig',
