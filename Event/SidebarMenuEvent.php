@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Event;
 
-
 use Avanzu\AdminThemeBundle\Model\MenuItemInterface;
 use Symfony\Component\HttpFoundation\Request;
 

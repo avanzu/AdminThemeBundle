@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Util;
 
-
 /**
  * Class DependencyResolver
  *

@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\EventListener;
 
-
 use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
 use Avanzu\AdminThemeBundle\Model\MenuItemModel;
 use Symfony\Component\HttpFoundation\Request;

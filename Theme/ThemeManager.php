@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Theme;
 
-
 use Assetic\Asset\AssetCollection;
 use Assetic\Asset\AssetReference;
 use Assetic\Factory\AssetFactory;

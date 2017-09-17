@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\EventListener;
 
-
 use Avanzu\AdminThemeBundle\Event\ShowUserEvent;
 use Avanzu\AdminThemeBundle\Model\UserModel;
 

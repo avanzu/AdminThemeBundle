@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**

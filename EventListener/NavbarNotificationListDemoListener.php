@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\EventListener;
 
-
 use Avanzu\AdminThemeBundle\Event\NotificationListEvent;
 use Avanzu\AdminThemeBundle\Model\NotificationModel;
 

@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-
 /**
  * Representation of a displayable message in the theme's messages section
  *

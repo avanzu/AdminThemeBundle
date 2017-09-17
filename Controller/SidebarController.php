@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Controller;
 
-
 use Avanzu\AdminThemeBundle\Event\ShowUserEvent;
 use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;

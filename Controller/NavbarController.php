@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Controller;
 
-
 use Avanzu\AdminThemeBundle\Event\MessageListEvent;
 use Avanzu\AdminThemeBundle\Event\NotificationListEvent;
 use Avanzu\AdminThemeBundle\Event\ShowUserEvent;

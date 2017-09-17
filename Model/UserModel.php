@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-
 class UserModel implements  UserInterface {
 
     /**

@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\EventListener;
 
-
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\User\User;

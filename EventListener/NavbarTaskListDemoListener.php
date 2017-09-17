@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\EventListener;
 
-
 use Avanzu\AdminThemeBundle\Event\TaskListEvent;
 use Avanzu\AdminThemeBundle\Model\TaskModel;
 
