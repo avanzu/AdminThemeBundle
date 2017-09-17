@@ -24,16 +24,27 @@ Fetch vendor scripts
 
 	app/console avanzu:admin:fetch-vendor
 
+Or symfony 3.x/4.x version:
+
+	bin/console avanzu:admin:fetch-vendor
+	
 The vendor scripts will be stored under `Resources/public/vendor`
 
 Reinstall assets (*only required for previous install with `--hard-copy` option*)
 
     app/console assets:install
 
+Or symfony 3.x/4.x version:
 
+    bin/console assets:install
+    
 ### Build asset files
 
     app/console avanzu:admin:build-assets
+    
+Or symfony 3.x/4.x version:
+
+    bin/console avanzu:admin:build-assets
 
 Files will be generated in a subfolder depending on the `--env` command line option.<br/>
 *(Please note: the default environment is ___dev___ as usual)*
@@ -41,5 +52,14 @@ Files will be generated in a subfolder depending on the `--env` command line opt
 *example*
 
     app/console avanzu:admin:build-assets --env=staging
+    
+Or symfony 3.x/4.x version:
 
+    bin/console avanzu:admin:build-assets --env=staging
+    
 will generate the asset files under `Resources/public/static/staging/`
+
+[Previous (Using the layout)][1] - [Next (Using the ThemeManager)][2]
+
+[1]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/layout.md
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/theme_manager.md
