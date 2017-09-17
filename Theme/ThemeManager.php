@@ -4,7 +4,6 @@
  * publisher
  * Date: 18.04.14
  */
-
 namespace Avanzu\AdminThemeBundle\Theme;
 
 use Assetic\Asset\AssetCollection;

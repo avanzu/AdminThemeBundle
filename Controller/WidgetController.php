@@ -4,7 +4,6 @@
  * avanzu-admin
  * Date: 16.03.14
  */
-
 namespace Avanzu\AdminThemeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

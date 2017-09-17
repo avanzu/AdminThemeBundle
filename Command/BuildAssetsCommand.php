@@ -4,7 +4,6 @@
  * avanzu-admin
  * Date: 21.03.15
  */
-
 namespace Avanzu\AdminThemeBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;

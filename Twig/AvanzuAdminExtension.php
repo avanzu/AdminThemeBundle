@@ -4,7 +4,6 @@
  * avanzu-admin
  * Date: 17.03.14
  */
-
 namespace Avanzu\AdminThemeBundle\Twig;
 
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;

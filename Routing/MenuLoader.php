@@ -4,7 +4,6 @@
  * avanzu-admin
  * Date: 24.02.14
  */
-
 namespace Avanzu\AdminThemeBundle\Routing;
 
 use Symfony\Component\Config\Loader\Loader;

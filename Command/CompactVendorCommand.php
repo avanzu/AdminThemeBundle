@@ -4,7 +4,6 @@
  * avanzu-admin
  * Date: 15.02.14
  */
-
 namespace Avanzu\AdminThemeBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -38,7 +37,6 @@ class CompactVendorCommand extends ContainerAwareCommand
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
         /** @var $helper FormatterHelper */
-
         $vendors = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/vendor/');
 
         $public = dirname($vendors) . '/public';
@@ -76,8 +74,6 @@ class CompactVendorCommand extends ContainerAwareCommand
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
         /** @var $helper FormatterHelper */
-
-
         $vendors = $this->getThemePath('fonts', $input, $kernel);
         $target = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/public/fonts');
 
@@ -98,7 +94,6 @@ class CompactVendorCommand extends ContainerAwareCommand
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
         /** @var $helper FormatterHelper */
-
         $vendors = $this->getThemePath('img', $input, $kernel);
         $target = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/public/img');
 
@@ -119,7 +114,6 @@ class CompactVendorCommand extends ContainerAwareCommand
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
         /** @var $helper FormatterHelper */
-
         $vendors = $this->getThemePath('css', $input, $kernel);
 
         $public = dirname(dirname(dirname($vendors))) . '/public';
@@ -152,7 +146,6 @@ class CompactVendorCommand extends ContainerAwareCommand
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
         /** @var $helper FormatterHelper */
-
         $vendors = $this->getThemePath('js', $input, $kernel);
 
         $public = dirname(dirname(dirname($vendors))) . '/public';
@@ -185,7 +178,6 @@ class CompactVendorCommand extends ContainerAwareCommand
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
         /** @var $helper FormatterHelper */
-
         $vendors = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/vendor/');
 
         $public = dirname($vendors) . '/public';

@@ -4,7 +4,6 @@
  * publisher
  * Date: 23.05.14
  */
-
 namespace Avanzu\AdminThemeBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
