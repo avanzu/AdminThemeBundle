@@ -35,15 +35,19 @@ class ContextHelper extends \ArrayObject
      */
     protected function initialize(array $config = [])
     {
-        $resolver = new OptionsResolver();
-        $this->configureDefaults($resolver);
-        try
+        if(!empty($config))
         {
-            $this->exchangeArray($resolver->resolve($config));
-        }
-        catch(UndefinedOptionsException $e)
-        {
-            echo $e->getMessage();
+            $resolver = new OptionsResolver();
+            $this->configureDefaults($resolver);
+            try
+            {
+                $this->exchangeArray($resolver->resolve($config));
+            }
+            catch(UndefinedOptionsException $e)
+            {
+                echo $e->getMessage() . PHP_EOL;
+                print_r($config, TRUE);
+            }
         }
     }
 
