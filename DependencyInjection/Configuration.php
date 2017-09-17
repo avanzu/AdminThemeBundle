@@ -31,6 +31,9 @@ class Configuration implements ConfigurationInterface
                         ->defaultValue(true)
                     ->end()
                     ->arrayNode('options')
+                        ->children()
+                            ->scalarNode('skin')->end()
+                            
                         ->beforeNormalization()->castToArray()->end()
                     ->end()
                 ->end();
