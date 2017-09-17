@@ -11,7 +11,8 @@ use Avanzu\AdminThemeBundle\Event\MessageListEvent;
 use Avanzu\AdminThemeBundle\Model\MessageModel;
 use Avanzu\AdminThemeBundle\Model\UserModel;
 
-class NavbarMessageListDemoListener {
+class NavbarMessageListDemoListener
+{
 
     public function onListMessages(MessageListEvent $event) {
 

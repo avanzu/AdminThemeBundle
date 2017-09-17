@@ -10,7 +10,8 @@ namespace Avanzu\AdminThemeBundle\EventListener;
 use Avanzu\AdminThemeBundle\Event\ShowUserEvent;
 use Avanzu\AdminThemeBundle\Model\UserModel;
 
-class NavbarShowUserDemoListener {
+class NavbarShowUserDemoListener
+{
 
     public function onShowUser(ShowUserEvent $event) {
 

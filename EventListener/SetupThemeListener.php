@@ -10,7 +10,8 @@ namespace Avanzu\AdminThemeBundle\EventListener;
 use Avanzu\AdminThemeBundle\Theme\ThemeManager;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
-class SetupThemeListener {
+class SetupThemeListener
+{
 
     /**
      * @var ThemeManager

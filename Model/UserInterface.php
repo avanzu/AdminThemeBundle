@@ -7,7 +7,8 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-interface UserInterface {
+interface UserInterface
+{
     public function getAvatar();
     public function getUsername();
     public function getName();

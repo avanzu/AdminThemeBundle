@@ -18,7 +18,8 @@ use Symfony\Component\HttpFoundation\Response;
  * Controller to handle breadcrumb display inside the layout
  *
  */
-class BreadcrumbController extends Controller {
+class BreadcrumbController extends Controller
+{
 
 
     /**

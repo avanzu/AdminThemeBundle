@@ -11,7 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 
 use Symfony\Component\HttpFoundation\Request;
 
-class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\ExceptionController {
+class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\ExceptionController
+{
 
 
     /**

@@ -14,7 +14,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @package Avanzu\AdminThemeBundle\Model
  */
-class FormDemoModel {
+class FormDemoModel
+{
 
     /**
      * @var string

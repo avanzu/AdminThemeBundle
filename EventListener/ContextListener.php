@@ -12,7 +12,8 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class ContextListener {
+class ContextListener
+{
 
     protected $indicator = '^/admin';
     protected $container = null;

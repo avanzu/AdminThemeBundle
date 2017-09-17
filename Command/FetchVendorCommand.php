@@ -17,7 +17,8 @@ use Symfony\Component\Finder\Shell\Command;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Process\Process;
 
-class FetchVendorCommand extends ContainerAwareCommand {
+class FetchVendorCommand extends ContainerAwareCommand
+{
 
 
     protected function configure()

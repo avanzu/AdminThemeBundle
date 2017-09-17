@@ -7,7 +7,8 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-class UserModel implements  UserInterface {
+class UserModel implements UserInterface
+{
 
     /**
      * @var string

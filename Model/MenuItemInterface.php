@@ -12,7 +12,8 @@ namespace Avanzu\AdminThemeBundle\Model;
  *
  * @package Avanzu\AdminThemeBundle\Model
  */
-interface MenuItemInterface {
+interface MenuItemInterface
+{
     /**
      * @return mixed
      */

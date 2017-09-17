@@ -7,7 +7,8 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-interface TaskInterface {
+interface TaskInterface
+{
 
     public function getColor();
     public function getProgress();

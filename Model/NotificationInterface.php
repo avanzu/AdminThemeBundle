@@ -7,7 +7,8 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-interface NotificationInterface {
+interface NotificationInterface
+{
     public function getMessage();
     public function getType();
     public function getIcon();

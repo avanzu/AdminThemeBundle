@@ -27,7 +27,8 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @codeCoverageIgnore
  */
-class ScriptHandler {
+class ScriptHandler
+{
 
     /**
      * Composer variables are declared static so that an event could update

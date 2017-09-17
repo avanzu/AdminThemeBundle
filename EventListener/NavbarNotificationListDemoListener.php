@@ -10,7 +10,8 @@ namespace Avanzu\AdminThemeBundle\EventListener;
 use Avanzu\AdminThemeBundle\Event\NotificationListEvent;
 use Avanzu\AdminThemeBundle\Model\NotificationModel;
 
-class NavbarNotificationListDemoListener {
+class NavbarNotificationListDemoListener
+{
 
 
     public function onListNotifications(NotificationListEvent $event) {

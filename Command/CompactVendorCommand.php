@@ -18,7 +18,8 @@ use Symfony\Component\Finder\Shell\Command;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Process\Process;
 
-class CompactVendorCommand extends ContainerAwareCommand {
+class CompactVendorCommand extends ContainerAwareCommand
+{
 
 
     protected function configure() {
