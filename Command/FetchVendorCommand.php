@@ -46,7 +46,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
         $process->setTimeout(600);
         $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
         $process->setWorkingDirectory($res);
-        $process->run(function($type, $buffer) use ($output, $helper){
+        $process->run(function ($type, $buffer) use ($output, $helper) {
             if(Process::ERR == $type) {
                 $output->write($helper->formatSection('Error', $buffer, 'error' ));
             } else {
