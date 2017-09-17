@@ -30,7 +30,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('use_twig')
                         ->defaultValue(true)
                     ->end()
-                    ->scalarNode('options')
+                    ->arrayNode('options')
                         ->defaultValue([])
                     ->end()
                 ->end();
