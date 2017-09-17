@@ -32,15 +32,6 @@ class CompactVendorCommand extends ContainerAwareCommand
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-        $kernel = $this->getContainer()->get('kernel');
-        /** @var $kernel Kernel */
-        $helper = $this->getHelperSet()->get('formatter');
-        /** @var $helper FormatterHelper */
-        $vendors = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/vendor/');
-
-        $public = dirname($vendors) . '/public';
-        $images = $public . '/images';
-        $fonts = $public . '/fonts';
 
         if (!$input->getOption('nojs')) {
             $this->compressVendorJs($output);
