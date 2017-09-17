@@ -4,6 +4,7 @@
  * avanzu-admin
  * Date: 23.02.14
  */
+
 namespace Avanzu\AdminThemeBundle\Event;
 
 use Avanzu\AdminThemeBundle\Model\UserInterface;

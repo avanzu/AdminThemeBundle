@@ -4,6 +4,7 @@
  * symfony3
  * Date: 12.06.16
  */
+
 namespace Avanzu\AdminThemeBundle\Helper;
 
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;

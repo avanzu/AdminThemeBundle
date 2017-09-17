@@ -4,6 +4,7 @@
  * avanzu-admin
  * Date: 23.02.14
  */
+
 namespace Avanzu\AdminThemeBundle\EventListener;
 
 use Avanzu\AdminThemeBundle\Event\ShowUserEvent;

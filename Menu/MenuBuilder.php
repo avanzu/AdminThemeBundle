@@ -4,6 +4,7 @@
  * symfony3
  * Date: 12.06.16
  */
+
 namespace Avanzu\AdminThemeBundle\Menu;
 
 use Avanzu\AdminThemeBundle\Event\KnpMenuEvent;

@@ -4,6 +4,7 @@
  * symfony3
  * Date: 13.06.16
  */
+
 namespace Avanzu\AdminThemeBundle\Event;
 
 use Knp\Menu\FactoryInterface;

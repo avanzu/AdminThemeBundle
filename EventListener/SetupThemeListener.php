@@ -4,6 +4,7 @@
  * publisher
  * Date: 01.05.14
  */
+
 namespace Avanzu\AdminThemeBundle\EventListener;
 
 use Avanzu\AdminThemeBundle\Theme\ThemeManager;

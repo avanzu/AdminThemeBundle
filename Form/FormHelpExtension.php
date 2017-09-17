@@ -4,6 +4,7 @@
  * avanzu-admin-2
  * Date: 29.12.15
  */
+
 namespace Avanzu\AdminThemeBundle\Form;
 
 use Symfony\Component\Form\AbstractTypeExtension;

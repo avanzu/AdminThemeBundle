@@ -4,6 +4,7 @@
  * avanzu-admin
  * Date: 17.03.14
  */
+
 namespace Avanzu\AdminThemeBundle\Twig;
 
 class WidgetExtension extends \Twig_Extension
