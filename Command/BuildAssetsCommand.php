@@ -231,7 +231,14 @@ class BuildAssetsCommand extends ContainerAwareCommand
         }
 
         if(($star = strpos($input, '*')) === false) {
-            return [$this->kernel->locateResource($input)];
+            try 
+            {
+                return [$this->kernel->locateResource($input)];
+            }
+            catch(InvalidArgumentException $e)
+            {
+                echo $e->getMessage() . PHP_EOL;
+            }
         } else {
             $dir = $this->kernel->locateResource(substr($input, 0, $star));
             $it = new \DirectoryIterator($dir);
