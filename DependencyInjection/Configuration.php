@@ -32,10 +32,10 @@ class Configuration implements ConfigurationInterface
                     ->end()
                     ->arrayNode('options')
                         ->children()
-                            ->scalarNode('skin')->end()
-                            
-                        ->beforeNormalization()->castToArray()->end()
-                    ->end()
+                            ->scalarNode('skin')
+                            ->defaultValue('skin-blue-light')
+                        ->end()
+                    ->end() // ->beforeNormalization()->castToArray()->end()
                 ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
