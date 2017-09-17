@@ -31,6 +31,7 @@ namespace MyAdminBundle\EventListener;
 // ...
 
 use Avanzu\AdminThemeBundle\Event\ShowUserEvent;
+use Avanzu\AdminThemeBundle\Model\NavBarUserLink;
 use MyAdminBundle\Model\UserModel;
 
 class MyShowUserListener {
@@ -41,6 +42,12 @@ class MyShowUserListener {
 
 		$user = $this->getUser();
 		$event->setUser($user);
+		
+		$event->setShowProfileLink(false);
+
+		$event->addLink(new NavBarUserLink('Followers', 'logout'));
+		$event->addLink(new NavBarUserLink('Sales', 'logout'));
+		$event->addLink(new NavBarUserLink('Friends', 'logout', ['id' => 2]));
 
 	}
 
