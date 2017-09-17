@@ -65,7 +65,9 @@ class ThemeManager
 
     public function getScripts($location = 'bottom') {
 
-        $unsorted = array(); $srcList = array(); $assetList = array();
+        $unsorted = array(); 
+        $srcList = array(); 
+        
         foreach($this->javascripts as $id => $scriptDefinition) {
             if($scriptDefinition['location'] == $location) {
                 $unsorted[$id] = $scriptDefinition;
