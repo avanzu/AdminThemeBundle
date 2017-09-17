@@ -15,16 +15,16 @@ return call_user_func(
         return [
             'modernizr_js' => [
                 'inputs' => [
-                    $jsAssets . 'public/vendor/modernizr/modernizr.js',
+                    $jsAssets . 'bower/bower_components/modernizr/modernizr.js',
                 ],
             ],
             'common_js' => [
                 'inputs' => [
-                    $jsAssets . 'public/vendor/jquery/dist/jquery.js',
-                    $jsAssets . 'public/vendor/jquery-ui/jquery-ui.js',
-                    $jsAssets . 'public/vendor/underscore/underscore.js',
-                    $jsAssets . 'public/vendor/bootstrap/dist/js/bootstrap.min.js',
-                    $jsAssets . 'public/vendor/bootbox/bootbox.js',
+                    $jsAssets . 'bower/bower_components/jquery/dist/jquery.js',
+                    $jsAssets . 'bower/bower_components/jquery-ui/jquery-ui.js',
+                    $jsAssets . 'bower/bower_components/underscore/underscore.js',
+                    $jsAssets . 'bower/bower_components/bootstrap/dist/js/bootstrap.min.js',
+                    $jsAssets . 'bower/bower_components/bootbox/bootbox.js',
                     $jsAssets . 'public/js/dialogs.js',
                     $jsAssets . 'public/js/namespace.js',
                 ],
@@ -32,9 +32,9 @@ return call_user_func(
             'tools_js' => [
                 'inputs' => [
                     '@common_js',
-                    $jsAssets . 'public/vendor/momentjs/moment.js',
-                    $jsAssets . 'public/vendor/holderjs/holder.js',
-                    $jsAssets . 'public/vendor/spinjs/spin.js',
+                    $jsAssets . 'bower/bower_components/momentjs/moment.js',
+                    $jsAssets . 'bower/bower_components/holderjs/holder.js',
+                    $jsAssets . 'bower/bower_components/spinjs/spin.js',
                 ],
             ],
             'admin_lte_js' => [
