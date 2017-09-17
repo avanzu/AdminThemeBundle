@@ -46,7 +46,7 @@ return call_user_func(
             ],
             'admin_lte_css' => [
                 'inputs' => [
-                    $lteCssBase . 'bootstrap/css/bootstrap.min.css',
+                    $jsAssets . 'bower/bower_components/adminlte/bootstrap/css/bootstrap.min.css',
                     $lteCssBase . 'plugins/bootstrap-slider/slider.css',
                     $lteCssBase . 'plugins/datatables/dataTables.bootstrap.css',
                     $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
@@ -67,7 +67,7 @@ return call_user_func(
             ],
             'admin_lte_forms_css' => [
                 'inputs' => [
-                    $lteCssBase . 'plugins/colorpicker/bootstrap-colorpicker.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/colorpicker/bootstrap-colorpicker.css',
                     $lteCssBase . 'plugins/daterangepicker/daterangepicker.css',
                     $lteCssBase . 'plugins/timepicker/bootstrap-timepicker.css',
                     $lteCssBase . 'plugins/iCheck/all.css',
