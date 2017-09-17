@@ -47,7 +47,7 @@ return call_user_func(
             'admin_lte_css' => [
                 'inputs' => [
                     $jsAssets . 'bower/bower_components/adminlte/bootstrap/css/bootstrap.min.css',
-                    $lteCssBase . 'plugins/bootstrap-slider/slider.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/bootstrap-slider/slider.css',
                     $lteCssBase . 'plugins/datatables/dataTables.bootstrap.css',
                     $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
                     $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
@@ -68,7 +68,7 @@ return call_user_func(
             'admin_lte_forms_css' => [
                 'inputs' => [
                     $jsAssets . 'bower/bower_components/adminlte/plugins/colorpicker/bootstrap-colorpicker.css',
-                    $lteCssBase . 'plugins/daterangepicker/daterangepicker.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/daterangepicker/daterangepicker.css',
                     $lteCssBase . 'plugins/timepicker/bootstrap-timepicker.css',
                     $lteCssBase . 'plugins/iCheck/all.css',
                     $lteCssBase . 'plugins/iCheck/square/_all.css',
@@ -76,22 +76,22 @@ return call_user_func(
             ],
             'admin_lte_wysiwyg' => [
                 'inputs' => [
-                    $lteJSBase . 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
                 ],
             ],
             'admin_lte_wysiwyg_css' => [
                 'inputs' => [
-                    $lteCssBase . 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
                 ],
             ],
             'admin_lte_morris' => [
                 'inputs' => [
-                    $lteJSBase . 'plugins/morris/morris.js',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/morris/morris.js',
                 ],
             ],
             'admin_lte_morris_css' => [
                 'inputs' => [
-                    $lteCssBase . 'plugins/morris/morris.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/morris/morris.css',
                 ],
             ],
             'admin_lte_flot' => [
