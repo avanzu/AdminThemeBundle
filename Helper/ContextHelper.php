@@ -35,6 +35,12 @@ class ContextHelper extends \ArrayObject
      */
     protected function initialize(array $config = [])
     {
+        // Remove casting if present
+        if(isset($config['0'])) 
+        {
+            unset($config['0']);
+        }
+        
         if(!empty($config))
         {
             $resolver = new OptionsResolver();
