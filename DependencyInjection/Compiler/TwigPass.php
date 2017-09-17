@@ -10,6 +10,7 @@ namespace Avanzu\AdminThemeBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 
 /**
  * Class TwigPass
@@ -25,7 +26,15 @@ class TwigPass implements CompilerPassInterface
     {
         $bundles = $container->getParameter('kernel.bundles');
 
-        if(true !== $container->getParameter('avanzu_admin_theme.use_twig')) {
+        try 
+        {
+            if(true !== $container->getParameter('avanzu_admin_theme.use_twig')) {
+                return;
+            }
+        }
+        // Parameter avanzu_admin_theme.use_twig not found in config
+        catch(ParameterNotFoundException $e) 
+        {
             return;
         }
 
