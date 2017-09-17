@@ -79,7 +79,8 @@ class NavbarController extends Controller
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_TASKS)) {
             return new Response();
         }
-        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_TASKS, new TaskListEvent());
+
+        $listEvent = $this->triggerMethod(ThemeEvents::THEME_TASKS, new TaskListEvent($max));
 
         return $this->render(
                     'AvanzuAdminThemeBundle:Navbar:tasks.html.twig',
@@ -98,14 +99,23 @@ class NavbarController extends Controller
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NAVBAR_USER)) {
             return new Response();
         }
-        
-        $userEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_NAVBAR_USER, new ShowUserEvent());
 
-        return $this->render(
-                    'AvanzuAdminThemeBundle:Navbar:user.html.twig',
-                        [
-                            'user' => $userEvent->getUser(),
-                        ]
-        );
+        /** @var ShowUserEvent $userEvent */
+        $userEvent = $this->triggerMethod(ThemeEvents::THEME_NAVBAR_USER, new ShowUserEvent());
+
+        if ($userEvent instanceof ShowUserEvent) {
+            return $this->render(
+                'AvanzuAdminThemeBundle:Navbar:user.html.twig',
+                [
+                    'user'            => $userEvent->getUser(),
+                    'links'           => $userEvent->getLinks(),
+                    'showProfileLink' => $userEvent->isShowProfileLink(),
+                    'showLogoutLink'  => $userEvent->isShowLogoutLink(),
+                ]
+            );
+        }
+
+        return new Response();
     }
+
 }
