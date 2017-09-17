@@ -3,7 +3,10 @@ Resources/public/vendor/*
 Resources/docs/apidoc
 .idea
 
-#Ignore Eclipse IDE config files
+# Ignore Eclipse IDE config files
 .buildpath
 .project
 .settings
+
+# Ignore cache files from php cs fixer
+.php_cs.cache
