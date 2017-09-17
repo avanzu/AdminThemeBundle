@@ -41,7 +41,7 @@ return call_user_func(
                     $lteJSBase . 'plugins/datatables/jquery.dataTables.js',
                     $lteJSBase . 'plugins/datatables/dataTables.bootstrap.js',
                     $lteJSBase . 'plugins/slimScroll/jquery.slimscroll.js',
-                    $jsAssets . 'bower/bower_components/adminlte/dist/js/app.min.j',
+                    $jsAssets . 'bower/bower_components/adminlte/dist/js/app.min.js',
                 ],
             ],
             'admin_lte_css' => [
