@@ -37,7 +37,7 @@ class SetupThemeListener
         $mng->registerStyle('datatables', $css . '/datatables/dataTables.bootstrap.css', ['bootstrap']);
         $mng->registerStyle('fontawesome', $css . '/font-awesome.css');
         $mng->registerStyle('ionicons', $css . '/ionicons.css');
-        $mng->registerStyle('admin-lte', $css . '/AdminLTE.css', ['bootstrap-slider', 'fontawesome', 'ionicons','datatables']);
+        $mng->registerStyle('admin-lte', $css . '/AdminLTE.css', ['bootstrap-slider', 'fontawesome', 'ionicons', 'datatables']);
         $mng->registerStyle('bs-colorpicker', $css . '/colorpicker/bootstrap-colorpicker.css', ['admin-lte']);
         $mng->registerStyle('daterangepicker', $css . '/daterangepicker/daterangepicker.css', ['admin-lte']);
         $mng->registerStyle('timepicker', $css . '/timepicker/bootstrap-timepicker.css', ['admin-lte']);

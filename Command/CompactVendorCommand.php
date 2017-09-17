@@ -112,11 +112,11 @@ class CompactVendorCommand extends ContainerAwareCommand
         $script = $public . '/css/theme.min.css';
 
         $files = [
-            dirname($vendors) . '/bootstrap/bootstrap.css'
-            ,'font-awesome.css'
-            ,'bootflat.css'
-            ,'bootflat-extensions.css'
-            ,'bootflat-square.css'
+            dirname($vendors) . '/bootstrap/bootstrap.css',
+            'font-awesome.css',
+            'bootflat.css',
+            'bootflat-extensions.css',
+            'bootflat-square.css'
         ];
 
         $process = new Process(sprintf('/usr/local/share/npm/bin/uglifycss %s > %s', implode(' ', $files), $script));
@@ -143,8 +143,8 @@ class CompactVendorCommand extends ContainerAwareCommand
         $script = $public . '/js/theme.min.js';
 
         $files = [
-            'bootstrap.js'
-            ,'jquery.icheck.js'
+            'bootstrap.js',
+            'jquery.icheck.js'
         ];
 
         $process = new Process(sprintf('/usr/local/bin/uglifyjs %s -c -m -o %s', implode(' ', $files), $script));
