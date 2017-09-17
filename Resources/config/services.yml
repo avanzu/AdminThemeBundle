@@ -6,13 +6,14 @@ parameters:
     avanzu_admin_theme.context_helper.class: Avanzu\AdminThemeBundle\Helper\ContextHelper
     avanzu_admin_theme.admin_router.class: Avanzu\AdminThemeBundle\Routing\RouteAliasCollection
     avanzu_admin_theme.theme_manager.class: Avanzu\AdminThemeBundle\Theme\ThemeManager
+    avanzu_admin_theme.container.class: Symfony\Component\DependencyInjection\Container
 
 services:
 
     avanzu_admin_theme.theme_manager:
         class: "%avanzu_admin_theme.theme_manager.class%"
         arguments:
-            - "@container"
+            - "@avanzu_admin_theme.container.class"
 
     avanzu_admin_theme.form.help_extension:
         class: "%avanzu_admin_theme.form.help_extension.class%"
