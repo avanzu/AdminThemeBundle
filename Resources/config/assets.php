@@ -51,8 +51,8 @@ return call_user_func(
                     $lteCssBase . 'plugins/datatables/dataTables.bootstrap.css',
                     $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
                     $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
-                    $jsAssets . 'bower_components/adminlte/dist/css/AdminLTE.min.css',
-                    $lteCssBase . 'dist/css/skins/_all-skins.css',
+                    $jsAssets . 'bower/bower_components/adminlte/dist/css/AdminLTE.min.css',
+                    $jsAssets . 'bower/bower_components/adminlte/dist/css/skins/_all-skins.min.css',
                 ],
             ],
             'admin_lte_forms_js' => [
