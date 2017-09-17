@@ -71,4 +71,8 @@ Finally, you need to attach your new listener to the event system:
 </services>
 ```
 
+[Previous (Navbar User)][2] - [Next (Navbar Messages)][3]
+
 [1]: component_events.md
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/navbar_user.md
+[3]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/navbar_messages.md
