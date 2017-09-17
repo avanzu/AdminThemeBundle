@@ -11,8 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class WidgetController extends Controller
 {
-    public function defaultBoxAction() {
-    }
+    public function defaultBoxAction() {}
 
     public function solidBoxAction() {}
 
