@@ -6,6 +6,14 @@
         {
             "name": "Marc Bach",
             "email": "mail@avanzu.de"
+            "homepage": "http://www.avanzu.de",
+            "role": "Original Author"
+        },
+        {
+            "name": "Ángel Guzmán Maeso",
+            "email": "shakaran@gmail.com",
+            "homepage": "https://shakaran.net/blog",
+            "role": "Developer Collaborator"
         }
     ],
     "minimum-stability": "dev",
@@ -30,6 +38,9 @@
     },
     "scripts": {
         "post-install-cmd": [
+            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
+        ],
+        "post-update-cmd": [
             "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
         ]
     }    
