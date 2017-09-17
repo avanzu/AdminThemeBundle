@@ -89,7 +89,7 @@
             <!-- Main content -->
             <section class="content">
                 {% block flash_messages %}
-                    {% if app.session.flashbag.peekAll|length > 0 %}
+                    {% if app.session.flashbag is defined and app.session.flashbag.peekAll|length > 0 %}
                         <div class="row">
                             <div class="col-sm-12">
                                 {{ macro.session_flash(avanzu_adminlte_close_alert|default(false)) }}
