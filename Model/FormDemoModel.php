@@ -232,6 +232,7 @@ class FormDemoModel {
     public function setFile($file)
     {
         $this->file = $file;
+
         return $this;
     }
 

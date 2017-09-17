@@ -73,6 +73,7 @@ class NotificationModel implements NotificationInterface
     public function setIcon($icon)
     {
         $this->icon = $icon;
+
         return $this;
     }
 

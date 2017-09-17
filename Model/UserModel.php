@@ -58,6 +58,7 @@ class UserModel implements  UserInterface {
     public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
+
         return $this;
     }
 
@@ -77,6 +78,7 @@ class UserModel implements  UserInterface {
     public function setIsOnline($isOnline)
     {
         $this->isOnline = $isOnline;
+
         return $this;
     }
 
@@ -96,6 +98,7 @@ class UserModel implements  UserInterface {
     public function setMemberSince(\DateTime $memberSince)
     {
         $this->memberSince = $memberSince;
+
         return $this;
     }
 
@@ -115,6 +118,7 @@ class UserModel implements  UserInterface {
     public function setUsername($username)
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -135,6 +139,7 @@ class UserModel implements  UserInterface {
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -155,6 +160,7 @@ class UserModel implements  UserInterface {
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 

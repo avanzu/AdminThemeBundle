@@ -70,6 +70,7 @@ class MessageModel implements MessageInterface
     public function setFrom(UserInterface $from)
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -93,6 +94,7 @@ class MessageModel implements MessageInterface
     public function setSentAt(\DateTime $sentAt)
     {
         $this->sentAt = $sentAt;
+
         return $this;
     }
 
@@ -116,6 +118,7 @@ class MessageModel implements MessageInterface
     public function setSubject($subject)
     {
         $this->subject = $subject;
+
         return $this;
     }
 
@@ -139,6 +142,7 @@ class MessageModel implements MessageInterface
     public function setTo(UserInterface $to)
     {
         $this->to = $to;
+
         return $this;
     }
 

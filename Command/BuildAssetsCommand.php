@@ -240,6 +240,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
             foreach($groups[$cleaned]['inputs'] as $candidate) {
                 $resolved = array_merge($resolved, $this->resolve($groups, $candidate));
             }
+
             return $resolved;
         }
 

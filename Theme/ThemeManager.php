@@ -77,6 +77,7 @@ class ThemeManager
         foreach($queue as $def){
             $srcList[] = $def['src'];
         }
+
         return $srcList;
     }
 
@@ -86,6 +87,7 @@ class ThemeManager
         foreach($queue as $def){
             $srcList[] = $def['src'];
         }
+
         return $srcList;
     }
 
@@ -94,6 +96,7 @@ class ThemeManager
      */
     protected function getResolver() {
         $class = $this->resolverClass;
+
         return new $class;
     }
 

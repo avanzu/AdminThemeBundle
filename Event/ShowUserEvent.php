@@ -24,6 +24,7 @@ class ShowUserEvent extends  ThemeEvent {
     public function setUser($user)
     {
         $this->user = $user;
+
         return $this;
     }
 

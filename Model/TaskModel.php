@@ -69,6 +69,7 @@ class TaskModel implements TaskInterface
     public function setColor($color)
     {
         $this->color = $color;
+
         return $this;
     }
 
@@ -88,6 +89,7 @@ class TaskModel implements TaskInterface
     public function setProgress($progress)
     {
         $this->progress = $progress;
+
         return $this;
     }
 
@@ -107,6 +109,7 @@ class TaskModel implements TaskInterface
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
