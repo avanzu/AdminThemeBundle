@@ -158,12 +158,12 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected function endsWith($extension, $file)
     {
-        return (strrpos($file, $extension) === (strlen($file) - strlen($extension)));
+        return strrpos($file, $extension) === (strlen($file) - strlen($extension));
     }
 
     protected function isImage($file)
     {
-        return (strpos(mime_content_type($file), 'image/') === 0);
+        return strpos(mime_content_type($file), 'image/') === 0;
     }
 
     protected function resolveAll($assets)

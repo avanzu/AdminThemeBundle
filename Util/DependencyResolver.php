@@ -108,7 +108,7 @@ class DependencyResolver implements DependencyResolverInterface
             return false;
         }
 
-        return (!empty($this->registered[$id]['deps']));
+        return !empty($this->registered[$id]['deps']);
     }
 
     /**

@@ -181,7 +181,7 @@ class MenuItemModel implements MenuItemInterface
      */
     public function hasParent()
     {
-        return ($this->parent instanceof MenuItemInterface);
+        return $this->parent instanceof MenuItemInterface;
     }
 
     /**
@@ -269,7 +269,7 @@ class MenuItemModel implements MenuItemInterface
      */
     public function hasChildren()
     {
-        return (count($this->children) > 0);
+        return count($this->children) > 0;
     }
 
     /**
