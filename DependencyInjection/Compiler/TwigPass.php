@@ -28,13 +28,13 @@ class TwigPass implements CompilerPassInterface
             return;
         }
 
-        if (! isset($bundles['TwigBundle'])) {
+        if (!isset($bundles['TwigBundle'])) {
             return;
         }
 
         $param = $container->getParameter('twig.form.resources');
 
-        if(! is_array($param)) {
+        if(!is_array($param)) {
             $param = [];
         }
 

@@ -111,7 +111,7 @@ class RouteAliasCollection
      */
     public function getAliases()
     {
-        if (! is_null($this->routeAliases)) {
+        if (!is_null($this->routeAliases)) {
             return $this->routeAliases;
         }
 
@@ -136,7 +136,7 @@ class RouteAliasCollection
     {
         $aliases = [];
         foreach($this->router->getRouteCollection()->all() as $name => $candidate) {
-            if(! $this->hasConfiguredOption($candidate)) {
+            if(!$this->hasConfiguredOption($candidate)) {
                 continue;
             }
 
@@ -153,7 +153,7 @@ class RouteAliasCollection
      */
     public function hasConfiguredOption(Route $route)
     {
-        if(! $route->hasOption($this->optionName)) {
+        if(!$route->hasOption($this->optionName)) {
             return false;
         }
 
