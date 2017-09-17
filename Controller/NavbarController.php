@@ -21,7 +21,7 @@ class NavbarController extends Controller
     const MAX_NOTIFICATIONS = 5;
     const MAX_MESSAGES = 5;
     const MAX_TASKS = 5;
-    
+
     /**
      * @return EventDispatcher
      */
@@ -107,15 +107,14 @@ class NavbarController extends Controller
             return $this->render(
                 'AvanzuAdminThemeBundle:Navbar:user.html.twig',
                 [
-                    'user'            => $userEvent->getUser(),
-                    'links'           => $userEvent->getLinks(),
+                    'user' => $userEvent->getUser(),
+                    'links' => $userEvent->getLinks(),
                     'showProfileLink' => $userEvent->isShowProfileLink(),
-                    'showLogoutLink'  => $userEvent->isShowLogoutLink(),
+                    'showLogoutLink' => $userEvent->isShowLogoutLink(),
                 ]
             );
         }
 
         return new Response();
     }
-
 }

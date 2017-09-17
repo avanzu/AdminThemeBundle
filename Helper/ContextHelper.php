@@ -37,7 +37,7 @@ class ContextHelper extends \ArrayObject
     {
         $resolver = new OptionsResolver();
         $this->configureDefaults($resolver);
-        try 
+        try
         {
             $this->exchangeArray($resolver->resolve($config));
         }

@@ -26,14 +26,14 @@ class TwigPass implements CompilerPassInterface
     {
         $bundles = $container->getParameter('kernel.bundles');
 
-        try 
+        try
         {
             if(true !== $container->getParameter('avanzu_admin_theme.use_twig')) {
                 return;
             }
         }
         // Parameter avanzu_admin_theme.use_twig not found in config
-        catch(ParameterNotFoundException $e) 
+        catch(ParameterNotFoundException $e)
         {
             return;
         }

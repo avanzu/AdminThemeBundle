@@ -32,7 +32,6 @@ class CompactVendorCommand extends ContainerAwareCommand
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-
         if (!$input->getOption('nojs')) {
             $this->compressVendorJs($output);
             $this->compressThemeJs($input, $output);

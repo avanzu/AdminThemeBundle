@@ -31,7 +31,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $container->setParameter('avanzu_admin_theme.options', (array) $config['options']);
 
         // Load the services (with parameters loaded), since twig require theme_manager service
-        try 
+        try
         {
             $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.xml');
@@ -53,12 +53,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         // Load the configuration from files
         $configs = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration(new Configuration(), $configs);
-        
+
         // Set the parameters from config files
         $container->setParameter('avanzu_admin_theme.bower_bin', (string) $config['bower_bin']);
         $container->setParameter('avanzu_admin_theme.use_twig', (bool) $config['use_twig']);
         $container->setParameter('avanzu_admin_theme.options', (array) $config['options']);
-        
+
         // Load the services (with parameters loaded), since twig require theme_manager service
         try
         {
@@ -70,7 +70,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.yml');
         }
-        
+
         $bundles = $container->getParameter('kernel.bundles');
 
         // Inject in twig global config the theme_manager service

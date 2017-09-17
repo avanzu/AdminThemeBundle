@@ -231,7 +231,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
         }
 
         if(($star = strpos($input, '*')) === false) {
-            try 
+            try
             {
                 return [$this->kernel->locateResource($input)];
             }
