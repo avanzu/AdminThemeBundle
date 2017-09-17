@@ -33,14 +33,14 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
 
         // when not in debug, try to find a template for the specific HTTP status code and format
         if (!$debug) {
-            $template = new TemplateReference('AvanzuAdminThemeBundle', 'Exception', $name . $code, $format, 'twig');
+            $template = new TemplateReference('@AvanzuAdminThemeBundle', 'Exception', $name . $code, $format, 'twig');
             if ($this->templateExists($template)) {
                 return $template;
             }
         }
 
         // try to find a template for the given format
-        $template = new TemplateReference('AvanzuAdminThemeBundle', 'Exception', $name, $format, 'twig');
+        $template = new TemplateReference('@AvanzuAdminThemeBundle', 'Exception', $name, $format, 'twig');
         if ($this->templateExists($template)) {
             return $template;
         }
@@ -48,7 +48,7 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
         // default to a generic HTML exception
         $request->setRequestFormat('html');
 
-        $template = new TemplateReference('AvanzuAdminThemeBundle', 'Exception', $name, 'html', 'twig');
+        $template = new TemplateReference('@AvanzuAdminThemeBundle', 'Exception', $name, 'html', 'twig');
         if ($this->templateExists($template)) {
             return $template;
         }
