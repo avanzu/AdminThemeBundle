@@ -11,8 +11,7 @@ services:
     avanzu_admin_theme.form.help_extension:
         class: "%avanzu_admin_theme.form.help_extension.class%"
         tags:
-            - name: form.type_extension
-            - extended_type: Symfony\Component\Form\Extension\Core\Type\FormType
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType, extended-type: Symfony\Component\Form\Extension\Core\Type\FormType }
 
     avanzu_admin_theme.admin_router:
         class: "%avanzu_admin_theme.admin_router.class%"
@@ -25,21 +24,19 @@ services:
 
     avanzu_admin_theme.exception_controller:
         class: "%avanzu_admin_theme.exception_controller.class%"
-        arguments: 
-            - '@twig'
-            - '%kernel.debug%'
+        arguments: ['@twig', '%kernel.debug%']
 
     avanzu_admin_theme.extension.class:
         class: "%avanzu_admin_theme.extension.class%"
         tags:
-            - name: twig.extension
-        arguments: 
-            - '%avanzu_admin_theme.options%' 
-            - '%kernel.environment%'
-            - "@avanzu_admin_theme.admin_router"
+            - { name: twig.extension }
+        arguments: ['%avanzu_admin_theme.options%', '%kernel.environment%', "@avanzu_admin_theme.admin_router"]
 
     avanzu_admin_theme.context_helper:
         class: "%avanzu_admin_theme.context_helper.class%"
         arguments:
             - "%avanzu_admin_theme.options%"
             - "@avanzu_admin_theme.admin_router"
+
+
+
