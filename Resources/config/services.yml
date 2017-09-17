@@ -11,7 +11,7 @@ services:
     avanzu_admin_theme.form.help_extension:
         class: "%avanzu_admin_theme.form.help_extension.class%"
         tags:
-            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType, extended-type: Symfony\Component\Form\Extension\Core\Type\FormType }
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
 
     avanzu_admin_theme.admin_router:
         class: "%avanzu_admin_theme.admin_router.class%"
