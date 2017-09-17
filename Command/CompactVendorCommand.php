@@ -227,4 +227,3 @@ class CompactVendorCommand extends ContainerAwareCommand {
 
     }
 }
-
