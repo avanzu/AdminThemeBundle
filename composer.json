@@ -11,6 +11,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.9",
+	"symfony/options-resolver": ">=2.3",
         "symfony/http-foundation" : ">=2.3",
         "symfony/http-kernel"  : ">=2.3",
         "symfony/event-dispatcher" : ">=2.3",
