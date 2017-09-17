@@ -32,7 +32,7 @@ class ThemeManager
 
     protected $resolverClass;
 
-    function __construct($container, $resolverClass = null)
+    public function __construct($container, $resolverClass = null)
     {
         $this->container     = $container;
         $this->resolverClass = $resolverClass?: 'Avanzu\AdminThemeBundle\Util\DependencyResolver';

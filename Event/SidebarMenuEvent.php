@@ -28,7 +28,7 @@ class SidebarMenuEvent extends ThemeEvent
      */
     protected $request;
 
-    function __construct($request = null)
+    public function __construct($request = null)
     {
         $this->request = $request;
     }

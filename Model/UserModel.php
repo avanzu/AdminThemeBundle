@@ -39,7 +39,7 @@ class UserModel implements  UserInterface {
      */
     protected $isOnline = false;
 
-    function __construct($username='', $avatar = '', $memberSince = null, $isOnline = true, $name='', $title='')
+    public function __construct($username='', $avatar = '', $memberSince = null, $isOnline = true, $name='', $title='')
     {
         $this->avatar      = $avatar;
         $this->isOnline    = $isOnline;

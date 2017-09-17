@@ -60,7 +60,7 @@ class MenuItemModel implements MenuItemInterface
      */
     protected $parent = null;
 
-    function __construct(
+    public function __construct(
         $id,
         $label,
         $route,
