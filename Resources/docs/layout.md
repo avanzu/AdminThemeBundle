@@ -104,4 +104,8 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dd>Intended for inline scripts in order to keep those in one single document block.
 </dl>
 
+[Previous (Readme)][2] - [Next (Rebuilding the assets)][3]
+
 [1]: http://symfony.com/doc/current/templating/overriding.html
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/README.md
+[3]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/rebuild.md
