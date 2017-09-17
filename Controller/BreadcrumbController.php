@@ -40,7 +40,7 @@ class BreadcrumbController extends Controller {
             return new Response();
         }
 
-        $active = $this->getDispatcher()->dispatch(ThemeEvents::THEME_BREADCRUMB,new SidebarMenuEvent($request))->getActive();
+        $active = $this->getDispatcher()->dispatch(ThemeEvents::THEME_BREADCRUMB, new SidebarMenuEvent($request))->getActive();
         /** @var $active MenuItemInterface */
         $list = array();
         if($active) {

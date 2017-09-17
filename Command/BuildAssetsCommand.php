@@ -49,7 +49,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
              ->setDescription('Concatenate and Uglify asset groups to static files')
              ->addOption('compress', 'c', InputOption::VALUE_NONE, 'compress javascripts')
              ->addOption('mangle', 'm', InputOption::VALUE_NONE, 'mangle javascripts')
-             ->addOption('uglifyjs-bin',false, InputOption::VALUE_OPTIONAL, 'uglifyjs binary', '/usr/bin/env uglifyjs')
+             ->addOption('uglifyjs-bin', false, InputOption::VALUE_OPTIONAL, 'uglifyjs binary', '/usr/bin/env uglifyjs')
              ->addOption('uglifycss-bin', false, InputOption::VALUE_OPTIONAL, 'uglifycss binary', '/usr/bin/env uglifycss')
         ;
 

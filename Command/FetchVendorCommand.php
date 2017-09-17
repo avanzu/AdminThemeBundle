@@ -44,7 +44,7 @@ class FetchVendorCommand extends ContainerAwareCommand {
         $asRoot = $input->getOption('root') ? '--allow-root' : '';
         $process = new Process($bower.' '.$action. ' '.$asRoot);
         $process->setTimeout(600);
-        $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
+        $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
         $process->setWorkingDirectory($res);
         $process->run(function ($type, $buffer) use ($output, $helper) {
             if(Process::ERR == $type) {
