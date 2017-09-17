@@ -28,13 +28,13 @@ class ThemeManager
 
     protected $javascripts = array();
 
-    protected $locations   = array();
+    protected $locations = array();
 
     protected $resolverClass;
 
     public function __construct($container, $resolverClass = null)
     {
-        $this->container     = $container;
+        $this->container = $container;
         $this->resolverClass = $resolverClass?: 'Avanzu\AdminThemeBundle\Util\DependencyResolver';
     }
 
@@ -45,8 +45,8 @@ class ThemeManager
 
         if (!isset($this->javascripts[$id])) {
             $this->javascripts[$id] = array(
-                'src'      => $src,
-                'deps'     => $deps,
+                'src' => $src,
+                'deps' => $deps,
                 'location' => $location
             );
         }
@@ -56,8 +56,8 @@ class ThemeManager
     public function registerStyle($id, $src, $deps = array()) {
         if(!isset($this->stylesheets[$id])) {
             $this->stylesheets[$id] = array(
-                'src'      => $src,
-                'deps'     => $deps,
+                'src' => $src,
+                'deps' => $deps,
             );
         }
     }

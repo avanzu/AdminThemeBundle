@@ -21,7 +21,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $config        = $this->processConfiguration($configuration, $configs);
+        $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('avanzu_admin_theme.bower_bin', $config['bower_bin']);
 
@@ -43,7 +43,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             $container->prependExtensionConfig(
                 'twig',
                 array(
-                    'form_theme'    => array(
+                    'form_theme' => array(
                         'AvanzuAdminThemeBundle:layout:form-theme.html.twig'
                     ),
                     'globals' => array(
@@ -63,7 +63,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             $container->prependExtensionConfig(
                 'assetic',
                 array(
-                    'assets'  => $assets,
+                    'assets' => $assets,
                     'bundles' => array(
                         'AvanzuAdminThemeBundle'
                     )

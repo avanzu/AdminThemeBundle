@@ -53,8 +53,8 @@ class BuildAssetsCommand extends ContainerAwareCommand
              ->addOption('uglifycss-bin', false, InputOption::VALUE_OPTIONAL, 'uglifycss binary', '/usr/bin/env uglifycss')
         ;
 
-        $this->resdir   = realpath(dirname(__FILE__).'/../Resources');
-        $this->pubdir   = $this->resdir.'/public';
+        $this->resdir = realpath(dirname(__FILE__).'/../Resources');
+        $this->pubdir = $this->resdir.'/public';
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -63,8 +63,8 @@ class BuildAssetsCommand extends ContainerAwareCommand
         $this->kernel = $kernel = $this->getContainer()->get('kernel');
         $this->webdir = $webdir = realpath($this->getContainer()->getParameter('kernel.root_dir').'/../web');
         $this->builddir = $this->pubdir . '/static/' . $input->getOption('env');
-        $assets         = $this->partition($this->resolveAll(include($this->resdir.'/config/assets.php')));
-        $fs             = new Filesystem();
+        $assets = $this->partition($this->resolveAll(include($this->resdir.'/config/assets.php')));
+        $fs = new Filesystem();
 
 
         foreach($assets['scripts'] as $group => $files) {
@@ -89,7 +89,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
     {
         $finder = new Finder();
         $finder->files()->in("$this->pubdir")->path('/fonts');
-        $fonts  = array();
+        $fonts = array();
         /** @var SplFileInfo $file */
         foreach($finder as $file) {
             if(isset($fonts[$file->getFilename()])) continue;
@@ -109,8 +109,8 @@ class BuildAssetsCommand extends ContainerAwareCommand
     protected function processScript($name, $files, $fs, $in, $out)
     {
 
-        $dir       = $this->builddir . '/scripts/';
-        $file      = $dir . $this->group2file($name, '.js');
+        $dir = $this->builddir . '/scripts/';
+        $file = $dir . $this->group2file($name, '.js');
 
         $fs->exists($dir) or $fs->mkdir($dir);
 
@@ -139,8 +139,8 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected function processStyle($name, $files, $fs, $in, $out)
     {
-        $dir       = $this->builddir . '/styles/';
-        $file      = $dir . $this->group2file($name, '.css');
+        $dir = $this->builddir . '/styles/';
+        $file = $dir . $this->group2file($name, '.css');
 
         $fs->exists($dir) or $fs->mkdir($dir);
 
@@ -179,7 +179,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected function resolveAll($assets)
     {
-        $resolved     = array();
+        $resolved = array();
 
 
         foreach ($assets as $name => $inputs) {
@@ -200,10 +200,10 @@ class BuildAssetsCommand extends ContainerAwareCommand
     {
         $grouped = array(
             'scripts' => array(),
-            'styles'  => array(),
-            'images'  => array(),
-            'files'   => array(),
-            'fonts'   => array()
+            'styles' => array(),
+            'images' => array(),
+            'files' => array(),
+            'fonts' => array()
         );
 
         foreach ($resolved as $group => $files) {

@@ -41,7 +41,7 @@ class NavbarController extends Controller
                     'AvanzuAdminThemeBundle:Navbar:notifications.html.twig',
                         array(
                             'notifications' => $listEvent->getNotifications(),
-                            'total'         => $listEvent->getTotal()
+                            'total' => $listEvent->getTotal()
                         )
         );
 
@@ -60,7 +60,7 @@ class NavbarController extends Controller
                     'AvanzuAdminThemeBundle:Navbar:messages.html.twig',
                         array(
                             'messages' => $listEvent->getMessages(),
-                            'total'    => $listEvent->getTotal()
+                            'total' => $listEvent->getTotal()
                         )
         );
     }

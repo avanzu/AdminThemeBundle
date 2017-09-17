@@ -36,9 +36,9 @@ class FetchVendorCommand extends ContainerAwareCommand {
     {
 
         $kernel = $this->getContainer()->get('kernel'); /** @var $kernel Kernel */
-        $res    = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/bower');
+        $res = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/bower');
         $helper = $this->getHelperSet()->get('formatter'); /** @var $helper FormatterHelper */
-        $bower  = $this->getContainer()->getParameter('avanzu_admin_theme.bower_bin');
+        $bower = $this->getContainer()->getParameter('avanzu_admin_theme.bower_bin');
 
         $action = $input->getOption('update') ? 'update' : 'install';
         $asRoot = $input->getOption('root') ? '--allow-root' : '';

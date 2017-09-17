@@ -44,7 +44,7 @@ class CompactVendorCommand extends ContainerAwareCommand {
 
         $public = dirname($vendors) . '/public';
         $images = $public . '/images';
-        $fonts  = $public . '/fonts';
+        $fonts = $public . '/fonts';
 
         if (!$input->getOption('nojs')) {
             $this->compressVendorJs($output);
@@ -62,13 +62,13 @@ class CompactVendorCommand extends ContainerAwareCommand {
 
 
     protected function getThemePath($type, InputInterface $input, $kernel) {
-        $theme    = $input->getArgument('theme');
+        $theme = $input->getArgument('theme');
         $themedir = strtr('@AvanzuAdminThemeBundle/Resources/vendor/bootflat/{type}',
                           array(
                               '{theme}' => $theme,
-                              '{type}'  => $type
+                              '{type}' => $type
                           ));
-        $vendors  = $kernel->locateResource($themedir);
+        $vendors = $kernel->locateResource($themedir);
 
         return $vendors;
     }
@@ -80,8 +80,8 @@ class CompactVendorCommand extends ContainerAwareCommand {
         /** @var $helper FormatterHelper */
 
 
-        $vendors  = $this->getThemePath('fonts', $input, $kernel);
-        $target   = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/public/fonts');
+        $vendors = $this->getThemePath('fonts', $input, $kernel);
+        $target = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/public/fonts');
 
         $process = new Process(sprintf('rm -rf %s/*', $target));
         $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
@@ -101,8 +101,8 @@ class CompactVendorCommand extends ContainerAwareCommand {
         $helper = $this->getHelperSet()->get('formatter');
         /** @var $helper FormatterHelper */
 
-        $vendors  = $this->getThemePath('img', $input, $kernel);
-        $target   = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/public/img');
+        $vendors = $this->getThemePath('img', $input, $kernel);
+        $target = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/public/img');
 
         $process = new Process(sprintf('rm -rf %s/*', $target));
         $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
@@ -122,12 +122,12 @@ class CompactVendorCommand extends ContainerAwareCommand {
         $helper = $this->getHelperSet()->get('formatter');
         /** @var $helper FormatterHelper */
 
-        $vendors  = $this->getThemePath('css', $input, $kernel);
+        $vendors = $this->getThemePath('css', $input, $kernel);
 
         $public = dirname(dirname(dirname($vendors))) . '/public';
         $script = $public . '/css/theme.min.css';
 
-        $files    = array(
+        $files = array(
             dirname($vendors).'/bootstrap/bootstrap.css'
             ,'font-awesome.css'
             ,'bootflat.css'

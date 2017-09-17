@@ -27,7 +27,7 @@ class SidebarSetupMenuDemoListener
 
     protected function getMenu(Request $request)
     {
-        $earg      = array();
+        $earg = array();
         $rootItems = array(
             $dash = new MenuItemModel('dashboard', 'Dashboard', 'avanzu_admin_dash_demo', $earg, 'fa fa-dashboard'),
             $form = new MenuItemModel('forms', 'Forms', 'avanzu_admin_form_demo', $earg, 'fa fa-edit'),

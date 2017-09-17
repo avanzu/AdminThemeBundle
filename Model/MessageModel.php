@@ -51,12 +51,12 @@ class MessageModel implements MessageInterface
      * @param null          $sentAt
      * @param UserInterface $to
      */
-    public function __construct(UserInterface $from = null, $subject= '', $sentAt = null, UserInterface $to = null)
+    public function __construct(UserInterface $from = null, $subject = '', $sentAt = null, UserInterface $to = null)
     {
-        $this->to      = $to;
+        $this->to = $to;
         $this->subject = $subject;
-        $this->sentAt  = $sentAt ? : new \DateTime();
-        $this->from    = $from;
+        $this->sentAt = $sentAt ? : new \DateTime();
+        $this->from = $from;
     }
 
 

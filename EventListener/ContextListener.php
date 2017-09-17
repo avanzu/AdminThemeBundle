@@ -26,7 +26,7 @@ class ContextListener {
     public function onRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
-        $uri     = $request->getPathInfo();
+        $uri = $request->getPathInfo();
         if(!preg_match('!'.$this->indicator.'!', $uri)) {
             return;
         }

@@ -39,14 +39,14 @@ class UserModel implements  UserInterface {
      */
     protected $isOnline = false;
 
-    public function __construct($username='', $avatar = '', $memberSince = null, $isOnline = true, $name='', $title='')
+    public function __construct($username = '', $avatar = '', $memberSince = null, $isOnline = true, $name = '', $title = '')
     {
-        $this->avatar      = $avatar;
-        $this->isOnline    = $isOnline;
+        $this->avatar = $avatar;
+        $this->isOnline = $isOnline;
         $this->memberSince = $memberSince ?:new \DateTime();
-        $this->username    = $username;
-        $this->name        = $name;
-        $this->title       = $title;
+        $this->username = $username;
+        $this->name = $name;
+        $this->title = $title;
     }
 
 

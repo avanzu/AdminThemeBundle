@@ -7,9 +7,9 @@
 
 return call_user_func(
     function () {
-        $jsAssets   = '@AvanzuAdminThemeBundle/Resources/';
-        $lteJSBase  = $jsAssets.'public/vendor/adminlte/';
-        $cssAssets  = 'bundles/avanzuadmintheme/';
+        $jsAssets = '@AvanzuAdminThemeBundle/Resources/';
+        $lteJSBase = $jsAssets.'public/vendor/adminlte/';
+        $cssAssets = 'bundles/avanzuadmintheme/';
         $lteCssBase = $cssAssets.'vendor/adminlte/';
 
         return array(
@@ -18,7 +18,7 @@ return call_user_func(
                     $jsAssets.'public/vendor/modernizr/modernizr.js',
                 )
             ),
-            'common_js'              => array(
+            'common_js' => array(
                 'inputs' => array(
                     $jsAssets.'public/vendor/jquery/dist/jquery.js',
                     $jsAssets.'public/vendor/jquery-ui/jquery-ui.js',
@@ -29,7 +29,7 @@ return call_user_func(
                     $jsAssets.'public/js/namespace.js',
                 ),
             ),
-            'tools_js'               => array(
+            'tools_js' => array(
                 'inputs' => array(
                     '@common_js',
                     $jsAssets.'public/vendor/momentjs/moment.js',
@@ -37,7 +37,7 @@ return call_user_func(
                     $jsAssets.'public/vendor/spinjs/spin.js',
                 ),
             ),
-            'admin_lte_js'           => array(
+            'admin_lte_js' => array(
                 'inputs' => array(
                     $lteJSBase.'plugins/bootstrap-slider/bootstrap-slider.js',
                     $lteJSBase.'plugins/datatables/jquery.dataTables.js',
@@ -46,7 +46,7 @@ return call_user_func(
                     $jsAssets.'public/js/adminLTE.js',
                 )
             ),
-            'admin_lte_css'          => array(
+            'admin_lte_css' => array(
                 'inputs' => array(
 
                     $lteCssBase.'bootstrap/css/bootstrap.min.css',
@@ -58,7 +58,7 @@ return call_user_func(
                     $lteCssBase.'dist/css/skins/_all-skins.css',
                 )
             ),
-            'admin_lte_forms_js'     => array(
+            'admin_lte_forms_js' => array(
                 'inputs' => array(
                     $lteJSBase.'plugins/colorpicker/bootstrap-colorpicker.js',
                     $lteJSBase.'plugins/daterangepicker/daterangepicker.js',
@@ -68,7 +68,7 @@ return call_user_func(
                     //   $lteJs.'plugins/input-mask/*',
                 )
             ),
-            'admin_lte_forms_css'    => array(
+            'admin_lte_forms_css' => array(
                 'inputs' => array(
                     $lteCssBase.'plugins/colorpicker/bootstrap-colorpicker.css',
                     $lteCssBase.'plugins/daterangepicker/daterangepicker.css',
@@ -77,32 +77,32 @@ return call_user_func(
                     $lteCssBase.'plugins/iCheck/square/_all.css',
                 )
             ),
-            'admin_lte_wysiwyg'      => array(
+            'admin_lte_wysiwyg' => array(
                 'inputs' => array(
                     $lteJSBase.'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
                 )
             ),
-            'admin_lte_wysiwyg_css'  => array(
+            'admin_lte_wysiwyg_css' => array(
                 'inputs' => array(
                     $lteCssBase.'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
                 )
             ),
-            'admin_lte_morris'       => array(
+            'admin_lte_morris' => array(
                 'inputs' => array(
                     $lteJSBase.'plugins/morris/morris.js',
                 )
             ),
-            'admin_lte_morris_css'   => array(
+            'admin_lte_morris_css' => array(
                 'inputs' => array(
                     $lteCssBase.'plugins/morris/morris.css',
                 )
             ),
-            'admin_lte_flot'         => array(
+            'admin_lte_flot' => array(
                 'inputs' => array(
                     $lteJSBase.'plugins/flot/*',
                 )
             ),
-            'admin_lte_calendar'     => array(
+            'admin_lte_calendar' => array(
                 'inputs' => array(
                     $jsAssets.'public/vendor/fullcalendar/dist/fullcalendar.min.js',
                 )
@@ -112,12 +112,12 @@ return call_user_func(
                     $cssAssets.'vendor/fullcalendar/dist/fullcalendar.css',
                 )
             ),
-            'avatar_img'             => array(
+            'avatar_img' => array(
                 'inputs' => array(
                     '@AvanzuAdminThemeBundle/Resources/public/img/avatar.png'
                 )
             ),
-            'admin_lte_all'          => array(
+            'admin_lte_all' => array(
                 'inputs' => array(
                     '@tools_js',
                     '@admin_lte_forms_js',
@@ -127,7 +127,7 @@ return call_user_func(
                     '@admin_lte_js',
                 )
             ),
-            'admin_lte_all_css'      => array(
+            'admin_lte_all_css' => array(
                 'inputs' => array(
                     '@admin_lte_css',
                     '@admin_lte_forms_css',

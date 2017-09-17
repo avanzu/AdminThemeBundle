@@ -69,7 +69,7 @@ class DependencyResolver implements DependencyResolverInterface
                 continue;
             } // unregistered
             if (!$this->hasDependencies($id)) { // standalone
-                $this->queued[]      = $this->registered[$id];
+                $this->queued[] = $this->registered[$id];
                 $this->resolved[$id] = true;
 
                 continue;
@@ -82,7 +82,7 @@ class DependencyResolver implements DependencyResolverInterface
             $deps = $this->unresolved($this->getDependencies($id));
 
             if (empty($deps)) {
-                $this->queued[]      = $this->registered[$id];
+                $this->queued[] = $this->registered[$id];
                 $this->resolved[$id] = true;
 
                 continue;

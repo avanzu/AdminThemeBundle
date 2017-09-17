@@ -20,8 +20,8 @@ class NotificationModel implements NotificationInterface
     public function __construct($message = null, $type = 'info', $icon = 'fa fa-warning')
     {
         $this->message = $message;
-        $this->type    = $type;
-        $this->icon    = $icon;
+        $this->type = $type;
+        $this->icon = $icon;
     }
 
 

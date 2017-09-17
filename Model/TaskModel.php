@@ -18,15 +18,15 @@ class TaskModel implements TaskInterface
     /**
      *
      */
-    const COLOR_AQUA   = 'aqua';
+    const COLOR_AQUA = 'aqua';
     /**
      *
      */
-    const COLOR_GREEN  = 'green';
+    const COLOR_GREEN = 'green';
     /**
      *
      */
-    const COLOR_RED    = 'red';
+    const COLOR_RED = 'red';
     /**
      *
      */
@@ -55,9 +55,9 @@ class TaskModel implements TaskInterface
      */
     public function __construct($title = null, $progress = 0, $color = TaskModel::COLOR_AQUA)
     {
-        $this->color    = $color;
+        $this->color = $color;
         $this->progress = $progress;
-        $this->title    = $title;
+        $this->title = $title;
     }
 
 
