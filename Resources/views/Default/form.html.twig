@@ -25,12 +25,12 @@
 
             {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
                 {% block box_before %}{{ form_start(form) }}{% endblock %}
-                {% block box_title %}Form theme{% endblock %}
+                {% block box_title %}{{ 'Form theme'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
                 {% block box_body %}{{ form_widget(form) }}{% endblock %}
                 {% block box_footer %}
                     <div class="pull-right">
-                        <button type="reset" class="btn btn-warning "><i class="fa fa-times"></i> Cancel</button>
-                        <button type="submit" class="btn btn-primary "><i class="fa fa-check-square"></i> Submit</button>
+                        <button type="reset" class="btn btn-warning "><i class="fa fa-times"></i> {{ 'Cancel'|trans({}, 'AvanzuAdminTheme') }}</button>
+                        <button type="submit" class="btn btn-primary "><i class="fa fa-check-square"></i> {{ 'Submit'|trans({}, 'AvanzuAdminTheme') }}</button>
                     </div>
                 {% endblock %}
 
@@ -52,7 +52,7 @@
 {% block avanzu_javascripts_inline %}
     <script>
         $(function () {
-            console.log('augmenting form...');
+            console.log('{{ 'augmenting form'|trans({}, 'AvanzuAdminTheme') }}...');
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-blue',
                 radioClass: 'iradio_square-blue',

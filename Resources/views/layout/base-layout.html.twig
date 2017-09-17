@@ -85,8 +85,8 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    {% block page_title %}Blank page{% endblock %}
-                    <small>{% block page_subtitle %}Control panel{% endblock %}</small>
+                    {% block page_title %}{{ 'Blank page'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
+                    <small>{% block page_subtitle %}{{ 'Control panel'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}</small>
                 </h1>
                 {% block avanzu_breadcrumb %}
                     {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
@@ -115,7 +115,7 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 2.0
             </div>
-            <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> {{ 'All rights reserved'|trans({}, 'AvanzuAdminTheme') }}.
         </footer>
     {% endblock %}
 
