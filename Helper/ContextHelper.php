@@ -9,6 +9,7 @@ namespace Avanzu\AdminThemeBundle\Helper;
 
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
 class ContextHelper extends \ArrayObject
 {
@@ -36,7 +37,14 @@ class ContextHelper extends \ArrayObject
     {
         $resolver = new OptionsResolver();
         $this->configureDefaults($resolver);
-        $this->exchangeArray($resolver->resolve($config));
+        try 
+        {
+            $this->exchangeArray($resolver->resolve($config));
+        }
+        catch(UndefinedOptionsException $e)
+        {
+            echo $e->getMessage();
+        }
     }
 
     /**
@@ -107,6 +115,9 @@ class ContextHelper extends \ArrayObject
     protected function configureDefaults(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+            'use_twig' => true,
+            'use_assetic' => true,
+            'options' => [],
             'skin' => 'skin-blue',
             'fixed_layout' => false,
             'boxed_layout' => false,
