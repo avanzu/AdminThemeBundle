@@ -7,7 +7,6 @@
 namespace Avanzu\AdminThemeBundle\Twig;
 
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
-use Twig_Environment;
 
 class AvanzuAdminExtension extends \Twig_Extension
 {

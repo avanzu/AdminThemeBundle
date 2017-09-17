@@ -6,15 +6,8 @@
  */
 namespace Avanzu\AdminThemeBundle\Theme;
 
-use Assetic\Asset\AssetCollection;
-use Assetic\Asset\AssetReference;
-use Assetic\Factory\AssetFactory;
-use Assetic\Factory\LazyAssetManager;
-use Assetic\Factory\Resource\FileResource;
 use Avanzu\FoundationBundle\Util\DependencyResolverInterface;
-use Symfony\Bundle\AsseticBundle\Config\AsseticResource;
 use Symfony\Component\DependencyInjection\Container;
-use Avanzu\FoundationBundle\Util\DependencyResolver;
 use Symfony\Component\HttpKernel\Config\FileLocator;
 
 class ThemeManager

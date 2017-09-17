@@ -10,7 +10,6 @@ use Avanzu\AdminThemeBundle\Event\KnpMenuEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class MenuBuilder

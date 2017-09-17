@@ -6,8 +6,6 @@
  */
 namespace Avanzu\AdminThemeBundle\Twig;
 
-use Twig_Environment;
-
 class WidgetExtension extends \Twig_Extension
 {
     public function renderWidget() {

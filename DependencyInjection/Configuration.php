@@ -2,9 +2,6 @@
 
 namespace Avanzu\AdminThemeBundle\DependencyInjection;
 
-use Avanzu\AdminThemeBundle\Controller\BreadcrumbController;
-use Avanzu\AdminThemeBundle\Controller\NavbarController;
-use Avanzu\AdminThemeBundle\Controller\SidebarController;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 

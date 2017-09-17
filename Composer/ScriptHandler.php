@@ -12,8 +12,6 @@ namespace Avanzu\AdminThemeBundle\Composer;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Composer\Script\CommandEvent;
-use Symfony\Component\ClassLoader\ClassCollectionLoader;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * ScriptHandler
