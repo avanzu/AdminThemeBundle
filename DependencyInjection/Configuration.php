@@ -31,7 +31,7 @@ class Configuration implements ConfigurationInterface
                         ->defaultValue(true)
                     ->end()
                     ->scalarNode('options')
-                        ->defaultValue(NULL)
+                        ->defaultValue([])
                     ->end()
                 ->end();
         // Here you should define the parameters that are allowed to
