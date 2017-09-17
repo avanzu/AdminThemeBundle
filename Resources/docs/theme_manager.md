@@ -74,3 +74,8 @@ Linking to groups other than the default one inside your templates looks a bit d
 	 <script src="{{ asset(script) }}" ></script>
 {% endfor %}
 ``` 
+
+[Previous (Rebuilding the assets)][1] - [Next (Components)][2]
+
+[1]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/rebuild.md
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/component_events.md
