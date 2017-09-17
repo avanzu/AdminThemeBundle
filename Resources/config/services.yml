@@ -13,7 +13,7 @@ services:
     avanzu_admin_theme.theme_manager:
         class: "%avanzu_admin_theme.theme_manager.class%"
         arguments:
-            - "@avanzu_admin_theme.container.class"
+            - "%avanzu_admin_theme.container.class%"
 
     avanzu_admin_theme.form.help_extension:
         class: "%avanzu_admin_theme.form.help_extension.class%"
