@@ -171,21 +171,21 @@ class CompactVendorCommand extends ContainerAwareCommand
         $script = $public . '/js/vendors.js';
 
         $files = [
-            'jquery/dist/jquery.js'
-            , 'jquery-ui/jquery-ui.js'
-            , 'fastclick/lib/fastclick.js'
-            , 'jquery.cookie/jquery.cookie.js'
-            , 'jquery-placeholder/jquery.placeholder.js'
-            , 'underscore/underscore.js'
-            , 'backbone/backbone.js'
-            , 'backbone.babysitter/lib/backbone.babysitter.js'
-            , 'backbone.wreqr/lib/backbone.wreqr.js'
-            , 'marionette/lib/backbone.marionette.js'
-            , 'momentjs/moment.js'
-            , 'momentjs/lang/de.js'
-            , 'spinjs/spin.js'
-            , 'spinjs/jquery.spin.js'
-            , 'holderjs/holder.js',
+            'jquery/dist/jquery.js',
+            'jquery-ui/jquery-ui.js',
+            'fastclick/lib/fastclick.js',
+            'jquery.cookie/jquery.cookie.js',
+            'jquery-placeholder/jquery.placeholder.js',
+            'underscore/underscore.js',
+            'backbone/backbone.js',
+            'backbone.babysitter/lib/backbone.babysitter.js',
+            'backbone.wreqr/lib/backbone.wreqr.js',
+            'marionette/lib/backbone.marionette.js',
+            'momentjs/moment.js',
+            'momentjs/lang/de.js',
+            'spinjs/spin.js',
+            'spinjs/jquery.spin.js',
+            'holderjs/holder.js',
         ];
 
         $process = new Process(sprintf('/usr/local/bin/uglifyjs %s -c -m -o %s', implode(' ', $files), $script));
