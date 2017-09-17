@@ -101,12 +101,12 @@ return call_user_func(
             ],
             'admin_lte_calendar' => [
                 'inputs' => [
-                    $jsAssets . 'public/vendor/fullcalendar/dist/fullcalendar.min.js',
+                    $jsAssets . 'bower/bower_components/fullcalendar/dist/fullcalendar.min.js',
                 ],
             ],
             'admin_lte_calendar_css' => [
                 'inputs' => [
-                    $cssAssets . 'vendor/fullcalendar/dist/fullcalendar.css',
+                    $cssAssets . 'bower/bower_components/fullcalendar/dist/fullcalendar.css',
                 ],
             ],
             'avatar_img' => [
