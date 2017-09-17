@@ -50,40 +50,5 @@ class FetchVendorCommand extends ContainerAwareCommand
                 $output->write($helper->formatSection('Progress', $buffer, 'info'));
             }
         });
-
-        // no more pulling/cloning directly from master in favor of a bower installation with specific version constraint
-
-         /*
-
-        $process = new Process('git clone https://github.com/almasaeed2010/AdminLTE.git');
-        $process->setWorkingDirectory(dirname($res).'/public/vendor');
-        // run checkout if no dir present
-        // run update only if update requested
-        $process = null;
-        $adminlte_dir = dirname($res).'/public/vendor/AdminLTE';
-        if($input->getOption('update')) {
-            $process = new Process('git pull');
-            $process->setWorkingDirectory($adminlte_dir);
-        }
-        $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
-
-        if(!is_dir($adminlte_dir)) {
-            $process = new Process('git clone https://github.com/almasaeed2010/AdminLTE.git');
-            $process->setWorkingDirectory(dirname($adminlte_dir));
-        }
-
-        if ($process) {
-            $output->writeln($helper->formatSection('Executing',$process->getCommandLine(), 'comment'));
-
-            $process->run(function($type, $buffer) use ($output, $helper){
-                if(Process::ERR == $type) {
-                    $output->write($helper->formatSection('Error', $buffer, 'error' ));
-                } else {
-                    $output->write($helper->formatSection('Progress', $buffer, 'info' ));
-                }
-            });
-        }
-
-        */
     }
 }
