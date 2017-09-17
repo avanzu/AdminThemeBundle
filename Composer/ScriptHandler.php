@@ -35,10 +35,10 @@ class ScriptHandler
      * a composer.json and set new options, making them immediately available
      * to forthcoming listeners.
      */
-    private static $options = array(
+    private static $options = [
         'symfony-app-dir' => 'app',
         'symfony-web-dir' => 'web'
-    );
+    ];
 
     protected static function getOptions(CommandEvent $event)
     {
@@ -106,7 +106,7 @@ class ScriptHandler
 
     protected static function getPhpArguments()
     {
-        $arguments = array();
+        $arguments = [];
 
         $phpFinder = new PhpExecutableFinder();
         if (method_exists($phpFinder, 'findArguments')) {

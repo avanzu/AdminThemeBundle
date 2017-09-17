@@ -41,14 +41,14 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         if (isset($bundles['TwigBundle'])) {
             $container->prependExtensionConfig(
                 'twig',
-                array(
-                    'form_theme' => array(
+                [
+                    'form_theme' => [
                         'AvanzuAdminThemeBundle:layout:form-theme.html.twig'
-                    ),
-                    'globals' => array(
+                    ],
+                    'globals' => [
                         'admin_theme' => '@avanzu_admin_theme.theme_manager'
-                    )
-                )
+                    ]
+                ]
             );
         }
 
@@ -60,12 +60,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
 
             $container->prependExtensionConfig(
                 'assetic',
-                array(
+                [
                     'assets' => $assets,
-                    'bundles' => array(
+                    'bundles' => [
                         'AvanzuAdminThemeBundle'
-                    )
-                )
+                    ]
+                ]
             );
         }
     }

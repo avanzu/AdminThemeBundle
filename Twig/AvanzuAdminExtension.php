@@ -34,10 +34,10 @@ class AvanzuAdminExtension extends \Twig_Extension
 
     public function getFilters()
     {
-        return array(
+        return [
             new \Twig_SimpleFilter('body_class', [$this, 'bodyClass']),
             new \Twig_SimpleFilter('route_alias', [$this->aliasRouter, 'getRouteByAlias'])
-        );
+        ];
     }
 
     public function bodyClass($classes = "")

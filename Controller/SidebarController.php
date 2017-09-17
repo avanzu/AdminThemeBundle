@@ -24,9 +24,9 @@ class SidebarController extends Controller
 
         return $this->render(
                     'AvanzuAdminThemeBundle:Sidebar:user-panel.html.twig',
-                        array(
+                        [
                             'user' => $userEvent->getUser()
-                        )
+                        ]
         );
     }
 
@@ -40,7 +40,7 @@ class SidebarController extends Controller
 
     public function searchFormAction()
     {
-        return $this->render('AvanzuAdminThemeBundle:Sidebar:search-form.html.twig', array());
+        return $this->render('AvanzuAdminThemeBundle:Sidebar:search-form.html.twig', []);
     }
 
     public function menuAction(Request $request)
@@ -53,9 +53,9 @@ class SidebarController extends Controller
 
         return $this->render(
                     'AvanzuAdminThemeBundle:Sidebar:menu.html.twig',
-                        array(
+                        [
                             'menu' => $event->getItems()
-                        )
+                        ]
         );
     }
 }

@@ -17,7 +17,7 @@ class FormHelpExtension extends AbstractTypeExtension
     public function configureOptions(OptionsResolver $resolver)
     {
         parent::configureOptions($resolver);
-        $resolver->setDefined(array('help'));
+        $resolver->setDefined(['help']);
     }
 
     public function buildView(FormView $view, FormInterface $form, array $options)

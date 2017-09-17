@@ -48,15 +48,15 @@ class MenuBuilder
 
     public function createMainMenu(array $options)
     {
-        $menu = $this->factory->createItem('root', array(
-            'childrenAttributes' => array('class' => 'sidebar-menu')
-        ));
+        $menu = $this->factory->createItem('root', [
+            'childrenAttributes' => ['class' => 'sidebar-menu']
+        ]);
 
-        $childOptions = array(
-            'attributes' => array('class' => 'treeview'),
-            'childrenAttributes' => array('class' => 'treeview-menu'),
-            'labelAttributes' => array()
-        );
+        $childOptions = [
+            'attributes' => ['class' => 'treeview'],
+            'childrenAttributes' => ['class' => 'treeview-menu'],
+            'labelAttributes' => []
+        ];
 
         $this->eventDispatcher->dispatch(
             ThemeEvents::THEME_SIDEBAR_SETUP_KNP_MENU,

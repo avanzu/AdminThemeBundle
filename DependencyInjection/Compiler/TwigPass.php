@@ -35,7 +35,7 @@ class TwigPass implements CompilerPassInterface
         $param = $container->getParameter('twig.form.resources');
 
         if(! is_array($param)) {
-            $param = array();
+            $param = [];
         }
 
         array_push($param, 'AvanzuAdminThemeBundle:layout:form-theme.html.twig');
@@ -44,10 +44,10 @@ class TwigPass implements CompilerPassInterface
 
         $twigDefinition = $container->getDefinition('twig');
 
-        $twigDefinition->addMethodCall('addGlobal', array(
+        $twigDefinition->addMethodCall('addGlobal', [
                 'avanzu_admin_context',
                 new Reference('avanzu_admin_theme.context_helper')
-            )
+            ]
         );
     }
 }

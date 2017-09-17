@@ -83,7 +83,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
     {
         $finder = new Finder();
         $finder->files()->in("$this->pubdir")->path('/fonts');
-        $fonts = array();
+        $fonts = [];
         /** @var SplFileInfo $file */
         foreach($finder as $file) {
             if(isset($fonts[$file->getFilename()])) continue;
@@ -107,7 +107,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
         $fs->exists($dir) or $fs->mkdir($dir);
 
-        $command = array($in->getOption('uglifyjs-bin'));
+        $command = [$in->getOption('uglifyjs-bin')];
         if($in->getOption('compress'))
             $command[] = "-c 'dead_code,drop_debugger,drop_console,keep_fargs,unused=false,properties=false'";
         if($in->getOption('mangle'))
@@ -135,7 +135,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
         $fs->exists($dir) or $fs->mkdir($dir);
 
-        $command = array($in->getOption('uglifycss-bin'));
+        $command = [$in->getOption('uglifycss-bin')];
         $command[] = implode(' ', $files);
         $command[] = "> $file";
 
@@ -168,11 +168,11 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected function resolveAll($assets)
     {
-        $resolved = array();
+        $resolved = [];
 
         foreach ($assets as $name => $inputs) {
             if (!isset($resolved[$name])) {
-                $resolved[$name] = array();
+                $resolved[$name] = [];
             }
 
             foreach ($inputs['inputs'] as $input) {
@@ -185,13 +185,13 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected function partition($resolved)
     {
-        $grouped = array(
-            'scripts' => array(),
-            'styles' => array(),
-            'images' => array(),
-            'files' => array(),
-            'fonts' => array()
-        );
+        $grouped = [
+            'scripts' => [],
+            'styles' => [],
+            'images' => [],
+            'files' => [],
+            'fonts' => []
+        ];
 
         foreach ($resolved as $group => $files) {
             foreach ($files as $file) {
@@ -217,9 +217,9 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected function resolve($groups, $input)
     {
-        $resolved = array();
+        $resolved = [];
         if(strpos($input, '@') === false) {
-            return array($this->webdir . '/' . $input);
+            return [$this->webdir . '/' . $input];
         }
 
         $cleaned = str_replace('@', '', $input);
@@ -232,7 +232,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
         }
 
         if(($star = strpos($input, '*')) === false) {
-            return array($this->kernel->locateResource($input));
+            return [$this->kernel->locateResource($input)];
         } else {
             $dir = $this->kernel->locateResource(substr($input, 0, $star));
             $it = new \DirectoryIterator($dir);

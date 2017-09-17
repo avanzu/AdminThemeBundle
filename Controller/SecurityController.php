@@ -31,10 +31,10 @@ class SecurityController extends Controller
 
         return $this->render(
                     'AvanzuAdminThemeBundle:Security:login.html.twig',
-                        array(
+                        [
                             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
                             'error' => $error,
-                        )
+                        ]
         );
     }
 }

@@ -18,7 +18,7 @@ class NotificationListEvent extends ThemeEvent
     /**
      * @var array
      */
-    protected $notifications = array();
+    protected $notifications = [];
 
     protected $total = 0;
 

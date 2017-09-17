@@ -20,7 +20,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -44,9 +44,9 @@ class DefaultController extends Controller
     public function formAction() {
         $form = $this->createForm(FormDemoModelType::class);
 
-        return $this->render('AvanzuAdminThemeBundle:Default:form.html.twig', array(
+        return $this->render('AvanzuAdminThemeBundle:Default:form.html.twig', [
                 'form' => $form->createView()
-            ));
+            ]);
     }
 
     public function loginAction() {

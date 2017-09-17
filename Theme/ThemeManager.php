@@ -22,11 +22,11 @@ class ThemeManager
     /** @var  Container */
     protected $container;
 
-    protected $stylesheets = array();
+    protected $stylesheets = [];
 
-    protected $javascripts = array();
+    protected $javascripts = [];
 
-    protected $locations = array();
+    protected $locations = [];
 
     protected $resolverClass;
 
@@ -36,29 +36,29 @@ class ThemeManager
         $this->resolverClass = $resolverClass?: 'Avanzu\AdminThemeBundle\Util\DependencyResolver';
     }
 
-    public function registerScript($id, $src, $deps = array(), $location = "bottom")
+    public function registerScript($id, $src, $deps = [], $location = "bottom")
     {
         if (!isset($this->javascripts[$id])) {
-            $this->javascripts[$id] = array(
+            $this->javascripts[$id] = [
                 'src' => $src,
                 'deps' => $deps,
                 'location' => $location
-            );
+            ];
         }
     }
 
-    public function registerStyle($id, $src, $deps = array()) {
+    public function registerStyle($id, $src, $deps = []) {
         if(!isset($this->stylesheets[$id])) {
-            $this->stylesheets[$id] = array(
+            $this->stylesheets[$id] = [
                 'src' => $src,
                 'deps' => $deps,
-            );
+            ];
         }
     }
 
     public function getScripts($location = 'bottom') {
-        $unsorted = array();
-        $srcList = array();
+        $unsorted = [];
+        $srcList = [];
         
         foreach($this->javascripts as $id => $scriptDefinition) {
             if($scriptDefinition['location'] == $location) {
@@ -75,7 +75,7 @@ class ThemeManager
     }
 
     public function getStyles() {
-        $srcList = array();
+        $srcList = [];
         $queue = $this->getResolver()->register($this->stylesheets)->resolveAll();
         foreach($queue as $def){
             $srcList[] = $def['src'];

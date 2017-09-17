@@ -20,7 +20,7 @@ class MessageListEvent extends ThemeEvent
      *
      * @var array
      */
-    protected $messages = array();
+    protected $messages = [];
 
     /**
      * Stores the total amount

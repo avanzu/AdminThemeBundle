@@ -58,10 +58,10 @@ class CompactVendorCommand extends ContainerAwareCommand
     protected function getThemePath($type, InputInterface $input, $kernel) {
         $theme = $input->getArgument('theme');
         $themedir = strtr('@AvanzuAdminThemeBundle/Resources/vendor/bootflat/{type}',
-                          array(
+                          [
                               '{theme}' => $theme,
                               '{type}' => $type
-                          ));
+                          ]);
         $vendors = $kernel->locateResource($themedir);
 
         return $vendors;
@@ -111,13 +111,13 @@ class CompactVendorCommand extends ContainerAwareCommand
         $public = dirname(dirname(dirname($vendors))) . '/public';
         $script = $public . '/css/theme.min.css';
 
-        $files = array(
+        $files = [
             dirname($vendors) . '/bootstrap/bootstrap.css'
             ,'font-awesome.css'
             ,'bootflat.css'
             ,'bootflat-extensions.css'
             ,'bootflat-square.css'
-        );
+        ];
 
         $process = new Process(sprintf('/usr/local/share/npm/bin/uglifycss %s > %s', implode(' ', $files), $script));
         $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
@@ -142,10 +142,10 @@ class CompactVendorCommand extends ContainerAwareCommand
         $public = dirname(dirname(dirname($vendors))) . '/public';
         $script = $public . '/js/theme.min.js';
 
-        $files = array(
+        $files = [
             'bootstrap.js'
             ,'jquery.icheck.js'
-        );
+        ];
 
         $process = new Process(sprintf('/usr/local/bin/uglifyjs %s -c -m -o %s', implode(' ', $files), $script));
         $output->writeln($helper->formatSection('Executing command', 'Compressing theme vendor scripts'));
@@ -171,7 +171,7 @@ class CompactVendorCommand extends ContainerAwareCommand
         $public = dirname($vendors) . '/public';
         $script = $public . '/js/vendors.js';
 
-        $files = array(
+        $files = [
             'jquery/dist/jquery.js'
             , 'jquery-ui/jquery-ui.js'
             , 'fastclick/lib/fastclick.js'
@@ -187,7 +187,7 @@ class CompactVendorCommand extends ContainerAwareCommand
             , 'spinjs/spin.js'
             , 'spinjs/jquery.spin.js'
             , 'holderjs/holder.js'
-        );
+        ];
 
         $process = new Process(sprintf('/usr/local/bin/uglifyjs %s -c -m -o %s', implode(' ', $files), $script));
         $output->writeln($helper->formatSection('Executing command', 'Compressing general vendor scripts'));

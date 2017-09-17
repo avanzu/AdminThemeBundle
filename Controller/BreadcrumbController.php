@@ -39,7 +39,7 @@ class BreadcrumbController extends Controller
 
         $active = $this->getDispatcher()->dispatch(ThemeEvents::THEME_BREADCRUMB, new SidebarMenuEvent($request))->getActive();
         /** @var $active MenuItemInterface */
-        $list = array();
+        $list = [];
         if($active) {
             $list[] = $active;
             while(null !== ($item = $active->getActiveChild())) {
@@ -48,10 +48,10 @@ class BreadcrumbController extends Controller
             }
         }
 
-        return $this->render('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb.html.twig', array(
+        return $this->render('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb.html.twig', [
                 'active' => $list,
                 'title' => $title
-            ));
+            ]);
     }
 
     /**

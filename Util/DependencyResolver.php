@@ -16,19 +16,19 @@ class DependencyResolver implements DependencyResolverInterface
     /**
      * @var array
      */
-    protected $queued = array();
+    protected $queued = [];
     /**
      * @var array
      */
-    protected $registered = array();
+    protected $registered = [];
     /**
      * @var array
      */
-    protected $resolved = array();
+    protected $resolved = [];
     /**
      * @var array
      */
-    protected $unresolved = array();
+    protected $unresolved = [];
 
     /**
      * @param $items

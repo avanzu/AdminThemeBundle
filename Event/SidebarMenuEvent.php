@@ -20,7 +20,7 @@ class SidebarMenuEvent extends ThemeEvent
     /**
      * @var array
      */
-    protected $menuRootItems = array();
+    protected $menuRootItems = [];
 
     /**
      * @var Request
