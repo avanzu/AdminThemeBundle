@@ -21,11 +21,16 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        // Load the configuration from files
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        // Set the parameters from config files
         $container->setParameter('avanzu_admin_theme.bower_bin', $config['bower_bin']);
+        $container->setParameter('avanzu_admin_theme.use_twig', $config['use_twig']);
+        $container->setParameter('avanzu_admin_theme.options', $config['options']);
 
+        // Load the services (with parameters loaded), since twig require theme_manager service
         try 
         {
             $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -45,7 +50,16 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
      */
     public function prepend(ContainerBuilder $container)
     {
-        // Load the services, since twig require theme_manager service
+        // Load the configuration from files
+        $configs = $container->getExtensionConfig($this->getAlias());
+        $config = $this->processConfiguration(new Configuration(), $configs);
+        
+        // Set the parameters from config files
+        $container->setParameter('avanzu_admin_theme.bower_bin', $config['bower_bin']);
+        $container->setParameter('avanzu_admin_theme.use_twig', $config['use_twig']);
+        $container->setParameter('avanzu_admin_theme.options', $config['options']);
+        
+        // Load the services (with parameters loaded), since twig require theme_manager service
         try
         {
             $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -60,7 +74,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $bundles = $container->getParameter('kernel.bundles');
 
         // Inject in twig global config the theme_manager service
-        if (isset($bundles['TwigBundle'])) {
+        if ($config['use_twig'] && isset($bundles['TwigBundle'])) {
             $container->prependExtensionConfig(
                 'twig',
                 [
@@ -73,9 +87,6 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                 ]
             );
         }
-
-        $configs = $container->getExtensionConfig($this->getAlias());
-        $config = $this->processConfiguration(new Configuration(), $configs);
 
         if ($config['use_assetic'] && isset($bundles['AsseticBundle'])) {
             $assets = include dirname(__FILE__) . '/../Resources/config/assets.php';
