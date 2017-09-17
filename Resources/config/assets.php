@@ -41,7 +41,7 @@ return call_user_func(
                     $lteJSBase . 'plugins/datatables/jquery.dataTables.js',
                     $lteJSBase . 'plugins/datatables/dataTables.bootstrap.js',
                     $lteJSBase . 'plugins/slimScroll/jquery.slimscroll.js',
-                    $jsAssets . 'public/js/adminLTE.js',
+                    $jsAssets . 'bower/bower_components/adminlte/dist/js/app.min.j',
                 ],
             ],
             'admin_lte_css' => [
@@ -51,7 +51,7 @@ return call_user_func(
                     $lteCssBase . 'plugins/datatables/dataTables.bootstrap.css',
                     $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
                     $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
-                    $lteCssBase . 'dist/css/AdminLTE.css',
+                    $jsAssets . 'bower_components/adminlte/dist/css/AdminLTE.min.css',
                     $lteCssBase . 'dist/css/skins/_all-skins.css',
                 ],
             ],
