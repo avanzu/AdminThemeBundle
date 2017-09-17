@@ -69,3 +69,8 @@ avanzu_admin:
     prefix: /admin # or whichever you like 
     resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
 ```
+
+[Previous (Using the ThemeManager)][1] - [Next (Navbar User)][2]
+
+[1]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/theme_manager.md
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/navbar_user.md
