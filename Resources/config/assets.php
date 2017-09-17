@@ -25,8 +25,6 @@ return call_user_func(
                     $jsAssets . 'bower/bower_components/underscore/underscore.js',
                     $jsAssets . 'bower/bower_components/bootstrap/dist/js/bootstrap.min.js',
                     $jsAssets . 'bower/bower_components/bootbox/bootbox.js',
-                    $jsAssets . 'public/js/dialogs.js',
-                    $jsAssets . 'public/js/namespace.js',
                 ],
             ],
             'tools_js' => [
