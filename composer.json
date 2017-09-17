@@ -36,12 +36,4 @@
     "autoload": {
         "psr-4": { "Avanzu\\AdminThemeBundle\\": "" }
     },
-    "scripts": {
-        "post-install-cmd": [
-            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
-        ],
-        "post-update-cmd": [
-            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
-        ]
-    }    
 }

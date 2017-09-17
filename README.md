@@ -59,6 +59,19 @@ Or symfony 3.x/4.x version:
 	php bin/console avanzu:admin:fetch-vendor
 ```
 
+Additionaly, you can trigger fetch the vendor in each install or update of this bundle, for that edit your archive composer.json and add:
+
+```json
+    "scripts": {
+        "post-install-cmd": [
+            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
+        ],
+        "post-update-cmd": [
+            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
+        ]
+    } 
+```
+
 ### Symfony 2.8 notice
 This bundle requires assetic, but it isn't shipped with symfony anymore [since version 2.8](http://symfony.com/doc/current/assetic/asset_management.html). To install assetic, follow these steps:
 
