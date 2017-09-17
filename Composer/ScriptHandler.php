@@ -126,7 +126,7 @@ class ScriptHandler
      */
     public static function fetchThemeVendors(CommandEvent $event)
     {
-        $event->getIO()->write("Installing theme assets", true);
+        $event->getIO()->write('Installing theme assets', true);
         $options = self::getOptions($event);
         $consoleDir = self::getConsoleDir($event, 'installing theme assets');
 

@@ -30,7 +30,7 @@ class ThemeManager
         $this->resolverClass = $resolverClass ?: 'Avanzu\AdminThemeBundle\Util\DependencyResolver';
     }
 
-    public function registerScript($id, $src, $deps = [], $location = "bottom")
+    public function registerScript($id, $src, $deps = [], $location = 'bottom')
     {
         if (!isset($this->javascripts[$id])) {
             $this->javascripts[$id] = [

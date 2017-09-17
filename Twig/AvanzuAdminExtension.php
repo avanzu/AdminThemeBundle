@@ -40,7 +40,7 @@ class AvanzuAdminExtension extends \Twig_Extension
         ];
     }
 
-    public function bodyClass($classes = "")
+    public function bodyClass($classes = '')
     {
         $classList = [$classes];
         $options = $this->options;

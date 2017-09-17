@@ -70,7 +70,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
             $this->processStyle($group, $files, $fs, $input, $output);
         }
 
-        $fontsdir = $this->builddir . "/fonts";
+        $fontsdir = $this->builddir . '/fonts';
         $fs->exists($fontsdir) or $fs->mkdir($fontsdir);
 
         foreach($this->findFonts() as $name => $path) {
