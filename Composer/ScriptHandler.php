@@ -12,7 +12,7 @@ namespace Avanzu\AdminThemeBundle\Composer;
 
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\PhpExecutableFinder;
-use Composer\Script\CommandEvent;
+use Composer\Script\Event;
 
 /**
  * ScriptHandler
@@ -39,7 +39,7 @@ class ScriptHandler
         'symfony-web-dir' => 'web',
     ];
 
-    protected static function getOptions(CommandEvent $event)
+    protected static function getOptions(Event $event)
     {
         $options = array_merge(self::$options, $event->getComposer()->getPackage()->getExtra());
 
@@ -60,7 +60,7 @@ class ScriptHandler
         return $phpPath;
     }
 
-    protected static function executeCommand(CommandEvent $event, $consoleDir, $cmd, $timeout = 300)
+    protected static function executeCommand(Event $event, $consoleDir, $cmd, $timeout = 300)
     {
         $php = escapeshellarg(self::getPhp(false));
         $phpArgs = implode(' ', array_map('escapeshellarg', self::getPhpArguments()));
@@ -84,7 +84,7 @@ class ScriptHandler
      *
      * @return string|null The path to the console directory, null if not found.
      */
-    protected static function getConsoleDir(CommandEvent $event, $actionName)
+    protected static function getConsoleDir(Event $event, $actionName)
     {
         $options = self::getOptions($event);
 
@@ -124,7 +124,7 @@ class ScriptHandler
      *
      * @param $event CommandEvent A instance
      */
-    public static function fetchThemeVendors(CommandEvent $event)
+    public static function fetchThemeVendors(Event $event)
     {
         $event->getIO()->write('Installing theme assets', true);
         $options = self::getOptions($event);
@@ -149,7 +149,7 @@ class ScriptHandler
         return isset($options['symfony-var-dir']) && is_dir($options['symfony-var-dir']);
     }
 
-    protected static function hasDirectory(CommandEvent $event, $configName, $path, $actionName)
+    protected static function hasDirectory(Event $event, $configName, $path, $actionName)
     {
         if (!is_dir($path)) {
             $event->getIO()->write(sprintf('The %s (%s) specified in composer.json was not found in %s, can not %s.', $configName, $path, getcwd(), $actionName));
