@@ -30,6 +30,9 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('use_twig')
                         ->defaultValue(true)
                     ->end()
+                    ->scalarNode('options')
+                        ->defaultValue(NULL)
+                    ->end()
                 ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
