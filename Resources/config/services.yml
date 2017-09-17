@@ -5,8 +5,14 @@ parameters:
     avanzu_admin_theme.form.help_extension.class: Avanzu\AdminThemeBundle\Form\FormHelpExtension
     avanzu_admin_theme.context_helper.class: Avanzu\AdminThemeBundle\Helper\ContextHelper
     avanzu_admin_theme.admin_router.class: Avanzu\AdminThemeBundle\Routing\RouteAliasCollection
+    avanzu_admin_theme.theme_manager.class: Avanzu\AdminThemeBundle\Theme\ThemeManager
 
 services:
+
+    avanzu_admin_theme.theme_manager.class:
+        class: "%avanzu_admin_theme.theme_manager.class%"
+        arguments:
+            - "@container"
 
     avanzu_admin_theme.form.help_extension:
         class: "%avanzu_admin_theme.form.help_extension.class%"
