@@ -48,9 +48,9 @@ class FetchVendorCommand extends ContainerAwareCommand {
         $process->setWorkingDirectory($res);
         $process->run(function ($type, $buffer) use ($output, $helper) {
             if(Process::ERR == $type) {
-                $output->write($helper->formatSection('Error', $buffer, 'error' ));
+                $output->write($helper->formatSection('Error', $buffer, 'error'));
             } else {
-                $output->write($helper->formatSection('Progress', $buffer, 'info' ));
+                $output->write($helper->formatSection('Progress', $buffer, 'info'));
             }
         });
 
