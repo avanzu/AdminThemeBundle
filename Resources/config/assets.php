@@ -48,7 +48,7 @@ return call_user_func(
                 'inputs' => [
                     $jsAssets . 'bower/bower_components/adminlte/bootstrap/css/bootstrap.min.css',
                     $jsAssets . 'bower/bower_components/adminlte/plugins/bootstrap-slider/slider.css',
-                    $lteCssBase . 'plugins/datatables/dataTables.bootstrap.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/datatables/dataTables.bootstrap.css',
                     $cssAssets . 'vendor/fontawesome/css/font-awesome.min.css',
                     $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
                     $jsAssets . 'bower/bower_components/adminlte/dist/css/AdminLTE.min.css',
@@ -69,9 +69,9 @@ return call_user_func(
                 'inputs' => [
                     $jsAssets . 'bower/bower_components/adminlte/plugins/colorpicker/bootstrap-colorpicker.css',
                     $jsAssets . 'bower/bower_components/adminlte/plugins/daterangepicker/daterangepicker.css',
-                    $lteCssBase . 'plugins/timepicker/bootstrap-timepicker.css',
-                    $lteCssBase . 'plugins/iCheck/all.css',
-                    $lteCssBase . 'plugins/iCheck/square/_all.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/plugins/timepicker/bootstrap-timepicker.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/iCheck/all.css',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/iCheck/square/_all.css',
                 ],
             ],
             'admin_lte_wysiwyg' => [
@@ -96,7 +96,7 @@ return call_user_func(
             ],
             'admin_lte_flot' => [
                 'inputs' => [
-                    $lteJSBase . 'plugins/flot/*',
+                    $jsAssets . 'bower/bower_components/adminlte/plugins/flot/*',
                 ],
             ],
             'admin_lte_calendar' => [
@@ -106,7 +106,7 @@ return call_user_func(
             ],
             'admin_lte_calendar_css' => [
                 'inputs' => [
-                    $cssAssets . 'bower/bower_components/fullcalendar/dist/fullcalendar.css',
+                    $jsAssets . 'bower/bower_components/fullcalendar/dist/fullcalendar.css',
                 ],
             ],
             'avatar_img' => [
