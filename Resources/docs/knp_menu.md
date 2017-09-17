@@ -7,7 +7,7 @@ In order to use the KnpMenu integration you need to enable it in the configurati
 ```yaml
 # config.yml
 avanzu_admin_theme:
-	knp_menu:   
+    knp_menu:   
     	enable : true
 ```
 Enabling the KnpMenu support will render the regular breadcrumb and menu events inactive. 
@@ -25,9 +25,9 @@ Quite similar to the `ThemeEvents::THEME_SIDEBAR_SETUP_MENU`, using the knp_menu
 
 services:
 
-	# ...
+    # ...
     
-	app.setup_knp_menu_listener:
+    app.setup_knp_menu_listener:
         class: AppBundle\SetupKnpMenuListener
         tags:
             - { name: kernel.event_listener, event: theme.sidebar_setup_knp_menu, method: onSetupMenu }
@@ -92,8 +92,8 @@ Rather than using the menu builder provided by this bundle, you could also gener
 # config.yml
 
 avanzu_admin_theme:
-	# ... 
-	knp_menu:   
+    # ... 
+    knp_menu:   
     	enable : true
         main_menu: <your builder alias>
         breadcrumb_menu: <your builder alias or false to disable breadcrumbs>
