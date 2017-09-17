@@ -9,7 +9,7 @@ parameters:
 
 services:
 
-    avanzu_admin_theme.theme_manager.class:
+    avanzu_admin_theme.theme_manager:
         class: "%avanzu_admin_theme.theme_manager.class%"
         arguments:
             - "@container"
