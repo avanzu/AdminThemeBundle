@@ -22,7 +22,7 @@ class CompactVendorCommand extends ContainerAwareCommand
     protected function configure() {
         $this
             ->setName('avanzu:admin:compact-vendor')
-            ->setDescription('fetch vendor assets')
+            ->setDescription('Compact vendor assets')
             ->addArgument('theme', InputArgument::OPTIONAL, 'Which theme?', 'modern-touch')
             ->addOption('nojs', null, InputOption::VALUE_NONE, 'will skip js compression')
             ->addOption('nocss', null, InputOption::VALUE_NONE, 'will skip css compression')
