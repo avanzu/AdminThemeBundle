@@ -72,6 +72,6 @@ class TaskListEvent extends ThemeEvent
      */
     public function getTotal()
     {
-        return $this->total == 0 ? sizeof($this->tasks) : $this->total;
+        return $this->total == 0 ? count($this->tasks) : $this->total;
     }
 }
