@@ -89,4 +89,8 @@ services:
             - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
 ```
 
+[Previous (Components)][2] - [Next (Navbar Tasks)][3]
+
 [1]: component_events.md
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/component_events.md
+[3]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/navbar_tasks.md
