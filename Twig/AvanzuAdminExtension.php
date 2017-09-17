@@ -7,11 +7,11 @@
 
 namespace Avanzu\AdminThemeBundle\Twig;
 
-
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 use Twig_Environment;
 
-class AvanzuAdminExtension extends \Twig_Extension {
+class AvanzuAdminExtension extends \Twig_Extension
+{
 
 
     protected $options;
@@ -31,10 +31,9 @@ class AvanzuAdminExtension extends \Twig_Extension {
     public function __construct($options, $env, RouteAliasCollection $aliasRouter)
     {
         $this->options = $options;
-        $this->env      = $env;
+        $this->env = $env;
         $this->aliasRouter = $aliasRouter;
     }
-
 
     public function getFilters()
     {
@@ -47,13 +46,13 @@ class AvanzuAdminExtension extends \Twig_Extension {
     public function bodyClass($classes = "")
     {
         $classList = [$classes];
-        $options   = $this->options;
+        $options = $this->options;
 
         $classList[] = $options['skin'];
-        if( $options['fixed_layout'] ) $classList[] = 'fixed';
-        if( $options['boxed_layout']) $classList[] = 'boxed';
-        if( $options['collapsed_sidebar']) $classList[] = 'sidebar-collapse';
-        if( $options['mini_sidebar']) $classList[] = 'sidebar-mini';
+        if($options['fixed_layout']) $classList[] = 'fixed';
+        if($options['boxed_layout']) $classList[] = 'boxed';
+        if($options['collapsed_sidebar']) $classList[] = 'sidebar-collapse';
+        if($options['mini_sidebar']) $classList[] = 'sidebar-mini';
 
         return implode(' ', array_filter($classList));
 

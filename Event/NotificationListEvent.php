@@ -44,7 +44,6 @@ class NotificationListEvent extends ThemeEvent
         return $this->max;
     }
 
-
     /**
      * @return array
      */

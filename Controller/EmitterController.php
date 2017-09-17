@@ -45,13 +45,13 @@ class EmitterController extends Controller
      */
     protected function triggerMethod($eventName, Event $event)
     {
-        $method = sprintf('on%s', Container::camelize(str_replace('.', '_',$eventName)));
+        $method = sprintf('on%s', Container::camelize(str_replace('.', '_', $eventName)));
 
-        if( is_callable([$this, $method])) {
+        if(is_callable([$this, $method])) {
             call_user_func_array([$this, $method], [$event]);
         }
 
-        if( $event->isPropagationStopped() ){
+        if($event->isPropagationStopped()){
             return $event;
         }
 
@@ -59,5 +59,4 @@ class EmitterController extends Controller
 
         return $event;
     }
-
 }

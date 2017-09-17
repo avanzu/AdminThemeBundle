@@ -7,8 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Command;
 
-
-
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -42,7 +40,7 @@ class InitializeCommand extends ContainerAwareCommand
     {
         $this->setName('avanzu:admin:initialize')
             ->addOption('vendor-dir', null, InputOption::VALUE_OPTIONAL, 'path to vendors', 'vendor')
-            ->addOption('theme-dir' , null, InputOption::VALUE_OPTIONAL, 'path to adminlte', 'almasaeed2010/adminlte')
+            ->addOption('theme-dir', null, InputOption::VALUE_OPTIONAL, 'path to adminlte', 'almasaeed2010/adminlte')
             ->addOption('web-dir', null, InputOption::VALUE_OPTIONAL, 'path to web', 'web')
             ->addOption('symlink', null, InputOption::VALUE_NONE, 'Symlinks the assets instead of copying it')
             ->addOption('relative', null, InputOption::VALUE_NONE, 'Make relative symlinks')
@@ -68,7 +66,7 @@ class InitializeCommand extends ContainerAwareCommand
      */
     protected function getThemeDir(InputInterface $input)
     {
-        return sprintf('%s/%s', $this->getVendorDir( $input), $input->getOption('theme-dir'));
+        return sprintf('%s/%s', $this->getVendorDir($input), $input->getOption('theme-dir'));
     }
 
     /**
@@ -79,19 +77,19 @@ class InitializeCommand extends ContainerAwareCommand
      */
     protected function getDirectorySetup(ContainerInterface $dic, InputInterface $input)
     {
-        $appDir     = $dic->getParameter('kernel.root_dir');
+        $appDir = $dic->getParameter('kernel.root_dir');
         $projectDir = dirname($appDir);
-        $vendors    = $this->getVendorDir($input);
-        $theme      = $this->getThemeDir($input);
-        $self       = dirname(__DIR__);
+        $vendors = $this->getVendorDir($input);
+        $theme = $this->getThemeDir($input);
+        $self = dirname(__DIR__);
 
-        return (object)[
-            'app'     => $appDir,
+        return (object) [
+            'app' => $appDir,
             'project' => $projectDir,
             'vendors' => $vendors,
-            'theme'   => $theme,
-            'self'    => $self,
-            'public'  => $input->getOption('web-dir')
+            'theme' => $theme,
+            'self' => $self,
+            'public' => $input->getOption('web-dir')
         ];
 
     }
@@ -127,10 +125,10 @@ class InitializeCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dic              = $this->getContainer();
-        $fs               = $dic->get('filesystem');
-        $folders          = $this->getDirectorySetup($dic, $input);
-        $io               = new SymfonyStyle($input, $output);
+        $dic = $this->getContainer();
+        $fs = $dic->get('filesystem');
+        $folders = $this->getDirectorySetup($dic, $input);
+        $io = new SymfonyStyle($input, $output);
         $this->filesystem = $fs;
 
 
@@ -148,17 +146,16 @@ class InitializeCommand extends ContainerAwareCommand
 
         $fs->mkdir($folders->public . '/theme');
 
-        foreach ( ['bootstrap','dist','plugins','documentation', 'starter.html'] as $directory) {
+        foreach (['bootstrap','dist','plugins','documentation', 'starter.html'] as $directory) {
 
             $io->text("installing <info>$directory</info>");
 
             $lnFrom = sprintf('%s/%s', $folders->theme, $directory);
-            $lnTo   = sprintf('%s/theme/%s', $folders->public, $directory);
+            $lnTo = sprintf('%s/theme/%s', $folders->public, $directory);
 
-            $this->establishLink( $lnFrom, $lnTo, $expectedMethod );
+            $this->establishLink($lnFrom, $lnTo, $expectedMethod);
         }
     }
-
 
     /**
      * Try to create relative symlink.
@@ -235,9 +232,10 @@ class InitializeCommand extends ContainerAwareCommand
      */
     private function hardCopy($originDir, $targetDir)
     {
-        if( is_file($originDir) ) {
+        if(is_file($originDir)) {
             $this->filesystem->mkdir(dirname($targetDir), 0777);
             $this->filesystem->copy($originDir, $targetDir, false);
+
             return self::METHOD_COPY;
         }
 
@@ -247,6 +245,4 @@ class InitializeCommand extends ContainerAwareCommand
 
         return self::METHOD_COPY;
     }
-
-
 }

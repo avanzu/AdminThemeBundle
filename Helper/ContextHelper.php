@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Helper;
 
-
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -37,7 +36,7 @@ class ContextHelper extends \ArrayObject
     {
         $resolver = new OptionsResolver();
         $this->configureDefaults($resolver);
-        $this->exchangeArray( $resolver->resolve($config) );
+        $this->exchangeArray($resolver->resolve($config));
     }
 
     /**
@@ -57,6 +56,7 @@ class ContextHelper extends \ArrayObject
     public function setOption($name, $value)
     {
         $this->offsetSet($name, $value);
+
         return $this;
     }
 
@@ -107,29 +107,28 @@ class ContextHelper extends \ArrayObject
     protected function configureDefaults(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'skin'              => 'skin-blue',
-            'fixed_layout'      => false,
-            'boxed_layout'      => false,
+            'skin' => 'skin-blue',
+            'fixed_layout' => false,
+            'boxed_layout' => false,
             'collapsed_sidebar' => false,
-            'mini_sidebar'      => false,
-            'control_sidebar'   => true,
-            'default_avatar'    => 'bundles/avanzuadmintheme/img/avatar.png',
-            'widget'            => [
-                'type'        => 'primary',
-                'bordered'    => true,
+            'mini_sidebar' => false,
+            'control_sidebar' => true,
+            'default_avatar' => 'bundles/avanzuadmintheme/img/avatar.png',
+            'widget' => [
+                'type' => 'primary',
+                'bordered' => true,
                 'collapsible' => true,
-                'solid'       => false,
-                'removable'   => false,
-                'use_footer'  => true,
+                'solid' => false,
+                'removable' => false,
+                'use_footer' => true,
             ],
-            'button'            => [
+            'button' => [
                 'type' => 'primary',
                 'size' => false
             ],
-            'knp_menu'          => [
-                'enable'        => false
+            'knp_menu' => [
+                'enable' => false
             ]
         ]);
     }
-
 }

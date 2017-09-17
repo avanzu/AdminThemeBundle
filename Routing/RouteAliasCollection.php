@@ -53,15 +53,14 @@ class RouteAliasCollection
      * @param                 $env
      * @param                 $debug
      */
-    public function __construct( $cacheDir, RouterInterface $router, $optionName, $env, $debug )
+    public function __construct($cacheDir, RouterInterface $router, $optionName, $env, $debug)
     {
-        $this->cacheDir   = $cacheDir;
-        $this->router     = $router;
+        $this->cacheDir = $cacheDir;
+        $this->router = $router;
         $this->optionName = $optionName;
-        $this->debug      = $debug;
-        $this->env        = $env;
+        $this->debug = $debug;
+        $this->env = $env;
     }
-
 
     /**
      * @return string
@@ -92,6 +91,7 @@ class RouteAliasCollection
     public function hasAlias($name)
     {
         $aliases = $this->getAliases();
+
         return isset($aliases[$name]);
     }
 
@@ -103,6 +103,7 @@ class RouteAliasCollection
     public function getRouteByAlias($name)
     {
         $aliases = $this->getAliases();
+
         return $aliases[$name];
     }
 
@@ -111,14 +112,15 @@ class RouteAliasCollection
      */
     public function getAliases()
     {
-        if ( ! is_null( $this->routeAliases ) ) {
+        if (! is_null($this->routeAliases)) {
             return $this->routeAliases;
         }
 
         $cache = new ConfigCache($this->getCacheFileName(), $this->debug);
 
-        if  ( $cache->isFresh() ) {
+        if  ($cache->isFresh()) {
             $this->routeAliases = unserialize(file_get_contents($cache->getPath()));
+
             return $this->routeAliases;
         }
 
@@ -128,7 +130,6 @@ class RouteAliasCollection
         return $this->routeAliases;
     }
 
-
     /**
      * @return array
      */
@@ -136,7 +137,7 @@ class RouteAliasCollection
     {
         $aliases = [];
         foreach($this->router->getRouteCollection()->all() as $name => $candidate) {
-            if( ! $this->hasConfiguredOption($candidate)) {
+            if(! $this->hasConfiguredOption($candidate)) {
                 continue;
             }
 
@@ -153,11 +154,10 @@ class RouteAliasCollection
      */
     public function hasConfiguredOption(Route $route)
     {
-        if( ! $route->hasOption($this->optionName) ) {
+        if(! $route->hasOption($this->optionName)) {
             return false;
         }
 
         return true;
     }
-
 }

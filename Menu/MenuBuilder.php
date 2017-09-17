@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Menu;
 
-
 use Avanzu\AdminThemeBundle\Event\KnpMenuEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
@@ -44,11 +43,10 @@ class MenuBuilder
         RouteAliasCollection $aliasCollection,
         EventDispatcherInterface $eventDispatcher
     ) {
-        $this->factory         = $factory;
+        $this->factory = $factory;
         $this->aliasCollection = $aliasCollection;
         $this->eventDispatcher = $eventDispatcher;
     }
-
 
     public function createMainMenu(array $options)
     {
@@ -58,19 +56,17 @@ class MenuBuilder
         ));
 
         $childOptions = array(
-            'attributes'         => array('class' => 'treeview'),
+            'attributes' => array('class' => 'treeview'),
             'childrenAttributes' => array('class' => 'treeview-menu'),
-            'labelAttributes'    => array()
+            'labelAttributes' => array()
         );
 
         $this->eventDispatcher->dispatch(
             ThemeEvents::THEME_SIDEBAR_SETUP_KNP_MENU,
-           new KnpMenuEvent( $menu, $this->factory, $options, $childOptions )
+           new KnpMenuEvent($menu, $this->factory, $options, $childOptions)
         );
 
 
         return $menu;
     }
-
-
 }

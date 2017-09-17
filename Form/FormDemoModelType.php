@@ -22,19 +22,19 @@ class FormDemoModelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $options = [
-            'This is option 1'=> 'opt1' ,
-            'This is option 2'=> 'opt2' ,
-            'This is option 3'=> 'opt3' ,
+            'This is option 1' => 'opt1' ,
+            'This is option 2' => 'opt2' ,
+            'This is option 3' => 'opt3' ,
         ];
 
         $choices = [
-            'This is choice 1'=> 'choice1' ,
-            'This is choice 2'=> 'choice2' ,
-            'This is choice 3'=> 'choice3' ,
+            'This is choice 1' => 'choice1' ,
+            'This is choice 2' => 'choice2' ,
+            'This is choice 3' => 'choice3' ,
         ];
 
         $builder->add('name', TextType::class, array('help' => 'some help text'))
-                ->add('gender', ChoiceType::class, array('choices' => array('male' =>'m' , 'female' => 'f' )))
+                ->add('gender', ChoiceType::class, array('choices' => array('male' => 'm' , 'female' => 'f' )))
                 ->add('someOption', ChoiceType::class, array('choices' => $options, 'expanded' => true))
                 ->add('someChoices', ChoiceType::class, array('choices' => $choices, 'expanded' => true, 'multiple' => true))
                 ->add('username')

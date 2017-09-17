@@ -49,7 +49,6 @@ class MessageListEvent extends ThemeEvent
         return $this->max;
     }
 
-
     /**
      * Returns the message list
      *

@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Form;
 
-
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormInterface;
@@ -28,7 +27,6 @@ class FormHelpExtension extends AbstractTypeExtension
             $view->vars['help'] = $options['help'];
         }
     }
-
 
     /**
      * Returns the name of the type being extended.
