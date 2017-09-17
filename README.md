@@ -9,9 +9,17 @@ This bundle integrates several commonly used javascripts and the awesome [AdminL
 Installation using composer is really easy: this command will add `"avanzu/admin-theme-bundle": "~1.3"` to your composer.json
 and will download the bundle:
 
-	php composer.phar require avanzu/admin-theme-bundle
+```bash
+   php composer.phar require avanzu/admin-theme-bundle
+```
 
 _Notice: if you prefer to stay with the AdminLTE theme v1.x, manually reference `"avanzu/admin-theme-bundle": "~1.1"` in composer.json `"require"` part and run `php composer.phar update`_
+
+For unstable releases (based in master branch) use:
+
+```bash
+   php composer.phar avanzu/admin-theme-bundle dev-master
+```
 
 Enable the bundle in your kernel:
 ```php
