@@ -54,7 +54,7 @@ class MessageModel implements MessageInterface
     {
         $this->to = $to;
         $this->subject = $subject;
-        $this->sentAt = $sentAt ? : new \DateTime();
+        $this->sentAt = $sentAt ?: new \DateTime();
         $this->from = $from;
     }
 

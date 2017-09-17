@@ -77,7 +77,7 @@ class ContextHelper extends \ArrayObject
      */
     public function getOption($name, $default = null)
     {
-        return $this->offsetExists($name) ? $this->offsetGet($name): $default;
+        return $this->offsetExists($name) ? $this->offsetGet($name) : $default;
     }
 
     /**

@@ -42,7 +42,7 @@ class UserModel implements UserInterface
     {
         $this->avatar = $avatar;
         $this->isOnline = $isOnline;
-        $this->memberSince = $memberSince ?:new \DateTime();
+        $this->memberSince = $memberSince ?: new \DateTime();
         $this->username = $username;
         $this->name = $name;
         $this->title = $title;
