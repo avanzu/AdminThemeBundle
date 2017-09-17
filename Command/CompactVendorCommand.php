@@ -129,7 +129,7 @@ class CompactVendorCommand extends ContainerAwareCommand
         $script = $public . '/css/theme.min.css';
 
         $files = array(
-            dirname($vendors).'/bootstrap/bootstrap.css'
+            dirname($vendors) . '/bootstrap/bootstrap.css'
             ,'font-awesome.css'
             ,'bootflat.css'
             ,'bootflat-extensions.css'

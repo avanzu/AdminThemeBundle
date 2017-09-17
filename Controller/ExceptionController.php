@@ -37,7 +37,7 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
 
         // when not in debug, try to find a template for the specific HTTP status code and format
         if (!$debug) {
-            $template = new TemplateReference('AvanzuAdminThemeBundle', 'Exception', $name.$code, $format, 'twig');
+            $template = new TemplateReference('AvanzuAdminThemeBundle', 'Exception', $name . $code, $format, 'twig');
             if ($this->templateExists($template)) {
                 return $template;
             }

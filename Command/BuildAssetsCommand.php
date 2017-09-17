@@ -53,17 +53,17 @@ class BuildAssetsCommand extends ContainerAwareCommand
              ->addOption('uglifycss-bin', false, InputOption::VALUE_OPTIONAL, 'uglifycss binary', '/usr/bin/env uglifycss')
         ;
 
-        $this->resdir = realpath(dirname(__FILE__).'/../Resources');
-        $this->pubdir = $this->resdir.'/public';
+        $this->resdir = realpath(dirname(__FILE__) . '/../Resources');
+        $this->pubdir = $this->resdir . '/public';
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var $kernel Kernel */
         $this->kernel = $kernel = $this->getContainer()->get('kernel');
-        $this->webdir = $webdir = realpath($this->getContainer()->getParameter('kernel.root_dir').'/../web');
+        $this->webdir = $webdir = realpath($this->getContainer()->getParameter('kernel.root_dir') . '/../web');
         $this->builddir = $this->pubdir . '/static/' . $input->getOption('env');
-        $assets = $this->partition($this->resolveAll(include($this->resdir.'/config/assets.php')));
+        $assets = $this->partition($this->resolveAll(include($this->resdir . '/config/assets.php')));
         $fs = new Filesystem();
 
 
@@ -232,7 +232,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
     {
         $resolved = array();
         if(strpos($input, '@') === false) {
-            return array($this->webdir.'/'.$input);
+            return array($this->webdir . '/' . $input);
         }
 
         $cleaned = str_replace('@', '', $input);

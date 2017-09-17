@@ -66,12 +66,12 @@ class ScriptHandler
     {
         $php = escapeshellarg(self::getPhp(false));
         $phpArgs = implode(' ', array_map('escapeshellarg', self::getPhpArguments()));
-        $console = escapeshellarg($consoleDir.'/console');
+        $console = escapeshellarg($consoleDir . '/console');
         if ($event->getIO()->isDecorated()) {
             $console .= ' --ansi';
         }
 
-        $process = new Process($php.($phpArgs ? ' '.$phpArgs : '').' '.$console.' '.$cmd, null, null, null, $timeout);
+        $process = new Process($php . ($phpArgs ? ' ' . $phpArgs : '') . ' ' . $console . ' ' . $cmd, null, null, null, $timeout);
         $process->run(function ($type, $buffer) use ($event) { $event->getIO()->write($buffer, false); });
         if (!$process->isSuccessful()) {
             throw new \RuntimeException(sprintf('An error occurred when executing the "%s" command.', escapeshellarg($cmd)));
@@ -116,7 +116,7 @@ class ScriptHandler
         }
 
         if (false !== $ini = php_ini_loaded_file()) {
-            $arguments[] = '--php-ini='.$ini;
+            $arguments[] = '--php-ini=' . $ini;
         }
 
         return $arguments;

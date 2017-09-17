@@ -43,7 +43,7 @@ class FetchVendorCommand extends ContainerAwareCommand
 
         $action = $input->getOption('update') ? 'update' : 'install';
         $asRoot = $input->getOption('root') ? '--allow-root' : '';
-        $process = new Process($bower.' '.$action. ' '.$asRoot);
+        $process = new Process($bower . ' ' . $action . ' ' . $asRoot);
         $process->setTimeout(600);
         $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
         $process->setWorkingDirectory($res);
