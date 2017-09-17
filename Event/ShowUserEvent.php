@@ -11,7 +11,6 @@ use Avanzu\AdminThemeBundle\Model\UserInterface;
 
 class ShowUserEvent extends ThemeEvent
 {
-
     /**
      * @var UserInterface
      */

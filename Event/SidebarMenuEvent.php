@@ -18,7 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SidebarMenuEvent extends ThemeEvent
 {
-
     /**
      * @var array
      */

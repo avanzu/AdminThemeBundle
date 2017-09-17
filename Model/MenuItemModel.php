@@ -14,7 +14,6 @@ namespace Avanzu\AdminThemeBundle\Model;
  */
 class MenuItemModel implements MenuItemInterface
 {
-
     /**
      * @var mixed
      */

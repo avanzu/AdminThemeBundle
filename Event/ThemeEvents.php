@@ -13,8 +13,6 @@ namespace Avanzu\AdminThemeBundle\Event;
  */
 class ThemeEvents
 {
-
-
     /**
      * Used to receive notification data
      */

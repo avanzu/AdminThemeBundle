@@ -13,7 +13,6 @@ namespace Avanzu\AdminThemeBundle\Model;
  */
 class MessageModel implements MessageInterface
 {
-
     /**
      * Holds the sender
      *

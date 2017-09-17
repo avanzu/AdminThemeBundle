@@ -14,7 +14,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class ContextListener
 {
-
     protected $indicator = '^/admin';
     protected $container = null;
 

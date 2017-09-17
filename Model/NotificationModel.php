@@ -9,8 +9,6 @@ namespace Avanzu\AdminThemeBundle\Model;
 
 class NotificationModel implements NotificationInterface
 {
-
-
     protected $type;
 
     protected $message;

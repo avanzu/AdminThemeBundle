@@ -16,7 +16,6 @@ use Avanzu\AdminThemeBundle\Model\NotificationInterface;
  */
 class NotificationListEvent extends ThemeEvent
 {
-
     /**
      * @var array
      */

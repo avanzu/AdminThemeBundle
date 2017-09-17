@@ -14,7 +14,6 @@ namespace Avanzu\AdminThemeBundle\Model;
  */
 class TaskModel implements TaskInterface
 {
-
     /**
      *
      */

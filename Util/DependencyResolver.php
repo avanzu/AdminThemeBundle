@@ -14,7 +14,6 @@ namespace Avanzu\AdminThemeBundle\Util;
  */
 class DependencyResolver implements DependencyResolverInterface
 {
-
     /**
      * @var array
      */

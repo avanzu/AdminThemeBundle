@@ -16,7 +16,6 @@ use Avanzu\AdminThemeBundle\Model\MessageInterface;
  */
 class MessageListEvent extends ThemeEvent
 {
-
     /**
      * Stores the list of messages
      * @var array

@@ -23,7 +23,6 @@ use Symfony\Component\Finder\Finder;
  */
 class InitializeCommand extends ContainerAwareCommand
 {
-
     const METHOD_COPY = 'copy';
     const METHOD_ABSOLUTE_SYMLINK = 'absolute symlink';
     const METHOD_RELATIVE_SYMLINK = 'relative symlink';

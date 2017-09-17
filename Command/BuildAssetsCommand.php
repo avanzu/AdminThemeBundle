@@ -21,7 +21,6 @@ use Symfony\Component\Process\ProcessBuilder;
 
 class BuildAssetsCommand extends ContainerAwareCommand
 {
-
     /**
      * @var Kernel
      */

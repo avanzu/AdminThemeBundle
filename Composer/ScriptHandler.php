@@ -29,7 +29,6 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 class ScriptHandler
 {
-
     /**
      * Composer variables are declared static so that an event could update
      * a composer.json and set new options, making them immediately available

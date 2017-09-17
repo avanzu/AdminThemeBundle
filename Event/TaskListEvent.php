@@ -11,7 +11,6 @@ use Avanzu\AdminThemeBundle\Model\TaskInterface;
 
 class TaskListEvent extends ThemeEvent
 {
-
     protected $tasks = array();
 
     protected $max;

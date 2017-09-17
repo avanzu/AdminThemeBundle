@@ -15,5 +15,4 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class ThemeEvent extends Event
 {
-
 }

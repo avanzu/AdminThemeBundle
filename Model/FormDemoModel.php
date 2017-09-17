@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class FormDemoModel
 {
-
     /**
      * @var string
      */

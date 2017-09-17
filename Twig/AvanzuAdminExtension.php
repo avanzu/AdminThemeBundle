@@ -12,8 +12,6 @@ use Twig_Environment;
 
 class AvanzuAdminExtension extends \Twig_Extension
 {
-
-
     protected $options;
     protected $env;
     /**

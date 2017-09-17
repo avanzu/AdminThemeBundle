@@ -20,7 +20,6 @@ use Symfony\Component\HttpKernel\Config\FileLocator;
 
 class ThemeManager
 {
-
     /** @var  Container */
     protected $container;
 

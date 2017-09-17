@@ -12,7 +12,6 @@ use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 class SetupThemeListener
 {
-
     /**
      * @var ThemeManager
      */
