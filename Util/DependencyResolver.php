@@ -85,7 +85,6 @@ class DependencyResolver implements DependencyResolverInterface
                 continue;
             }
         }
-
     }
 
     /**
@@ -150,7 +149,6 @@ class DependencyResolver implements DependencyResolverInterface
         $ids = array_keys($this->registered);
 
         foreach ($ids as $id) {
-
             if (!$this->hasDependencies($id)) {
                 continue;
             }
@@ -168,7 +166,5 @@ class DependencyResolver implements DependencyResolverInterface
                 }
             }
         }
-
-
     }
 }

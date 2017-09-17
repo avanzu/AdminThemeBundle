@@ -12,7 +12,6 @@ use Avanzu\AdminThemeBundle\Model\UserModel;
 class NavbarShowUserDemoListener
 {
     public function onShowUser(ShowUserEvent $event) {
-
         $user = new UserModel();
         $user->setAvatar('')->setIsOnline(true)->setMemberSince(new \DateTime())->setUsername('Demo User');
 

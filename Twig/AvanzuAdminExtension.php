@@ -52,7 +52,6 @@ class AvanzuAdminExtension extends \Twig_Extension
         if($options['mini_sidebar']) $classList[] = 'sidebar-mini';
 
         return implode(' ', array_filter($classList));
-
     }
 
     public function getName()

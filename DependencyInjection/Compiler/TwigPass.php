@@ -49,6 +49,5 @@ class TwigPass implements CompilerPassInterface
                 new Reference('avanzu_admin_theme.context_helper')
             )
         );
-
     }
 }

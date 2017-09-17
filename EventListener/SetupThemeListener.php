@@ -28,7 +28,6 @@ class SetupThemeListener
     }
 
     public function onKernelController(FilterControllerEvent $event) {
-
         $css = rtrim($this->cssBase, '/') . '/' . trim($this->lteAdmin, '/');
         $mng = $this->manager;
 
@@ -43,6 +42,5 @@ class SetupThemeListener
         $mng->registerStyle('daterangepicker', $css . '/daterangepicker/daterangepicker.css', array('admin-lte'));
         $mng->registerStyle('timepicker', $css . '/timepicker/bootstrap-timepicker.css', array('admin-lte'));
         $mng->registerStyle('wysiwyg', $css . '/bootstrap-wysihtml5/bootstrap3-wysihtml5.css', array('admin-lte'));
-
     }
 }

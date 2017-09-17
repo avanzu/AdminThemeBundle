@@ -86,7 +86,6 @@ class InitializeCommand extends ContainerAwareCommand
             'self' => $self,
             'public' => $input->getOption('web-dir')
         ];
-
     }
 
     /**
@@ -109,7 +108,6 @@ class InitializeCommand extends ContainerAwareCommand
         }
 
         return $method;
-
     }
 
     /**
@@ -126,7 +124,6 @@ class InitializeCommand extends ContainerAwareCommand
         $io = new SymfonyStyle($input, $output);
         $this->filesystem = $fs;
 
-
         if ($input->getOption('relative')) {
             $expectedMethod = self::METHOD_RELATIVE_SYMLINK;
             $io->text('Trying to install theme assets as <info>relative symbolic links</info>.');
@@ -138,11 +135,9 @@ class InitializeCommand extends ContainerAwareCommand
             $io->text('Installing theme assets as <info>hard copies</info>.');
         }
 
-
         $fs->mkdir($folders->public . '/theme');
 
         foreach (['bootstrap','dist','plugins','documentation', 'starter.html'] as $directory) {
-
             $io->text("installing <info>$directory</info>");
 
             $lnFrom = sprintf('%s/%s', $folders->theme, $directory);

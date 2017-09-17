@@ -38,7 +38,6 @@ class ThemeManager
 
     public function registerScript($id, $src, $deps = array(), $location = "bottom")
     {
-
         if (!isset($this->javascripts[$id])) {
             $this->javascripts[$id] = array(
                 'src' => $src,
@@ -46,7 +45,6 @@ class ThemeManager
                 'location' => $location
             );
         }
-
     }
 
     public function registerStyle($id, $src, $deps = array()) {
@@ -59,7 +57,6 @@ class ThemeManager
     }
 
     public function getScripts($location = 'bottom') {
-
         $unsorted = array();
         $srcList = array();
         

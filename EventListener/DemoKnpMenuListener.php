@@ -15,7 +15,6 @@ class DemoKnpMenuListener
      */
     public function onSetupKnpMenu(KnpMenuEvent $event)
     {
-
         $menu = $event->getMenu();
         $factory = $event->getFactory();
         $childOptions = $event->getChildOptions();
@@ -32,6 +31,5 @@ class DemoKnpMenuListener
         $ui = $menu->addChild('Widgets', $childOptions)->setLabelAttribute('icon', 'fa fa-th');
         $ui->addChild('General', ['route' => 'avanzu_admin_ui_gen_demo' , 'labelAttributes' => $labelAttributes]);
         $ui->addChild('icons', ['route' => 'avanzu_admin_ui_icon_demo', 'labelAttributes' => $labelAttributes]);
-
     }
 }

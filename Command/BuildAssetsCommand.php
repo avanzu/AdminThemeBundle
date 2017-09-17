@@ -63,7 +63,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
         $assets = $this->partition($this->resolveAll(include($this->resdir . '/config/assets.php')));
         $fs = new Filesystem();
 
-
         foreach($assets['scripts'] as $group => $files) {
             $this->processScript($group, $files, $fs, $input, $output);
         }
@@ -78,7 +77,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
         foreach($this->findFonts() as $name => $path) {
             $fs->copy($path, "$fontsdir/$name");
         }
-
     }
 
     protected function findFonts()
@@ -104,7 +102,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
      */
     protected function processScript($name, $files, $fs, $in, $out)
     {
-
         $dir = $this->builddir . '/scripts/';
         $file = $dir . $this->group2file($name, '.js');
 
@@ -118,7 +115,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
         $command[] = "-o $file";
         $command[] = implode(' ', $files);
-
 
         $proc = new Process(implode(' ', $command));
 
@@ -158,7 +154,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
     protected function group2file($name, $extension)
     {
         return str_replace('_', '-', preg_replace('!(_js|_css)$!', '', $name)) . $extension;
-
     }
 
     protected function endsWith($extension, $file)
@@ -175,9 +170,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
     {
         $resolved = array();
 
-
         foreach ($assets as $name => $inputs) {
-
             if (!isset($resolved[$name])) {
                 $resolved[$name] = array();
             }
@@ -248,10 +241,8 @@ class BuildAssetsCommand extends ContainerAwareCommand
                     array_push($resolved, $it->getRealPath());
                 }
             }
-
         }
 
         return $resolved;
-
     }
 }

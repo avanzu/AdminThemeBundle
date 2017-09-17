@@ -13,7 +13,6 @@ use Avanzu\AdminThemeBundle\Model\UserModel;
 class NavbarMessageListDemoListener
 {
     public function onListMessages(MessageListEvent $event) {
-
         foreach($this->getMessages() as $msg) {
             $event->addMessage($msg);
         }

@@ -13,11 +13,9 @@ class NavbarTaskListDemoListener
 {
     public function onListTasks(TaskListEvent $event)
     {
-
         foreach($this->getTasks() as $task) {
             $event->addTask($task);
         }
-
     }
 
     protected function getTasks()
@@ -27,6 +25,5 @@ class NavbarTaskListDemoListener
          new TaskModel('make more stuff', 60),
          new TaskModel('some more tasks to do', 10, TaskModel::COLOR_RED)
         );
-
     }
 }

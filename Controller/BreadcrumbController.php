@@ -33,7 +33,6 @@ class BreadcrumbController extends Controller
      *
      */
     public function breadcrumbAction(Request $request, $title = '') {
-
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_BREADCRUMB)) {
             return new Response();
         }
@@ -42,14 +41,12 @@ class BreadcrumbController extends Controller
         /** @var $active MenuItemInterface */
         $list = array();
         if($active) {
-
             $list[] = $active;
             while(null !== ($item = $active->getActiveChild())) {
                 $list[] = $item;
                 $active = $item;
             }
         }
-
 
         return $this->render('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb.html.twig', array(
                 'active' => $list,

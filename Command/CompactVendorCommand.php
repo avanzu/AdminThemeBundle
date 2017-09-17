@@ -32,7 +32,6 @@ class CompactVendorCommand extends ContainerAwareCommand
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-
         $kernel = $this->getContainer()->get('kernel');
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
@@ -54,7 +53,6 @@ class CompactVendorCommand extends ContainerAwareCommand
 
         $this->copyFonts($input, $output);
         $this->copyImages($input, $output);
-
     }
 
     protected function getThemePath($type, InputInterface $input, $kernel) {
@@ -81,15 +79,12 @@ class CompactVendorCommand extends ContainerAwareCommand
         $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
         $process->run();
 
-
         $process = new Process(sprintf('cp -R %s/* %s', $vendors, $target));
         $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
         $process->run();
-
     }
 
     protected function copyImages(InputInterface $input, OutputInterface $output) {
-
         $kernel = $this->getContainer()->get('kernel');
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
@@ -101,15 +96,12 @@ class CompactVendorCommand extends ContainerAwareCommand
         $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
         $process->run();
 
-
         $process = new Process(sprintf('cp -R %s/* %s', $vendors, $target));
         $output->writeln($helper->formatSection('Executing', $process->getCommandLine(), 'comment'));
         $process->run();
-
     }
 
     protected function compressThemeCss(InputInterface $input, OutputInterface $output) {
-
         $kernel = $this->getContainer()->get('kernel');
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
@@ -138,7 +130,6 @@ class CompactVendorCommand extends ContainerAwareCommand
                 $output->write($helper->formatSection('Progress', $buffer, 'info'));
             }
         });
-
     }
 
     protected function compressThemeJs(InputInterface $input, OutputInterface $output) {
@@ -150,7 +141,6 @@ class CompactVendorCommand extends ContainerAwareCommand
 
         $public = dirname(dirname(dirname($vendors))) . '/public';
         $script = $public . '/js/theme.min.js';
-
 
         $files = array(
             'bootstrap.js'
@@ -169,11 +159,9 @@ class CompactVendorCommand extends ContainerAwareCommand
                 $output->write($helper->formatSection('Progress', $buffer, 'info'));
             }
         });
-
     }
 
     protected function compressVendorJs(OutputInterface $output) {
-
         $kernel = $this->getContainer()->get('kernel');
         /** @var $kernel Kernel */
         $helper = $this->getHelperSet()->get('formatter');
@@ -213,6 +201,5 @@ class CompactVendorCommand extends ContainerAwareCommand
                 $output->write($helper->formatSection('Progress', $buffer, 'info'));
             }
         });
-
     }
 }

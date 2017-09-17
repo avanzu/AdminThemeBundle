@@ -27,7 +27,6 @@ class NavbarController extends Controller
 
     public function notificationsAction($max = 5)
     {
-
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NOTIFICATIONS)) {
             return new Response();
         }
@@ -41,7 +40,6 @@ class NavbarController extends Controller
                             'total' => $listEvent->getTotal()
                         )
         );
-
     }
 
     /**
@@ -51,7 +49,6 @@ class NavbarController extends Controller
      */
     public function messagesAction($max = 5)
     {
-
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_MESSAGES)) {
             return new Response();
         }
@@ -74,7 +71,6 @@ class NavbarController extends Controller
      */
     public function tasksAction($max = 5)
     {
-
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_TASKS)) {
             return new Response();
         }
@@ -94,7 +90,6 @@ class NavbarController extends Controller
      */
     public function userAction()
     {
-
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NAVBAR_USER)) {
             return new Response();
         }

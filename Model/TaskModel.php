@@ -21,7 +21,6 @@ class TaskModel implements TaskInterface
     
     const COLOR_YELLOW = 'yellow';
 
-
     /**
      * @var int
      */

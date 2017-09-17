@@ -27,7 +27,6 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
-
     }
 
     /**
@@ -57,7 +56,6 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $config = $this->processConfiguration(new Configuration(), $configs);
 
         if ($config['use_assetic'] && isset($bundles['AsseticBundle'])) {
-
             $assets = include dirname(__FILE__) . '/../Resources/config/assets.php';
 
             $container->prependExtensionConfig(
@@ -67,10 +65,8 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                     'bundles' => array(
                         'AvanzuAdminThemeBundle'
                     )
-
                 )
             );
-
         }
     }
 }

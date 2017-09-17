@@ -13,9 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 class WidgetController extends Controller
 {
     public function defaultBoxAction() {
-
-
-
     }
 
     public function solidBoxAction() {}

@@ -32,7 +32,6 @@ class FetchVendorCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $kernel = $this->getContainer()->get('kernel'); /** @var $kernel Kernel */
         $res = $kernel->locateResource('@AvanzuAdminThemeBundle/Resources/bower');
         $helper = $this->getHelperSet()->get('formatter'); /** @var $helper FormatterHelper */
@@ -51,8 +50,6 @@ class FetchVendorCommand extends ContainerAwareCommand
                 $output->write($helper->formatSection('Progress', $buffer, 'info'));
             }
         });
-
-
 
         // no more pulling/cloning directly from master in favor of a bower installation with specific version constraint
 

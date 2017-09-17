@@ -17,7 +17,6 @@ class SidebarController extends Controller
 {
     public function userPanelAction()
     {
-
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_SIDEBAR_USER)) {
             return new Response();
         }
@@ -41,14 +40,11 @@ class SidebarController extends Controller
 
     public function searchFormAction()
     {
-
-
         return $this->render('AvanzuAdminThemeBundle:Sidebar:search-form.html.twig', array());
     }
 
     public function menuAction(Request $request)
     {
-
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_SIDEBAR_SETUP_MENU)) {
             return new Response();
         }

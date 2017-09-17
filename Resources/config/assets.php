@@ -48,7 +48,6 @@ return call_user_func(
             ),
             'admin_lte_css' => array(
                 'inputs' => array(
-
                     $lteCssBase . 'bootstrap/css/bootstrap.min.css',
                     $lteCssBase . 'plugins/bootstrap-slider/slider.css',
                     $lteCssBase . 'plugins/datatables/dataTables.bootstrap.css',
@@ -136,7 +135,6 @@ return call_user_func(
                     '@admin_lte_morris_css',
                 )
             )
-
         );
     }
 );

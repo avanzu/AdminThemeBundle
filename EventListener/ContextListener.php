@@ -32,7 +32,6 @@ class ContextListener
         if(false == ($user = $this->getUser())){
             return;
         }
-
     }
 
     public function getUser()
@@ -54,6 +53,5 @@ class ContextListener
 
     public function onController(FilterControllerEvent $event)
     {
-
     }
 }

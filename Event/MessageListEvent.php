@@ -66,11 +66,9 @@ class MessageListEvent extends ThemeEvent
      */
     public function addMessage(MessageInterface $messageInterface)
     {
-
         $this->messages[] = $messageInterface;
 
         return $this;
-
     }
 
     /**

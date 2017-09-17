@@ -19,7 +19,6 @@ class SidebarSetupMenuDemoListener
         foreach ($this->getMenu($request) as $item) {
             $event->addItem($item);
         }
-
     }
 
     protected function getMenu(Request $request)
@@ -36,11 +35,9 @@ class SidebarSetupMenuDemoListener
             ->addChild($icons = new MenuItemModel('ui-elements-icons', 'Icons', 'avanzu_admin_ui_icon_demo', $earg));
 
         return $this->activateByRoute($request->get('_route'), $rootItems);
-
     }
 
     protected function activateByRoute($route, $items) {
-
         foreach($items as $item) { /** @var $item MenuItemModel */
             if($item->hasChildren()) {
                 $this->activateByRoute($route, $item->getChildren());
