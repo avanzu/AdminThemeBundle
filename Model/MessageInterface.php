@@ -21,6 +21,7 @@ interface MessageInterface
 
     /**
      * Returns the sentAt date
+     *
      * @return \DateTime
      */
     public function getSentAt();

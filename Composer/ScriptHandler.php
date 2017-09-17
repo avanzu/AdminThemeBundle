@@ -20,6 +20,7 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @package    AvanzuAdminThemeBundle
  * @subpackage Composer
+ *
  * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
  * @author     Albert Sola
  * @copyright  2013 Florian Eckerstorfer

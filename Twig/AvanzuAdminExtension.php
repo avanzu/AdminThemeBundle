@@ -21,8 +21,8 @@ class AvanzuAdminExtension extends \Twig_Extension
     /**
      * AvanzuAdminExtension constructor.
      *
-     * @param             $options
-     * @param             $env
+     * @param                      $options
+     * @param                      $env
      * @param RouteAliasCollection $aliasRouter
      */
     public function __construct($options, $env, RouteAliasCollection $aliasRouter)

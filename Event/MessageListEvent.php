@@ -17,12 +17,14 @@ class MessageListEvent extends ThemeEvent
 {
     /**
      * Stores the list of messages
+     *
      * @var array
      */
     protected $messages = array();
 
     /**
      * Stores the total amount
+     *
      * @var int
      */
     protected $totalMessages = 0;

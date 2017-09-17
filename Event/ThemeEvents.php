@@ -36,6 +36,7 @@ class ThemeEvents
     const THEME_SIDEBAR_USER = 'theme.sidebar_user';
     /**
      * Used for searching
+     *
      * @unused
      */
     const THEME_SIDEBAR_SEARCH = 'theme.sidebar_search';

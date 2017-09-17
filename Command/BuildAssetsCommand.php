@@ -96,8 +96,8 @@ class BuildAssetsCommand extends ContainerAwareCommand
     /**
      * @param $name
      * @param $files
-     * @param Filesystem $fs
-     * @param InputInterface $in
+     * @param Filesystem      $fs
+     * @param InputInterface  $in
      * @param OutputInterface $out
      */
     protected function processScript($name, $files, $fs, $in, $out)

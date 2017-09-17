@@ -28,6 +28,7 @@ class MessageModel implements MessageInterface
 
     /**
      * holds the date sent
+     *
      * @var \DateTime
      */
     protected $sentAt;
