@@ -18,6 +18,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class NavbarController extends Controller
 {
+    const MAX_NOTIFICATIONS = 5;
+    const MAX_MESSAGES = 5;
+    const MAX_TASKS = 5;
+    
     /**
      * @return EventDispatcher
      */
@@ -26,7 +30,7 @@ class NavbarController extends Controller
         return $this->get('event_dispatcher');
     }
 
-    public function notificationsAction($max = 5)
+    public function notificationsAction($max = self::MAX_NOTIFICATIONS)
     {
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NOTIFICATIONS)) {
             return new Response();
@@ -48,7 +52,7 @@ class NavbarController extends Controller
      *
      * @return Response
      */
-    public function messagesAction($max = 5)
+    public function messagesAction($max = self::MAX_MESSAGES)
     {
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_MESSAGES)) {
             return new Response();
@@ -70,7 +74,7 @@ class NavbarController extends Controller
      *
      * @return Response
      */
-    public function tasksAction($max = 5)
+    public function tasksAction($max = self::MAX_TASKS)
     {
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_TASKS)) {
             return new Response();
@@ -94,6 +98,7 @@ class NavbarController extends Controller
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NAVBAR_USER)) {
             return new Response();
         }
+        
         $userEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_NAVBAR_USER, new ShowUserEvent());
 
         return $this->render(
