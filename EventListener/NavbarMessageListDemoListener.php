@@ -13,7 +13,6 @@ use Avanzu\AdminThemeBundle\Model\UserModel;
 
 class NavbarMessageListDemoListener
 {
-
     public function onListMessages(MessageListEvent $event) {
 
         foreach($this->getMessages() as $msg) {
@@ -27,5 +26,4 @@ class NavbarMessageListDemoListener
             new MessageModel(new UserModel('Jack Trockendoc'), 'This is some subject', new \DateTime('-10 month')),
         );
     }
-
 }

@@ -59,7 +59,6 @@ class MessageModel implements MessageInterface
         $this->from = $from;
     }
 
-
     /**
      * Set the sender
      *
@@ -164,5 +163,4 @@ class MessageModel implements MessageInterface
     public function getIdentifier() {
         return $this->getSubject();
     }
-
 }

@@ -13,7 +13,6 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class SecurityController extends Controller
 {
-
     /**
      * @param Request $request
      *
@@ -39,5 +38,4 @@ class SecurityController extends Controller
                         )
         );
     }
-
 }

@@ -42,7 +42,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected $builddir;
 
-
     protected function configure()
     {
         $this->setName('avanzu:admin:build-assets')
@@ -83,7 +82,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
         }
 
     }
-
 
     protected function findFonts()
     {
@@ -136,7 +134,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
         });
     }
 
-
     protected function processStyle($name, $files, $fs, $in, $out)
     {
         $dir = $this->builddir . '/styles/';
@@ -175,7 +172,6 @@ class BuildAssetsCommand extends ContainerAwareCommand
     {
         return (strpos(mime_content_type($file), 'image/') === 0);
     }
-
 
     protected function resolveAll($assets)
     {
@@ -260,7 +256,4 @@ class BuildAssetsCommand extends ContainerAwareCommand
         return $resolved;
 
     }
-
-
-
 }

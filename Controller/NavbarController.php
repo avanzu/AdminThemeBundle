@@ -18,7 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class NavbarController extends Controller
 {
-
     /**
      * @return EventDispatcher
      */
@@ -26,7 +25,6 @@ class NavbarController extends Controller
     {
         return $this->get('event_dispatcher');
     }
-
 
     public function notificationsAction($max = 5)
     {
@@ -97,5 +95,4 @@ class NavbarController extends Controller
                         )
         );
     }
-
 }

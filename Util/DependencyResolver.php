@@ -32,7 +32,6 @@ class DependencyResolver implements DependencyResolverInterface
      */
     protected $unresolved = array();
 
-
     /**
      * @param $items
      *
@@ -145,7 +144,6 @@ class DependencyResolver implements DependencyResolverInterface
         return in_array($needle, $deps);
     }
 
-
     /**
      * @throws \RuntimeException
      */
@@ -175,5 +173,4 @@ class DependencyResolver implements DependencyResolverInterface
 
 
     }
-
 }

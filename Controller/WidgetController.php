@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class WidgetController extends Controller
 {
-
     public function defaultBoxAction() {
 
 
@@ -25,6 +24,4 @@ class WidgetController extends Controller
     public function tiledBoxAction() {}
 
     public function smallBoxAction() {}
-
-
 }

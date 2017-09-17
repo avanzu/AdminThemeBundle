@@ -60,7 +60,6 @@ class TaskModel implements TaskInterface
         $this->title = $title;
     }
 
-
     /**
      * @param string $color
      *
@@ -124,6 +123,4 @@ class TaskModel implements TaskInterface
     public function getIdentifier() {
         return $this->title;
     }
-
-
 }

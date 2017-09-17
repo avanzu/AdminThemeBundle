@@ -12,7 +12,6 @@ use Symfony\Component\Config\Loader\LoaderResolverInterface;
 
 class MenuLoader extends Loader
 {
-
     /**
      * Loads a resource.
      *
@@ -36,5 +35,4 @@ class MenuLoader extends Loader
     {
         return true;
     }
-
 }

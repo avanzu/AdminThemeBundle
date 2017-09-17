@@ -29,7 +29,6 @@ class SetupThemeListener
         $this->manager = $manager;
     }
 
-
     public function onKernelController(FilterControllerEvent $event) {
 
         $css = rtrim($this->cssBase, '/') . '/' . trim($this->lteAdmin, '/');

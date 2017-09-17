@@ -12,8 +12,6 @@ use Avanzu\AdminThemeBundle\Model\NotificationModel;
 
 class NavbarNotificationListDemoListener
 {
-
-
     public function onListNotifications(NotificationListEvent $event) {
 
         foreach($this->getNotifications() as $notify){
@@ -28,5 +26,4 @@ class NavbarNotificationListDemoListener
             new NotificationModel('some more notices', 'success'),
         );
     }
-
 }

@@ -41,7 +41,6 @@ class SidebarMenuEvent extends ThemeEvent
         return $this->request;
     }
 
-
     /**
      * @return array
      */
@@ -79,5 +78,4 @@ class SidebarMenuEvent extends ThemeEvent
 
         return null;
     }
-
 }

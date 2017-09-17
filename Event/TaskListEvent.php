@@ -24,7 +24,6 @@ class TaskListEvent extends ThemeEvent
         return $this->tasks;
     }
 
-
     /**
      * @param TaskInterface $taskInterface
      *
@@ -55,7 +54,4 @@ class TaskListEvent extends ThemeEvent
     {
         return $this->total == 0 ? sizeof($this->tasks) : $this->total;
     }
-
-
-
 }

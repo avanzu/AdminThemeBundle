@@ -38,8 +38,6 @@ class ThemeManager
         $this->resolverClass = $resolverClass?: 'Avanzu\AdminThemeBundle\Util\DependencyResolver';
     }
 
-
-
     public function registerScript($id, $src, $deps = array(), $location = "bottom")
     {
 
@@ -106,5 +104,4 @@ class ThemeManager
     protected function getLocator() {
         return $this->container->get('file_locator');
     }
-
 }

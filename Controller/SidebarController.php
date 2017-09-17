@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SidebarController extends Controller
 {
-
     public function userPanelAction()
     {
 

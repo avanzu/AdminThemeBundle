@@ -23,7 +23,6 @@ class ContextListener
         $this->container = $container;
     }
 
-
     public function onRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();

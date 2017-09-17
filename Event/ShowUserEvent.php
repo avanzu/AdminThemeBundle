@@ -36,6 +36,4 @@ class ShowUserEvent extends ThemeEvent
     {
         return $this->user;
     }
-
-
 }

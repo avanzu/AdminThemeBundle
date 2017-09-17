@@ -20,8 +20,6 @@ use Symfony\Component\Process\Process;
 
 class CompactVendorCommand extends ContainerAwareCommand
 {
-
-
     protected function configure() {
         $this
             ->setName('avanzu:admin:compact-vendor')
@@ -60,7 +58,6 @@ class CompactVendorCommand extends ContainerAwareCommand
         $this->copyImages($input, $output);
 
     }
-
 
     protected function getThemePath($type, InputInterface $input, $kernel) {
         $theme = $input->getArgument('theme');
@@ -181,7 +178,6 @@ class CompactVendorCommand extends ContainerAwareCommand
         });
 
     }
-
 
     protected function compressVendorJs(OutputInterface $output) {
 

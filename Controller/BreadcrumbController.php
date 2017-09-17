@@ -20,8 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class BreadcrumbController extends Controller
 {
-
-
     /**
      * Controller Reference action to be called inside the layout.
      *
@@ -60,7 +58,6 @@ class BreadcrumbController extends Controller
             ));
     }
 
-
     /**
      * @return EventDispatcher
      */
@@ -68,5 +65,4 @@ class BreadcrumbController extends Controller
     {
         return $this->get('event_dispatcher');
     }
-
 }

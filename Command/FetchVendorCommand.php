@@ -19,8 +19,6 @@ use Symfony\Component\Process\Process;
 
 class FetchVendorCommand extends ContainerAwareCommand
 {
-
-
     protected function configure()
     {
         $this
@@ -92,5 +90,4 @@ class FetchVendorCommand extends ContainerAwareCommand
 
         */
     }
-
 }

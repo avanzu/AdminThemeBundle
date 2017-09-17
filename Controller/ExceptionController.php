@@ -13,8 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\ExceptionController
 {
-
-
     /**
      * @param Request $request
      * @param string  $format
@@ -60,6 +58,4 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
         return parent::findTemplate($request, $format, $code, $debug);
 
     }
-
-
 }

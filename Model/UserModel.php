@@ -50,7 +50,6 @@ class UserModel implements UserInterface
         $this->title = $title;
     }
 
-
     /**
      * @param string $avatar
      *
@@ -131,7 +130,6 @@ class UserModel implements UserInterface
         return $this->username;
     }
 
-
     /**
      * @param string $name
      *
@@ -152,7 +150,6 @@ class UserModel implements UserInterface
         return $this->name;
     }
 
-
     /**
      * @param string $title
      *
@@ -172,7 +169,6 @@ class UserModel implements UserInterface
     {
         return $this->title;
     }
-
 
     /**
      * @return bool

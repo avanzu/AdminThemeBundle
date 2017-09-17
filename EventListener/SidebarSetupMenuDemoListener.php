@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SidebarSetupMenuDemoListener
 {
-
     public function onSetupMenu(SidebarMenuEvent $event)
     {
         $request = $event->getRequest();
@@ -23,7 +22,6 @@ class SidebarSetupMenuDemoListener
         }
 
     }
-
 
     protected function getMenu(Request $request)
     {
@@ -57,6 +55,4 @@ class SidebarSetupMenuDemoListener
 
         return $items;
     }
-
-
 }

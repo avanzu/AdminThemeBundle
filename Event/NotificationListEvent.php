@@ -59,7 +59,4 @@ class NotificationListEvent extends ThemeEvent
     {
         return $this->total == 0 ? sizeof($this->notifications) : $this->total;
     }
-
-
-
 }

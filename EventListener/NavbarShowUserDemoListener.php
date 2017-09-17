@@ -12,7 +12,6 @@ use Avanzu\AdminThemeBundle\Model\UserModel;
 
 class NavbarShowUserDemoListener
 {
-
     public function onShowUser(ShowUserEvent $event) {
 
         $user = new UserModel();
@@ -20,5 +19,4 @@ class NavbarShowUserDemoListener
 
         $event->setUser($user);
     }
-
 }

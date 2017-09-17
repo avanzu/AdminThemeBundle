@@ -64,5 +64,4 @@ class MessageListEvent extends ThemeEvent
     {
         return $this->totalMessages == 0 ? sizeof($this->messages) : $this->totalMessages;
     }
-
 }

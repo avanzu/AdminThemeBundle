@@ -24,7 +24,6 @@ class NotificationModel implements NotificationInterface
         $this->icon = $icon;
     }
 
-
     /**
      * @param mixed $message
      *
@@ -89,5 +88,4 @@ class NotificationModel implements NotificationInterface
     {
         return $this->message;
     }
-
 }

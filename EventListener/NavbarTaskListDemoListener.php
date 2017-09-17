@@ -12,7 +12,6 @@ use Avanzu\AdminThemeBundle\Model\TaskModel;
 
 class NavbarTaskListDemoListener
 {
-
     public function onListTasks(TaskListEvent $event)
     {
 
@@ -31,5 +30,4 @@ class NavbarTaskListDemoListener
         );
 
     }
-
 }

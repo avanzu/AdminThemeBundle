@@ -40,7 +40,6 @@ class ScriptHandler
         'symfony-web-dir' => 'web'
     );
 
-
     protected static function getOptions(CommandEvent $event)
     {
         $options = array_merge(self::$options, $event->getComposer()->getPackage()->getExtra());
@@ -104,7 +103,6 @@ class ScriptHandler
 
         return $options['symfony-app-dir'];
     }
-
 
     protected static function getPhpArguments()
     {
