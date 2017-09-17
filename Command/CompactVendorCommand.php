@@ -60,7 +60,7 @@ class CompactVendorCommand extends ContainerAwareCommand
         $themedir = strtr('@AvanzuAdminThemeBundle/Resources/vendor/bootflat/{type}',
                           [
                               '{theme}' => $theme,
-                              '{type}' => $type
+                              '{type}' => $type,
                           ]);
         $vendors = $kernel->locateResource($themedir);
 
@@ -116,7 +116,7 @@ class CompactVendorCommand extends ContainerAwareCommand
             'font-awesome.css',
             'bootflat.css',
             'bootflat-extensions.css',
-            'bootflat-square.css'
+            'bootflat-square.css',
         ];
 
         $process = new Process(sprintf('/usr/local/share/npm/bin/uglifycss %s > %s', implode(' ', $files), $script));
@@ -144,7 +144,7 @@ class CompactVendorCommand extends ContainerAwareCommand
 
         $files = [
             'bootstrap.js',
-            'jquery.icheck.js'
+            'jquery.icheck.js',
         ];
 
         $process = new Process(sprintf('/usr/local/bin/uglifyjs %s -c -m -o %s', implode(' ', $files), $script));
@@ -186,7 +186,7 @@ class CompactVendorCommand extends ContainerAwareCommand
             , 'momentjs/lang/de.js'
             , 'spinjs/spin.js'
             , 'spinjs/jquery.spin.js'
-            , 'holderjs/holder.js'
+            , 'holderjs/holder.js',
         ];
 
         $process = new Process(sprintf('/usr/local/bin/uglifyjs %s -c -m -o %s', implode(' ', $files), $script));

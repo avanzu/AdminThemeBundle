@@ -46,7 +46,7 @@ class TwigPass implements CompilerPassInterface
 
         $twigDefinition->addMethodCall('addGlobal', [
                 'avanzu_admin_context',
-                new Reference('avanzu_admin_theme.context_helper')
+                new Reference('avanzu_admin_theme.context_helper'),
             ]
         );
     }

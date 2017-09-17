@@ -45,7 +45,7 @@ class DefaultController extends Controller
         $form = $this->createForm(FormDemoModelType::class);
 
         return $this->render('AvanzuAdminThemeBundle:Default:form.html.twig', [
-                'form' => $form->createView()
+                'form' => $form->createView(),
             ]);
     }
 

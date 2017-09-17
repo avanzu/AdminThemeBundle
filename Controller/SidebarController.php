@@ -25,7 +25,7 @@ class SidebarController extends Controller
         return $this->render(
                     'AvanzuAdminThemeBundle:Sidebar:user-panel.html.twig',
                         [
-                            'user' => $userEvent->getUser()
+                            'user' => $userEvent->getUser(),
                         ]
         );
     }
@@ -54,7 +54,7 @@ class SidebarController extends Controller
         return $this->render(
                     'AvanzuAdminThemeBundle:Sidebar:menu.html.twig',
                         [
-                            'menu' => $event->getItems()
+                            'menu' => $event->getItems(),
                         ]
         );
     }

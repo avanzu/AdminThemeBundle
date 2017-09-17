@@ -123,11 +123,11 @@ class ContextHelper extends \ArrayObject
             ],
             'button' => [
                 'type' => 'primary',
-                'size' => false
+                'size' => false,
             ],
             'knp_menu' => [
-                'enable' => false
-            ]
+                'enable' => false,
+            ],
         ]);
     }
 }

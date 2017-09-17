@@ -16,7 +16,7 @@ return call_user_func(
             'modernizr_js' => [
                 'inputs' => [
                     $jsAssets . 'public/vendor/modernizr/modernizr.js',
-                ]
+                ],
             ],
             'common_js' => [
                 'inputs' => [
@@ -44,7 +44,7 @@ return call_user_func(
                     $lteJSBase . 'plugins/datatables/dataTables.bootstrap.js',
                     $lteJSBase . 'plugins/slimScroll/jquery.slimscroll.js',
                     $jsAssets . 'public/js/adminLTE.js',
-                ]
+                ],
             ],
             'admin_lte_css' => [
                 'inputs' => [
@@ -55,7 +55,7 @@ return call_user_func(
                     $cssAssets . 'vendor/ionicons/css/ionicons.min.css',
                     $lteCssBase . 'dist/css/AdminLTE.css',
                     $lteCssBase . 'dist/css/skins/_all-skins.css',
-                ]
+                ],
             ],
             'admin_lte_forms_js' => [
                 'inputs' => [
@@ -63,9 +63,9 @@ return call_user_func(
                     $lteJSBase . 'plugins/daterangepicker/daterangepicker.js',
                     $lteJSBase . 'plugins/timepicker/bootstrap-timepicker.js',
                     $lteJSBase . 'plugins/input-mask/jquery.inputmask.js',
-                    $lteJSBase . 'plugins/iCheck/icheck.js'
+                    $lteJSBase . 'plugins/iCheck/icheck.js',
                     //   $lteJs.'plugins/input-mask/*',
-                ]
+                ],
             ],
             'admin_lte_forms_css' => [
                 'inputs' => [
@@ -74,47 +74,47 @@ return call_user_func(
                     $lteCssBase . 'plugins/timepicker/bootstrap-timepicker.css',
                     $lteCssBase . 'plugins/iCheck/all.css',
                     $lteCssBase . 'plugins/iCheck/square/_all.css',
-                ]
+                ],
             ],
             'admin_lte_wysiwyg' => [
                 'inputs' => [
                     $lteJSBase . 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
-                ]
+                ],
             ],
             'admin_lte_wysiwyg_css' => [
                 'inputs' => [
                     $lteCssBase . 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
-                ]
+                ],
             ],
             'admin_lte_morris' => [
                 'inputs' => [
                     $lteJSBase . 'plugins/morris/morris.js',
-                ]
+                ],
             ],
             'admin_lte_morris_css' => [
                 'inputs' => [
                     $lteCssBase . 'plugins/morris/morris.css',
-                ]
+                ],
             ],
             'admin_lte_flot' => [
                 'inputs' => [
                     $lteJSBase . 'plugins/flot/*',
-                ]
+                ],
             ],
             'admin_lte_calendar' => [
                 'inputs' => [
                     $jsAssets . 'public/vendor/fullcalendar/dist/fullcalendar.min.js',
-                ]
+                ],
             ],
             'admin_lte_calendar_css' => [
                 'inputs' => [
                     $cssAssets . 'vendor/fullcalendar/dist/fullcalendar.css',
-                ]
+                ],
             ],
             'avatar_img' => [
                 'inputs' => [
-                    '@AvanzuAdminThemeBundle/Resources/public/img/avatar.png'
-                ]
+                    '@AvanzuAdminThemeBundle/Resources/public/img/avatar.png',
+                ],
             ],
             'admin_lte_all' => [
                 'inputs' => [
@@ -124,7 +124,7 @@ return call_user_func(
                     '@admin_lte_morris',
                     '@admin_lte_calendar',
                     '@admin_lte_js',
-                ]
+                ],
             ],
             'admin_lte_all_css' => [
                 'inputs' => [
@@ -133,8 +133,8 @@ return call_user_func(
                     '@admin_lte_wysiwyg_css',
                     '@admin_lte_calendar_css',
                     '@admin_lte_morris_css',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 );

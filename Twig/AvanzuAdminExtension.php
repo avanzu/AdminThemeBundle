@@ -36,7 +36,7 @@ class AvanzuAdminExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFilter('body_class', [$this, 'bodyClass']),
-            new \Twig_SimpleFilter('route_alias', [$this->aliasRouter, 'getRouteByAlias'])
+            new \Twig_SimpleFilter('route_alias', [$this->aliasRouter, 'getRouteByAlias']),
         ];
     }
 

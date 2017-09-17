@@ -37,7 +37,7 @@ class NavbarController extends Controller
                     'AvanzuAdminThemeBundle:Navbar:notifications.html.twig',
                         [
                             'notifications' => $listEvent->getNotifications(),
-                            'total' => $listEvent->getTotal()
+                            'total' => $listEvent->getTotal(),
                         ]
         );
     }
@@ -59,7 +59,7 @@ class NavbarController extends Controller
                     'AvanzuAdminThemeBundle:Navbar:messages.html.twig',
                         [
                             'messages' => $listEvent->getMessages(),
-                            'total' => $listEvent->getTotal()
+                            'total' => $listEvent->getTotal(),
                         ]
         );
     }
@@ -80,7 +80,7 @@ class NavbarController extends Controller
                     'AvanzuAdminThemeBundle:Navbar:tasks.html.twig',
                         [
                             'tasks' => $listEvent->getTasks(),
-                            'total' => $listEvent->getTotal()
+                            'total' => $listEvent->getTotal(),
                         ]
         );
     }
@@ -98,7 +98,7 @@ class NavbarController extends Controller
         return $this->render(
                     'AvanzuAdminThemeBundle:Navbar:user.html.twig',
                         [
-                            'user' => $userEvent->getUser()
+                            'user' => $userEvent->getUser(),
                         ]
         );
     }

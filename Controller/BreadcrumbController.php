@@ -50,7 +50,7 @@ class BreadcrumbController extends Controller
 
         return $this->render('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb.html.twig', [
                 'active' => $list,
-                'title' => $title
+                'title' => $title,
             ]);
     }
 

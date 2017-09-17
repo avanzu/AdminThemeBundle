@@ -37,7 +37,7 @@ class ScriptHandler
      */
     private static $options = [
         'symfony-app-dir' => 'app',
-        'symfony-web-dir' => 'web'
+        'symfony-web-dir' => 'web',
     ];
 
     protected static function getOptions(CommandEvent $event)

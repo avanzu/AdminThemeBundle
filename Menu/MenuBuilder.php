@@ -49,13 +49,13 @@ class MenuBuilder
     public function createMainMenu(array $options)
     {
         $menu = $this->factory->createItem('root', [
-            'childrenAttributes' => ['class' => 'sidebar-menu']
+            'childrenAttributes' => ['class' => 'sidebar-menu'],
         ]);
 
         $childOptions = [
             'attributes' => ['class' => 'treeview'],
             'childrenAttributes' => ['class' => 'treeview-menu'],
-            'labelAttributes' => []
+            'labelAttributes' => [],
         ];
 
         $this->eventDispatcher->dispatch(

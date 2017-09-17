@@ -42,7 +42,7 @@ class ThemeManager
             $this->javascripts[$id] = [
                 'src' => $src,
                 'deps' => $deps,
-                'location' => $location
+                'location' => $location,
             ];
         }
     }

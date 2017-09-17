@@ -43,11 +43,11 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                 'twig',
                 [
                     'form_theme' => [
-                        'AvanzuAdminThemeBundle:layout:form-theme.html.twig'
+                        'AvanzuAdminThemeBundle:layout:form-theme.html.twig',
                     ],
                     'globals' => [
-                        'admin_theme' => '@avanzu_admin_theme.theme_manager'
-                    ]
+                        'admin_theme' => '@avanzu_admin_theme.theme_manager',
+                    ],
                 ]
             );
         }
@@ -63,8 +63,8 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                 [
                     'assets' => $assets,
                     'bundles' => [
-                        'AvanzuAdminThemeBundle'
-                    ]
+                        'AvanzuAdminThemeBundle',
+                    ],
                 ]
             );
         }

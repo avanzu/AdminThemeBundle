@@ -190,7 +190,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
             'styles' => [],
             'images' => [],
             'files' => [],
-            'fonts' => []
+            'fonts' => [],
         ];
 
         foreach ($resolved as $group => $files) {

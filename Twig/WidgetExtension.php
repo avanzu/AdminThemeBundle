@@ -20,7 +20,7 @@ class WidgetExtension extends \Twig_Extension
                                                      [$this, 'renderWidget'],
                                                      [
                                                          'is_safe' => ['html'],
-                                                         'needs_environment' => true
+                                                         'needs_environment' => true,
                                                      ]),
         ];
     }
