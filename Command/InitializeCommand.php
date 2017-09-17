@@ -31,9 +31,7 @@ class InitializeCommand extends ContainerAwareCommand
      */
     private $filesystem;
 
-    /**
-     *
-     */
+    
     protected function configure()
     {
         $this->setName('avanzu:admin:initialize')

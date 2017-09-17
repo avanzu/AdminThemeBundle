@@ -24,9 +24,7 @@ class ThemeEvents
      * Used to receive task data
      */
     const THEME_TASKS = 'theme.tasks';
-    /**
-     *
-     */
+    
     const THEME_NAVBAR_USER = 'theme.navbar_user';
     /**
      * used to receive breadcrumb data
@@ -49,9 +47,7 @@ class ThemeEvents
      * used for the knp menu mechanics
      */
     const THEME_SIDEBAR_SETUP_KNP_MENU = 'theme.sidebar_setup_knp_menu';
-    /**
-     *
-     */
+    
     const THEME_SIDEBAR_ACTIVATE_MENU = 'theme.sidebar_activate_menu';
 
 }

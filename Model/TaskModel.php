@@ -13,21 +13,12 @@ namespace Avanzu\AdminThemeBundle\Model;
  */
 class TaskModel implements TaskInterface
 {
-    /**
-     *
-     */
     const COLOR_AQUA = 'aqua';
-    /**
-     *
-     */
+    
     const COLOR_GREEN = 'green';
-    /**
-     *
-     */
+    
     const COLOR_RED = 'red';
-    /**
-     *
-     */
+    
     const COLOR_YELLOW = 'yellow';
 
 
