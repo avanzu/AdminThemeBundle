@@ -23,7 +23,7 @@
                 {{ button.action_toolbutton(
                     _collapsed ? 'plus'  : 'minus' ,
                     'collapse',
-                    collapsible_title|default(avanzu_admin_context.widget.collapsible_title|trans({}, 'AvanzuAdminTheme'))
+                    collapsible_title|default(avanzu_admin_context.widget.collapsible_title|default()|trans({}, 'AvanzuAdminTheme'))
                 ) }}
             {% endif %}
 
@@ -31,7 +31,7 @@
                 {{ button.action_toolbutton(
                 'times',
                 'remove',
-                removable_title|default(avanzu_admin_context.widget.removable_title|trans({}, 'AvanzuAdminTheme'))
+                removable_title|default(avanzu_admin_context.widget.removable_title|default()|trans({}, 'AvanzuAdminTheme'))
                 ) }}
             {% endif %}
 

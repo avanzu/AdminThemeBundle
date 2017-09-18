@@ -137,6 +137,8 @@ class ContextHelper extends \ArrayObject
             'control_sidebar' => true,
             'default_avatar' => 'bundles/avanzuadmintheme/img/avatar.png',
             'widget' => [
+                'collapsible_title' => 'Collapse',
+                'removable_title' => 'Remove',
                 'type' => 'primary',
                 'bordered' => true,
                 'collapsible' => true,
