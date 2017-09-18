@@ -6,7 +6,9 @@
             {{ block('box_text') }}
         </span>
         <span class="info-box-number">
-            {{ block('box_number') }}
+            {% if block('box_number') is defined %}
+                {{ block('box_number') }}
+            {% endif %}
         </span>
         <!-- The progress section is optional -->
         {% if progress is defined %}
