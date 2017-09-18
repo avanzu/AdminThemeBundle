@@ -41,10 +41,11 @@ class ContextHelper extends \ArrayObject
             unset($config['0']);
         }
         
+        $resolver = new OptionsResolver();
+        $this->configureDefaults($resolver);
+        
         if(!empty($config))
         {
-            $resolver = new OptionsResolver();
-            $this->configureDefaults($resolver);
             try
             {
                 $this->exchangeArray($resolver->resolve($config));
