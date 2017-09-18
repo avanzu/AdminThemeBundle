@@ -314,7 +314,7 @@ desired effect
                 {% if avanzu_admin_context.knp_menu.enable %}
                     {% include 'AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig' %}
                 {% else %}
-                    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+                    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('avanzu_page_title')})) }}
                 {% endif %}
             {% endblock %}
             {#
