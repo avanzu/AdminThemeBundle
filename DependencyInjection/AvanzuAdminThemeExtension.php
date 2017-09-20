@@ -25,6 +25,13 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        if(array_key_exists("options",$configs) == false)
+        {
+            $config["options"] = array(
+                "skin" => "skin-blue-light"
+            );
+        }
+
         // Set the parameters from config files
         $container->setParameter('avanzu_admin_theme.bower_bin', (string) $config['bower_bin']);
         $container->setParameter('avanzu_admin_theme.use_twig', (bool) $config['use_twig']);
@@ -36,8 +43,8 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.xml');
         }
-        catch(FileLocatorFileNotFoundException $e) // Symfony 3.3 and 4.x are based in YAML
-        {
+        catch(\Exception $e) // Symfony 3.3 and 4.x are based in YAML
+        { // old exception FileLocatorFileNotFoundException
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.yml');
         }
@@ -54,6 +61,13 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $configs = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration(new Configuration(), $configs);
 
+        if(array_key_exists("options",$configs) == false)
+        {
+            $config["options"] = array(
+                "skin" => "skin-blue-light"
+            );
+        }
+
         // Set the parameters from config files
         $container->setParameter('avanzu_admin_theme.bower_bin', (string) $config['bower_bin']);
         $container->setParameter('avanzu_admin_theme.use_twig', (bool) $config['use_twig']);
@@ -65,8 +79,8 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.xml');
         }
-        catch(FileLocatorFileNotFoundException $e) // Symfony 3.3 and 4.x are based in YAML
-        {
+        catch(\Exception $e) // Symfony 3.3 and 4.x are based in YAML
+        {// old exception FileLocatorFileNotFoundException
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.yml');
         }
