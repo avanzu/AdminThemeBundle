@@ -8,6 +8,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -41,6 +42,17 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.yml');
         }
+        catch(InvalidArgumentException $e) // Symfony 3.3 and 4.x are based in YAML
+        {
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader->load('services.yml');
+        }
+        catch(\Exception $e) // Symfony 3.3 and 4.x are based in YAML
+        {
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader->load('services.yml');
+            // echo 'AvanzuAdminTheme: ' . $e->getMessage() . PHP_EOL; // Use this for your own debugging
+        }
     }
 
     /**
@@ -69,6 +81,17 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         {
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
             $loader->load('services.yml');
+        }
+        catch(InvalidArgumentException $e) // Symfony 3.3 and 4.x are based in YAML
+        {
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader->load('services.yml');
+        }
+        catch(\Exception $e) // Symfony 3.3 and 4.x are based in YAML
+        {
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+            $loader->load('services.yml');
+            // echo 'AvanzuAdminTheme: ' . $e->getMessage() . PHP_EOL; // Use this for your own debugging
         }
 
         $bundles = $container->getParameter('kernel.bundles');
