@@ -26,9 +26,9 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $config = $this->processConfiguration($configuration, $configs);
 
         // Set the parameters from config files
-        $container->setParameter('avanzu_admin_theme.bower_bin', (string) $config['bower_bin']);
-        $container->setParameter('avanzu_admin_theme.use_twig', (bool) $config['use_twig']);
-        $container->setParameter('avanzu_admin_theme.options', (array) $config['options']);
+        $container->setParameter('avanzu_admin_theme.bower_bin', (string) (isset($config['bower_bin']) ? $config['bower_bin'] : ''));
+        $container->setParameter('avanzu_admin_theme.use_twig', (bool) (isset($config['use_twig']) ? $config['use_twig'] : FALSE));
+        $container->setParameter('avanzu_admin_theme.options', (array) (isset($config['options']) ? $config['options'] : []));
 
         // Load the services (with parameters loaded), since twig require theme_manager service
         try
@@ -55,9 +55,9 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $config = $this->processConfiguration(new Configuration(), $configs);
 
         // Set the parameters from config files
-        $container->setParameter('avanzu_admin_theme.bower_bin', (string) $config['bower_bin']);
-        $container->setParameter('avanzu_admin_theme.use_twig', (bool) $config['use_twig']);
-        $container->setParameter('avanzu_admin_theme.options', (array) $config['options']);
+        $container->setParameter('avanzu_admin_theme.bower_bin', (string) (isset($config['bower_bin']) ? $config['bower_bin'] : ''));
+        $container->setParameter('avanzu_admin_theme.use_twig', (bool) (isset($config['use_twig']) ? $config['use_twig'] : FALSE));
+        $container->setParameter('avanzu_admin_theme.options', (array) (isset($config['options']) ? $config['options'] : []));
 
         // Load the services (with parameters loaded), since twig require theme_manager service
         try
