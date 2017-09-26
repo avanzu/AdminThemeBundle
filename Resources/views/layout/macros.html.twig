@@ -22,11 +22,15 @@
             {% if item.hasChildren %}
                 <ul class="treeview-menu">
                     {% for child in item.children %}
-                        <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
-                            <a href="{{ '/' in child.route ? child.route : path(child.route, child.routeArgs) }}">
-                                {{ menu.menu_item_content(item, '') }}
-                            </a>
-                        </li>
+                        {% if child.hasChildren %}
+                           {{ macros.menu_item(child) }}
+                        {% else %}
+                            <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
+                                <a href="{{ '/' in child.route ? child.route : path(child.route, child.routeArgs) }}">
+                                    {{ menu.menu_item_content(item, '') }}
+                                </a>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             {% endif %}
