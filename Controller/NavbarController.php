@@ -12,11 +12,11 @@ use Avanzu\AdminThemeBundle\Event\NotificationListEvent;
 use Avanzu\AdminThemeBundle\Event\ShowUserEvent;
 use Avanzu\AdminThemeBundle\Event\TaskListEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Avanzu\AdminThemeBundle\Controller\EmitterController;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Response;
 
-class NavbarController extends Controller
+class NavbarController extends EmitterController
 {
     const MAX_NOTIFICATIONS = 5;
     const MAX_MESSAGES = 5;
