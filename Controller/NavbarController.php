@@ -80,7 +80,7 @@ class NavbarController extends Controller
             return new Response();
         }
 
-        $listEvent = $this->triggerMethod(ThemeEvents::THEME_TASKS, new TaskListEvent($max));
+        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_TASKS, new TaskListEvent($max));
 
         return $this->render(
                     'AvanzuAdminThemeBundle:Navbar:tasks.html.twig',
@@ -101,7 +101,7 @@ class NavbarController extends Controller
         }
 
         /** @var ShowUserEvent $userEvent */
-        $userEvent = $this->triggerMethod(ThemeEvents::THEME_NAVBAR_USER, new ShowUserEvent());
+        $userEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_NAVBAR_USER, new ShowUserEvent());
 
         if ($userEvent instanceof ShowUserEvent) {
             return $this->render(
