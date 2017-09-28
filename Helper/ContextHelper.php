@@ -35,12 +35,6 @@ class ContextHelper extends \ArrayObject
      */
     protected function initialize(array $config = [])
     {
-        // Remove casting if present
-        if(isset($config['0'])) 
-        {
-            unset($config['0']);
-        }
-        
         $resolver = new OptionsResolver();
         $this->configureDefaults($resolver);
         
@@ -48,7 +42,19 @@ class ContextHelper extends \ArrayObject
         {
             try
             {
-                $this->exchangeArray($resolver->resolve($config));
+                $newConfig = $resolver->resolve($config);
+                
+                foreach($newConfig as $configKey => $configValue)
+                {
+                    //if(!is_array($configValue))
+                    //{
+                    $this->setOption($configKey, $configValue);
+                    //}
+                    //else @todo Not sure if it is needed handle second level index of arrays
+                    //{
+                    
+                    //}
+                }
             }
             catch(UndefinedOptionsException $e)
             {
