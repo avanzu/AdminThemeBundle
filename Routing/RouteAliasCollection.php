@@ -104,7 +104,7 @@ class RouteAliasCollection
     {
         $aliases = $this->getAliases();
 
-        return $aliases[$name];
+        return isset($aliases[$name]) ? $aliases[$name] : NULL;
     }
 
     /**
