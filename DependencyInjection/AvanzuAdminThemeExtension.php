@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
-
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 /**
  * This is the class that loads and manages your bundle configuration
  *
@@ -22,9 +22,20 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $baseConfiguration = new Configuration();
+        
         // Load the configuration from files
-        $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        try
+        {
+            $configs = $container->getExtensionConfig($this->getAlias());
+        }
+        catch(InvalidConfigurationException $e)
+        {
+            echo 'AvanzuAdminBundle:' . $e->getMessage() . PHP_EOL;
+            $configs = [];
+        }
+        
+        $config = $this->processConfiguration($baseConfiguration, $configs);
 
         // Set the parameters from config files
         $container->setParameter('avanzu_admin_theme.bower_bin', (string) (isset($config['bower_bin']) ? $config['bower_bin'] : ''));
@@ -62,9 +73,20 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
      */
     public function prepend(ContainerBuilder $container)
     {
+        $baseConfiguration = new Configuration();
+        
         // Load the configuration from files
-        $configs = $container->getExtensionConfig($this->getAlias());
-        $config = $this->processConfiguration(new Configuration(), $configs);
+        try 
+        {
+            $configs = $container->getExtensionConfig($this->getAlias());
+        }
+        catch(InvalidConfigurationException $e)
+        {
+            echo 'AvanzuAdminBundle:' . $e->getMessage() . PHP_EOL;
+            $configs = [];
+        }
+        
+        $config = $this->processConfiguration($baseConfiguration, $configs);
 
         // Set the parameters from config files
         $container->setParameter('avanzu_admin_theme.bower_bin', (string) (isset($config['bower_bin']) ? $config['bower_bin'] : ''));
