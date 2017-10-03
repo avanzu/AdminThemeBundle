@@ -20,31 +20,60 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('avanzu_admin_theme');
 
-        $rootNode->children()
-                    ->scalarNode('bower_bin')
-                        ->info('Path to bower binary')
-                        ->defaultValue('/usr/local/bin/bower')
-                    ->end()
-                    ->booleanNode('use_assetic')
-                        ->defaultTrue()
-                        ->info('Enable assets in assetic')
-                    ->end()
-                    ->booleanNode('use_twig')
-                        ->info('Enable the user of avanzu_context_help in twig templates')
-                        ->defaultTrue()
-                    ->end()
-                    ->arrayNode('options')
-                        ->info('')
-                    ->end()
-                    ->arrayNode('knp_menu')
-                        ->children()
-                            ->scalarNode('enable')
-                                ->defaultValue(false)
-                                ->info('')
-                            ->end()
-                        ->end()
-                    ->end()
-                    ->arrayNode('button')
+        $rootNodeChildren = $rootNode->children();
+        $rootNodeChildren = $this->createSimpleChildren($rootNodeChildren, TRUE);
+        $rootNodeChildren = $this->createThemeChildren($rootNodeChildren);
+        $rootNodeChildren = $this->createButtonChildren($rootNodeChildren);
+  
+        $rootNodeChildren->end();
+                
+        return $treeBuilder;
+    }
+    
+    private function createWidgetTree($node)
+    {
+        $node->arrayNode('widget')
+            ->children()
+                ->scalarNode('collapsible_title')
+                    ->defaultValue('Collapse')
+                    ->info('')
+                ->end()
+                ->scalarNode('removable_title')
+                    ->defaultValue('Remove')
+                    ->info('')
+                ->end()
+                ->scalarNode('type')
+                    ->defaultValue('primary')
+                    ->info('')
+                ->end()
+                    ->booleanNode('bordered')
+                    ->defaultTrue()
+                    ->info('')
+                ->end()
+                    ->booleanNode('collapsible')
+                    ->defaultFalse()
+                    ->info('')
+                ->end()
+                ->booleanNode('removable')
+                    ->defaultFalse()
+                    ->info('')
+                ->end()
+                ->booleanNode('solid')
+                    ->defaultTrue()
+                    ->info('')
+                ->end()
+                ->booleanNode('use_footer')
+                    ->defaultFalse()
+                    ->info('')
+                ->end()
+        ->end();
+     
+        return $node;
+    }
+    
+    private function createButtonChildren($rootNodeChildren)
+    {
+        $rootNodeChildren->arrayNode('button')
                         ->children()
                             ->scalarNode('type')
                                 ->defaultValue('primary')
@@ -55,10 +84,71 @@ class Configuration implements ConfigurationInterface
                                 ->info('')
                             ->end()
                         ->end()
+                    ->end();
+        
+        return $rootNodeChildren;
+    }
+    
+    private function createSimpleChildren($rootNodeChildren, $withOptions = TRUE)
+    {
+        if($withOptions)
+        {
+            $rootNodeChildren = $rootNodeChildren->scalarNode('bower_bin')
+                ->info('Path to bower binary')
+                ->defaultValue('/usr/local/bin/bower')
+            ->end();
+        }
+            
+        $rootNodeChildren = $rootNodeChildren->booleanNode('use_assetic')
+                        ->defaultTrue()
+                        ->info('Enable assets in assetic')
                     ->end()
-                    ->arrayNode('theme')
+                    ->booleanNode('use_twig')
+                        ->info('Enable the user of avanzu_context_help in twig templates')
+                        ->defaultTrue()
+                    ->end();
+        
+         if($withOptions)
+         {
+             $optionChildren = $rootNodeChildren->arrayNode('options')
+                 ->info('')
+                 ->children();
+             
+             $optionChildren = $this->createSimpleChildren($optionChildren, FALSE);
+             $optionChildren = $this->createWidgetTree($optionChildren);
+             $optionChildren = $this->createButtonChildren($optionChildren);
+             $optionChildren = $this->createsubThemeChildren($optionChildren);
+             
+             $optionChildren->end();
+         }
+         
+         $rootNodeChildren->arrayNode('knp_menu')
                         ->children()
-                            ->scalarNode('default_avatar')
+                            ->scalarNode('enable')
+                                ->defaultValue(false)
+                                ->info('')
+                            ->end()
+                        ->end()
+                    ->end();
+        return $rootNodeChildren;
+    }
+    
+    private function createThemeChildren($rootNodeChildren)
+    {
+        $themeChildren = $rootNodeChildren->arrayNode('theme')->children();
+        
+        
+        $themeChildren = $this->createWidgetTree($themeChildren);
+        $themeChildren = $this->createsubThemeChildren($themeChildren);
+        $themeChildren->end()
+            ->end();
+        
+        return $rootNodeChildren;
+    }
+    
+    private function createsubThemeChildren($rootNodeChildren)
+    {
+        $rootNodeChildren->scalarNode('default_avatar')
                                 ->defaultValue('bundles/avanzuadmintheme/img/avatar.png')
                             ->end()
                             ->scalarNode('skin')
@@ -83,47 +173,7 @@ class Configuration implements ConfigurationInterface
                             ->booleanNode('control_sidebar')
                                 ->defaultFalse()
                                 ->info('controls whether the right hand panel will be rendered')
-                            ->end()
-                            ->arrayNode('widget')
-                                ->children()
-                                    ->scalarNode('collapsible_title')
-                                        ->defaultValue('Collapse')
-                                        ->info('')
-                                    ->end()
-                                    ->scalarNode('removable_title')
-                                        ->defaultValue('Remove')
-                                        ->info('')
-                                    ->end()
-                                    ->scalarNode('type')
-                                        ->defaultValue('primary')
-                                        ->info('')
-                                    ->end()
-                                        ->booleanNode('bordered')
-                                        ->defaultTrue()
-                                        ->info('')
-                                    ->end()
-                                        ->booleanNode('collapsible')
-                                        ->defaultFalse()
-                                        ->info('')
-                                    ->end()
-                                    ->booleanNode('removable')
-                                        ->defaultFalse()
-                                        ->info('')
-                                    ->end()
-                                    ->booleanNode('solid')
-                                        ->defaultTrue()
-                                        ->info('')
-                                    ->end()
-                                    ->booleanNode('use_footer')
-                                        ->defaultFalse()
-                                        ->info('')
-                                    ->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                    
-                ->end();
-                
-        return $treeBuilder;
+                            ->end();
+         return $rootNodeChildren;
     }
 }
