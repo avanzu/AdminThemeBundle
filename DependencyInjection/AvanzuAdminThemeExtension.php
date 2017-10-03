@@ -32,7 +32,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         catch(InvalidConfigurationException $e)
         {
             // Fallback: ignore invalid config from the container user config file and abort use configuration in load
-            echo 'AvanzuAdminBundle: invalid config (load): ' . $e->getMessage() . PHP_EOL . '    The config options for the bundle AvanzuAdminBundle were skipped';
+            echo 'AvanzuAdminBundle: invalid config (load): ' . $e->getMessage() . PHP_EOL . '    The config options for the bundle AvanzuAdminBundle were skipped' . PHP_EOL;
             $config = [];
         }
 
@@ -93,9 +93,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         catch(InvalidConfigurationException $e)
         {
             // Fallback: ignore invalid config from the container user config file and abort use configuration in prepend
-            echo 'AvanzuAdminBundle: invalid config (prepend): ' . $e->getMessage() . PHP_EOL . '    The config options for the bundle AvanzuAdminBundle were skipped';
+            echo 'AvanzuAdminBundle: invalid config (prepend): ' . $e->getMessage() . PHP_EOL . '    The config options for the bundle AvanzuAdminBundle were skipped' . PHP_EOL;
             $config = [];
         }
+        
+        // Create the parameter for the service (dependency with avanzu_admin_theme.extension.class) even if empty config
+        $container->setParameter('avanzu_admin_theme.options', (array) (isset($config['options']) ? $config['options'] : []));
         
         // Use the config only if it is fully validated from the processed configuration
         if(!empty($config))
@@ -103,7 +106,6 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             // Set the parameters from config files
             $container->setParameter('avanzu_admin_theme.bower_bin', (string) (isset($config['bower_bin']) ? $config['bower_bin'] : ''));
             $container->setParameter('avanzu_admin_theme.use_twig', (bool) (isset($config['use_twig']) ? $config['use_twig'] : FALSE));
-            $container->setParameter('avanzu_admin_theme.options', (array) (isset($config['options']) ? $config['options'] : []));
     
             // Get all the bundles
             $bundles = $container->getParameter('kernel.bundles');
