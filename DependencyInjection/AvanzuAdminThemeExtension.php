@@ -24,17 +24,6 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
     {
         $baseConfiguration = new Configuration();
         
-        // Load the configuration from files
-        try
-        {
-            $configs = $container->getExtensionConfig($this->getAlias());
-        }
-        catch(InvalidConfigurationException $e)
-        {
-            echo 'AvanzuAdminBundle:' . $e->getMessage() . PHP_EOL;
-            $configs = [];
-        }
-        
         $config = $this->processConfiguration($baseConfiguration, $configs);
 
         // Set the parameters from config files
