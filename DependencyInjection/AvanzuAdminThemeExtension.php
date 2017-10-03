@@ -35,7 +35,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         {
             echo 'AvanzuAdminBundle: invalid config: ' . $e->getMessage() . PHP_EOL;
             // Fallback: ignore invalid config from the container user config file and use default values from base configuration
-            $configs = $baseConfiguration;
+            $config = $baseConfiguration;
         }
 
         // Set the parameters from config files
@@ -88,7 +88,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         {
             // Fallback: ignore invalid config from the container user config file and use default values from base configuration
             echo 'AvanzuAdminBundle: invalid config: ' . $e->getMessage() . PHP_EOL;
-            $configs = $baseConfiguration;
+            $config = $baseConfiguration;
         }
         
         // Set the parameters from config files
