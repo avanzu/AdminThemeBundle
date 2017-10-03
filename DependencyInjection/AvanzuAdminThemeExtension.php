@@ -25,9 +25,11 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $baseConfiguration = new Configuration();
         
         // Load the configuration from files
+        $configs = $container->getExtensionConfig($this->getAlias());
+       
         try
         {
-            $configs = $container->getExtensionConfig($this->getAlias());
+            $config = $this->processConfiguration($baseConfiguration, $configs);
         }
         catch(InvalidConfigurationException $e)
         {
@@ -35,8 +37,6 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             // Fallback: ignore invalid config from the container user config file and use default values from base configuration
             $configs = $baseConfiguration;
         }
-        
-        $config = $this->processConfiguration($baseConfiguration, $configs);
 
         // Set the parameters from config files
         $container->setParameter('avanzu_admin_theme.bower_bin', (string) (isset($config['bower_bin']) ? $config['bower_bin'] : ''));
@@ -77,18 +77,20 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
         $baseConfiguration = new Configuration();
         
         // Load the configuration from files
-        try 
+        
+        $configs = $container->getExtensionConfig($this->getAlias());
+        
+        try
         {
-            $configs = $container->getExtensionConfig($this->getAlias());
+            $config = $this->processConfiguration($baseConfiguration, $configs);
         }
         catch(InvalidConfigurationException $e)
         {
+            // Fallback: ignore invalid config from the container user config file and use default values from base configuration
             echo 'AvanzuAdminBundle:' . $e->getMessage() . PHP_EOL;
-            $configs = [];
+            $configs = $baseConfiguration;
         }
         
-        $config = $this->processConfiguration($baseConfiguration, $configs);
-
         // Set the parameters from config files
         $container->setParameter('avanzu_admin_theme.bower_bin', (string) (isset($config['bower_bin']) ? $config['bower_bin'] : ''));
         $container->setParameter('avanzu_admin_theme.use_twig', (bool) (isset($config['use_twig']) ? $config['use_twig'] : FALSE));
