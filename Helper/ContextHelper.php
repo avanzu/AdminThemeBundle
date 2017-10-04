@@ -1,14 +1,14 @@
 <?php
 /**
  * ContextHelper class
- * 
- * Instead of fully relying on blocks and includes, this class that support 
- * the twig global named avanzu_admin_context to store and retrieve particular 
+ *
+ * Instead of fully relying on blocks and includes, this class that support
+ * the twig global named avanzu_admin_context to store and retrieve particular
  * values throughout the page rendering.
- * 
- * This is basically a parameter bag "on-page" with some pre-defined values 
+ *
+ * This is basically a parameter bag "on-page" with some pre-defined values
  * based on the bundle configuration.
- * 
+ *
  * The implemenation relies in a ArrayObject native PHP object, so it recieves
  * all the changes via avanzu_admin_context.options to store the new modified
  * values in the internal storage of ArrayObject, which is accessible via the
@@ -69,7 +69,7 @@ class ContextHelper extends \ArrayObject
     /**
      * Get attribute method for options. It uses a interal copy array of the
      * storage in the ArrayObject
-     * 
+     *
      * @return array
      */
     public function getOptions()
@@ -163,6 +163,8 @@ class ContextHelper extends \ArrayObject
             ],
             'knp_menu' => [
                 'enable' => false,
+                'main_menu' => 'AvanzuAdminThemeBundle:MenuBuilder:createMainMenu',
+                'breadcrumb_menu' => false,
             ],
         ]);
     }

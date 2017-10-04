@@ -128,6 +128,14 @@ class Configuration implements ConfigurationInterface
                                 ->defaultValue(false)
                                 ->info('')
                             ->end()
+                            ->scalarNode('main_menu')
+                                ->defaultValue('AvanzuAdminThemeBundle:MenuBuilder:createMainMenu')
+                                ->info('your builder alias')
+                            ->end()
+                            ->scalarNode('breadcrumb_menu')
+                                ->defaultFalse()
+                                ->info('Your builder alias or false to disable breadcrumbs')
+                            ->end()
                         ->end()
                     ->end();
         return $rootNodeChildren;
