@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html{% block avanzu_html_start %}{% endblock %}>
 {#
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
@@ -31,7 +31,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 #}
-<body class="{{ avanzu_admin_context.skin|default("")|body_class }}">
+<body{% block avanzu_body_start %}{% endblock %} class="{{ avanzu_admin_context.skin|default("")|body_class }}">
 {% block avanzu_after_body_start %}{% endblock %}
 <div class="wrapper">
 

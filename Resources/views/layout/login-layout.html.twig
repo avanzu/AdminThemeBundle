@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html{% block avanzu_html_start %}{% endblock %}>
 <html>
 <head>
 
@@ -27,7 +27,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition login-page">
+<body{% block avanzu_body_start %}{% endblock %} class="hold-transition login-page">
 {% block avanzu_after_body_start %}{% endblock %}
 <div class="login-box">
     <div class="login-logo">
