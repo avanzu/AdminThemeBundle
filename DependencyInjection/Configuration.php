@@ -129,7 +129,7 @@ class Configuration implements ConfigurationInterface
                                 ->info('')
                             ->end()
                             ->scalarNode('main_menu')
-                                ->defaultValue('AvanzuAdminThemeBundle:MenuBuilder:createMainMenu')
+                                ->defaultValue('avanzu_main')
                                 ->info('your builder alias')
                             ->end()
                             ->scalarNode('breadcrumb_menu')

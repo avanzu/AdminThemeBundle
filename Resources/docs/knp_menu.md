@@ -1,6 +1,16 @@
 # KnpMenu integration
 The KnpMenu can be used instead of the regular builtin menu and breadcrumb components. 
 
+## Install the suggested dependency ##
+
+Install through composer with:
+
+```
+composer require knplabs/knp-menu-bundle
+```
+
+And add in your AppKernel `new Knp\Bundle\MenuBundle\KnpMenuBundle(),`
+
 ## Enabling the KnpMenu support 
 In order to use the KnpMenu integration you need to enable it in the configuration: 
 
@@ -86,7 +96,8 @@ class SetupKnpMenuListener
 For a more in depth guide on how to use the KnpMenuBundle, please refer to the [official documentation][1]. 
 
 ### Replacing the MenuBuilder
-Rather than using the menu builder provided by this bundle, you could also generate your own implementation and change the bundle configuration to use your menu builder alias. 
+
+Rather than using the menu builder provided by this bundle (which is aliased as `avanzu_main`), you could also generate your own implementation and change the bundle configuration to use your menu builder alias. 
 
 ```yaml
 # config.yml
@@ -94,9 +105,27 @@ Rather than using the menu builder provided by this bundle, you could also gener
 avanzu_admin_theme:
     # ... 
     knp_menu:   
-    	enable : true
-        main_menu: <your builder alias>
+        enable : true
+        main_menu: <your builder alias> # By default "avanzu_main" alias
         breadcrumb_menu: <your builder alias or false to disable breadcrumbs>
+
+```
+
+## Using the avanzu_admin_context kpn menu ##
+
+If your layout or default layout is using avanzu_admin_context.knp_menu.enable for check if the knp menu is enabled, you need use
+the options context instead the general config. That is use the options key as following:
+
+```yaml
+# config.yml
+
+avanzu_admin_theme:
+    # ... 
+    options:
+        knp_menu:   
+            enable : true
+            main_menu: <your builder alias> # By default "avanzu_main" alias
+            breadcrumb_menu: <your builder alias or false to disable breadcrumbs>
 
 ```
 
