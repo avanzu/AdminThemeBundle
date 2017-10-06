@@ -129,7 +129,8 @@ avanzu_admin_theme:
 
 ```
 
+[Previous (Sidebar Navigation)][2] - [Next (Breadcrumb Menu)][3]
+
 [1]: http://symfony.com/doc/current/bundles/KnpMenuBundle/index.html
-
-
-
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/sidebar_navigation.md
+[3]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/breadcrumbs.md
