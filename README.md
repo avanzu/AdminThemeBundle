@@ -2,7 +2,8 @@ AdminThemeBundle
 ================
 
 
-﻿[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/avanzu/AdminThemeBundle/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue)
+﻿[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)][3]
+﻿![Symfony 2.x & 3.x][2]
 
 [![Throughput Graph](https://graphs.waffle.io/avanzu/AdminThemeBundle/throughput.svg)](https://waffle.io/avanzu/AdminThemeBundle/metrics/throughput)
 
@@ -160,3 +161,5 @@ If the assetic bundle is installed but you don't want the AdminThemeBundle to us
 * [Breadcrumb Menu](Resources/docs/breadcrumbs.md)
 
  [1]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
+ [2]: https://img.shields.io/badge/Symfony-%202.x%20&%203.x-green.svg
+ [3]: https://github.com/avanzu/AdminThemeBundle/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue
