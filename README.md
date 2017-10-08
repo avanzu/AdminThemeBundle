@@ -1,6 +1,9 @@
 AdminThemeBundle
 ================
 
+
+﻿[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/avanzu/AdminThemeBundle/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue)
+ 
 Admin Theme based on the AdminLTE Template for easy integration into symfony.
 This bundle integrates several commonly used javascripts and the awesome [AdminLTE Template](https://github.com/almasaeed2010/AdminLTE).
 
