@@ -163,7 +163,7 @@ class ContextHelper extends \ArrayObject
             ],
             'knp_menu' => [
                 'enable' => false,
-                'main_menu' => 'AvanzuAdminThemeBundle:MenuBuilder:createMainMenu',
+                'main_menu' => 'avanzu_main',
                 'breadcrumb_menu' => false,
             ],
         ]);
