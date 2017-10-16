@@ -102,7 +102,7 @@
             {% else %}
                 {% set class = ' timepicker' %}
             {% endif %}
-            {% set attr = attr|merge({'class' : class, 'data-datepicker':'on'}) %}
+            {% set attr = attr|merge({'class' : class, 'data-datepicker enable':'on'}) %}
 
             {{ block('form_widget_simple') }}
         </div>
