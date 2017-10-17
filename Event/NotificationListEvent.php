@@ -30,7 +30,7 @@ class NotificationListEvent extends ThemeEvent
      *
      * @param null $max
      */
-    public function __construct($max)
+    public function __construct($max = null)
     {
         $this->max = $max;
     }
