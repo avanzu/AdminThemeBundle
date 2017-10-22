@@ -1,0 +1,80 @@
+{% extends 'AvanzuAdminThemeBundle:layout:login-layout.html.twig' %}
+
+{# 
+This is a base template for login page which integrates 
+AdminLTE (using AvanzuAdminThemeBundle) with FOSUserBundle 
+
+This template only should be used if FOSUserBundle is installed and configured
+
+You can customize this code as you desire and copy this template under
+app/Resources/FOSUserBundle/views/Security/login.html.twig
+
+This will overwrite the FOSUserBundle login template without loss funcionality
+and improving the appareance as AdminLTE page layout
+#}
+
+{% block avanzu_login_box %}
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ path('avanzu_admin_home'|route_alias) }}">{% block avanzu_logo_login %}<b>Admin</b>LTE{% endblock %}</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+        
+            {% block avanzu_login_box_msg %}
+                <p class="login-box-msg">{{ 'Sign in to start your session'|trans({}, 'AvanzuAdminTheme') }}</p>
+
+                {% if error|default(false) %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+            {% endblock %}
+
+            {% block avanzu_login_form %}
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+    
+                <div class="form-group has-feedback">
+                    <input id="username" name="_username" type="text" class="form-control" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}"/>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                    <input type="password" id="password" name="_password" class="form-control" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" required="required"/>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }} 
+                            </label>
+                        </div>
+                    </div><!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat" id="_submit" name="_submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+                    </div><!-- /.col -->
+                </div>
+            </form>
+            {% endblock %}
+            
+            {% block avanzu_login_social_auth %}
+            <div class="social-auth-links text-center">
+                <p>- OR -</p>
+                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> {{ 'Sign in using Facebook'|trans({}, 'AvanzuAdminTheme') }}</a>
+                <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> {{ 'Sign in using Google+'|trans({}, 'AvanzuAdminTheme') }}</a>
+            </div><!-- /.social-auth-links -->
+            {% endblock %}
+            
+            {% block avanzu_login_actions %}
+                <a href="{{ path('fos_user_resetting_request') }}" title="{{ 'I forgot my password'|trans({}, 'AvanzuAdminTheme') }}">{{ 'I forgot my password'|trans({}, 'AvanzuAdminTheme') }}</a><br>
+                <a href="{{ path('fos_user_registration_register') }}" title="{{ 'Register a new membership'|trans({}, 'AvanzuAdminTheme') }}" class="text-center">{{ 'Register a new membership'|trans({}, 'AvanzuAdminTheme') }}</a>
+            {% endblock %}
+            
+        </div><!-- /.login-box-body -->
+    </div>
+{% endblock %}
