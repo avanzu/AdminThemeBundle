@@ -2,7 +2,6 @@ parameters:
     avanzu_admin_theme.exception_controller.class: Avanzu\AdminThemeBundle\Controller\ExceptionController
     twig.controller.exception.class: Avanzu\AdminThemeBundle\Controller\ExceptionController
     avanzu_admin_theme.extension.class: Avanzu\AdminThemeBundle\Twig\AvanzuAdminExtension
-    avanzu_admin_theme.form.help_extension.class: Avanzu\AdminThemeBundle\Form\FormHelpExtension
     avanzu_admin_theme.context_helper.class: Avanzu\AdminThemeBundle\Helper\ContextHelper
     avanzu_admin_theme.admin_router.class: Avanzu\AdminThemeBundle\Routing\RouteAliasCollection
     avanzu_admin_theme.theme_manager.class: Avanzu\AdminThemeBundle\Theme\ThemeManager
@@ -14,11 +13,6 @@ services:
         class: "%avanzu_admin_theme.theme_manager.class%"
         arguments:
             - "%avanzu_admin_theme.container.class%"
-
-    avanzu_admin_theme.form.help_extension:
-        class: "%avanzu_admin_theme.form.help_extension.class%"
-        tags:
-            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
 
     avanzu_admin_theme.admin_router:
         class: "%avanzu_admin_theme.admin_router.class%"
