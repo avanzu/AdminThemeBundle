@@ -159,6 +159,7 @@ If the assetic bundle is installed but you don't want the AdminThemeBundle to us
 * [Sidebar User](Resources/docs/sidebar_user.md)
 * [Sidebar Navigation](Resources/docs/sidebar_navigation.md)
 * [Breadcrumb Menu](Resources/docs/breadcrumbs.md)
+* [Form theme](Resources/docs/form_theme.md)
 
  [1]: https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html
  [2]: https://img.shields.io/badge/Symfony-%202.x%20&%203.x-green.svg
