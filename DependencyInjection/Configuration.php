@@ -24,12 +24,12 @@ class Configuration implements ConfigurationInterface
         $rootNodeChildren = $this->createSimpleChildren($rootNodeChildren, TRUE);
         $rootNodeChildren = $this->createThemeChildren($rootNodeChildren);
         $rootNodeChildren = $this->createButtonChildren($rootNodeChildren);
-  
+
         $rootNodeChildren->end();
-                
+
         return $treeBuilder;
     }
-    
+
     private function createWidgetTree($node)
     {
         $node->arrayNode('widget')
@@ -67,10 +67,10 @@ class Configuration implements ConfigurationInterface
                     ->info('')
                 ->end()
         ->end();
-     
+
         return $node;
     }
-    
+
     private function createButtonChildren($rootNodeChildren)
     {
         $rootNodeChildren->arrayNode('button')
@@ -85,10 +85,10 @@ class Configuration implements ConfigurationInterface
                             ->end()
                         ->end()
                     ->end();
-        
+
         return $rootNodeChildren;
     }
-    
+
     private function createSimpleChildren($rootNodeChildren, $withOptions = TRUE)
     {
         if($withOptions)
@@ -98,7 +98,7 @@ class Configuration implements ConfigurationInterface
                 ->defaultValue('/usr/local/bin/bower')
             ->end();
         }
-            
+
         $rootNodeChildren = $rootNodeChildren->booleanNode('use_assetic')
                         ->defaultTrue()
                         ->info('Enable assets in assetic')
@@ -107,21 +107,21 @@ class Configuration implements ConfigurationInterface
                         ->info('Enable the user of avanzu_context_help in twig templates')
                         ->defaultTrue()
                     ->end();
-        
+
          if($withOptions)
          {
              $optionChildren = $rootNodeChildren->arrayNode('options')
                  ->info('')
                  ->children();
-             
+
              $optionChildren = $this->createSimpleChildren($optionChildren, FALSE);
              $optionChildren = $this->createWidgetTree($optionChildren);
              $optionChildren = $this->createButtonChildren($optionChildren);
              $optionChildren = $this->createsubThemeChildren($optionChildren);
-             
+
              $optionChildren->end();
          }
-         
+
          $rootNodeChildren->arrayNode('knp_menu')
                         ->children()
                             ->scalarNode('enable')
@@ -138,22 +138,22 @@ class Configuration implements ConfigurationInterface
                             ->end()
                         ->end()
                     ->end();
+
         return $rootNodeChildren;
     }
-    
+
     private function createThemeChildren($rootNodeChildren)
     {
         $themeChildren = $rootNodeChildren->arrayNode('theme')->children();
-        
-        
+
         $themeChildren = $this->createWidgetTree($themeChildren);
         $themeChildren = $this->createsubThemeChildren($themeChildren);
         $themeChildren->end()
             ->end();
-        
+
         return $rootNodeChildren;
     }
-    
+
     private function createsubThemeChildren($rootNodeChildren)
     {
         $rootNodeChildren->scalarNode('default_avatar')
@@ -182,6 +182,7 @@ class Configuration implements ConfigurationInterface
                                 ->defaultFalse()
                                 ->info('controls whether the right hand panel will be rendered')
                             ->end();
+
          return $rootNodeChildren;
     }
 }

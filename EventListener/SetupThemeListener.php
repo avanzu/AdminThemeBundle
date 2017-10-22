@@ -30,7 +30,7 @@ class SetupThemeListener
 
     /**
      * The event will register the css on ThemeManager class
-     * 
+     *
      * @param FilterControllerEvent $event
      */
     public function onKernelController(FilterControllerEvent $event) {

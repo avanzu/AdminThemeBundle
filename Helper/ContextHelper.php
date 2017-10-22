@@ -14,6 +14,7 @@
  * values in the internal storage of ArrayObject, which is accessible via the
  * getter and setter in option attribute class.
  */
+
 namespace Avanzu\AdminThemeBundle\Helper;
 
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
@@ -26,7 +27,7 @@ class ContextHelper extends \ArrayObject
      * @var RouteAliasCollection
      */
     private $router;
-    
+
     /**
      * ContextHelper constructor.
      *
@@ -38,7 +39,7 @@ class ContextHelper extends \ArrayObject
         $this->initialize($config);
         $this->router = $router;
     }
-    
+
     /**
      * Create a OptionResolver with default parameters and overwrite the context
      * with the default options in avanzu_admin_theme.options
@@ -50,7 +51,7 @@ class ContextHelper extends \ArrayObject
         // Create a resolve and configure the defaults
         $resolver = new OptionsResolver();
         $this->configureDefaults($resolver);
-        
+
         try
         {
             // Parse the config in avanzu_admin_theme.options as array object in avanzu_admin_context.options
@@ -63,9 +64,8 @@ class ContextHelper extends \ArrayObject
             echo $e->getMessage() . PHP_EOL;
             print_r($config, TRUE);
         }
-        
     }
-    
+
     /**
      * Get attribute method for options. It uses a interal copy array of the
      * storage in the ArrayObject
@@ -76,7 +76,7 @@ class ContextHelper extends \ArrayObject
     {
         return $this->getArrayCopy();
     }
-    
+
     /**
      * @param $name
      * @param $value
@@ -86,10 +86,10 @@ class ContextHelper extends \ArrayObject
     public function setOption($name, $value)
     {
         $this->offsetSet($name, $value);
-        
+
         return $this;
     }
-    
+
     /**
      * @param $name
      *
@@ -99,7 +99,7 @@ class ContextHelper extends \ArrayObject
     {
         return $this->offsetExists($name);
     }
-    
+
     /**
      * @param      $name
      * @param null $default
@@ -110,7 +110,7 @@ class ContextHelper extends \ArrayObject
     {
         return $this->offsetExists($name) ? $this->offsetGet($name) : $default;
     }
-    
+
     /**
      * @param $name
      *
@@ -120,7 +120,7 @@ class ContextHelper extends \ArrayObject
     {
         return $this->router->hasAlias($name);
     }
-    
+
     /**
      * @param $name
      *
@@ -130,7 +130,7 @@ class ContextHelper extends \ArrayObject
     {
         return $this->router->getRouteByAlias($name);
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

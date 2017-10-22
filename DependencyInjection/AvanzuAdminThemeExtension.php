@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+
 /**
  * This is the class that loads and manages your bundle configuration
  *
@@ -23,7 +24,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
     public function load(array $configs, ContainerBuilder $container)
     {
         $baseConfiguration = new Configuration();
-        
+
         // Load the configuration from files
         try
         {
@@ -71,7 +72,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
 
     /**
      * Allow an extension to prepend the extension configurations.
-     * 
+     *
      * @see https://symfony.com/doc/current/bundles/prepend_extension.html
      *
      * @param ContainerBuilder $container
@@ -79,12 +80,12 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
     public function prepend(ContainerBuilder $container)
     {
         $baseConfiguration = new Configuration();
-        
+
         // Load the configuration from files
 
         // The configuration of AvanzuAdminThemeExtension
         $configs = $container->getExtensionConfig($this->getAlias());
-        
+
         try
         {
             // use the Configuration class to generate a config array with the config extension
@@ -96,20 +97,20 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
             echo 'AvanzuAdminBundle: invalid config (prepend): ' . $e->getMessage() . PHP_EOL . '    The config options for the bundle AvanzuAdminBundle were skipped' . PHP_EOL;
             $config = [];
         }
-        
+
         // Create the parameter for the service (dependency with avanzu_admin_theme.extension.class) even if empty config
         $container->setParameter('avanzu_admin_theme.options', (array) (isset($config['options']) ? $config['options'] : []));
-        
+
         // Use the config only if it is fully validated from the processed configuration
         if(!empty($config))
         {
             // Set the parameters from config files
             $container->setParameter('avanzu_admin_theme.bower_bin', (string) (isset($config['bower_bin']) ? $config['bower_bin'] : ''));
             $container->setParameter('avanzu_admin_theme.use_twig', (bool) (isset($config['use_twig']) ? $config['use_twig'] : FALSE));
-    
+
             // Get all the bundles
             $bundles = $container->getParameter('kernel.bundles');
-    
+
             // Inject in twig global config the theme_manager service
             if ($config['use_twig'] && isset($bundles['TwigBundle'])) {
                 $container->prependExtensionConfig(
@@ -124,10 +125,10 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                     ]
                 );
             }
-    
+
             if ($config['use_assetic'] && isset($bundles['AsseticBundle'])) {
                 $assets = include dirname(__FILE__) . '/../Resources/config/assets.php';
-    
+
                 $container->prependExtensionConfig(
                     'assetic',
                     [

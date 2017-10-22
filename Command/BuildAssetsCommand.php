@@ -23,7 +23,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
      * @var Kernel
      */
     protected $kernel;
-    
+
     /**
      * @var string
      */
@@ -36,9 +36,9 @@ class BuildAssetsCommand extends ContainerAwareCommand
      * @var
      */
     protected $webdir;
-    
+
     protected $builddir;
-    
+
     protected function configure()
     {
         $this->setName('avanzu:admin:build-assets')
@@ -48,52 +48,52 @@ class BuildAssetsCommand extends ContainerAwareCommand
         ->addOption('uglifyjs-bin', false, InputOption::VALUE_OPTIONAL, 'uglifyjs binary', '/usr/bin/env uglifyjs')
         ->addOption('uglifycss-bin', false, InputOption::VALUE_OPTIONAL, 'uglifycss binary', '/usr/bin/env uglifycss')
         ;
-        
+
         $this->resdir = realpath(dirname(__FILE__) . '/../Resources');
         $this->pubdir = $this->resdir . '/public';
     }
-    
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var $kernel Kernel */
         $this->kernel = $this->getContainer()->get('kernel');
         $this->webdir = realpath($this->getContainer()->getParameter('kernel.root_dir') . '/../web');
         $this->builddir = $this->pubdir . '/static/' . $input->getOption('env');
-        
+
         $assetsFiles = $this->resdir . '/config/assets.php';
         $output->writeln('Loading assets files config from ' . $assetsFiles);
-        
+
         $assets = $this->partition($this->resolveAll(include($assetsFiles)));
         $fs = new Filesystem();
-        
+
         $output->writeln('Processing scripts');
         foreach($assets['scripts'] as $group => $files)
         {
             $this->processScript($group, $files, $fs, $input, $output);
         }
-        
+
         $output->writeln('Processing styles');
         foreach($assets['styles'] as $group => $files) {
             $this->processStyle($group, $files, $fs, $input, $output);
         }
-        
+
         $output->writeln('Processing styles');
         foreach($assets['fonts'] as $group => $files) {
             $this->processFonts($group, $files, $fs, $input, $output);
         }
-        
+
         $fontsdir = $this->builddir . '/fonts';
         $output->writeln('Searching for fonts under ' . $fontsdir);
-        
+
         $fs->exists($fontsdir) or $fs->mkdir($fontsdir);
-        
+
         $fontsFound = $this->findFonts();
-        
+
         if(!empty($fontsFound))
         {
             foreach($fontsFound as $name => $path)
             {
-                $output->writeln('Font found: ' . $name  . ' in ' . $path);
+                $output->writeln('Font found: ' . $name . ' in ' . $path);
                 $fs->copy($path, "$fontsdir/$name");
             }
         }
@@ -102,7 +102,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
             $output->writeln('No fonts found');
         }
     }
-    
+
     protected function findFonts()
     {
         $finder = new Finder();
@@ -114,10 +114,10 @@ class BuildAssetsCommand extends ContainerAwareCommand
             if(isset($fonts[$file->getFilename()])) continue;
             $fonts[$file->getFilename()] = $file->getRealPath();
         }
-        
+
         return $fonts;
     }
-    
+
     /**
      * @param $name
      * @param $files
@@ -129,20 +129,20 @@ class BuildAssetsCommand extends ContainerAwareCommand
     {
         $dir = $this->builddir . '/scripts/';
         $file = $dir . $this->group2file($name, '.js');
-        
+
         $fs->exists($dir) or $fs->mkdir($dir);
-        
+
         $command = [$in->getOption('uglifyjs-bin')];
         if($in->getOption('compress'))
             $command[] = "-c 'dead_code,drop_debugger,drop_console,keep_fargs,unused=false,properties=false'";
             if($in->getOption('mangle'))
                 $command[] = '-m';
-                
+
                 $command[] = "-o $file";
                 $command[] = implode(' ', $files);
-                
+
                 $proc = new Process(implode(' ', $command));
-                
+
                 $out->writeln($proc->getCommandLine() . PHP_EOL);
                 $proc->run(function ($type, $buffer) use ($in, $out) {
                     if (Process::ERR === $type) {
@@ -152,20 +152,20 @@ class BuildAssetsCommand extends ContainerAwareCommand
                     }
                 });
     }
-    
+
     protected function processStyle($name, $files, $fs, $in, $out)
     {
         $dir = $this->builddir . '/styles/';
         $file = $dir . $this->group2file($name, '.css');
-        
+
         $fs->exists($dir) or $fs->mkdir($dir);
-        
+
         $command = [$in->getOption('uglifycss-bin')];
         $command[] = implode(' ', $files);
         $command[] = "> $file";
-        
+
         $proc = new Process(implode(' ', $command));
-        
+
         $out->writeln($proc->getCommandLine() . PHP_EOL);
         $proc->run(function ($type, $buffer) use ($in, $out) {
             if (Process::ERR === $type) {
@@ -175,7 +175,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
             }
         });
     }
-    
+
     /**
      *
      * @param unknown $name
@@ -187,9 +187,9 @@ class BuildAssetsCommand extends ContainerAwareCommand
     protected function processFonts($name, $files, $fs, $in, $out)
     {
         $dir = $this->builddir . '/fonts/';
-        
+
         $fs->exists($dir) or $fs->mkdir($dir);
-        
+
         if(!empty($files))
         {
             foreach($files as $file)
@@ -198,48 +198,49 @@ class BuildAssetsCommand extends ContainerAwareCommand
             }
         }
     }
-    
+
     protected function group2file($name, $extension)
     {
         return str_replace('_', '-', preg_replace('!(_js|_css)$!', '', $name)) . $extension;
     }
-    
+
     protected function endsWith($extension, $file)
     {
         return strrpos($file, $extension) === (strlen($file) - strlen($extension));
     }
-    
+
     protected function isImage($file)
     {
         return strpos(mime_content_type($file), 'image/') === 0;
     }
-    
+
     protected function resolveAll($assets)
     {
         $resolved = [];
-        
+
         foreach ($assets as $name => $inputs) {
             if (!isset($resolved[$name])) {
                 $resolved[$name] = [];
             }
-            
+
             foreach ($inputs['inputs'] as $input) {
                 $resolved[$name] = array_unique(array_merge($resolved[$name], $this->resolve($assets, $input)));
             }
         }
-        
+
         return $resolved;
     }
-    
+
     /**
      *
      * @param array $resolved
+     *
      * @return array[]|unknown
      */
     protected function partition($resolved)
     {
         echo 'Partitioning assets in groups ' . PHP_EOL;
-        
+
         $grouped = [
             'scripts' => [],
             'styles' => [],
@@ -247,7 +248,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
             'files' => [],
             'fonts' => [],
         ];
-        
+
         foreach ($resolved as $group => $files) {
             echo 'Group: ' . $group . PHP_EOL;
             foreach ($files as $file)
@@ -263,7 +264,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
                     case $this->isImage($file):
                         $grouped['images'][$group][] = $file;
                         break;
-                        
+
                         // Fonts
                     case $this->endsWith('.otf', $file):
                         $grouped['fonts'][$group][] = $file;
@@ -286,35 +287,35 @@ class BuildAssetsCommand extends ContainerAwareCommand
                     case $this->endsWith('.woff2', $file):
                         $grouped['fonts'][$group][] = $file;
                         break;
-                        
+
                     default:
                         $grouped['files'][$group][] = $file;
                         break;
                 }
             }
-            
+
             echo PHP_EOL;
         }
-        
+
         return $grouped;
     }
-    
+
     protected function resolve($groups, $input)
     {
         $resolved = [];
         if(strpos($input, '@') === false) {
             return [$this->webdir . '/' . $input];
         }
-        
+
         $cleaned = str_replace('@', '', $input);
         if(isset($groups[$cleaned])) {
             foreach($groups[$cleaned]['inputs'] as $candidate) {
                 $resolved = array_merge($resolved, $this->resolve($groups, $candidate));
             }
-            
+
             return $resolved;
         }
-        
+
         if(($star = strpos($input, '*')) === false) {
             try
             {
@@ -333,7 +334,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
                 }
             }
         }
-        
+
         return $resolved;
     }
 }

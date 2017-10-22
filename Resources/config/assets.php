@@ -10,7 +10,7 @@ return call_user_func(
             $jsAssets = '@AvanzuAdminThemeBundle/Resources/';
             $lteJSBase = $jsAssets . 'bower/bower_components/adminlte/';
             $cssAssets = 'bundles/avanzuadmintheme/';
-            
+
             return [
                 'modernizr_js' => [
                     'inputs' => [
