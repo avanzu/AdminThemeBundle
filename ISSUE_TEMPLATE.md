@@ -1,3 +1,6 @@
+Please write here a description of your problem. Don't hesitate in put enough
+information to fix properly your problem (you can even use images ;))
+
 ### Debug info
 
 | Component  | Version |
