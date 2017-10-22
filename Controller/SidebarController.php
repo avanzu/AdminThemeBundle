@@ -16,6 +16,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SidebarController extends Controller
 {
+    /**
+     * Block used in macro avanzu_sidebar_user
+     *  
+     * @return \Symfony\Component\HttpFoundation\Response|unknown
+     */
     public function userPanelAction()
     {
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_SIDEBAR_USER)) {
@@ -39,6 +44,11 @@ class SidebarController extends Controller
         return $this->get('event_dispatcher');
     }
 
+    /**
+     * Block used in macro avanzu_sidebar_search
+     * 
+     * @return unknown
+     */
     public function searchFormAction()
     {
         return $this->render('AvanzuAdminThemeBundle:Sidebar:search-form.html.twig', []);

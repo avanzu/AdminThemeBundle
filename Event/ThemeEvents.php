@@ -33,14 +33,12 @@ class ThemeEvents
     const THEME_BREADCRUMB = 'theme.breadcrumb';
     /**
      * used to receive the current user for the sidebar
+     * 
+     * macro: avanzu_sidebar_user
+     * template: AvanzuAdminThemeBundle:Sidebar:user-panel.html.twig
      */
     const THEME_SIDEBAR_USER = 'theme.sidebar_user';
-    /**
-     * Used for searching
-     *
-     * @unused
-     */
-    const THEME_SIDEBAR_SEARCH = 'theme.sidebar_search';
+
     /**
      * Used to receive the sidebar menu data
      */
@@ -49,6 +47,4 @@ class ThemeEvents
      * used for the knp menu mechanics
      */
     const THEME_SIDEBAR_SETUP_KNP_MENU = 'theme.sidebar_setup_knp_menu';
-
-    const THEME_SIDEBAR_ACTIVATE_MENU = 'theme.sidebar_activate_menu';
 }
