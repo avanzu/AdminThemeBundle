@@ -29,6 +29,7 @@
 </head>
 <body{% block avanzu_body_start %}{% endblock %} class="hold-transition login-page">
 {% block avanzu_after_body_start %}{% endblock %}
+{% block avanzu_login_box %}
 <div class="login-box">
     <div class="login-logo">
         <a href="{{ path('homepage') }}">{% block avanzu_logo_login %}<b>Admin</b>LTE{% endblock %}</a>
@@ -97,6 +98,7 @@
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+{% endblock %}
 
 <!-- jQuery 2.2.3 -->
 <script src="{{ asset('theme/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
