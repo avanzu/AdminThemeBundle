@@ -19,6 +19,12 @@ use Symfony\Component\Process\Process;
 
 class BuildAssetsCommand extends ContainerAwareCommand
 {
+    const DEFAULT_UGLIFY_JS_LINUX = '/usr/bin/env uglifyjs';
+    const DEFAULT_UGLIFY_JS_WIN   = 'uglifyjs.exe';
+    
+    const DEFAULT_UGLIFY_CSS_LINUX = '/usr/bin/env uglifycss';
+    const DEFAULT_UGLIFY_CSS_WIN   = 'uglifycss.exe';
+    
     /**
      * @var Kernel
      */
@@ -41,12 +47,30 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected function configure()
     {
+        if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') 
+        {
+            $uglifyjs_default_option = self::DEFAULT_UGLIFY_JS_WIN;
+        }
+        else
+        {
+            $uglifyjs_default_option = self::DEFAULT_UGLIFY_JS_LINUX;
+        }
+        
+        if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+        {
+            $uglifycss_default_option = self::DEFAULT_UGLIFY_CSS_WIN;
+        }
+        else
+        {
+            $uglifycss_default_option = self::DEFAULT_UGLIFY_CSS_LINUX;
+        }
+        
         $this->setName('avanzu:admin:build-assets')
         ->setDescription('Concatenate and Uglify asset groups to static files')
         ->addOption('compress', 'c', InputOption::VALUE_NONE, 'compress javascripts')
         ->addOption('mangle', 'm', InputOption::VALUE_NONE, 'mangle javascripts')
-        ->addOption('uglifyjs-bin', false, InputOption::VALUE_OPTIONAL, 'uglifyjs binary', '/usr/bin/env uglifyjs')
-        ->addOption('uglifycss-bin', false, InputOption::VALUE_OPTIONAL, 'uglifycss binary', '/usr/bin/env uglifycss')
+        ->addOption('uglifyjs-bin', false, InputOption::VALUE_OPTIONAL, 'uglifyjs binary', $uglifyjs_default_option)
+        ->addOption('uglifycss-bin', false, InputOption::VALUE_OPTIONAL, 'uglifycss binary', $uglifycss_default_option)
         ;
 
         $this->resdir = realpath(dirname(__FILE__) . '/../Resources');
