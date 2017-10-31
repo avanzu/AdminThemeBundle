@@ -4,6 +4,7 @@ AdminThemeBundle
 
 ﻿[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)][3]
 ﻿![Symfony 2.x & 3.x][2]
+﻿[![Build Status](https://travis-ci.org/avanzu/AdminThemeBundle.svg?branch=master)](https://travis-ci.org/avanzu/AdminThemeBundle)
 
 [![Throughput Graph](https://graphs.waffle.io/avanzu/AdminThemeBundle/throughput.svg)](https://waffle.io/avanzu/AdminThemeBundle/metrics/throughput)
 
