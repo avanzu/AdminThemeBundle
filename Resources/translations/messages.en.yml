@@ -1,0 +1,9 @@
+avanzu_admin_theme:
+  breadcrumb:
+    home: Home
+  default:
+    form:
+      forms: Forms
+      demonstration: demonstration
+      cancel: Cancel
+      submit: Submit
