@@ -1,10 +1,17 @@
-AdminThemeBundle
+AdminThemeBundle [![knpbundles.com](http://knpbundles.com/avanzu/AdminThemeBundle/badge-short)](http://knpbundles.com/avanzu/AdminThemeBundle)
 ================
 
 
 ﻿[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)][3]
 ﻿![Symfony 2.x & 3.x][2]
 ﻿[![Build Status](https://travis-ci.org/avanzu/AdminThemeBundle.svg?branch=master)](https://travis-ci.org/avanzu/AdminThemeBundle)
+﻿[![Latest Stable Version](https://poser.pugx.org/avanzu/admin-theme-bundle/v/stable.png)](https://packagist.org/packages/avanzu/admin-theme-bundle)
+﻿[![Latest Unstable Version](https://poser.pugx.org/avanzu/admin-theme-bundle/v/unstable)](https://packagist.org/packages/avanzu/admin-theme-bundle)
+﻿[![License](https://poser.pugx.org/avanzu/admin-theme-bundle/license)](https://packagist.org/packages/avanzu/admin-theme-bundle)
+ 
+﻿[![Total Downloads](https://poser.pugx.org/avanzu/admin-theme-bundle/downloads.png)](https://packagist.org/packages/avanzu/admin-theme-bundle)
+﻿[![Monthly Downloads](https://poser.pugx.org/avanzu/admin-theme-bundle/d/monthly)](https://packagist.org/packages/avanzu/admin-theme-bundle)
+﻿[![Daily Downloads](https://poser.pugx.org/avanzu/admin-theme-bundle/d/daily)](https://packagist.org/packages/avanzu/admin-theme-bundle)
 
 [![Throughput Graph](https://graphs.waffle.io/avanzu/AdminThemeBundle/throughput.svg)](https://waffle.io/avanzu/AdminThemeBundle/metrics/throughput)
 
