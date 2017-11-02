@@ -35,7 +35,7 @@ class MessageListEvent extends ThemeEvent
     /**
      * MessageListEvent constructor.
      *
-     * @param null $max
+     * @param integer $max Maximun number of notifications displayed in panel
      */
     public function __construct($max = NULL)
     {
@@ -43,7 +43,9 @@ class MessageListEvent extends ThemeEvent
     }
 
     /**
-     * @return null
+     * Get the maximun number of notifications displayed in panel
+     * 
+     * @return integer
      */
     public function getMax()
     {

@@ -20,7 +20,7 @@ class TaskListEvent extends ThemeEvent
     /**
      * TaskListEvent constructor.
      *
-     * @param $max
+     * @param integer $max Maximun number of notifications displayed in panel
      */
     public function __construct($max = NULL)
     {
@@ -28,7 +28,9 @@ class TaskListEvent extends ThemeEvent
     }
 
     /**
-     * @return mixed
+     * Get the maximun number of notifications displayed in panel
+     * 
+     * @return integer
      */
     public function getMax()
     {
