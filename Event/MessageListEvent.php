@@ -37,7 +37,7 @@ class MessageListEvent extends ThemeEvent
      *
      * @param null $max
      */
-    public function __construct($max)
+    public function __construct($max = NULL)
     {
         $this->max = $max;
     }

@@ -22,7 +22,7 @@ class TaskListEvent extends ThemeEvent
      *
      * @param $max
      */
-    public function __construct($max)
+    public function __construct($max = NULL)
     {
         $this->max = $max;
     }
