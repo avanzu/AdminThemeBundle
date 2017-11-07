@@ -1,5 +1,7 @@
 ## Using the layout
 
+Note: this instrucions are for [dev-master branch][4], if you are using stable version (1.3) read this ["Using the layout" for old 1.3 version][5]. 
+
 In order to use the layout, your views should extend from the provided `default-layout`
 ```twig
 {% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
@@ -115,3 +117,5 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 [1]: http://symfony.com/doc/current/templating/overriding.html
 [2]: https://github.com/avanzu/AdminThemeBundle/blob/master/README.md
 [3]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/rebuild.md
+[4]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/layout.md
+[5]: https://github.com/avanzu/AdminThemeBundle/blob/hotfix-1.3.5/Resources/docs/layout.md
