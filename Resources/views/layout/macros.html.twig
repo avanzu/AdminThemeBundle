@@ -13,7 +13,7 @@
             <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : path(item.route, item.routeArgs) }}">
                 {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
                 <span>{{ item.label|trans }}</span>
-                {% if item.badge %}
+                {% if item.badge is not same as(false) %}
                     <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
                 {% endif %}
                 {% if item.hasChildren %}<i class="fa fa-angle-left pull-right"></i>{% endif %}
@@ -45,7 +45,7 @@
 {% macro menu_item_content(item, defaultIcon) %}
     <i class="{{ item.icon|default(defaultIcon) }}"></i>
     <span>{{ item.label|trans }}</span>
-    {% if item.badge %}
+    {% if item.badge is not same as(false) %}
         <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
     {% endif %}
 {% endmacro %}
