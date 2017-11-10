@@ -44,5 +44,5 @@
         "post-update-cmd": [
             "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
         ]
-    } 
+    }
 }
