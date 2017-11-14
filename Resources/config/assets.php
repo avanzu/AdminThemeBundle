@@ -56,6 +56,11 @@ return call_user_func(
                 ],
                 'admin_lte_fonts' => [
                     'inputs' => [
+                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.eot',
+                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.svg',
+                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.ttf',
+                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.woff',
+                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.woff2',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/FontAwesome.otf',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.eot',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.svg',
