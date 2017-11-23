@@ -67,6 +67,10 @@ return call_user_func(
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.ttf',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.woff',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.woff2',
+                        $jsAssets . 'bower/bower_components/ionicons/fonts/ionicons.eot',
+                        $jsAssets . 'bower/bower_components/ionicons/fonts/ionicons.svg',
+                        $jsAssets . 'bower/bower_components/ionicons/fonts/ionicons.ttf',
+                        $jsAssets . 'bower/bower_components/ionicons/fonts/ionicons.woff',
                     ],
                 ],
                 'admin_lte_forms_js' => [
