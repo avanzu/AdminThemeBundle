@@ -117,15 +117,13 @@ assetic:
 ```
 
 ### Changing default values from templates
-If you want to change any default value as for example `admin_skin` all you need to do is define the same at `app/config/config.yml` under `[twig]` section. See example below:
+If you want to change any default value as for example `admin_skin` all you need to do is define the same at `app/config/config.yml` the `avanzu_admin_theme` section. See example below:
 
 ```yaml
-# Twig Configuration
-twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
-    globals:
-        admin_skin: skin-blue
+# AdminLTE theme 
+avanzu_admin_theme:
+    options:
+        skin: skin-blue
 ```
 
 You could also define those values at `app/config/parameters.yml`:
@@ -137,12 +135,10 @@ admin_skin: skin-blue
 and then use as follow in `app/config/config.yml`:
 
 ```yaml
-# Twig Configuration
-twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
-    globals:
-        admin_skin: "%admin_skin%"
+# AdminLTE theme 
+avanzu_admin_theme:
+    options:
+        skin: %admin_skin%
 ```
 
 AdminLTE skins are: skin-blue (default for this bundle), skin-blue-light, skin-yellow, skin-yellow-light, skin-green, skin-green-light, skin-purple, skin-purple-light, skin-red, skin-red-light, skin-black and skin-black-light. If you want to know more then go ahead and check docs for AdminLTE [here][1].
