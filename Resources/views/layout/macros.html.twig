@@ -23,7 +23,7 @@
                 <ul class="treeview-menu">
                     {% for child in item.children %}
                         {% if child.hasChildren %}
-                           {{ macros.menu_item(child) }}
+                           {{ menu.menu_item(child) }}
                         {% else %}
                             <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
                                 <a href="{{ '/' in child.route ? child.route : path(child.route, child.routeArgs) }}">
