@@ -7,19 +7,19 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace Avanzu\AdminThemeBundle\Composer;
 
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\PhpExecutableFinder;
-use Composer\Script\CommandEvent;
-use Symfony\Component\ClassLoader\ClassCollectionLoader;
-use Symfony\Component\Filesystem\Filesystem;
+use Composer\Script\Event;
 
 /**
  * ScriptHandler
  *
  * @package    AvanzuAdminThemeBundle
  * @subpackage Composer
+ *
  * @author     Florian Eckerstorfer <florian@eckerstorfer.co>
  * @author     Albert Sola
  * @copyright  2013 Florian Eckerstorfer
@@ -27,20 +27,19 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @codeCoverageIgnore
  */
-class ScriptHandler {
-
+class ScriptHandler
+{
     /**
      * Composer variables are declared static so that an event could update
      * a composer.json and set new options, making them immediately available
      * to forthcoming listeners.
      */
-    private static $options = array(
+    private static $options = [
         'symfony-app-dir' => 'app',
-        'symfony-web-dir' => 'web'
-    );
+        'symfony-web-dir' => 'web',
+    ];
 
-
-    protected static function getOptions(CommandEvent $event)
+    protected static function getOptions(Event $event)
     {
         $options = array_merge(self::$options, $event->getComposer()->getPackage()->getExtra());
 
@@ -61,16 +60,16 @@ class ScriptHandler {
         return $phpPath;
     }
 
-    protected static function executeCommand(CommandEvent $event, $consoleDir, $cmd, $timeout = 300)
+    protected static function executeCommand(Event $event, $consoleDir, $cmd, $timeout = 300)
     {
         $php = escapeshellarg(self::getPhp(false));
         $phpArgs = implode(' ', array_map('escapeshellarg', self::getPhpArguments()));
-        $console = escapeshellarg($consoleDir.'/console');
+        $console = escapeshellarg($consoleDir . '/console');
         if ($event->getIO()->isDecorated()) {
             $console .= ' --ansi';
         }
 
-        $process = new Process($php.($phpArgs ? ' '.$phpArgs : '').' '.$console.' '.$cmd, null, null, null, $timeout);
+        $process = new Process($php . ($phpArgs ? ' ' . $phpArgs : '') . ' ' . $console . ' ' . $cmd, null, null, null, $timeout);
         $process->run(function ($type, $buffer) use ($event) { $event->getIO()->write($buffer, false); });
         if (!$process->isSuccessful()) {
             throw new \RuntimeException(sprintf('An error occurred when executing the "%s" command.', escapeshellarg($cmd)));
@@ -85,7 +84,7 @@ class ScriptHandler {
      *
      * @return string|null The path to the console directory, null if not found.
      */
-    protected static function getConsoleDir(CommandEvent $event, $actionName)
+    protected static function getConsoleDir(Event $event, $actionName)
     {
         $options = self::getOptions($event);
 
@@ -104,10 +103,9 @@ class ScriptHandler {
         return $options['symfony-app-dir'];
     }
 
-
     protected static function getPhpArguments()
     {
-        $arguments = array();
+        $arguments = [];
 
         $phpFinder = new PhpExecutableFinder();
         if (method_exists($phpFinder, 'findArguments')) {
@@ -115,7 +113,7 @@ class ScriptHandler {
         }
 
         if (false !== $ini = php_ini_loaded_file()) {
-            $arguments[] = '--php-ini='.$ini;
+            $arguments[] = '--php-ini=' . $ini;
         }
 
         return $arguments;
@@ -126,9 +124,9 @@ class ScriptHandler {
      *
      * @param $event CommandEvent A instance
      */
-    public static function fetchThemeVendors(CommandEvent $event)
+    public static function fetchThemeVendors(Event $event)
     {
-        $event->getIO()->write("Installing theme assets", true);
+        $event->getIO()->write('Installing theme assets', true);
         $options = self::getOptions($event);
         $consoleDir = self::getConsoleDir($event, 'installing theme assets');
 
@@ -151,7 +149,7 @@ class ScriptHandler {
         return isset($options['symfony-var-dir']) && is_dir($options['symfony-var-dir']);
     }
 
-    protected static function hasDirectory(CommandEvent $event, $configName, $path, $actionName)
+    protected static function hasDirectory(Event $event, $configName, $path, $actionName)
     {
         if (!is_dir($path)) {
             $event->getIO()->write(sprintf('The %s (%s) specified in composer.json was not found in %s, can not %s.', $configName, $path, getcwd(), $actionName));
@@ -161,4 +159,4 @@ class ScriptHandler {
 
         return true;
     }
-} 
+}

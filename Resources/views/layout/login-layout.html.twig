@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html{% block avanzu_html_start %}{% endblock %}>
 <html>
 <head>
 
@@ -27,8 +27,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition login-page">
+<body{% block avanzu_body_start %}{% endblock %} class="hold-transition login-page">
 {% block avanzu_after_body_start %}{% endblock %}
+{% block avanzu_login_box %}
 <div class="login-box">
     <div class="login-logo">
         <a href="{{ path('homepage') }}">{% block avanzu_logo_login %}<b>Admin</b>LTE{% endblock %}</a>
@@ -97,9 +98,10 @@
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+{% endblock %}
 
-<!-- jQuery 2.2.0 -->
-<script src="{{ asset('theme/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+<!-- jQuery 2.2.3 -->
+<script src="{{ asset('theme/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ asset('theme/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- iCheck -->

@@ -3,9 +3,7 @@
 namespace Avanzu\AdminThemeBundle\Controller;
 
 use Avanzu\AdminThemeBundle\Form\FormDemoModelType;
-use Avanzu\AdminThemeBundle\Model\FormDemoModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
@@ -20,14 +18,14 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dashboardAction() {
-        return    $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
+        return $this->render('AvanzuAdminThemeBundle:Default:index.html.twig');
     }
 
     /**
@@ -42,10 +40,11 @@ class DefaultController extends Controller
     }
 
     public function formAction() {
-        $form =$this->createForm( FormDemoModelType::class );
-        return $this->render('AvanzuAdminThemeBundle:Default:form.html.twig', array(
-                'form' => $form->createView()
-            ));
+        $form = $this->createForm(FormDemoModelType::class);
+
+        return $this->render('AvanzuAdminThemeBundle:Default:form.html.twig', [
+                'form' => $form->createView(),
+            ]);
     }
 
     public function loginAction() {

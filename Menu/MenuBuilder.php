@@ -7,17 +7,14 @@
 
 namespace Avanzu\AdminThemeBundle\Menu;
 
-
 use Avanzu\AdminThemeBundle\Event\KnpMenuEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class MenuBuilder
 {
-
     /**
      * @var FactoryInterface
      */
@@ -44,33 +41,28 @@ class MenuBuilder
         RouteAliasCollection $aliasCollection,
         EventDispatcherInterface $eventDispatcher
     ) {
-        $this->factory         = $factory;
+        $this->factory = $factory;
         $this->aliasCollection = $aliasCollection;
         $this->eventDispatcher = $eventDispatcher;
     }
 
-
     public function createMainMenu(array $options)
     {
-        
-        $menu = $this->factory->createItem('root', array(
-            'childrenAttributes' => array('class' => 'sidebar-menu')
-        ));
+        $menu = $this->factory->createItem('root', [
+            'childrenAttributes' => ['class' => 'sidebar-menu'],
+        ]);
 
-        $childOptions = array(
-            'attributes'         => array('class' => 'treeview'),
-            'childrenAttributes' => array('class' => 'treeview-menu'),
-            'labelAttributes'    => array()
-        );
+        $childOptions = [
+            'attributes' => ['class' => 'treeview'],
+            'childrenAttributes' => ['class' => 'treeview-menu'],
+            'labelAttributes' => [],
+        ];
 
         $this->eventDispatcher->dispatch(
             ThemeEvents::THEME_SIDEBAR_SETUP_KNP_MENU,
-           new KnpMenuEvent( $menu, $this->factory, $options, $childOptions )
+           new KnpMenuEvent($menu, $this->factory, $options, $childOptions)
         );
-
 
         return $menu;
     }
-
-
 }

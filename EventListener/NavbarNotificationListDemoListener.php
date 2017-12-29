@@ -7,26 +7,21 @@
 
 namespace Avanzu\AdminThemeBundle\EventListener;
 
-
 use Avanzu\AdminThemeBundle\Event\NotificationListEvent;
 use Avanzu\AdminThemeBundle\Model\NotificationModel;
 
-class NavbarNotificationListDemoListener {
-
-
+class NavbarNotificationListDemoListener
+{
     public function onListNotifications(NotificationListEvent $event) {
-
         foreach($this->getNotifications() as $notify){
             $event->addNotification($notify);
         }
-
     }
 
     protected function getNotifications() {
-        return array(
+        return [
             new NotificationModel('some notification'),
             new NotificationModel('some more notices', 'success'),
-        );
+        ];
     }
-
 }

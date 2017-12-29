@@ -1,20 +1,32 @@
 {
     "name": "avanzu/admin-theme-bundle",
+    "type": "symfony-bundle",
     "description": "Admin Theme based on the AdminLTE Template for easy integration into symfony",
     "license": "MIT",
     "authors": [
         {
             "name": "Marc Bach",
-            "email": "mail@avanzu.de"
+            "email": "mail@avanzu.de",
+            "homepage": "http://www.avanzu.de",
+            "role": "Original Author"
+        },
+        {
+            "name": "Ángel Guzmán Maeso",
+            "email": "shakaran@gmail.com",
+            "homepage": "https://shakaran.net/blog",
+            "role": "Developer Collaborator"
         }
     ],
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.9",
+        "symfony/process": ">=2.3",
+        "symfony/options-resolver": ">=2.3",
         "symfony/http-foundation" : ">=2.3",
         "symfony/http-kernel"  : ">=2.3",
         "symfony/event-dispatcher" : ">=2.3",
-        "almasaeed2010/adminlte": "^2.3"
+        "almasaeed2010/adminlte": "~2.3.0",
+        "symfony/console": ">=2.3"
     },
     "require-dev": {
         "phpspec/prophecy": "^1.6"
@@ -24,6 +36,13 @@
     },
     "autoload": {
         "psr-4": { "Avanzu\\AdminThemeBundle\\": "" }
-    }
-
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
+        ],
+        "post-update-cmd": [
+            "Avanzu\\AdminThemeBundle\\Composer\\ScriptHandler::fetchThemeVendors"
+        ]
+    } 
 }

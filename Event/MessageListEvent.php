@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Event;
 
-
 use Avanzu\AdminThemeBundle\Model\MessageInterface;
 
 /**
@@ -17,39 +16,41 @@ use Avanzu\AdminThemeBundle\Model\MessageInterface;
  */
 class MessageListEvent extends ThemeEvent
 {
-
     /**
      * Stores the list of messages
+     *
      * @var array
      */
-    protected $messages = array();
+    protected $messages = [];
 
     /**
      * Stores the total amount
+     *
      * @var int
      */
     protected $totalMessages = 0;
-    
+
     protected $max = null;
 
     /**
      * MessageListEvent constructor.
      *
-     * @param null $max
+     * @param integer $max Maximun number of notifications displayed in panel
      */
-    public function __construct($max)
+    public function __construct($max = NULL)
     {
         $this->max = $max;
     }
 
     /**
-     * @return null
+     * Get the maximun number of notifications displayed in panel
+     * 
+     * @return integer
      */
     public function getMax()
     {
         return $this->max;
     }
-
 
     /**
      * Returns the message list
@@ -70,11 +71,9 @@ class MessageListEvent extends ThemeEvent
      */
     public function addMessage(MessageInterface $messageInterface)
     {
-
         $this->messages[] = $messageInterface;
 
         return $this;
-
     }
 
     /**
@@ -84,7 +83,6 @@ class MessageListEvent extends ThemeEvent
      */
     public function getTotal()
     {
-        return $this->totalMessages == 0 ? sizeof($this->messages) : $this->totalMessages;
+        return $this->totalMessages == 0 ? count($this->messages) : $this->totalMessages;
     }
-
 }

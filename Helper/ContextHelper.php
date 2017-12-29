@@ -1,15 +1,25 @@
 <?php
 /**
- * ContextHelper.php
- * symfony3
- * Date: 12.06.16
+ * ContextHelper class
+ *
+ * Instead of fully relying on blocks and includes, this class that support
+ * the twig global named avanzu_admin_context to store and retrieve particular
+ * values throughout the page rendering.
+ *
+ * This is basically a parameter bag "on-page" with some pre-defined values
+ * based on the bundle configuration.
+ *
+ * The implemenation relies in a ArrayObject native PHP object, so it recieves
+ * all the changes via avanzu_admin_context.options to store the new modified
+ * values in the internal storage of ArrayObject, which is accessible via the
+ * getter and setter in option attribute class.
  */
 
 namespace Avanzu\AdminThemeBundle\Helper;
 
-
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
 class ContextHelper extends \ArrayObject
 {
@@ -21,8 +31,8 @@ class ContextHelper extends \ArrayObject
     /**
      * ContextHelper constructor.
      *
-     * @param array                $config
-     * @param RouteAliasCollection $router
+     * @param array                $config The data under avanzu_admin_theme.options config
+     * @param RouteAliasCollection $router avanzu_admin_theme.admin_route class route service
      */
     public function __construct(array $config, RouteAliasCollection $router)
     {
@@ -31,16 +41,35 @@ class ContextHelper extends \ArrayObject
     }
 
     /**
-     * @param array $config
+     * Create a OptionResolver with default parameters and overwrite the context
+     * with the default options in avanzu_admin_theme.options
+     *
+     * @param array $config The data under avanzu_admin_theme.options config
      */
     protected function initialize(array $config = [])
     {
+        // Create a resolve and configure the defaults
         $resolver = new OptionsResolver();
         $this->configureDefaults($resolver);
-        $this->exchangeArray( $resolver->resolve($config) );
+
+        try
+        {
+            // Parse the config in avanzu_admin_theme.options as array object in avanzu_admin_context.options
+            $newConfig = $resolver->resolve($config);
+            // Change the internal storage array in the ArrayObject
+            $this->exchangeArray($newConfig);
+        }
+        catch(UndefinedOptionsException $e)
+        {
+            echo $e->getMessage() . PHP_EOL;
+            print_r($config, TRUE);
+        }
     }
 
     /**
+     * Get attribute method for options. It uses a interal copy array of the
+     * storage in the ArrayObject
+     *
      * @return array
      */
     public function getOptions()
@@ -57,6 +86,7 @@ class ContextHelper extends \ArrayObject
     public function setOption($name, $value)
     {
         $this->offsetSet($name, $value);
+
         return $this;
     }
 
@@ -78,7 +108,7 @@ class ContextHelper extends \ArrayObject
      */
     public function getOption($name, $default = null)
     {
-        return $this->offsetExists($name) ? $this->offsetGet($name): $default;
+        return $this->offsetExists($name) ? $this->offsetGet($name) : $default;
     }
 
     /**
@@ -107,29 +137,35 @@ class ContextHelper extends \ArrayObject
     protected function configureDefaults(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'skin'              => 'skin-blue',
-            'fixed_layout'      => false,
-            'boxed_layout'      => false,
+            'use_twig' => true,
+            'use_assetic' => true,
+            'options' => [],
+            'skin' => 'skin-blue',
+            'fixed_layout' => false,
+            'boxed_layout' => false,
             'collapsed_sidebar' => false,
-            'mini_sidebar'      => false,
-            'control_sidebar'   => true,
-            'default_avatar'    => 'bundles/avanzuadmintheme/img/avatar.png',
-            'widget'            => [
-                'type'        => 'primary',
-                'bordered'    => true,
-                'collapsible' => true,
-                'solid'       => false,
-                'removable'   => false,
-                'use_footer'  => true,
-            ],
-            'button'            => [
+            'mini_sidebar' => false,
+            'control_sidebar' => true,
+            'default_avatar' => 'bundles/avanzuadmintheme/img/avatar.png',
+            'widget' => [
+                'collapsible_title' => 'Collapse',
+                'removable_title' => 'Remove',
                 'type' => 'primary',
-                'size' => false
+                'bordered' => true,
+                'collapsible' => true,
+                'solid' => false,
+                'removable' => false,
+                'use_footer' => true,
             ],
-            'knp_menu'          => [
-                'enable'        => false
-            ]
+            'button' => [
+                'type' => 'primary',
+                'size' => false,
+            ],
+            'knp_menu' => [
+                'enable' => false,
+                'main_menu' => 'avanzu_main',
+                'breadcrumb_menu' => false,
+            ],
         ]);
     }
-
 }

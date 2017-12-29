@@ -1,5 +1,7 @@
 ## Using the layout
 
+Note: this instrucions are for [dev-master branch][4], if you are using stable version (1.3) read this ["Using the layout" for old 1.3 version][5]. 
+
 In order to use the layout, your views should extend from the provided `default-layout`
 ```twig
 {% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
@@ -33,12 +35,18 @@ Listed in the order of appearance, these are:
 ### layout blocks
 The blocks defined in the layout in order of appearance. Some of them do contain some of the major components like the sidebar or navbar. In order to redefine the block and to keep the default content, don't forget to use `{{parent()}}` 
 
+<dt>avanzu_html_start
+<dd>In the `html` tag, useful for Angular attributes like ng-app
+
 <dl>
 <dt>avanzu_document_title
 <dd>Defines the `title` defaults to the contents of `avanzu_page_title`
 
 <dt>avanzu_head
 <dd>comes right after the `_head.html.twig` partial
+
+<dt>avanzu_body_start
+<dd>In the `body` tag, useful for Angular attributes like ng-app
 
 <dt>avanzu_after_body_start
 <dd>comes right after the opening `body` tag
@@ -104,4 +112,10 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dd>Intended for inline scripts in order to keep those in one single document block.
 </dl>
 
+[Previous (Readme)][2] - [Next (Rebuilding the assets)][3]
+
 [1]: http://symfony.com/doc/current/templating/overriding.html
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/README.md
+[3]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/rebuild.md
+[4]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/layout.md
+[5]: https://github.com/avanzu/AdminThemeBundle/blob/hotfix-1.3.5/Resources/docs/layout.md

@@ -5,6 +5,7 @@ parameters:
     avanzu_admin_theme.navbar_msg_listener.class: Avanzu\AdminThemeBundle\EventListener\NavbarMessageListDemoListener
     avanzu_admin_theme.setup_menu_listener.class: Avanzu\AdminThemeBundle\EventListener\SidebarSetupMenuDemoListener
     avanzu_admin_theme.setup_knp_menu_listener.class: Avanzu\AdminThemeBundle\EventListener\DemoKnpMenuListener
+    avanzu_admin_theme.menu_builder.class: Avanzu\AdminThemeBundle\Menu\MenuBuilder
 
 services:
     avanzu_admin_theme.navbar_user_listener:
@@ -35,4 +36,18 @@ services:
             class: "%avanzu_admin_theme.setup_knp_menu_listener.class%"
             tags:
                 - { name: kernel.event_listener, event: theme.sidebar_setup_knp_menu, method: onSetupKnpMenu }
+    
+    # See http://symfony.com/doc/current/bundles/KnpMenuBundle/menu_service.html            
+    avanzu_admin_theme.menu_builder:
+        class: "%avanzu_admin_theme.menu_builder.class%"
+        arguments: ["@knp_menu.factory"]
+        
+    avanzu_admin_theme.main_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createMainMenu]
+        arguments: ~
+        tags:
+            - { name: knp_menu.menu, alias: avanzu_admin_theme_main_menu } # The alias is what is used to retrieve the menu
+    
+    
 

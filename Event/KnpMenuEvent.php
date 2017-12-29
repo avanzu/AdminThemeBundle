@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Event;
 
-
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuFactory;
@@ -42,9 +41,9 @@ class KnpMenuEvent extends ThemeEvent
      */
     public function __construct($menu, $factory, $options = [], $childOptions = [])
     {
-        $this->menu         = $menu;
-        $this->factory      = $factory;
-        $this->options      = $options;
+        $this->menu = $menu;
+        $this->factory = $factory;
+        $this->options = $options;
         $this->childOptions = $childOptions;
     }
 
@@ -79,5 +78,4 @@ class KnpMenuEvent extends ThemeEvent
     {
         return $this->childOptions;
     }
-
 }

@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-
 /**
  * Class TaskModel
  *
@@ -15,24 +14,13 @@ namespace Avanzu\AdminThemeBundle\Model;
  */
 class TaskModel implements TaskInterface
 {
+    const COLOR_AQUA = 'aqua';
 
-    /**
-     *
-     */
-    const COLOR_AQUA   = 'aqua';
-    /**
-     *
-     */
-    const COLOR_GREEN  = 'green';
-    /**
-     *
-     */
-    const COLOR_RED    = 'red';
-    /**
-     *
-     */
+    const COLOR_GREEN = 'green';
+
+    const COLOR_RED = 'red';
+
     const COLOR_YELLOW = 'yellow';
-
 
     /**
      * @var int
@@ -42,7 +30,7 @@ class TaskModel implements TaskInterface
     /**
      * @var string
      */
-    protected $color = TaskModel::COLOR_AQUA;
+    protected $color = self::COLOR_AQUA;
 
     /**
      * @var null
@@ -54,13 +42,12 @@ class TaskModel implements TaskInterface
      * @param int    $progress
      * @param string $color
      */
-    function __construct($title = null, $progress = 0, $color = TaskModel::COLOR_AQUA)
+    public function __construct($title = null, $progress = 0, $color = self::COLOR_AQUA)
     {
-        $this->color    = $color;
+        $this->color = $color;
         $this->progress = $progress;
-        $this->title    = $title;
+        $this->title = $title;
     }
-
 
     /**
      * @param string $color
@@ -70,6 +57,7 @@ class TaskModel implements TaskInterface
     public function setColor($color)
     {
         $this->color = $color;
+
         return $this;
     }
 
@@ -89,6 +77,7 @@ class TaskModel implements TaskInterface
     public function setProgress($progress)
     {
         $this->progress = $progress;
+
         return $this;
     }
 
@@ -108,6 +97,7 @@ class TaskModel implements TaskInterface
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -122,6 +112,4 @@ class TaskModel implements TaskInterface
     public function getIdentifier() {
         return $this->title;
     }
-
-
 }

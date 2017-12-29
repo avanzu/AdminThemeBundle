@@ -1,5 +1,5 @@
 {% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
-<!doctype html>
+<!doctype html{% block avanzu_html_start %}{% endblock %}>
 <!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
@@ -24,7 +24,7 @@
     {% endblock %}
 
 </head>
-<body class="{{ admin_skin|default("")|body_class }}">
+<body{% block avanzu_body_start %}{% endblock %} class="{{ admin_skin|default("")|body_class }}">
 {% block avanzu_after_body_start %}{% endblock %}
     <div class="wrapper">
 
@@ -42,7 +42,7 @@
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">{{ 'theme.sr_only.toggle_navigation'|trans({}, 'AvanzuAdminTheme') }}</span>
                 </a>
-                {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             {% block avanzu_navbar %}
@@ -63,7 +63,7 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 {% block avanzu_sidebar %}
-                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
                         {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
                     {% endif %}
@@ -78,8 +78,8 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    {% block page_title %}Blank page{% endblock %}
-                    <small>{% block page_subtitle %}Control panel{% endblock %}</small>
+                    {% block page_title %}{{ 'Blank page'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
+                    <small>{% block page_subtitle %}{{ 'Control panel'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}</small>
                 </h1>
                 {% block avanzu_breadcrumb %}
                     {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
@@ -89,7 +89,7 @@
             <!-- Main content -->
             <section class="content">
                 {% block flash_messages %}
-                    {% if app.session.flashbag.peekAll|length > 0 %}
+                    {% if app.session.flashbag is defined and app.session.flashbag.peekAll|length > 0 %}
                         <div class="row">
                             <div class="col-sm-12">
                                 {{ macro.session_flash(avanzu_adminlte_close_alert|default(false)) }}
@@ -108,7 +108,7 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 2.0
             </div>
-            <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> {{ 'All rights reserved'|trans({}, 'AvanzuAdminTheme') }}.
         </footer>
     {% endblock %}
 

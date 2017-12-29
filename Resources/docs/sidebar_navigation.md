@@ -117,10 +117,10 @@ XML:
 YAML: 
 
 ```yaml
-	parameters:
-		# ...
+    parameters:
+        # ...
         my_admin_bundle.menu_listener.class: MyAdminBundle\EventListener\MyMenuItemListListener
-    
+
     services:
         # ...
         my_admin_bundle.menu_listener:

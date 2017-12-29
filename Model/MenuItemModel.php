@@ -14,7 +14,6 @@ namespace Avanzu\AdminThemeBundle\Model;
  */
 class MenuItemModel implements MenuItemInterface
 {
-
     /**
      * @var mixed
      */
@@ -33,7 +32,7 @@ class MenuItemModel implements MenuItemInterface
     /**
      * @var array
      */
-    protected $routeArgs = array();
+    protected $routeArgs = [];
     /**
      * @var bool
      */
@@ -41,7 +40,7 @@ class MenuItemModel implements MenuItemInterface
     /**
      * @var array
      */
-    protected $children = array();
+    protected $children = [];
 
     /**
      * @var mixed
@@ -60,11 +59,11 @@ class MenuItemModel implements MenuItemInterface
      */
     protected $parent = null;
 
-    function __construct(
+    public function __construct(
         $id,
         $label,
         $route,
-        $routeArgs = array(),
+        $routeArgs = [],
         $icon = false,
         $badge = false,
         $badgeColor = 'green'
@@ -183,7 +182,7 @@ class MenuItemModel implements MenuItemInterface
      */
     public function hasParent()
     {
-        return ($this->parent instanceof MenuItemInterface);
+        return $this->parent instanceof MenuItemInterface;
     }
 
     /**
@@ -271,7 +270,7 @@ class MenuItemModel implements MenuItemInterface
      */
     public function hasChildren()
     {
-        return (sizeof($this->children) > 0);
+        return count($this->children) > 0;
     }
 
     /**
@@ -295,7 +294,7 @@ class MenuItemModel implements MenuItemInterface
     public function removeChild(MenuItemInterface $child)
     {
         if (false !== ($key = array_search($child, $this->children))) {
-            unset ($this->children[$key]);
+            unset($this->children[$key]);
         }
 
         return $this;

@@ -10,8 +10,8 @@
             'progress' : 40
             } %}
 
-                {% block box_text %}Vestibulum ante ipsum primis {% endblock %}
-                {% block progress_description %}The progress description{% endblock %}
+                {% block box_text %}{{ 'Vestibulum ante ipsum primis'|trans({}, 'AvanzuAdminTheme') }} {% endblock %}
+                {% block progress_description %}{{ 'The progress description'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
             {% endembed %}
 
         </div>
@@ -22,9 +22,9 @@
             'color' : 'aqua',
             'icon'  : 'comments-o',
             } %}
-                {% block box_text %}Vestibulum ante ipsum primis {% endblock %}
+                {% block box_text %}{{ 'Vestibulum ante ipsum primis'|trans({}, 'AvanzuAdminTheme') }} {% endblock %}
                 {% block box_number %}999.9{% endblock %}
-                {% block progress_description %}Works as well without progress bar{% endblock %}
+                {% block progress_description %}{{ 'Works as well without progress bar'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
             {% endembed %}
         </div>
     </div>
@@ -35,7 +35,7 @@
             {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
 
                 {% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig'  as btn %}
-                {% block box_title %}{{ 'Widget box title' }}{% endblock %}
+                {% block box_title %}{{ 'Widget box title'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
                 {% block box_body %}
                     <div class="callout callout-info">
                         Sed libero ipsum, auctor ac volutpat ac, adipiscing a enim. Nulla convallis quam eget tortor
@@ -57,8 +57,8 @@
             {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' with {
             'boxtype' : 'success',
             'solid' : 0,
-            'collapsible' : 'Collapse this... ',
-            'removable' : 'Remove this...',
+            'collapsible' : 'Collapse this'|trans({}, 'AvanzuAdminTheme') ~ '... ',
+            'removable' : 'Remove this'|trans({}, 'AvanzuAdminTheme') ~ '...',
             } %}
 
                 {% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig'  as btn %}

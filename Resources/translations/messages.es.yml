@@ -1,0 +1,10 @@
+---
+avanzu_admin_theme:
+  breadcrumb:
+    home: Inicio
+  default:
+    form:
+      forms: Formularios
+      demonstration: demostración
+      cancel: Cancelar
+      submit: Enviar

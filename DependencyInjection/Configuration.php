@@ -2,9 +2,6 @@
 
 namespace Avanzu\AdminThemeBundle\DependencyInjection;
 
-use Avanzu\AdminThemeBundle\Controller\BreadcrumbController;
-use Avanzu\AdminThemeBundle\Controller\NavbarController;
-use Avanzu\AdminThemeBundle\Controller\SidebarController;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -16,67 +13,176 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('avanzu_admin_theme');
 
-        $rootNode->children()
-                    ->arrayNode('theme')
-                        ->addDefaultsIfNotSet()
-                        ->children()
-                            ->scalarNode('default_avatar')->defaultValue('bundles/avanzuadmintheme/img/avatar.png')->end()
-                            ->scalarNode('skin')->defaultValue('skin-blue')->end()
-                            ->scalarNode('fixed_layout')->defaultValue(false)->end()
-                            ->scalarNode('boxed_layout')->defaultValue(false)->end()
-                            ->scalarNode('collapsed_sidebar')->defaultValue(false)->end()
-                            ->scalarNode('mini_sidebar')->defaultValue(false)->end()
-                            ->scalarNode('control_sidebar')->defaultValue(true)->end()
-                            ->arrayNode('widget')
-                                ->addDefaultsIfNotSet()
-                                ->children()
-                                    ->scalarNode('type')->defaultValue('primary')->end()
-                                    ->scalarNode('bordered')->defaultValue(true)->end()
-                                    ->scalarNode('collapsible')->defaultValue(true)->end()
-                                    ->scalarNode('collapsible_title')->defaultValue('Collapse')->end()
-                                    ->scalarNode('removable')->defaultValue(true)->end()
-                                    ->scalarNode('removable_title')->defaultValue('Remove')->end()
-                                    ->scalarNode('solid')->defaultValue(false)->end()
-                                    ->scalarNode('use_footer')->defaultValue(true)->end()
-                                ->end()
-                            ->end()
-                            ->arrayNode('button')
-                                ->addDefaultsIfNotSet()
-                                ->children()
-                                    ->scalarNode('type')->defaultValue('primary')->end()
-                                    ->scalarNode('size')->defaultValue('md')->end()
-                                ->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                    ->scalarNode('use_twig')
-                        ->defaultValue(true)
-                    ->end()
-                    ->scalarNode('enable_demo')
-                        ->defaultValue(false)
-                    ->end()
-                    ->arrayNode('knp_menu')
-                        ->addDefaultsIfNotSet()
-                        ->children()
-                            ->scalarNode('enable')->defaultValue(false)->end()
-                            ->scalarNode('main_menu')->defaultValue('avanzu_main')->end()
-                            ->scalarNode('breadcrumb_menu')->defaultValue(false)->end()
-                        ->end()
-                    ->end()
+        $rootNodeChildren = $rootNode->children();
+        $rootNodeChildren = $this->createSimpleChildren($rootNodeChildren, TRUE);
+        $rootNodeChildren = $this->createThemeChildren($rootNodeChildren);
+        $rootNodeChildren = $this->createButtonChildren($rootNodeChildren);
 
-                ->end()
-            ->end();
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNodeChildren->end();
 
         return $treeBuilder;
+    }
+
+    private function createWidgetTree($node)
+    {
+        $node->arrayNode('widget')
+            ->children()
+                ->scalarNode('collapsible_title')
+                    ->defaultValue('Collapse')
+                    ->info('')
+                ->end()
+                ->scalarNode('removable_title')
+                    ->defaultValue('Remove')
+                    ->info('')
+                ->end()
+                ->scalarNode('type')
+                    ->defaultValue('primary')
+                    ->info('')
+                ->end()
+                    ->booleanNode('bordered')
+                    ->defaultTrue()
+                    ->info('')
+                ->end()
+                    ->booleanNode('collapsible')
+                    ->defaultFalse()
+                    ->info('')
+                ->end()
+                ->booleanNode('removable')
+                    ->defaultFalse()
+                    ->info('')
+                ->end()
+                ->booleanNode('solid')
+                    ->defaultTrue()
+                    ->info('')
+                ->end()
+                ->booleanNode('use_footer')
+                    ->defaultFalse()
+                    ->info('')
+                ->end()
+        ->end();
+
+        return $node;
+    }
+
+    private function createButtonChildren($rootNodeChildren)
+    {
+        $rootNodeChildren->arrayNode('button')
+                        ->children()
+                            ->scalarNode('type')
+                                ->defaultValue('primary')
+                                ->info('')
+                            ->end()
+                            ->scalarNode('size')
+                                ->defaultFalse()
+                                ->info('')
+                            ->end()
+                        ->end()
+                    ->end();
+
+        return $rootNodeChildren;
+    }
+
+    private function createSimpleChildren($rootNodeChildren, $withOptions = TRUE)
+    {
+        if($withOptions)
+        {
+            $rootNodeChildren = $rootNodeChildren->scalarNode('bower_bin')
+                ->info('Path to bower binary')
+                ->defaultValue('/usr/local/bin/bower')
+            ->end();
+        }
+
+        $rootNodeChildren = $rootNodeChildren->booleanNode('use_assetic')
+                        ->defaultTrue()
+                        ->info('Enable assets in assetic')
+                    ->end()
+                    ->booleanNode('use_twig')
+                        ->info('Enable the user of avanzu_context_help in twig templates')
+                        ->defaultTrue()
+                    ->end();
+
+         if($withOptions)
+         {
+             $optionChildren = $rootNodeChildren->arrayNode('options')
+                 ->info('')
+                 ->children();
+
+             $optionChildren = $this->createSimpleChildren($optionChildren, FALSE);
+             $optionChildren = $this->createWidgetTree($optionChildren);
+             $optionChildren = $this->createButtonChildren($optionChildren);
+             $optionChildren = $this->createsubThemeChildren($optionChildren);
+
+             $optionChildren->end();
+         }
+
+         $rootNodeChildren->arrayNode('knp_menu')
+                        ->children()
+                            ->scalarNode('enable')
+                                ->defaultValue(false)
+                                ->info('')
+                            ->end()
+                            ->scalarNode('main_menu')
+                                ->defaultValue('avanzu_main')
+                                ->info('your builder alias')
+                            ->end()
+                            ->scalarNode('breadcrumb_menu')
+                                ->defaultFalse()
+                                ->info('Your builder alias or false to disable breadcrumbs')
+                            ->end()
+                        ->end()
+                    ->end();
+
+        return $rootNodeChildren;
+    }
+
+    private function createThemeChildren($rootNodeChildren)
+    {
+        $themeChildren = $rootNodeChildren->arrayNode('theme')->children();
+
+        $themeChildren = $this->createWidgetTree($themeChildren);
+        $themeChildren = $this->createsubThemeChildren($themeChildren);
+        $themeChildren->end()
+            ->end();
+
+        return $rootNodeChildren;
+    }
+
+    private function createsubThemeChildren($rootNodeChildren)
+    {
+        $rootNodeChildren->scalarNode('default_avatar')
+                                ->defaultValue('bundles/avanzuadmintheme/img/avatar.png')
+                            ->end()
+                            ->scalarNode('skin')
+                                ->defaultValue('skin-blue')
+                                ->info('see skin listing for viable options')
+                            ->end()
+                            ->booleanNode('fixed_layout')
+                                ->defaultFalse()
+                            ->end()
+                            ->booleanNode('boxed_layout')
+                                ->defaultFalse()
+                                ->info('these settings relate directly to the "Layout Options"')
+                            ->end()
+                            ->booleanNode('collapsed_sidebar')
+                                ->defaultFalse()
+                                ->info('described in the adminlte documentation')
+                            ->end()
+                            ->booleanNode('mini_sidebar')
+                                ->defaultFalse()
+                                ->info('')
+                            ->end()
+                            ->booleanNode('control_sidebar')
+                                ->defaultFalse()
+                                ->info('controls whether the right hand panel will be rendered')
+                            ->end();
+
+         return $rootNodeChildren;
     }
 }

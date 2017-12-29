@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Event;
 
-
 use Avanzu\AdminThemeBundle\Model\MenuItemInterface;
 use Knp\Menu\MenuItem;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,18 +18,17 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SidebarMenuEvent extends ThemeEvent
 {
-
     /**
      * @var array
      */
-    protected $menuRootItems = array();
+    protected $menuRootItems = [];
 
     /**
      * @var Request
      */
     protected $request;
 
-    function __construct($request = null)
+    public function __construct($request = null)
     {
         $this->request = $request;
     }
@@ -42,7 +40,6 @@ class SidebarMenuEvent extends ThemeEvent
     {
         return $this->request;
     }
-
 
     /**
      * @return array
@@ -74,11 +71,10 @@ class SidebarMenuEvent extends ThemeEvent
      * @return MenuItemInterface|null
      */
     public function getActive() {
-
         foreach($this->getItems() as $item) { /** @var $item MenuItemInterface */
             if($item->isActive()) return $item;
         }
+
         return null;
     }
-
 }

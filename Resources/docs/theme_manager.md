@@ -1,6 +1,6 @@
 ## The theme manager service
 
-This service allows for registering stylesheets and javascripts in a dependency aware fasion to be used in the current template. 
+[This service](https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/config/services.yml#L13) allows for registering stylesheets and javascripts in a dependency aware fasion to be used in the current template. 
 
 ### asset registry
 
@@ -45,7 +45,7 @@ $manager = $this->get('avanzu_admin_theme.theme_manager');
 $manager->registerScript('my-script-id', 'relative/path/to/script.js');
 
 // define dependency on script with id "my-script-id"
-$manager->registerScript('my-other-id', 'relative/path/to/other.js', array('my-script-id'));
+$manager->registerScript('my-other-id', 'relative/path/to/other.js', ['my-script-id']);
 ```
 
 The Theme manager will try to resolve the defined dependencies in order to return the asset urls in the right order. 
@@ -63,7 +63,7 @@ _Group names are not following any convention, feel free to name your groups how
 $manager = 	$this->get('avanzu_admin_theme.theme_manager');
 
 // use the "head" group instead of the default one
-$manager->registerScript('my-script-id', 'relative/path/to/script.js', array(), 'head');
+$manager->registerScript('my-script-id', 'relative/path/to/script.js', [], 'head');
 ```
 
 Linking to groups other than the default one inside your templates looks a bit different: 
@@ -74,3 +74,8 @@ Linking to groups other than the default one inside your templates looks a bit d
 	 <script src="{{ asset(script) }}" ></script>
 {% endfor %}
 ``` 
+
+[Previous (Rebuilding the assets)][1] - [Next (Components)][2]
+
+[1]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/rebuild.md
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/component_events.md

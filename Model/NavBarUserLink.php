@@ -2,14 +2,13 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-
 /**
  * Class NavBarUserLink
+ *
  * @package Avanzu\AdminThemeBundle\Model
  */
 class NavBarUserLink
 {
-
     /**
      * @var string
      */
@@ -25,6 +24,7 @@ class NavBarUserLink
 
     /**
      * NavBarUserLink constructor.
+     *
      * @param $title
      * @param $path
      * @param $parameters
@@ -83,6 +83,4 @@ class NavBarUserLink
     {
         $this->parameters = $parameters;
     }
-
-
 }

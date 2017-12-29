@@ -7,9 +7,8 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-
-class UserModel implements  UserInterface {
-
+class UserModel implements UserInterface
+{
     /**
      * @var string
      */
@@ -40,16 +39,15 @@ class UserModel implements  UserInterface {
      */
     protected $isOnline = false;
 
-    function __construct($username='', $avatar = '', $memberSince = null, $isOnline = true, $name='', $title='')
+    public function __construct($username = '', $avatar = '', $memberSince = null, $isOnline = true, $name = '', $title = '')
     {
-        $this->avatar      = $avatar;
-        $this->isOnline    = $isOnline;
-        $this->memberSince = $memberSince ?:new \DateTime();
-        $this->username    = $username;
-        $this->name        = $name;
-        $this->title       = $title;
+        $this->avatar = $avatar;
+        $this->isOnline = $isOnline;
+        $this->memberSince = $memberSince ?: new \DateTime();
+        $this->username = $username;
+        $this->name = $name;
+        $this->title = $title;
     }
-
 
     /**
      * @param string $avatar
@@ -59,6 +57,7 @@ class UserModel implements  UserInterface {
     public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
+
         return $this;
     }
 
@@ -78,6 +77,7 @@ class UserModel implements  UserInterface {
     public function setIsOnline($isOnline)
     {
         $this->isOnline = $isOnline;
+
         return $this;
     }
 
@@ -97,6 +97,7 @@ class UserModel implements  UserInterface {
     public function setMemberSince(\DateTime $memberSince)
     {
         $this->memberSince = $memberSince;
+
         return $this;
     }
 
@@ -116,6 +117,7 @@ class UserModel implements  UserInterface {
     public function setUsername($username)
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -127,7 +129,6 @@ class UserModel implements  UserInterface {
         return $this->username;
     }
 
-
     /**
      * @param string $name
      *
@@ -136,6 +137,7 @@ class UserModel implements  UserInterface {
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -147,7 +149,6 @@ class UserModel implements  UserInterface {
         return $this->name;
     }
 
-
     /**
      * @param string $title
      *
@@ -156,6 +157,7 @@ class UserModel implements  UserInterface {
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -166,7 +168,6 @@ class UserModel implements  UserInterface {
     {
         return $this->title;
     }
-
 
     /**
      * @return bool

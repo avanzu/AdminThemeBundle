@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Model;
 
-
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -15,8 +14,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @package Avanzu\AdminThemeBundle\Model
  */
-class FormDemoModel {
-
+class FormDemoModel
+{
     /**
      * @var string
      */
@@ -233,6 +232,7 @@ class FormDemoModel {
     public function setFile($file)
     {
         $this->file = $file;
+
         return $this;
     }
 
@@ -243,8 +243,4 @@ class FormDemoModel {
     {
         return $this->file;
     }
-
-
-
-
 }

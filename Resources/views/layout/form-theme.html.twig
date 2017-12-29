@@ -54,7 +54,7 @@
             {% if required %}
                 {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
             {% endif %}
-            {% if label is empty %}
+            {% if label is not same as(false) and label is empty %}
                 {% set label = name|humanize %}
             {% endif %}
 
@@ -77,7 +77,7 @@
             {% if required %}
                 {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
             {% endif %}
-            {% if label is empty %}
+            {% if label is not same as(false) and label is empty %}
                 {% set label = name|humanize %}
             {% endif %}
             <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
@@ -102,7 +102,7 @@
             {% else %}
                 {% set class = ' timepicker' %}
             {% endif %}
-            {% set attr = attr|merge({'class' : class, 'data-datepicker':'on'}) %}
+            {% set attr = attr|merge({'class' : class, 'data-datepickerenable':'on'}) %}
 
             {{ block('form_widget_simple') }}
         </div>

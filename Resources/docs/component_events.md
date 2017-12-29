@@ -57,15 +57,20 @@ _"Single item"_ Routes which point to a particular data item all use the paramet
 In order to see some working examples, the bundle comes with a demo implementation for each component. 
 
  ```yaml
- # config.yml
- avanzu_admin_theme:
- 	enable_demo: true
+# config.yml
+avanzu_admin_theme:
+    enable_demo: true
 ```
 and add the routes to your routing configuration: 
 
 ```yaml
 # routing.yml
 avanzu_admin:
-	prefix: /admin # or whichever you like 
+    prefix: /admin # or whichever you like 
     resource: "@AvanzuAdminThemeBundle/Resources/config/routes.yml"
 ```
+
+[Previous (Using the ThemeManager)][1] - [Next (Navbar User)][2]
+
+[1]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/theme_manager.md
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/navbar_user.md

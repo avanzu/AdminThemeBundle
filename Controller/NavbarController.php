@@ -7,64 +7,43 @@
 
 namespace Avanzu\AdminThemeBundle\Controller;
 
-
 use Avanzu\AdminThemeBundle\Event\MessageListEvent;
 use Avanzu\AdminThemeBundle\Event\NotificationListEvent;
 use Avanzu\AdminThemeBundle\Event\ShowUserEvent;
 use Avanzu\AdminThemeBundle\Event\TaskListEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Avanzu\AdminThemeBundle\Controller\EmitterController;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Response;
 
 class NavbarController extends EmitterController
 {
+    const MAX_NOTIFICATIONS = 5;
+    const MAX_MESSAGES = 5;
+    const MAX_TASKS = 5;
 
     /**
-     * @param int $max
-     *
-     * @return Response
+     * @return EventDispatcher
      */
-    public function notificationsAction($max = 5)
+    protected function getDispatcher()
     {
-
-        if (!$this->hasListener(ThemeEvents::THEME_NOTIFICATIONS)) {
-            return new Response();
-        }
-
-        $listEvent = $this->triggerMethod(ThemeEvents::THEME_NOTIFICATIONS, new NotificationListEvent($max));
-
-        return $this->render(
-            'AvanzuAdminThemeBundle:Navbar:notifications.html.twig',
-            array(
-
-                'notifications' => $listEvent->getNotifications(),
-                'total'         => $listEvent->getTotal(),
-            )
-        );
-
+        return $this->get('event_dispatcher');
     }
 
-    /**
-     * @param int $max
-     *
-     * @return Response
-     */
-    public function messagesAction($max = 5)
+    public function notificationsAction($max = self::MAX_NOTIFICATIONS)
     {
-
-        if (!$this->hasListener(ThemeEvents::THEME_MESSAGES)) {
+        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NOTIFICATIONS)) {
             return new Response();
         }
 
-        $listEvent = $this->triggerMethod(ThemeEvents::THEME_MESSAGES, new MessageListEvent($max));
+        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_NOTIFICATIONS, new NotificationListEvent());
 
         return $this->render(
-            'AvanzuAdminThemeBundle:Navbar:messages.html.twig',
-            array(
-                'messages' => $listEvent->getMessages(),
-                'total'    => $listEvent->getTotal(),
-            )
+                    'AvanzuAdminThemeBundle:Navbar:notifications.html.twig',
+                        [
+                            'notifications' => $listEvent->getNotifications(),
+                            'total' => $listEvent->getTotal(),
+                        ]
         );
     }
 
@@ -73,21 +52,42 @@ class NavbarController extends EmitterController
      *
      * @return Response
      */
-    public function tasksAction($max = 5)
+    public function messagesAction($max = self::MAX_MESSAGES)
     {
+        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_MESSAGES)) {
+            return new Response();
+        }
 
-        if (!$this->hasListener(ThemeEvents::THEME_TASKS)) {
+        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_MESSAGES, new MessageListEvent());
+
+        return $this->render(
+                    'AvanzuAdminThemeBundle:Navbar:messages.html.twig',
+                        [
+                            'messages' => $listEvent->getMessages(),
+                            'total' => $listEvent->getTotal(),
+                        ]
+        );
+    }
+
+    /**
+     * @param int $max
+     *
+     * @return Response
+     */
+    public function tasksAction($max = self::MAX_TASKS)
+    {
+        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_TASKS)) {
             return new Response();
         }
 
         $listEvent = $this->triggerMethod(ThemeEvents::THEME_TASKS, new TaskListEvent($max));
 
         return $this->render(
-            'AvanzuAdminThemeBundle:Navbar:tasks.html.twig',
-            array(
-                'tasks' => $listEvent->getTasks(),
-                'total' => $listEvent->getTotal(),
-            )
+                    'AvanzuAdminThemeBundle:Navbar:tasks.html.twig',
+                        [
+                            'tasks' => $listEvent->getTasks(),
+                            'total' => $listEvent->getTotal(),
+                        ]
         );
     }
 
@@ -96,8 +96,7 @@ class NavbarController extends EmitterController
      */
     public function userAction()
     {
-
-        if (!$this->hasListener(ThemeEvents::THEME_NAVBAR_USER)) {
+        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_NAVBAR_USER)) {
             return new Response();
         }
 
@@ -108,15 +107,14 @@ class NavbarController extends EmitterController
             return $this->render(
                 'AvanzuAdminThemeBundle:Navbar:user.html.twig',
                 [
-                    'user'            => $userEvent->getUser(),
-                    'links'           => $userEvent->getLinks(),
+                    'user' => $userEvent->getUser(),
+                    'links' => $userEvent->getLinks(),
                     'showProfileLink' => $userEvent->isShowProfileLink(),
-                    'showLogoutLink'  => $userEvent->isShowLogoutLink(),
+                    'showLogoutLink' => $userEvent->isShowLogoutLink(),
                 ]
             );
         }
 
         return new Response();
     }
-
 }

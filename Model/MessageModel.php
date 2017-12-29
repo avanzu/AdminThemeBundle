@@ -13,7 +13,6 @@ namespace Avanzu\AdminThemeBundle\Model;
  */
 class MessageModel implements MessageInterface
 {
-
     /**
      * Holds the sender
      *
@@ -30,6 +29,7 @@ class MessageModel implements MessageInterface
 
     /**
      * holds the date sent
+     *
      * @var \DateTime
      */
     protected $sentAt;
@@ -51,14 +51,13 @@ class MessageModel implements MessageInterface
      * @param null          $sentAt
      * @param UserInterface $to
      */
-    function __construct(UserInterface $from = null, $subject= '', $sentAt = null, UserInterface $to = null)
+    public function __construct(UserInterface $from = null, $subject = '', $sentAt = null, UserInterface $to = null)
     {
-        $this->to      = $to;
+        $this->to = $to;
         $this->subject = $subject;
-        $this->sentAt  = $sentAt ? : new \DateTime();
-        $this->from    = $from;
+        $this->sentAt = $sentAt ?: new \DateTime();
+        $this->from = $from;
     }
-
 
     /**
      * Set the sender
@@ -70,6 +69,7 @@ class MessageModel implements MessageInterface
     public function setFrom(UserInterface $from)
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -93,6 +93,7 @@ class MessageModel implements MessageInterface
     public function setSentAt(\DateTime $sentAt)
     {
         $this->sentAt = $sentAt;
+
         return $this;
     }
 
@@ -116,6 +117,7 @@ class MessageModel implements MessageInterface
     public function setSubject($subject)
     {
         $this->subject = $subject;
+
         return $this;
     }
 
@@ -139,6 +141,7 @@ class MessageModel implements MessageInterface
     public function setTo(UserInterface $to)
     {
         $this->to = $to;
+
         return $this;
     }
 
@@ -160,5 +163,4 @@ class MessageModel implements MessageInterface
     public function getIdentifier() {
         return $this->getSubject();
     }
-
 }

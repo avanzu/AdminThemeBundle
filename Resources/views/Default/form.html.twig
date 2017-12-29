@@ -1,8 +1,8 @@
 {% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
 {% block avanzu_head %} {% include 'AvanzuAdminThemeBundle:Partials:_header-form-extra.html.twig' %}{% endblock %}
 
-{% block avanzu_page_title %} Forms {% endblock %}
-{% block avanzu_page_subtitle %} demonstration {% endblock %}
+{% block avanzu_page_title %} {{ 'avanzu_admin_theme.default.form.forms'|trans({}, 'AvanzuAdminTheme') }} {% endblock %}
+{% block avanzu_page_subtitle %} {{ 'avanzu_admin_theme.default.form.demonstration'|trans({}, 'AvanzuAdminTheme') }} {% endblock %}
 
 {% block avanzu_page_content %}
 
@@ -25,12 +25,12 @@
 
             {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
                 {% block box_before %}{{ form_start(form) }}{% endblock %}
-                {% block box_title %}Form theme{% endblock %}
+                {% block box_title %}{{ 'Form theme'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
                 {% block box_body %}{{ form_widget(form) }}{% endblock %}
                 {% block box_footer %}
                     <div class="pull-right">
-                        <button type="reset" class="btn btn-warning "><i class="fa fa-times"></i> Cancel</button>
-                        <button type="submit" class="btn btn-primary "><i class="fa fa-check-square"></i> Submit</button>
+                        <button type="reset" class="btn btn-warning "><i class="fa fa-times"></i> {{ 'avanzu_admin_theme.default.form.cancel'|trans({}, 'AvanzuAdminTheme') }}</button>
+                        <button type="submit" class="btn btn-primary "><i class="fa fa-check-square"></i> {{ 'avanzu_admin_theme.default.form.submit'|trans({}, 'AvanzuAdminTheme') }}</button>
                     </div>
                 {% endblock %}
 
@@ -52,7 +52,7 @@
 {% block avanzu_javascripts_inline %}
     <script>
         $(function () {
-            console.log('augmenting form...');
+            console.log('{{ 'augmenting form'|trans({}, 'AvanzuAdminTheme') }}...');
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-blue',
                 radioClass: 'iradio_square-blue',

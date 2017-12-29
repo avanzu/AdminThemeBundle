@@ -7,13 +7,11 @@
 
 namespace Avanzu\AdminThemeBundle\Event;
 
-
 use Avanzu\AdminThemeBundle\Model\NavBarUserLink;
 use Avanzu\AdminThemeBundle\Model\UserInterface;
 
 class ShowUserEvent extends ThemeEvent
 {
-
     /**
      * @var UserInterface
      */
@@ -42,6 +40,7 @@ class ShowUserEvent extends ThemeEvent
     public function setUser($user)
     {
         $this->user = $user;
+
         return $this;
     }
 
@@ -100,6 +99,4 @@ class ShowUserEvent extends ThemeEvent
     {
         $this->showLogoutLink = $showLogoutLink;
     }
-
-
 }

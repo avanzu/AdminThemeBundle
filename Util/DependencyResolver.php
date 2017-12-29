@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Util;
 
-
 /**
  * Class DependencyResolver
  *
@@ -15,24 +14,22 @@ namespace Avanzu\AdminThemeBundle\Util;
  */
 class DependencyResolver implements DependencyResolverInterface
 {
-
     /**
      * @var array
      */
-    protected $queued = array();
+    protected $queued = [];
     /**
      * @var array
      */
-    protected $registered = array();
+    protected $registered = [];
     /**
      * @var array
      */
-    protected $resolved = array();
+    protected $resolved = [];
     /**
      * @var array
      */
-    protected $unresolved = array();
-
+    protected $unresolved = [];
 
     /**
      * @param $items
@@ -70,7 +67,7 @@ class DependencyResolver implements DependencyResolverInterface
                 continue;
             } // unregistered
             if (!$this->hasDependencies($id)) { // standalone
-                $this->queued[]      = $this->registered[$id];
+                $this->queued[] = $this->registered[$id];
                 $this->resolved[$id] = true;
 
                 continue;
@@ -83,13 +80,12 @@ class DependencyResolver implements DependencyResolverInterface
             $deps = $this->unresolved($this->getDependencies($id));
 
             if (empty($deps)) {
-                $this->queued[]      = $this->registered[$id];
+                $this->queued[] = $this->registered[$id];
                 $this->resolved[$id] = true;
 
                 continue;
             }
         }
-
     }
 
     /**
@@ -113,7 +109,7 @@ class DependencyResolver implements DependencyResolverInterface
             return false;
         }
 
-        return (!empty($this->registered[$id]['deps']));
+        return !empty($this->registered[$id]['deps']);
     }
 
     /**
@@ -146,7 +142,6 @@ class DependencyResolver implements DependencyResolverInterface
         return in_array($needle, $deps);
     }
 
-
     /**
      * @throws \RuntimeException
      */
@@ -155,7 +150,6 @@ class DependencyResolver implements DependencyResolverInterface
         $ids = array_keys($this->registered);
 
         foreach ($ids as $id) {
-
             if (!$this->hasDependencies($id)) {
                 continue;
             }
@@ -173,8 +167,5 @@ class DependencyResolver implements DependencyResolverInterface
                 }
             }
         }
-
-
     }
-
 }

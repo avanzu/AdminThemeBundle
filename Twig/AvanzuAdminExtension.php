@@ -7,13 +7,10 @@
 
 namespace Avanzu\AdminThemeBundle\Twig;
 
-
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
-use Twig_Environment;
 
-class AvanzuAdminExtension extends \Twig_Extension {
-
-
+class AvanzuAdminExtension extends \Twig_Extension
+{
     protected $options;
     protected $env;
     /**
@@ -24,39 +21,37 @@ class AvanzuAdminExtension extends \Twig_Extension {
     /**
      * AvanzuAdminExtension constructor.
      *
-     * @param             $options
-     * @param             $env
+     * @param                      $options
+     * @param                      $env
      * @param RouteAliasCollection $aliasRouter
      */
     public function __construct($options, $env, RouteAliasCollection $aliasRouter)
     {
         $this->options = $options;
-        $this->env      = $env;
+        $this->env = $env;
         $this->aliasRouter = $aliasRouter;
     }
 
-
     public function getFilters()
     {
-        return array(
+        return [
             new \Twig_SimpleFilter('body_class', [$this, 'bodyClass']),
-            new \Twig_SimpleFilter('route_alias', [$this->aliasRouter, 'getRouteByAlias'])
-        );
+            new \Twig_SimpleFilter('route_alias', [$this->aliasRouter, 'getRouteByAlias']),
+        ];
     }
 
-    public function bodyClass($classes = "")
+    public function bodyClass($classes = '')
     {
         $classList = [$classes];
-        $options   = $this->options;
+        $options = $this->options;
 
-        $classList[] = $options['skin'];
-        if( $options['fixed_layout'] ) $classList[] = 'fixed';
-        if( $options['boxed_layout']) $classList[] = 'boxed';
-        if( $options['collapsed_sidebar']) $classList[] = 'sidebar-collapse';
-        if( $options['mini_sidebar']) $classList[] = 'sidebar-mini';
+        if(isset($options['skin'])) $classList[] = $options['skin'];
+        if(isset($options['fixed_layout']) && true == $options['fixed_layout']) $classList[] = 'fixed';
+        if(isset($options['boxed_layout']) && true == $options['boxed_layout']) $classList[] = 'boxed';
+        if(isset($options['collapsed_sidebar']) && true == $options['collapsed_sidebar']) $classList[] = 'sidebar-collapse';
+        if(isset($options['mini_sidebar']) && true == $options['mini_sidebar']) $classList[] = 'sidebar-mini';
 
         return implode(' ', array_filter($classList));
-
     }
 
     public function getName()

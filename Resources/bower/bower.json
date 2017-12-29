@@ -1,0 +1,36 @@
+{
+    "name"        : "admin-theme-bundle",
+    "version"     : "0.0.2",
+    "authors"     : [
+        "Marc Bach <mail@avanzu.de>"
+    ],
+    "description" : "Vendor assets for the avanzu admin theme bundle",
+    "license"     : "MIT",
+    "private"     : true,
+    "ignore"      : [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "../public/vendor",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery"                    : "*",
+        "jquery-ui"                 : "*",
+        "momentjs"                  : "*",
+        "backbone"                  : "*",
+        "underscore"                : ">=1.0.0 <2.0",
+        "modernizr"                 : ">=2.5.0 <3.0",
+        "spinjs"                    : "2.3.2",
+        "marionette"                : "*",
+        "pickadate"                 : "*",
+        "holderjs"                  : "*",
+        "bootflatv2"                : "*",
+        "bootbox"                   : "*",
+        "fontawesome"               : "*",
+        "ionicons"                  : "*",
+        "fullcalendar"              : "*",
+        "adminlte"                  : "~2.3"
+    }
+}

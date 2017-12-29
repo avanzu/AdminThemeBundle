@@ -80,13 +80,17 @@ Finally, you need to attach your new listener to the event system:
 ```yaml
 # Resources/config/services.yml
 parameters:
-	my_admin_bundle.show_user_listener.class: MyAdminBundle\EventListener\MyShowUserListener
+    my_admin_bundle.show_user_listener.class: MyAdminBundle\EventListener\MyShowUserListener
 
 services:
-	my_admin_bundle.show_user_listener:
-		class: %my_admin_bundle.show_user_listener.class%
-		tags:
-			- { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
+    my_admin_bundle.show_user_listener:
+        class: %my_admin_bundle.show_user_listener.class%
+        tags:
+            - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
 ```
 
+[Previous (Components)][2] - [Next (Navbar Tasks)][3]
+
 [1]: component_events.md
+[2]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/component_events.md
+[3]: https://github.com/avanzu/AdminThemeBundle/blob/master/Resources/docs/navbar_tasks.md

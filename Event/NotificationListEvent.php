@@ -7,7 +7,6 @@
 
 namespace Avanzu\AdminThemeBundle\Event;
 
-
 use Avanzu\AdminThemeBundle\Model\NotificationInterface;
 
 /**
@@ -17,11 +16,10 @@ use Avanzu\AdminThemeBundle\Model\NotificationInterface;
  */
 class NotificationListEvent extends ThemeEvent
 {
-
     /**
      * @var array
      */
-    protected $notifications = array();
+    protected $notifications = [];
 
     protected $total = 0;
 
@@ -30,21 +28,22 @@ class NotificationListEvent extends ThemeEvent
     /**
      * NotificationListEvent constructor.
      *
-     * @param null $max
+     * @param integer $max Maximun number of notifications displayed in panel
      */
-    public function __construct($max)
+    public function __construct($max = NULL)
     {
         $this->max = $max;
     }
 
     /**
-     * @return null
+     * Get the maximun number of notifications displayed in panel
+     * 
+     * @return integer
      */
     public function getMax()
     {
         return $this->max;
     }
-
 
     /**
      * @return array
@@ -79,9 +78,6 @@ class NotificationListEvent extends ThemeEvent
      */
     public function getTotal()
     {
-        return $this->total == 0 ? sizeof($this->notifications) : $this->total;
+        return $this->total == 0 ? count($this->notifications) : $this->total;
     }
-
-
-
 }
