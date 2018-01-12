@@ -48,7 +48,7 @@ class TwigPass implements CompilerPassInterface
             $param = [];
         }
 
-        array_push($param, 'AvanzuAdminThemeBundle:layout:form-theme.html.twig');
+        array_push($param, '@AvanzuAdminTheme/layout/form-theme.html.twig');
 
         $container->setParameter('twig.form.resources', $param);
 
