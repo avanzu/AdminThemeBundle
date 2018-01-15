@@ -47,7 +47,7 @@ class AvanzuAdminExtension extends \Twig_Extension
 
         if(isset($options['skin'])) $classList[] = $options['skin'];
         if(isset($options['fixed_layout']) && true == $options['fixed_layout']) $classList[] = 'fixed';
-        if(isset($options['boxed_layout']) && true == $options['boxed_layout']) $classList[] = 'boxed';
+        if(isset($options['boxed_layout']) && true == $options['boxed_layout']) $classList[] = 'layout-boxed';
         if(isset($options['collapsed_sidebar']) && true == $options['collapsed_sidebar']) $classList[] = 'sidebar-collapse';
         if(isset($options['mini_sidebar']) && true == $options['mini_sidebar']) $classList[] = 'sidebar-mini';
 
