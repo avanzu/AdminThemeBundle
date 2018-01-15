@@ -7,11 +7,18 @@
 
 namespace Avanzu\AdminThemeBundle\Twig;
 
+use Avanzu\AdminThemeBundle\Helper\ContextHelper;
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 
 class AvanzuAdminExtension extends \Twig_Extension
 {
-    protected $options;
+    /**
+     * @var ContextHelper
+     */
+    protected $context;
+    /**
+     * @var string
+     */
     protected $env;
     /**
      * @var RouteAliasCollection
@@ -20,14 +27,13 @@ class AvanzuAdminExtension extends \Twig_Extension
 
     /**
      * AvanzuAdminExtension constructor.
-     *
-     * @param                      $options
-     * @param                      $env
+     * @param ContextHelper $contextHelper
+     * @param $env
      * @param RouteAliasCollection $aliasRouter
      */
-    public function __construct($options, $env, RouteAliasCollection $aliasRouter)
+    public function __construct(ContextHelper $contextHelper, $env, RouteAliasCollection $aliasRouter)
     {
-        $this->options = $options;
+        $this->context = $contextHelper;
         $this->env = $env;
         $this->aliasRouter = $aliasRouter;
     }
@@ -43,7 +49,7 @@ class AvanzuAdminExtension extends \Twig_Extension
     public function bodyClass($classes = '')
     {
         $classList = [$classes];
-        $options = $this->options;
+        $options = $this->context->getOptions();
 
         if(isset($options['skin'])) $classList[] = $options['skin'];
         if(isset($options['fixed_layout']) && true == $options['fixed_layout']) $classList[] = 'fixed';
