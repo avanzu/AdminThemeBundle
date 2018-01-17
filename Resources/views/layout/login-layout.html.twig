@@ -27,7 +27,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     {% block avanzu_head %}{% endblock %}
-    {%  block javascripts_head %}{% endblock %}
 </head>
 <body{% block avanzu_body_start %}{% endblock %} class="hold-transition login-page">
 {% block avanzu_after_body_start %}{% endblock %}
@@ -117,12 +116,8 @@
         });
     });
 </script>
-{# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
-{% block javascripts %}
-{% endblock %}
 
-{# ----------------------------------------------------------------------------------------------- JAVASCRIPTS_INLINE #}
-{% block javascripts_inline %}
-{% endblock %}
+{% block javascripts %}{% endblock %}
+{% block javascripts_inline %}{% endblock %}
 </body>
 </html>
