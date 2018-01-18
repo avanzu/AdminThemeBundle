@@ -325,11 +325,15 @@ desired effect
             #}
         </section>
 
+        {% block avanzu_page_content_before %}{% endblock %}
+
         <!-- Main content -->
-        <section class="content">
+        <section class="{% block avanzu_page_content_class %}content{% endblock %}">
             {% block avanzu_page_content %}{% endblock %}
         </section>
         <!-- /.content -->
+
+        {% block avanzu_page_content_after %}{% endblock %}
     </div>
     <!-- /.content-wrapper -->
 
