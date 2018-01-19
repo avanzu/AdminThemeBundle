@@ -97,7 +97,16 @@ The blocks defined in the layout in order of appearance. Some of them do contain
 <dd>Renders either the `breadcrumb` component or includes `AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig` based on your configuration.
 
 <dt>avanzu_page_content
-<dd>The main content area. 
+<dd>The main content area
+
+<dt>avanzu_page_content_class
+<dd>The CSS class for the content area block `avanzu_page_content`
+
+<dt>avanzu_page_content_before
+<dd>A hook block to add additional content right before the start of `avanzu_page_content`
+
+<dt>avanzu_page_content_after
+<dd>A hook block to add additional content right after the end of `avanzu_page_content`
 
 <dt>avanzu_footer
 <dd>The main footer. Includes `AvanzuAdminThemeBundle:Partials:_footer.html.twig` by default.
