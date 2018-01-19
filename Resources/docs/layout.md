@@ -100,13 +100,13 @@ The blocks are defined in the layout in order of appearance. Some of them do con
 <dd>The main content area.
 
 <dt>avanzu_page_content_class
-<dd>The CSS class for the content block `avanzu_page_content`.
+<dd>The CSS class for the content area block `avanzu_page_content`
 
 <dt>avanzu_page_content_before
-<dd>A block to add additional content right before the start of `avanzu_page_content`.
+<dd>A hook block to add additional content right before the start of `avanzu_page_content`
 
 <dt>avanzu_page_content_after
-<dd>A block to add additional content right after the end of `avanzu_page_content`.
+<dd>A hook block to add additional content right after the end of `avanzu_page_content`
 
 <dt>avanzu_footer
 <dd>The main footer. Includes `@AvanzuAdminTheme/Partials/_footer.html.twig` by default.
