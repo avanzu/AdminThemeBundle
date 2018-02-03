@@ -1,6 +1,6 @@
 ## Using the layout
 
-Note: this instrucions are for [dev-master branch][4], if you are using stable version (1.3) read this ["Using the layout" for old 1.3 version][5]. 
+Note: these instructions are for [dev-master branch][4], if you are using stable version (1.3) read this ["Using the layout" for old 1.3 version][5]. 
 
 In order to use the layout, your views should extend from the provided `default-layout`
 ```twig
@@ -33,7 +33,7 @@ Listed in the order of appearance, these are:
 </dl>
 
 ### layout blocks
-The blocks defined in the layout in order of appearance. Some of them do contain some of the major components like the sidebar or navbar. In order to redefine the block and to keep the default content, don't forget to use `{{parent()}}` 
+The blocks are defined in the layout in order of appearance. Some of them do contain some of the major components like the sidebar or navbar. In order to redefine the block and to keep the default content, don't forget to use `{{parent()}}` 
 
 <dt>avanzu_html_start
 <dd>In the `html` tag, useful for Angular attributes like ng-app
