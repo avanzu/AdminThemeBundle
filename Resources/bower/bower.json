@@ -28,7 +28,7 @@
         "holderjs"                  : "*",
         "bootflat"                  : "*",
         "bootbox"                   : "*",
-        "fontawesome"               : "*",
+        "fontawesome"               : "4.*",
         "ionicons"                  : "*",
         "fullcalendar"              : "*",
         "adminlte"                  : "~2.3.0"
