@@ -22,7 +22,7 @@
         "backbone"                  : "*",
         "underscore"                : ">=1.0.0 <2.0",
         "modernizr"                 : ">=2.5.0 <3.0",
-        "spinjs"                    : "*",
+        "spinjs"                    : "2.3.2",
         "marionette"                : "*",
         "pickadate"                 : "*",
         "holderjs"                  : "*",
