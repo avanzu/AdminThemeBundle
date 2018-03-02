@@ -93,10 +93,21 @@ class Configuration implements ConfigurationInterface
     {
         if($withOptions)
         {
-            $rootNodeChildren = $rootNodeChildren->scalarNode('bower_bin')
-                ->info('Path to bower binary')
-                ->defaultValue('/usr/local/bin/bower')
-            ->end();
+            // Detect dinamically which OS is using and configure on install
+            if(defined('PHP_WINDOWS_VERSION_MAJOR'))
+            {
+                $rootNodeChildren = $rootNodeChildren->scalarNode('bower_bin')
+                    ->info('Path to bower binary')
+                    ->defaultValue('bower.exe')
+                ->end();
+            }
+            else
+            {
+                $rootNodeChildren = $rootNodeChildren->scalarNode('bower_bin')
+                    ->info('Path to bower binary')
+                    ->defaultValue('/usr/local/bin/bower')
+                ->end();
+            }
         }
 
         $rootNodeChildren = $rootNodeChildren->booleanNode('use_assetic')
