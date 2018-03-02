@@ -18,3 +18,4 @@ If this is a FEATURE REQUEST:
 | ------------- | ------------- |
 | Symfony version  | Your current symfony version  |
 | AdminThemeBundle  | 1.3.5/dev-master/specific-commit/tag  |
+| Operating System  | Windows or GNU/Linux or other  |
