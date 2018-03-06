@@ -31,7 +31,7 @@ services:
         class: "%avanzu_admin_theme.extension.class%"
         tags:
             - { name: twig.extension }
-        arguments: ['%avanzu_admin_theme.options%', '%kernel.environment%', "@avanzu_admin_theme.admin_router"]
+        arguments: ['@avanzu_admin_theme.context_helper', '%kernel.environment%', "@avanzu_admin_theme.admin_router"]
 
     avanzu_admin_theme.context_helper:
         class: "%avanzu_admin_theme.context_helper.class%"
@@ -39,5 +39,7 @@ services:
             - "%avanzu_admin_theme.options%"
             - "@avanzu_admin_theme.admin_router"
 
+    Avanzu\AdminThemeBundle\Helper\ContextHelper:
+        alias: avanzu_admin_theme.context_helper
 
 
