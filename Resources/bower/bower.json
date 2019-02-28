@@ -27,7 +27,7 @@
         "pickadate"                 : "*",
         "holderjs"                  : "*",
         "bootflat"                  : "*",
-        "bootbox"                   : "*",
+        "bootbox"                   : "4.4.0",
         "fontawesome"               : "4.*",
         "ionicons"                  : "2.0.1",
         "fullcalendar"              : "*",
