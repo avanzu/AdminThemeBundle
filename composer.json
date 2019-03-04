@@ -19,7 +19,7 @@
     ],
     "extra": {
         "branch-alias": {
-            "experimental-symfony-4.x": "4.x"
+            "experimental-symfony-4.x": "4.x-dev"
         }
     },
     "minimum-stability": "dev",
