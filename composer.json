@@ -21,7 +21,7 @@
         "branch-alias": {
             "experimental-symfony-4.x": "4.x"
         }
-    }
+    },
     "minimum-stability": "dev",
     "require": {
         "php": "^7.1.3",
