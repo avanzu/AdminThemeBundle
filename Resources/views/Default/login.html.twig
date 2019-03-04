@@ -1,4 +1,4 @@
-{% extends 'AvanzuAdminThemeBundle:layout:login-layout.html.twig' %}
+{% extends '@AvanzuAdminTheme/layout/login-layout.html.twig' %}
 
 {% block page_content %}
     <div class="login-box">
@@ -20,7 +20,7 @@
                     <div class="col-xs-8">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"> {{ 'Remember Me'|trans({}, 'AvanzuAdminTheme') }} 
+                                <input type="checkbox"> {{ 'Remember Me'|trans({}, 'AvanzuAdminTheme') }}
                             </label>
                         </div>
                     </div><!-- /.col -->

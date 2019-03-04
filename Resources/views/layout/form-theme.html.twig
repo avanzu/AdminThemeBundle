@@ -153,16 +153,13 @@
         <div class="form-group {{ errors|length > 0 ? 'has-error has-feedback'  : '' }}">
             {{ form_label(form) }}
             {{ form_widget(form) }}
+            {{ form_help(form) }}
             {{ form_errors(form) }}
         </div>
     {% endif %}
 {% endblock %}
 
 {% block form_label %}
-
-    {% if help is defined and help is not empty %}
-        &nbsp; <a href="#" data-toggle="tooltip" data-original-title="{{ help }}"><i class="fa fa-question-circle"></i></a>
-    {% endif %}
 
     {{ parent() }}
     {% if required and label is not same as (false) %}

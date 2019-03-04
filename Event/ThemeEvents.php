@@ -35,7 +35,7 @@ class ThemeEvents
      * used to receive the current user for the sidebar
      * 
      * macro: avanzu_sidebar_user
-     * template: AvanzuAdminThemeBundle:Sidebar:user-panel.html.twig
+     * template: @AvanzuAdminTheme/Sidebar/user-panel.html.twig
      */
     const THEME_SIDEBAR_USER = 'theme.sidebar_user';
 

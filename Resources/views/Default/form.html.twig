@@ -1,5 +1,5 @@
-{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
-{% block avanzu_head %} {% include 'AvanzuAdminThemeBundle:Partials:_header-form-extra.html.twig' %}{% endblock %}
+{% extends '@AvanzuAdminTheme/layout/default-layout.html.twig' %}
+{% block avanzu_head %} {% include '@AvanzuAdminTheme/Partials/_header-form-extra.html.twig' %}{% endblock %}
 
 {% block avanzu_page_title %} {{ 'avanzu_admin_theme.default.form.forms'|trans({}, 'AvanzuAdminTheme') }} {% endblock %}
 {% block avanzu_page_subtitle %} {{ 'avanzu_admin_theme.default.form.demonstration'|trans({}, 'AvanzuAdminTheme') }} {% endblock %}
@@ -23,7 +23,7 @@
         <div class="col-md-6">
 
 
-            {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
+            {% embed '@AvanzuAdminTheme/Widgets/box-widget.html.twig' %}
                 {% block box_before %}{{ form_start(form) }}{% endblock %}
                 {% block box_title %}{{ 'Form theme'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
                 {% block box_body %}{{ form_widget(form) }}{% endblock %}
@@ -48,7 +48,7 @@
 
 {% endblock %}
 
-{% block avanzu_javascripts %}{% include 'AvanzuAdminThemeBundle:Partials:_scripts-form-extra.html.twig' %}{% endblock %}
+{% block avanzu_javascripts %}{% include '@AvanzuAdminTheme/Partials/_scripts-form-extra.html.twig' %}{% endblock %}
 {% block avanzu_javascripts_inline %}
     <script>
         $(function () {

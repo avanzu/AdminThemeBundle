@@ -1,10 +1,10 @@
-{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
+{% extends '@AvanzuAdminTheme/layout/default-layout.html.twig' %}
 
 {% block avanzu_page_content %}
     <div class="row">
         <div class="col-md-6">
             {# ... infobox widget, solid background ... #}
-            {% embed 'AvanzuAdminThemeBundle:Widgets:infobox-widget.html.twig'  with {
+            {% embed '@AvanzuAdminTheme/Widgets/infobox-widget.html.twig'  with {
             'solid' : 'red',
             'icon'  : 'star-o',
             'progress' : 40
@@ -18,7 +18,7 @@
         <div class="col-md-6">
 
             {# ... infobox widget, colored icon ... #}
-            {% embed 'AvanzuAdminThemeBundle:Widgets:infobox-widget.html.twig'  with {
+            {% embed '@AvanzuAdminTheme/Widgets/infobox-widget.html.twig'  with {
             'color' : 'aqua',
             'icon'  : 'comments-o',
             } %}
@@ -32,9 +32,9 @@
     <div class="row">
         <div class="col-md-6">
             {# ... box widget with defaults ... #}
-            {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' %}
+            {% embed '@AvanzuAdminTheme/Widgets/box-widget.html.twig' %}
 
-                {% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig'  as btn %}
+                {% import '@AvanzuAdminTheme/Macros/buttons.html.twig'  as btn %}
                 {% block box_title %}{{ 'Widget box title'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}
                 {% block box_body %}
                     <div class="callout callout-info">
@@ -54,14 +54,14 @@
         </div>
         <div class="col-md-6">
             {# ... box widget with some options ... #}
-            {% embed 'AvanzuAdminThemeBundle:Widgets:box-widget.html.twig' with {
+            {% embed '@AvanzuAdminTheme/Widgets/box-widget.html.twig' with {
             'boxtype' : 'success',
             'solid' : 0,
             'collapsible' : 'Collapse this'|trans({}, 'AvanzuAdminTheme') ~ '... ',
             'removable' : 'Remove this'|trans({}, 'AvanzuAdminTheme') ~ '...',
             } %}
 
-                {% import 'AvanzuAdminThemeBundle:Macros:buttons.html.twig'  as btn %}
+                {% import '@AvanzuAdminTheme/Macros/buttons.html.twig'  as btn %}
                 {% block box_title %}{{ 'Widget box title' }}{% endblock %}
                 {% block box_body %}
                     <div class="callout callout-info">

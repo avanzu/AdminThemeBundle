@@ -4,7 +4,7 @@ Note: these instructions are for [dev-master branch][4], if you are using stable
 
 In order to use the layout, your views should extend from the provided `default-layout`
 ```twig
-{% extends 'AvanzuAdminThemeBundle:layout:default-layout.html.twig' %}
+{% extends '@AvanzuAdminTheme/layout/default-layout.html.twig' %}
 ```
 ### twig global 
 Instead of fully relying on blocks and includes, you are provided with a twig global named `avanzu_admin_context` to store and retrieve particular values throughout the page rendering. 
@@ -16,19 +16,19 @@ In order to make overriding some of the template regions easier, there are sever
 Listed in the order of appearance, these are:
 
 <dl>
-<dt>AvanzuAdminThemeBundle:Partials:_head.html.twig
+<dt>@AvanzuAdminTheme/Partials/_head.html.twig
 <dd>Defines the `head` tag contents.
-<dt>AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig
+<dt>@AvanzuAdminTheme/Sidebar/knp-menu.html.twig
 <dd>Renders the knp menu using the builder defined as `main_menu`. 
 <br/>___Notice___ *this partial will only be included when the knp_menu is enabled.*
-<dt>AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig
+<dt>@AvanzuAdminTheme/Breadcrumb/knp-breadcrumb.html.twig
 <dd>Rendes the knp menu using the builder defined as `breadcrumb_menu` 
 <br/>___Notice___ *this partial will only be included when the knp_menu is enabled.*
-<dt>AvanzuAdminThemeBundle:Partials:_footer.html.twig
+<dt>@AvanzuAdminTheme/Partials/_footer.html.twig
 <dd>Renders the main footer
-<dt>AvanzuAdminThemeBundle:Partials:_control-sidebar.html.twig
+<dt>@AvanzuAdminTheme/Partials/_control-sidebar.html.twig
 <dd>Renders the control sidebar (righthand panel) unless it is disabled in the config (default)
-<dt>AvanzuAdminThemeBundle:Partials:_scripts.html.twig
+<dt>@AvanzuAdminTheme/Partials/_scripts.html.twig
 <dd>Renders script tags. Located right before the closing `body`. 
 </dl>
 
@@ -85,7 +85,7 @@ The blocks are defined in the layout in order of appearance. Some of them do con
 <dd>Renders the `searchPanel` component
 
 <dt>avanzu_sidebar_nav
-<dd>Renders the `menu` component _or_ includes `AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig` depending on wether the `knp_menu` is enabled or not. 
+<dd>Renders the `menu` component _or_ includes `@AvanzuAdminTheme/Sidebar/knp-menu.html.twig` depending on wether the `knp_menu` is enabled or not. 
 
 <dt>avanzu_page_title
 <dd>Defines the page header inside `.content-header` *(and implicitly the `title` if you haven't changed the content of `avanzu_document_title`)*
@@ -94,7 +94,7 @@ The blocks are defined in the layout in order of appearance. Some of them do con
 <dd>Defines the `small` portion of `.content-header`
 
 <dt>avanzu_breadcrumb
-<dd>Renders either the `breadcrumb` component or includes `AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig` based on your configuration.
+<dd>Renders either the `breadcrumb` component or includes `@AvanzuAdminTheme/Breadcrumb/knp-breadcrumb.html.twig` based on your configuration.
 
 <dt>avanzu_page_content
 <dd>The main content area.
@@ -109,10 +109,10 @@ The blocks are defined in the layout in order of appearance. Some of them do con
 <dd>A block to add additional content right after the end of `avanzu_page_content`.
 
 <dt>avanzu_footer
-<dd>The main footer. Includes `AvanzuAdminThemeBundle:Partials:_footer.html.twig` by default.
+<dd>The main footer. Includes `@AvanzuAdminTheme/Partials/_footer.html.twig` by default.
 
 <dt>avanzu_control_sidebar
-<dd>Includes `AvanzuAdminThemeBundle:Partials:_control-sidebar.html.twig` if it is enabled.
+<dd>Includes `@AvanzuAdminTheme/Partials/_control-sidebar.html.twig` if it is enabled.
 
 <dt>avanzu_javascripts
 <dd>comes right after the `_scripts.html.twig` partial.

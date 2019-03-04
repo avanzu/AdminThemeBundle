@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>
         {% block avanzu_document_title %}{{ block('avanzu_page_title') }}{% endblock %}
     </title>
-    {% include('AvanzuAdminThemeBundle:Partials:_head.html.twig') %}
+    {% include('@AvanzuAdminTheme/Partials/_head.html.twig') %}
     {% block avanzu_head %}{% endblock %}
 </head>
 {#
@@ -251,7 +251,7 @@ desired effect
 
             {% block avanzu_sidebar_nav %}
                 {% if avanzu_admin_context.knp_menu.enable %}
-                    {% include 'AvanzuAdminThemeBundle:Sidebar:knp-menu.html.twig' %}
+                    {% include '@AvanzuAdminTheme/Sidebar/knp-menu.html.twig' %}
                 {% else %}
                     {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
                 {% endif %}
@@ -312,7 +312,7 @@ desired effect
 
             {% block avanzu_breadcrumb %}
                 {% if avanzu_admin_context.knp_menu.enable %}
-                    {% include 'AvanzuAdminThemeBundle:Breadcrumb:knp-breadcrumb.html.twig' %}
+                    {% include '@AvanzuAdminTheme/Breadcrumb/knp-breadcrumb.html.twig' %}
                 {% else %}
                     {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('avanzu_page_title')})) }}
                 {% endif %}
@@ -340,18 +340,18 @@ desired effect
     <!-- Main Footer -->
 
     {% block avanzu_footer %}
-        {% include 'AvanzuAdminThemeBundle:Partials:_footer.html.twig' %}
+        {% include '@AvanzuAdminTheme/Partials/_footer.html.twig' %}
     {% endblock %}
     {% block avanzu_control_sidebar %}
         {% if avanzu_admin_context.control_sidebar %}
-            {% include 'AvanzuAdminThemeBundle:Partials:_control-sidebar.html.twig' %}
+            {% include '@AvanzuAdminTheme/Partials/_control-sidebar.html.twig' %}
         {% endif %}
     {% endblock %}
 </div>
 <!-- ./wrapper -->
 <!-- REQUIRED JS SCRIPTS -->
 
-{% include 'AvanzuAdminThemeBundle:Partials:_scripts.html.twig' %}
+{% include '@AvanzuAdminTheme/Partials/_scripts.html.twig' %}
 {% block avanzu_javascripts %}{% endblock %}
 {% block avanzu_javascripts_inline %}{% endblock %}
 
