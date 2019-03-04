@@ -17,6 +17,11 @@
             "role": "Developer Collaborator"
         }
     ],
+    "extra": {
+        "branch-alias": {
+            "experimental-symfony-4.x": "4.x-dev"
+        }
+    }
     "minimum-stability": "dev",
     "require": {
         "php": "^7.1.3",
