@@ -16,21 +16,21 @@
         "tests"
     ],
     "dependencies": {
-        "jquery"                    : "*",
-        "jquery-ui"                 : "*",
-        "momentjs"                  : "*",
-        "backbone"                  : "*",
-        "underscore"                : ">=1.0.0 <2.0",
-        "modernizr"                 : ">=2.5.0 <3.0",
+        "jquery"                    : "3.3.1",
+        "jquery-ui"                 : "1.12.1",
+        "momentjs"                  : "2.24.0",
+        "backbone"                  : "1.4.0",
+        "underscore"                : "1.9.1",
+        "modernizr"                 : "2.8.3",
         "spinjs"                    : "2.3.2",
-        "marionette"                : "*",
-        "pickadate"                 : "*",
-        "holderjs"                  : "*",
-        "bootflat"                  : "*",
+        "marionette"                : "4.0.0",
+        "pickadate"                 : "3.6.2",
+        "holderjs"                  : "2.9.6",
+        "bootflat"                  : "affdd96590",
         "bootbox"                   : "4.4.0",
-        "fontawesome"               : "4.*",
+        "fontawesome"               : "4.7.0",
         "ionicons"                  : "2.0.1",
         "fullcalendar"              : "3.10.0",
-        "adminlte"                  : "~2.3.0"
+        "adminlte"                  : "2.3.11"
     }
 }
