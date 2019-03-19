@@ -13,7 +13,7 @@ namespace Avanzu\AdminThemeBundle\Composer;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Composer\Script\Event;
-
+use Symfony\Component\HttpKernel\Kernel;
 /**
  * ScriptHandler
  *
@@ -36,14 +36,17 @@ class ScriptHandler
      */
     private static $options = [
         'symfony-app-dir' => 'app',
-        'symfony-web-dir' => 'web',
+        'symfony-web-dir' => (Kernel::VERSION_ID < 40000 ? 'web' : 'public'),
     ];
 
     protected static function getOptions(Event $event)
     {
         $options = array_merge(self::$options, $event->getComposer()->getPackage()->getExtra());
 
-        $options['symfony-assets-install'] = getenv('SYMFONY_ASSETS_INSTALL') ?: $options['symfony-assets-install'];
+        if(Kernel::VERSION_ID < 40000)
+        {
+            $options['symfony-assets-install'] = getenv('SYMFONY_ASSETS_INSTALL') ?: $options['symfony-assets-install'];
+        }
 
         $options['process-timeout'] = $event->getComposer()->getConfig()->get('process-timeout');
 
