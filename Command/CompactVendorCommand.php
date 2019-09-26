@@ -7,7 +7,7 @@
 
 namespace Avanzu\AdminThemeBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\FormatterHelper;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +17,7 @@ use Symfony\Component\Finder\Shell\Command;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Process\Process;
 
-class CompactVendorCommand extends ContainerAwareCommand
+class CompactVendorCommand extends Command
 {
     protected function configure() {
         $this

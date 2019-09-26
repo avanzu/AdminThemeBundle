@@ -7,7 +7,7 @@
 
 namespace Avanzu\AdminThemeBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -17,14 +17,14 @@ use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Process\Process;
 
-class BuildAssetsCommand extends ContainerAwareCommand
+class BuildAssetsCommand extends Command
 {
     const DEFAULT_UGLIFY_JS_LINUX = '/usr/bin/env uglifyjs';
     const DEFAULT_UGLIFY_JS_WIN   = 'uglifyjs.exe';
-    
+
     const DEFAULT_UGLIFY_CSS_LINUX = '/usr/bin/env uglifycss';
     const DEFAULT_UGLIFY_CSS_WIN   = 'uglifycss.exe';
-    
+
     /**
      * @var Kernel
      */
@@ -47,7 +47,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
 
     protected function configure()
     {
-        if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') 
+        if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         {
             $uglifyjs_default_option = self::DEFAULT_UGLIFY_JS_WIN;
         }
@@ -55,7 +55,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
         {
             $uglifyjs_default_option = self::DEFAULT_UGLIFY_JS_LINUX;
         }
-        
+
         if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
         {
             $uglifycss_default_option = self::DEFAULT_UGLIFY_CSS_WIN;
@@ -64,7 +64,7 @@ class BuildAssetsCommand extends ContainerAwareCommand
         {
             $uglifycss_default_option = self::DEFAULT_UGLIFY_CSS_LINUX;
         }
-        
+
         $this->setName('avanzu:admin:build-assets')
         ->setDescription('Concatenate and Uglify asset groups to static files')
         ->addOption('compress', 'c', InputOption::VALUE_NONE, 'compress javascripts')

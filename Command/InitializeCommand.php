@@ -7,7 +7,7 @@
 
 namespace Avanzu\AdminThemeBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -21,7 +21,7 @@ use Symfony\Component\Finder\Finder;
  * Class InitializeCommand
  *
  */
-class InitializeCommand extends ContainerAwareCommand
+class InitializeCommand extends Command
 {
     const METHOD_COPY = 'copy';
     const METHOD_ABSOLUTE_SYMLINK = 'absolute symlink';
