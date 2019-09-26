@@ -1,10 +1,4 @@
 <?php
-/**
- * assets.php
- * avanzu-admin
- * Date: 21.03.15
- */
-
 return call_user_func(
         function () {
             $jsAssets = '@AvanzuAdminThemeBundle/Resources/';
@@ -37,47 +31,47 @@ return call_user_func(
                 'admin_lte_js' => [
                     'inputs' => [
                         $lteJSBase . 'plugins/bootstrap-slider/bootstrap-slider.js',
-                        $lteJSBase . 'plugins/datatables/jquery.dataTables.js',
-                        $lteJSBase . 'plugins/datatables/dataTables.bootstrap.js',
-                        $lteJSBase . 'plugins/slimScroll/jquery.slimscroll.js',
-                        $jsAssets . 'bower/bower_components/adminlte/dist/js/app.min.js',
+                        $jsAssets . 'bower/bower_components/datatables.net/js/jquery.dataTables.js',
+                        $jsAssets . 'bower/bower_components/datatables.net-bs/js/dataTables.bootstrap.js',
+                        $jsAssets . 'bower/bower_components/jquery-slimscroll/jquery.slimscroll.js',
+                        $jsAssets . 'bower/bower_components/adminlte/dist/js/adminlte.js',
                     ],
                 ],
                 'admin_lte_css' => [
                     'inputs' => [
-                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/css/bootstrap.min.css',
+                        $jsAssets . 'bower/bower_components/bootstrap/dist/css/bootstrap.min.css',
                         $jsAssets . 'bower/bower_components/adminlte/plugins/bootstrap-slider/slider.css',
-                        $jsAssets . 'bower/bower_components/adminlte/plugins/datatables/dataTables.bootstrap.css',
+                        $jsAssets . 'bower/bower_components/datatables.net-bs/css/dataTables.bootstrap.css',
                         $jsAssets . 'bower/bower_components/fontawesome/css/font-awesome.min.css',
-                        $jsAssets . 'bower/bower_components/ionicons/css/ionicons.min.css',
+                        $jsAssets . 'bower/bower_components/Ionicons/css/ionicons.min.css',
                         $jsAssets . 'bower/bower_components/adminlte/dist/css/AdminLTE.min.css',
                         $jsAssets . 'bower/bower_components/adminlte/dist/css/skins/_all-skins.min.css',
                     ],
                 ],
                 'admin_lte_fonts' => [
                     'inputs' => [
-                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.eot',
-                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.svg',
-                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.ttf',
-                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.woff',
-                        $jsAssets . 'bower/bower_components/adminlte/bootstrap/fonts/glyphicons-halflings-regular.woff2',
+                        $jsAssets . 'bower/bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot',
+                        $jsAssets . 'bower/bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg',
+                        $jsAssets . 'bower/bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf',
+                        $jsAssets . 'bower/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff',
+                        $jsAssets . 'bower/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/FontAwesome.otf',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.eot',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.svg',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.ttf',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.woff',
                         $jsAssets . 'bower/bower_components/fontawesome/fonts/fontawesome-webfont.woff2',
-                        $jsAssets . 'bower/bower_components/ionicons/fonts/ionicons.eot',
-                        $jsAssets . 'bower/bower_components/ionicons/fonts/ionicons.svg',
-                        $jsAssets . 'bower/bower_components/ionicons/fonts/ionicons.ttf',
-                        $jsAssets . 'bower/bower_components/ionicons/fonts/ionicons.woff',
+                        $jsAssets . 'bower/bower_components/Ionicons/fonts/ionicons.eot',
+                        $jsAssets . 'bower/bower_components/Ionicons/fonts/ionicons.svg',
+                        $jsAssets . 'bower/bower_components/Ionicons/fonts/ionicons.ttf',
+                        $jsAssets . 'bower/bower_components/Ionicons/fonts/ionicons.woff',
                     ],
                 ],
                 'admin_lte_forms_js' => [
                     'inputs' => [
-                        $lteJSBase . 'plugins/colorpicker/bootstrap-colorpicker.js',
-                        $lteJSBase . 'plugins/daterangepicker/daterangepicker.js',
-                        $lteJSBase . 'plugins/timepicker/bootstrap-timepicker.js',
+                        $jsAssets . 'bower/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js',
+                        $jsAssets . 'bower/bower_components/bootstrap-daterangepicker/daterangepicker.js',
+                        $jsAssets . 'bower/bower_components/adminlte/plugins/timepicker/bootstrap-timepicker.js',
                         $lteJSBase . 'plugins/input-mask/jquery.inputmask.js',
                         $lteJSBase . 'plugins/iCheck/icheck.js',
                         //   $lteJs.'plugins/input-mask/*',
@@ -85,8 +79,8 @@ return call_user_func(
                 ],
                 'admin_lte_forms_css' => [
                     'inputs' => [
-                        $jsAssets . 'bower/bower_components/adminlte/plugins/colorpicker/bootstrap-colorpicker.css',
-                        $jsAssets . 'bower/bower_components/adminlte/plugins/daterangepicker/daterangepicker.css',
+                        $jsAssets . 'bower/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css',
+                        $jsAssets . 'bower/bower_components/bootstrap-daterangepicker/daterangepicker.css',
                         $jsAssets . 'bower/bower_components/adminlte/plugins/timepicker/bootstrap-timepicker.css',
                         $jsAssets . 'bower/bower_components/adminlte/plugins/iCheck/all.css',
                         $jsAssets . 'bower/bower_components/adminlte/plugins/iCheck/square/_all.css',
@@ -104,17 +98,17 @@ return call_user_func(
                 ],
                 'admin_lte_morris' => [
                     'inputs' => [
-                        $jsAssets . 'bower/bower_components/adminlte/plugins/morris/morris.js',
+                        $jsAssets . 'bower/bower_components/morris.js/morris.js',
                     ],
                 ],
                 'admin_lte_morris_css' => [
                     'inputs' => [
-                        $jsAssets . 'bower/bower_components/adminlte/plugins/morris/morris.css',
+                        $jsAssets . 'bower/bower_components/morris.js/morris.css',
                     ],
                 ],
                 'admin_lte_flot' => [
                     'inputs' => [
-                        $jsAssets . 'bower/bower_components/adminlte/plugins/flot/*',
+                        $jsAssets . 'bower/bower_components/Flot*',
                     ],
                 ],
                 'admin_lte_calendar' => [
@@ -154,3 +148,4 @@ return call_user_func(
             ];
         }
         );
+
