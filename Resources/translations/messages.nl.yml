@@ -1,0 +1,9 @@
+avanzu_admin_theme:
+  breadcrumb:
+    home: Home
+  default:
+    form:
+      forms: Formulieren
+      demonstration: demonstratie
+      cancel: Annuleren
+      submit: Indienen
