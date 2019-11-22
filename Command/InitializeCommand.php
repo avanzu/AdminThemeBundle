@@ -35,6 +35,7 @@ class InitializeCommand extends Command
      * @var Filesystem
      */
     private $filesystem;
+    private $container;
 
     public function __construct(ContainerInterface $container)
     {
@@ -45,6 +46,7 @@ class InitializeCommand extends Command
     protected function configure()
     {
         $this->setName('avanzu:admin:initialize')
+        ->setDescription('Initialize the files needed for AdminLTE')
         ->addOption('vendor-dir', null, InputOption::VALUE_OPTIONAL, 'path to vendors', 'vendor')
         ->addOption('theme-dir', null, InputOption::VALUE_OPTIONAL, 'path to adminlte', 'almasaeed2010/adminlte')
         ->addOption('web-dir', null, InputOption::VALUE_OPTIONAL, 'path to web', 'web')
