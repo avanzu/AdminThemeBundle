@@ -4,7 +4,6 @@
  * symfony3
  * Date: 12.06.16
  */
-
 namespace Avanzu\AdminThemeBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -16,21 +15,33 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class InitializeCommand
- *
  */
 class InitializeCommand extends Command
 {
+
+    protected static $defaultName = 'avanzu:admin:initialize';
+
     const METHOD_COPY = 'copy';
+
     const METHOD_ABSOLUTE_SYMLINK = 'absolute symlink';
+
     const METHOD_RELATIVE_SYMLINK = 'relative symlink';
 
     /**
+     *
      * @var Filesystem
      */
     private $filesystem;
+
+    public function __construct(ContainerInterface $container)
+    {
+        parent::__construct();
+        $this->container = $container;
+    }
 
     protected function configure()
     {
@@ -39,23 +50,26 @@ class InitializeCommand extends Command
             ->addOption('theme-dir', null, InputOption::VALUE_OPTIONAL, 'path to adminlte', 'almasaeed2010/adminlte')
             ->addOption('web-dir', null, InputOption::VALUE_OPTIONAL, 'path to web', 'web')
             ->addOption('symlink', null, InputOption::VALUE_NONE, 'Symlinks the assets instead of copying it')
-            ->addOption('relative', null, InputOption::VALUE_NONE, 'Make relative symlinks')
-        ;
+            ->addOption('relative', null, InputOption::VALUE_NONE, 'Make relative symlinks');
     }
 
     /**
-     * @param                $appDir
+     *
+     * @param
+     *            $appDir
      * @param InputInterface $input
      *
      * @return string
      */
     protected function getVendorDir(InputInterface $input)
     {
-         return $input->getOption('vendor-dir');
+        return $input->getOption('vendor-dir');
     }
 
     /**
-     * @param                $appDir
+     *
+     * @param
+     *            $appDir
      * @param InputInterface $input
      *
      * @return string
@@ -66,14 +80,15 @@ class InitializeCommand extends Command
     }
 
     /**
+     *
      * @param ContainerInterface $dic
-     * @param InputInterface     $input
+     * @param InputInterface $input
      *
      * @return object
      */
-    protected function getDirectorySetup(ContainerInterface $dic, InputInterface $input)
+    protected function getDirectorySetup(InputInterface $input)
     {
-        $appDir = $dic->getParameter('kernel.root_dir');
+        $appDir = $this->container->getParameter('kernel.root_dir');
         $projectDir = dirname($appDir);
         $vendors = $this->getVendorDir($input);
         $theme = $this->getThemeDir($input);
@@ -85,14 +100,18 @@ class InitializeCommand extends Command
             'vendors' => $vendors,
             'theme' => $theme,
             'self' => $self,
-            'public' => $input->getOption('web-dir'),
+            'public' => $input->getOption('web-dir')
         ];
     }
 
     /**
-     * @param $originDir
-     * @param $targetDir
-     * @param $expectedMethod
+     *
+     * @param
+     *            $originDir
+     * @param
+     *            $targetDir
+     * @param
+     *            $expectedMethod
      *
      * @return string
      */
@@ -100,11 +119,16 @@ class InitializeCommand extends Command
     {
         $this->filesystem->remove($targetDir);
 
-        if (self::METHOD_RELATIVE_SYMLINK === $expectedMethod) {
+        if(self::METHOD_RELATIVE_SYMLINK === $expectedMethod)
+        {
             $method = $this->relativeSymlinkWithFallback($originDir, $targetDir);
-        } elseif (self::METHOD_ABSOLUTE_SYMLINK === $expectedMethod) {
+        }
+        elseif(self::METHOD_ABSOLUTE_SYMLINK === $expectedMethod)
+        {
             $method = $this->absoluteSymlinkWithFallback($originDir, $targetDir);
-        } else {
+        }
+        else
+        {
             $method = $this->hardCopy($originDir, $targetDir);
         }
 
@@ -112,33 +136,46 @@ class InitializeCommand extends Command
     }
 
     /**
-     * @param InputInterface  $input
+     *
+     * @param InputInterface $input
      * @param OutputInterface $output
      *
      * @return int|null|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dic = $this->getContainer();
+        $dic = $this->container;
         $fs = $dic->get('filesystem');
-        $folders = $this->getDirectorySetup($dic, $input);
+        $folders = $this->getDirectorySetup($input);
         $io = new SymfonyStyle($input, $output);
         $this->filesystem = $fs;
 
-        if ($input->getOption('relative')) {
+        if($input->getOption('relative'))
+        {
             $expectedMethod = self::METHOD_RELATIVE_SYMLINK;
             $io->text('Trying to install theme assets as <info>relative symbolic links</info>.');
-        } elseif ($input->getOption('symlink')) {
+        }
+        elseif($input->getOption('symlink'))
+        {
             $expectedMethod = self::METHOD_ABSOLUTE_SYMLINK;
             $io->text('Trying to install theme assets as <info>absolute symbolic links</info>.');
-        } else {
+        }
+        else
+        {
             $expectedMethod = self::METHOD_COPY;
             $io->text('Installing theme assets as <info>hard copies</info>.');
         }
 
         $fs->mkdir($folders->public . '/theme');
 
-        foreach (['bootstrap', 'dist', 'plugins', 'documentation', 'starter.html'] as $directory) {
+        foreach([
+            'bootstrap',
+            'dist',
+            'plugins',
+            'documentation',
+            'starter.html'
+        ] as $directory)
+        {
             $io->text("installing <info>$directory</info>");
 
             $lnFrom = sprintf('%s/%s', $folders->theme, $directory);
@@ -160,10 +197,13 @@ class InitializeCommand extends Command
      */
     private function relativeSymlinkWithFallback($originDir, $targetDir)
     {
-        try {
+        try
+        {
             $this->symlink($originDir, $targetDir, true);
             $method = self::METHOD_RELATIVE_SYMLINK;
-        } catch (IOException $e) {
+        }
+        catch(IOException $e)
+        {
             $method = $this->absoluteSymlinkWithFallback($originDir, $targetDir);
         }
 
@@ -182,10 +222,13 @@ class InitializeCommand extends Command
      */
     private function absoluteSymlinkWithFallback($originDir, $targetDir)
     {
-        try {
+        try
+        {
             $this->symlink($originDir, $targetDir);
             $method = self::METHOD_ABSOLUTE_SYMLINK;
-        } catch (IOException $e) {
+        }
+        catch(IOException $e)
+        {
             // fall back to copy
             $method = $this->hardCopy($originDir, $targetDir);
         }
@@ -198,17 +241,19 @@ class InitializeCommand extends Command
      *
      * @param string $originDir
      * @param string $targetDir
-     * @param bool   $relative
+     * @param bool $relative
      *
      * @throws IOException If link can not be created.
      */
     private function symlink($originDir, $targetDir, $relative = false)
     {
-        if ($relative) {
+        if($relative)
+        {
             $originDir = rtrim($this->filesystem->makePathRelative($originDir, dirname($targetDir)), DIRECTORY_SEPARATOR);
         }
         $this->filesystem->symlink($originDir, $targetDir);
-        if (!file_exists($targetDir)) {
+        if(! file_exists($targetDir))
+        {
             throw new IOException(sprintf('Symbolic link "%s" was created but appears to be broken.', $targetDir), 0, null, $targetDir);
         }
     }
@@ -223,7 +268,8 @@ class InitializeCommand extends Command
      */
     private function hardCopy($originDir, $targetDir)
     {
-        if(is_file($originDir)) {
+        if(is_file($originDir))
+        {
             $this->filesystem->mkdir(dirname($targetDir), 0777);
             $this->filesystem->copy($originDir, $targetDir, false);
 
@@ -232,7 +278,8 @@ class InitializeCommand extends Command
 
         $this->filesystem->mkdir($targetDir, 0777);
         // We use a custom iterator to ignore VCS files
-        $this->filesystem->mirror($originDir, $targetDir, Finder::create()->ignoreDotFiles(false)->in($originDir));
+        $this->filesystem->mirror($originDir, $targetDir, Finder::create()->ignoreDotFiles(false)
+            ->in($originDir));
 
         return self::METHOD_COPY;
     }
