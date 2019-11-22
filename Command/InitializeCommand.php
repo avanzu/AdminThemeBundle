@@ -15,7 +15,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class InitializeCommand
@@ -46,11 +45,11 @@ class InitializeCommand extends Command
     protected function configure()
     {
         $this->setName('avanzu:admin:initialize')
-            ->addOption('vendor-dir', null, InputOption::VALUE_OPTIONAL, 'path to vendors', 'vendor')
-            ->addOption('theme-dir', null, InputOption::VALUE_OPTIONAL, 'path to adminlte', 'almasaeed2010/adminlte')
-            ->addOption('web-dir', null, InputOption::VALUE_OPTIONAL, 'path to web', 'web')
-            ->addOption('symlink', null, InputOption::VALUE_NONE, 'Symlinks the assets instead of copying it')
-            ->addOption('relative', null, InputOption::VALUE_NONE, 'Make relative symlinks');
+        ->addOption('vendor-dir', null, InputOption::VALUE_OPTIONAL, 'path to vendors', 'vendor')
+        ->addOption('theme-dir', null, InputOption::VALUE_OPTIONAL, 'path to adminlte', 'almasaeed2010/adminlte')
+        ->addOption('web-dir', null, InputOption::VALUE_OPTIONAL, 'path to web', 'web')
+        ->addOption('symlink', null, InputOption::VALUE_NONE, 'Symlinks the assets instead of copying it')
+        ->addOption('relative', null, InputOption::VALUE_NONE, 'Make relative symlinks');
     }
 
     /**
