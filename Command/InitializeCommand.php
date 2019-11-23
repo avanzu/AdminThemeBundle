@@ -12,6 +12,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
@@ -36,11 +37,13 @@ class InitializeCommand extends Command
      */
     private $filesystem;
     private $container;
+    private $kernel;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container, KernelInterface $kernel)
     {
         parent::__construct();
         $this->container = $container;
+        $this->kernel = $kernel;
     }
 
     protected function configure()
@@ -49,7 +52,7 @@ class InitializeCommand extends Command
         ->setDescription('Initialize the files needed for AdminLTE')
         ->addOption('vendor-dir', null, InputOption::VALUE_OPTIONAL, 'path to vendors', 'vendor')
         ->addOption('theme-dir', null, InputOption::VALUE_OPTIONAL, 'path to adminlte', 'almasaeed2010/adminlte')
-        ->addOption('web-dir', null, InputOption::VALUE_OPTIONAL, 'path to web', 'web')
+        ->addOption('web-dir', null, InputOption::VALUE_OPTIONAL, 'path to public project directory', 'public')
         ->addOption('symlink', null, InputOption::VALUE_NONE, 'Symlinks the assets instead of copying it')
         ->addOption('relative', null, InputOption::VALUE_NONE, 'Make relative symlinks');
     }
