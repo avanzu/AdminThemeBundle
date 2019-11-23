@@ -17,6 +17,8 @@ use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Process\Process;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 class BuildAssetsCommand extends Command
 {
     const DEFAULT_UGLIFY_JS_LINUX = '/usr/bin/env uglifyjs';
