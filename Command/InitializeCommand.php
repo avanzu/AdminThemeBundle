@@ -157,17 +157,17 @@ class InitializeCommand extends Command
         if($input->getOption('relative'))
         {
             $expectedMethod = self::METHOD_RELATIVE_SYMLINK;
-            $io->text('Trying to install theme assets as <info>relative symbolic links</info>.');
+            $io->text('Trying to install theme assets as <info>relative symbolic links</info> in ' . $folders->public);
         }
         elseif($input->getOption('symlink'))
         {
             $expectedMethod = self::METHOD_ABSOLUTE_SYMLINK;
-            $io->text('Trying to install theme assets as <info>absolute symbolic links</info>.');
+            $io->text('Trying to install theme assets as <info>absolute symbolic links</info> in ' . $folders->public);
         }
         else
         {
             $expectedMethod = self::METHOD_COPY;
-            $io->text('Installing theme assets as <info>hard copies</info>.');
+            $io->text('Installing theme assets as <info>hard copies</info> in ' . $folders->public);
         }
 
         $fs->mkdir($folders->public . '/theme');
