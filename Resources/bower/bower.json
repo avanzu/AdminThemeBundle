@@ -2,7 +2,8 @@
     "name"        : "admin-theme-bundle",
     "version"     : "0.0.2",
     "authors"     : [
-        "Marc Bach <mail@avanzu.de>"
+        "Marc Bach <mail@avanzu.de>",
+        "Ángel Guzmán Maeso <angel@guzmanmaeso.com>"
     ],
     "description" : "Vendor assets for the avanzu admin theme bundle",
     "license"     : "MIT",
@@ -31,6 +32,6 @@
         "fontawesome"               : "4.*",
         "ionicons"                  : "*",
         "fullcalendar"              : "*",
-        "adminlte"                  : "~2.3"
+        "adminlte"                  : "~2.4"
     }
 }

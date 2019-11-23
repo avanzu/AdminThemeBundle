@@ -117,7 +117,7 @@ class AvanzuAdminThemeExtension extends Extension implements PrependExtensionInt
                     'twig',
                     [
                         'form_theme' => [
-                            'AvanzuAdminThemeBundle:layout:form-theme.html.twig',
+                            '@AvanzuAdminTheme/layout/form-theme.html.twig',
                         ],
                         'globals' => [
                             'admin_theme' => '@avanzu_admin_theme.theme_manager',

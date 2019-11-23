@@ -8,7 +8,11 @@ parameters:
     avanzu_admin_theme.container.class: Symfony\Component\DependencyInjection\Container
 
 services:
-
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        
     avanzu_admin_theme.theme_manager:
         class: "%avanzu_admin_theme.theme_manager.class%"
         arguments:
@@ -39,5 +43,6 @@ services:
             - "%avanzu_admin_theme.options%"
             - "@avanzu_admin_theme.admin_router"
 
-
-
+    Avanzu\AdminThemeBundle\Command\:
+      resource: ../../Command
+      tags: [console.command]

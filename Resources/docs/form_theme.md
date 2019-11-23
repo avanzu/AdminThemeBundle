@@ -6,7 +6,7 @@ allow customize the form elements in AdminTLE.
 This is used as:
 
 ```twig
-{% form_theme form 'AvanzuAdminThemeBundle:layout:form-theme.html.twig' %}
+{% form_theme form '@AvanzuAdminTheme/layout/form-theme.html.twig' %}
 ```
 
 For override the default theme in twig template you need put in the template which you want the new form theme
@@ -25,7 +25,7 @@ You also could apply this, only checking if a form is defined:
 
 ```twig
 {% if form is defined %}
-    {% form_theme form 'AvanzuAdminThemeBundle:layout:form-theme.html.twig' %}
+    {% form_theme form '@AvanzuAdminTheme/layout/form-theme.html.twig' %}
 {% endif %}
 ```
 
@@ -34,5 +34,5 @@ Also is possible override the form theme by referencing
 only customize/override some childs elements in the form like:
 
 ```twig
-{% form_theme form.submit 'AvanzuAdminThemeBundle:layout:form-theme.html.twig' %}
+{% form_theme form.submit '@AvanzuAdminTheme/layout/form-theme.html.twig' %}
 ```

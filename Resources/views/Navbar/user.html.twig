@@ -2,7 +2,7 @@
 {# @var links \Avanzu\AdminThemeBundle\Model\NavBarUserLink[] #}
 {# @var showProfileLink bool #}
 {# @var showLogoutLink bool #}
-{% import "AvanzuAdminThemeBundle:layout:macros.html.twig" as macro %}
+{% import "@AvanzuAdminTheme/layout/macros.html.twig" as macro %}
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         {{ macro.avatar(user.avatar, user.username, 'user-image') }}
