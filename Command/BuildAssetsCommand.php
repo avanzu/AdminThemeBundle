@@ -45,6 +45,15 @@ class BuildAssetsCommand extends Command
 
     protected $builddir;
 
+    private $container;
+
+    public function __construct(ContainerInterface $container)
+    {
+        parent::__construct();
+        $this->container = $container;
+    }
+
+
     protected function configure()
     {
         if(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
@@ -80,8 +89,8 @@ class BuildAssetsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var $kernel Kernel */
-        $this->kernel = $this->getContainer()->get('kernel');
-        $this->webdir = realpath($this->getContainer()->getParameter('kernel.root_dir') . '/../web');
+        $this->kernel = $this->container->get('kernel');
+        $this->webdir = realpath($this->container->getParameter('kernel.root_dir') . '/../web');
         $this->builddir = $this->pubdir . '/static/' . $input->getOption('env');
 
         $assetsFiles = $this->resdir . '/config/assets.php';
