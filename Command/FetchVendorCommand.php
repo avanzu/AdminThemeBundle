@@ -64,5 +64,7 @@ class FetchVendorCommand extends Command
                 $output->write($helper->formatSection('Progress', $buffer, 'info'));
             }
         });
+
+        $output->writeln($helper->formatSection('Done. You should now execute', 'php bin/console assets:install', 'comment'));
     }
 }
