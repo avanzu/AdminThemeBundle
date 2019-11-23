@@ -39,7 +39,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="{% block avanzu_logo_path %}{{ path('welcome'|route_alias) }}{% endblock %}" class="logo">
+        <a href="{% block avanzu_logo_path %}{# {{ path('welcome'|route_alias) }} #} {% endblock %}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini">
                 {% block avanzu_logo_mini %}<b>A</b>LT{% endblock %}
