@@ -7,7 +7,10 @@
 
 namespace Avanzu\AdminThemeBundle\Twig;
 
-class WidgetExtension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
+class WidgetExtension extends AbstractExtension
 {
     public function renderWidget() {
     }
@@ -15,7 +18,7 @@ class WidgetExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'widget_box' => new \Twig_SimpleFunction('widget_box',
+            'widget_box' => new TwigFilter('widget_box',
                                                      [$this, 'renderWidget'],
                                                      [
                                                          'is_safe' => ['html'],

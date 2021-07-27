@@ -9,7 +9,10 @@ namespace Avanzu\AdminThemeBundle\Twig;
 
 use Avanzu\AdminThemeBundle\Routing\RouteAliasCollection;
 
-class AvanzuAdminExtension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
+class AvanzuAdminExtension extends AbstractExtension
 {
     protected $options;
     protected $env;
@@ -35,8 +38,8 @@ class AvanzuAdminExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('body_class', [$this, 'bodyClass']),
-            new \Twig_SimpleFilter('route_alias', [$this->aliasRouter, 'getRouteByAlias']),
+            new TwigFilter('body_class', [$this, 'bodyClass']),
+            new TwigFilter('route_alias', [$this->aliasRouter, 'getRouteByAlias']),
         ];
     }
 
