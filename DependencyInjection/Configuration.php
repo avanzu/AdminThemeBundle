@@ -17,8 +17,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('avanzu_admin_theme');
+        $treeBuilder = new TreeBuilder('avanzu_admin_theme');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNodeChildren = $rootNode->children();
         $rootNodeChildren = $this->createSimpleChildren($rootNodeChildren, TRUE);
