@@ -1,5 +1,13 @@
 parameters:
+    avanzu_admin_theme.navbar_controller.class: Avanzu\AdminThemeBundle\Controller\NavbarController
+    avanzu_admin_theme.breadcrumb_controller.class: Avanzu\AdminThemeBundle\Controller\BreadcrumbController
+    avanzu_admin_theme.default_controller.class: Avanzu\AdminThemeBundle\Controller\DefaultController
+    avanzu_admin_theme.emitter_controller.class: Avanzu\AdminThemeBundle\Controller\EmitterController
     avanzu_admin_theme.exception_controller.class: Avanzu\AdminThemeBundle\Controller\ExceptionController
+    avanzu_admin_theme.security_controller.class: Avanzu\AdminThemeBundle\Controller\SecurityController
+    avanzu_admin_theme.sidebar_controller.class: Avanzu\AdminThemeBundle\Controller\SidebarController
+    avanzu_admin_theme.widget_controller.class: Avanzu\AdminThemeBundle\Controller\WidgetController
+    
     twig.controller.exception.class: Avanzu\AdminThemeBundle\Controller\ExceptionController
     avanzu_admin_theme.extension.class: Avanzu\AdminThemeBundle\Twig\AvanzuAdminExtension
     avanzu_admin_theme.context_helper.class: Avanzu\AdminThemeBundle\Helper\ContextHelper
@@ -14,11 +22,13 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         
     avanzu_admin_theme.theme_manager:
+        public: true
         class: "%avanzu_admin_theme.theme_manager.class%"
         arguments:
             - "%avanzu_admin_theme.container.class%"
 
     avanzu_admin_theme.admin_router:
+        public: true
         class: "%avanzu_admin_theme.admin_router.class%"
         arguments:
             - "%kernel.cache_dir%"
@@ -28,16 +38,91 @@ services:
             - "%kernel.debug%"
 
     avanzu_admin_theme.exception_controller:
+        public: true
         class: "%avanzu_admin_theme.exception_controller.class%"
         arguments: ['@twig', '%kernel.debug%']
 
+    Avanzu\AdminThemeBundle\Controller\WidgetController:
+            public: true
+            class: "%avanzu_admin_theme.widget_controller.class%"
+            arguments: ['@twig', '%kernel.debug%', '@service_container']
+            calls:
+                - method: setContainer
+                  arguments: ['@service_container']
+                  
+    Avanzu\AdminThemeBundle\Controller\SidebarController:
+            public: true
+            class: "%avanzu_admin_theme.sidebar_controller.class%"
+            arguments: ['@twig', '%kernel.debug%', '@service_container']
+            calls:
+                - method: setContainer
+                  arguments: ['@service_container']
+                  
+    Avanzu\AdminThemeBundle\Controller\SecurityController:
+            public: true
+            class: "%avanzu_admin_theme.security_controller.class%"
+            arguments: ['@twig', '%kernel.debug%', '@service_container']
+            calls:
+                - method: setContainer
+                  arguments: ['@service_container']
+                  
+    Avanzu\AdminThemeBundle\Controller\ExceptionController:
+            public: true
+            class: "%avanzu_admin_theme.exception_controller.class%"
+            arguments: ['@twig', '%kernel.debug%', '@service_container']
+            calls:
+                - method: setContainer
+                  arguments: ['@service_container']
+                  
+    Avanzu\AdminThemeBundle\Controller\EmitterController:
+            public: true
+            class: "%avanzu_admin_theme.emitter_controller.class%"
+            arguments: ['@twig', '%kernel.debug%', '@service_container']
+            calls:
+                - method: setContainer
+                  arguments: ['@service_container']
+              
+    Avanzu\AdminThemeBundle\Controller\DefaultController:
+        public: true
+        class: "%avanzu_admin_theme.default_controller.class%"
+        arguments: ['@twig', '%kernel.debug%', '@service_container']
+        calls:
+            - method: setContainer
+              arguments: ['@service_container']
+              
+    Avanzu\AdminThemeBundle\Controller\BreadcrumbController:
+        public: true
+        class: "%avanzu_admin_theme.breadcrumb_controller.class%"
+        arguments: ['@twig', '%kernel.debug%', '@service_container']
+        calls:
+            - method: setContainer
+              arguments: ['@service_container']
+              
+    Avanzu\AdminThemeBundle\Controller\NavbarController:
+        public: true
+        class: "%avanzu_admin_theme.navbar_controller.class%"
+        arguments: ['@twig', '%kernel.debug%', '@service_container']
+        calls:
+            - method: setContainer
+              arguments: ['@service_container']
+              
+    avanzu_admin_theme.navbar_controller:
+        public: true
+        class: "%avanzu_admin_theme.navbar_controller.class%"
+        arguments: ['@twig', '%kernel.debug%', '@service_container']
+        calls:
+            - method: setContainer
+              arguments: ['@service_container']
+        
     avanzu_admin_theme.extension.class:
+        public: true
         class: "%avanzu_admin_theme.extension.class%"
         tags:
             - { name: twig.extension }
         arguments: ['%avanzu_admin_theme.options%', '%kernel.environment%', "@avanzu_admin_theme.admin_router"]
 
     avanzu_admin_theme.context_helper:
+        public: true
         class: "%avanzu_admin_theme.context_helper.class%"
         arguments:
             - "%avanzu_admin_theme.options%"
