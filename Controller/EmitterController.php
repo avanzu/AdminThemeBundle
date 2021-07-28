@@ -54,7 +54,7 @@ class EmitterController extends AbstractController
             return $event;
         }
 
-        $this->getDispatcher()->dispatch($eventName, $event);
+        $this->getDispatcher()->dispatch($event, $eventName);
 
         return $event;
     }

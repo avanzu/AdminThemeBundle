@@ -26,7 +26,7 @@ class SidebarController extends AbstractController
         if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_SIDEBAR_USER)) {
             return new Response();
         }
-        $userEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_SIDEBAR_USER, new ShowUserEvent());
+        $userEvent = $this->getDispatcher()->dispatch(new ShowUserEvent(), ThemeEvents::THEME_SIDEBAR_USER);
 
         return $this->render(
                     '@AvanzuAdminTheme/Sidebar/user-panel.html.twig',
@@ -60,7 +60,7 @@ class SidebarController extends AbstractController
             return new Response();
         }
 
-        $event = $this->getDispatcher()->dispatch(ThemeEvents::THEME_SIDEBAR_SETUP_MENU, new SidebarMenuEvent($request));
+        $event = $this->getDispatcher()->dispatch(new SidebarMenuEvent($request), ThemeEvents::THEME_SIDEBAR_SETUP_MENU);
 
         return $this->render(
                     '@AvanzuAdminTheme/Sidebar/menu.html.twig',

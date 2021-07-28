@@ -36,7 +36,7 @@ class NavbarController extends EmitterController
             return new Response();
         }
 
-        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_NOTIFICATIONS, new NotificationListEvent());
+        $listEvent = $this->getDispatcher()->dispatch(new NotificationListEvent(), ThemeEvents::THEME_NOTIFICATIONS);
 
         return $this->render(
                     '@AvanzuAdminTheme/Navbar/notifications.html.twig',
@@ -58,7 +58,7 @@ class NavbarController extends EmitterController
             return new Response();
         }
 
-        $listEvent = $this->getDispatcher()->dispatch(ThemeEvents::THEME_MESSAGES, new MessageListEvent());
+        $listEvent = $this->getDispatcher()->dispatch(new MessageListEvent(), ThemeEvents::THEME_MESSAGES);
 
         return $this->render(
                     '@AvanzuAdminTheme/Navbar/messages.html.twig',
