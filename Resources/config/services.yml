@@ -40,7 +40,7 @@ services:
     avanzu_admin_theme.exception_controller:
         public: true
         class: "%avanzu_admin_theme.exception_controller.class%"
-        arguments: ['@twig', '%kernel.debug%']
+        arguments: ['@twig', '@twig.error_renderer.html', '%kernel.debug%']
 
     Avanzu\AdminThemeBundle\Controller\WidgetController:
             public: true
@@ -67,12 +67,8 @@ services:
                   arguments: ['@service_container']
                   
     Avanzu\AdminThemeBundle\Controller\ExceptionController:
-            public: true
             class: "%avanzu_admin_theme.exception_controller.class%"
-            arguments: ['@twig', '%kernel.debug%', '@service_container']
-            calls:
-                - method: setContainer
-                  arguments: ['@service_container']
+            arguments: ['@twig', '@twig.error_renderer.html', '%kernel.debug%']
                   
     Avanzu\AdminThemeBundle\Controller\EmitterController:
             public: true
