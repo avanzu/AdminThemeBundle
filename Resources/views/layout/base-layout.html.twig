@@ -46,10 +46,10 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             {% block avanzu_navbar %}
-                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
-                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
-                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
-                                {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
+                                {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\NavbarController::messagesAction')) }}
+                                {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\NavbarController::notificationsAction')) }}
+                                {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\NavbarController::tasksAction')) }}
+                                {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\NavbarController::userAction')) }}
                             {% endblock %}
                         </ul>
                     </div>
@@ -64,10 +64,10 @@
             <section class="sidebar">
                 {% block avanzu_sidebar %}
                     {% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
-                        {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+                        {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\SidebarController::userPanelAction')) }}
+                        {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\SidebarController::searchFormAction')) }}
                     {% endif %}
-                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
+                    {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\SidebarController::menuAction', {'request':app.request})) }}
                 {% endblock %}
             </section>
             <!-- /.sidebar -->
@@ -82,7 +82,7 @@
                     <small>{% block page_subtitle %}{{ 'Control panel'|trans({}, 'AvanzuAdminTheme') }}{% endblock %}</small>
                 </h1>
                 {% block avanzu_breadcrumb %}
-                    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+                    {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\BreadcrumbController::breadcrumbAction', {'request':app.request, 'title' : block('page_title')})) }}
                 {% endblock %}
             </section>
 

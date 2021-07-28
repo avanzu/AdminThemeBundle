@@ -100,7 +100,7 @@ desired effect
                     </li>
                     <!-- /.messages-menu -->
                     #}
-                        {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
+                        {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\NavbarController::messagesAction')) }}
                     {% endblock %}
                     {% block avanzu_navbar_notifications %}
                         {#
@@ -128,7 +128,7 @@ desired effect
                         </ul>
                     </li>
                     #}
-                        {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
+                        {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\NavbarController::notificationsAction')) }}
                     {% endblock %}
                     {% block avanzu_navbar_tasks %}
                         {#
@@ -169,7 +169,7 @@ desired effect
                         </ul>
                     </li>
                     #}
-                        {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
+                        {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\NavbarController::tasksAction')) }}
                     {% endblock %}
                     {% block avanzu_navbar_user %}
                         {#
@@ -219,7 +219,7 @@ desired effect
                         </ul>
                     </li>
                     #}
-                        {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
+                        {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\NavbarController::userAction')) }}
                     {% endblock %}
                     {% block avanzu_navbar_control_sidebar_toggle %}
                     {% if avanzu_admin_context.control_sidebar %}
@@ -241,19 +241,19 @@ desired effect
 
             {% block avanzu_sidebar_user %}
                 {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:userPanel')) }}
+                    {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\SidebarController::userPanelAction')) }}
                 {% endif %}
             {% endblock %}
 
             {% block avanzu_sidebar_search %}
-                {{ render(controller('AvanzuAdminThemeBundle:Sidebar:searchForm')) }}
+                {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\SidebarController::searchFormAction')) }}
             {% endblock %}
 
             {% block avanzu_sidebar_nav %}
                 {% if avanzu_admin_context.knp_menu.enable %}
                     {% include '@AvanzuAdminTheme/Sidebar/knp-menu.html.twig' %}
                 {% else %}
-                    {{ render(controller('AvanzuAdminThemeBundle:Sidebar:menu', {'request':app.request})) }}
+                    {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\SidebarController::menuAction', {'request':app.request})) }}
                 {% endif %}
             {% endblock %}
             {#
@@ -314,7 +314,7 @@ desired effect
                 {% if avanzu_admin_context.knp_menu.enable %}
                     {% include '@AvanzuAdminTheme/Breadcrumb/knp-breadcrumb.html.twig' %}
                 {% else %}
-                    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('avanzu_page_title')})) }}
+                    {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\BreadcrumbController::breadcrumbAction', {'request':app.request, 'title' : block('avanzu_page_title')})) }}
                 {% endif %}
             {% endblock %}
             {#
