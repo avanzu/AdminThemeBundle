@@ -9,8 +9,9 @@ namespace Avanzu\AdminThemeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Controller\ErrorController;
 
-class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\ExceptionController
+class ExceptionController extends ErrorController
 {
     /**
      * @param Request $request

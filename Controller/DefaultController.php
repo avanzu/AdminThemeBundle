@@ -3,7 +3,7 @@
 namespace Avanzu\AdminThemeBundle\Controller;
 
 use Avanzu\AdminThemeBundle\Form\FormDemoModelType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
  *
  * @package Avanzu\AdminThemeBundle\Controller
  */
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
     /**
      * @Template()

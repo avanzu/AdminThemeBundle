@@ -10,7 +10,7 @@ namespace Avanzu\AdminThemeBundle\Controller;
 use Avanzu\AdminThemeBundle\Event\SidebarMenuEvent;
 use Avanzu\AdminThemeBundle\Event\ThemeEvents;
 use Avanzu\AdminThemeBundle\Model\MenuItemInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Controller to handle breadcrumb display inside the layout
  *
  */
-class BreadcrumbController extends Controller
+class BreadcrumbController extends AbstractController
 {
     /**
      * Controller Reference action to be called inside the layout.
