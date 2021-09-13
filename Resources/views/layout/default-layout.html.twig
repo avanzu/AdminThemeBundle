@@ -253,7 +253,7 @@ desired effect
                 {% if avanzu_admin_context.knp_menu.enable %}
                     {% include '@AvanzuAdminTheme/Sidebar/knp-menu.html.twig' %}
                 {% else %}
-                    {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\SidebarController::menuAction', {'request':app.request})) }}
+                    {{ render(controller('Avanzu\\AdminThemeBundle\\Controller\\SidebarController::menuAction', {'request':app.request})) }} 
                 {% endif %}
             {% endblock %}
             {#
