@@ -44,13 +44,22 @@
             {% if error|default(false) %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
+        
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
 
             {% endblock %}
         </p>
 
         {% block avanzu_login_form %}
-        <form action="{{ path('login'|route_alias) }}" method="post">
+        <form action="{{ path('login'|route_alias) }}" method="post">  {# path('app_login') for symfony based #}
             <div class="form-group has-feedback">
+                {# You can use email here too as username #}
+                {# <input type="text" name="email" class="form-control" placeholder="{{ 'Email'|trans({}, 'AvanzuAdminTheme') }}" value="{{ last_username }}"> #}
+                
                 <input type="text" name="_username" class="form-control" placeholder="{{ 'Username'|trans({}, 'AvanzuAdminTheme') }}" value="{{ last_username }}">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
@@ -67,6 +76,10 @@
                     </div>
                 </div>
                 <!-- /.col -->
+                {# Optional for Symfony based logins
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"
+                 #}
+           
                 <div class="col-xs-4">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">{{ 'Sign In'|trans({}, 'AvanzuAdminTheme') }}</button>
                 </div>
@@ -81,18 +94,18 @@
                 {{ 'Sign in using Facebook'|trans({}, 'AvanzuAdminTheme') }}
             </a>
             <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>
-                {{ 'Sign in usingGoogle+'|trans({}, 'AvanzuAdminTheme') }}
+                {{ 'Sign in using Google'|trans({}, 'AvanzuAdminTheme') }}
             </a>
         </div>
         <!-- /.social-auth-links -->
         {% endblock %}
         {% block avanzu_login_actions %}
         <a href="#">
-            {{ 'I forgot my password'|trans({}, 'AvanzuAdminTheme') }}
+            {{ 'Forgot password'|trans({}, 'AvanzuAdminTheme') }}
         </a>
             <br>
         <a href="register.html" class="text-center">
-            {{ 'Register a new membership'|trans({}, 'AvanzuAdminTheme') }}
+            {{ 'Register'|trans({}, 'AvanzuAdminTheme') }}
         </a>
         {% endblock %}
     </div>
