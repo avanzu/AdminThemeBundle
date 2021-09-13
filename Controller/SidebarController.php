@@ -62,10 +62,12 @@ class SidebarController extends AbstractController
 
         $event = $this->getDispatcher()->dispatch(new SidebarMenuEvent($request), ThemeEvents::THEME_SIDEBAR_SETUP_MENU);
 
+        $eventItems = $event->getItems();
+        
         return $this->render(
                     '@AvanzuAdminTheme/Sidebar/menu.html.twig',
                         [
-                            'menu' => $event->getItems(),
+                            'menu' => $eventItems,
                         ]
         );
     }
