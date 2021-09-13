@@ -54,7 +54,14 @@ class SidebarMenuEvent extends ThemeEvent
      */
     public function addItem($item)
     {
-        $this->menuRootItems[$item->getIdentifier()] = $item;
+        if(!isset($this->menuRootItems[$item->getIdentifier()]))
+        {
+            $this->menuRootItems[$item->getIdentifier()] = $item;
+        }
+        else
+        {
+            throw new \Exception('Conflict name collision for menu item with identifier ' . $item->getIdentifier() . '. Suggestion: rename the MenuItemModel identifier.');
+        }
     }
 
     /**
@@ -70,9 +77,16 @@ class SidebarMenuEvent extends ThemeEvent
     /**
      * @return MenuItemInterface|null
      */
-    public function getActive() {
-        foreach($this->getItems() as $item) { /** @var $item MenuItemInterface */
-            if($item->isActive()) return $item;
+    public function getActive() 
+    {
+        $items = $this->getItems();
+        
+        if(!empty($items))
+        {
+            foreach($this->getItems() as $item) 
+            { /** @var $item MenuItemInterface */
+                if($item->isActive()) return $item;
+            }
         }
 
         return null;
