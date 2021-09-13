@@ -10,7 +10,7 @@
     {% import _self as menu %}
     {% if item.route or item.hasChildren %}
         <li id="{{ item.identifier }}" class=" {{ item.isActive ? 'active' : '' }} {{ item.hasChildren? 'treeview' : '' }}">
-            <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : path(item.route, item.routeArgs) }}">
+            <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : item.route is not empty ? path(item.route, item.routeArgs): '#' }}">
                 {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
                 {% if item.badge is not same as(false) %}
                     <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
@@ -26,8 +26,8 @@
                            {{ menu.menu_item(child) }}
                         {% else %}
                             <li class="{{ child.isActive ? 'active':'' }}" id="{{ child.identifier }}">
-                                <a href="{{ '/' in child.route ? child.route : path(child.route, child.routeArgs) }}">
-                                    {{ menu.menu_item_content(child, '') }}
+                                <a href="{{ '/' in child.route ? child.route : child.route is not empty ? path(child.route, child.routeArgs): '#' }}">
+                                    {{ menu.menu_item_content(child, 'fa fa-circle-o') }}
                                 </a>
                             </li>
                         {% endif %}
@@ -37,7 +37,7 @@
         </li>
     {% else %}
         <li id="{{ item.identifier }}" class="header">
-            {{ menu.menu_item_content(item, '') }}
+            {{ menu.menu_item_content(item, 'fa fa-circle-o') }}
         </li>
     {% endif %}
 {% endmacro %}
