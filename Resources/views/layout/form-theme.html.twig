@@ -43,7 +43,7 @@
     {% endfor %}
 
     {{ parent() }}
-{% endblock %}
+{% endblock choice_widget_collapsed %}
 
 {% block checkbox_widget %}
     <div class="checkbox">
@@ -119,7 +119,7 @@
         })|raw }}
 
     {% endif %}
-{% endblock %}
+{% endblock date_widget %}
 
 {% block time_widget %}
     {% if widget == 'single_text' %}
@@ -140,7 +140,7 @@
     {% else %}
         {{ parent() }}
     {% endif %}
-{% endblock %}
+{% endblock time_widget %}
 
 {% block form_row %}
     {% set types = form.vars.block_prefixes %}
